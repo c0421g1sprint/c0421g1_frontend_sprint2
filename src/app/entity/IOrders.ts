@@ -4,6 +4,7 @@ import {ITables} from './ITables';
 
 export interface IOrders {
   orderId: number;
+  orderCode: string;
   createDate: string;
   employee: IEmployee;
   orderDetails: IOrderDetail[];
