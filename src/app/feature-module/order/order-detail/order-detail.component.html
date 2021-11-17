@@ -1,0 +1,52 @@
+<div class="container-fluid my-font">
+  <h2 mat-dialog-title style="font-size: 50px" class="my-font">Chi tiết hoá đơn</h2>
+  <hr class="style5">
+  <mat-dialog-content class="mat-typography">
+    <div class="table-responsive-lg">
+      <table style="width: 100%" class="my-font">
+        <tr>
+          <td class="text-start" style="font-size: 20px">Mã hoá đơn: {{data.order.orderCode}}</td>
+          <td class="text-end" style="font-size: 20px">Mã bàn: {{data.order.tables.tableCode}}</td>
+        </tr>
+        <tr>
+          <td class="text-start" style="font-size: 20px">Người tạo: {{data.order.employee.employeeName}}</td>
+          <td class="text-end" style="font-size: 20px">Ngày tạo: {{data.order.createDate}}</td>
+        </tr>
+        <!--      <mat-grid-tile style="align-content: flex-start">Mã hoá đơn:{{data.order.orderCode}}</mat-grid-tile>-->
+        <!--      <mat-grid-tile class="text-end">Mã bàn:{{data.order.tables.tableCode}}</mat-grid-tile>-->
+        <!--      <mat-grid-tile class="text-start">Người tạo:{{data.order.employee.employeeName}}</mat-grid-tile>-->
+        <!--      <mat-grid-tile class="text-end">Ngày tạo:{{data.order.createDate}}</mat-grid-tile>-->
+      </table>
+    </div>
+    <hr class="style5">
+    <div class="table-responsive">
+      <table style="width: 100%" class="my-font align-items-center">
+        <thead>
+        <tr class="text-center">
+          <th style="font-size: 22px; width: 50%">Tên món</th>
+          <th style="font-size: 22px; width: 15%;">SL</th>
+          <th style="font-size: 22px;width: 20%;">Giá</th>
+          <th style="font-size: 22px;width: 20%">T.tiền</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let item of data.order.orderDetails" style="line-height: 2">
+          <td class="text-lg-left" style="font-size: 20px">{{item.fad.fadName}}</td>
+          <td class="text-center " style="font-size: 20px">{{item.quantity}}</td>
+          <td class="text-lg-right" style="font-size: 20px">{{item.fad.fadPrice}}</td>
+          <td class="text-lg-right" style="font-size: 20px">{{item.fad.fadPrice * item.quantity}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </mat-dialog-content>
+  <hr class="style5">
+  <div class="row my-font">
+    <div class="col-lg-6 text-lg-left" style="font-size: 20px">Tổng tiền:</div>
+    <div class="col-lg-6 text-lg-right" style="font-size: 20px">{{data.totalPrice}}</div>
+  </div>
+  <div class="float-lg-right mt-lg-4">
+    <button class="btn btn-warning" mat-dialog-close>Đóng</button>
+  </div>
+
+</div>
