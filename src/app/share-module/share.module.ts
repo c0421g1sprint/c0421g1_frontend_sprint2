@@ -10,6 +10,10 @@ import {RouterModule} from '@angular/router';
 import { SnackbarComponent } from './snackbar/snackbar.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import {AngularFireModule} from "@angular/fire";
+import {AngularFireStorageModule} from "@angular/fire/storage";
+import {AngularFireDatabaseModule} from "@angular/fire/database";
+import {environment} from "../../environments/environment";
 
 
 
@@ -28,6 +32,10 @@ import { FooterComponent } from './footer/footer.component';
     MatButtonModule,
     MatProgressSpinnerModule,
     RouterModule,
+    HttpClientModule,
+    AngularFireStorageModule,
+    AngularFireDatabaseModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
   exports: [
     SnackbarComponent,
@@ -40,6 +48,9 @@ import { FooterComponent } from './footer/footer.component';
     MatButtonModule,
     RouterModule,
     MatProgressSpinnerModule,
+    HttpClientModule,
+    AngularFireStorageModule,
+    AngularFireDatabaseModule,
   ],
 })
 export class ShareModule { }
