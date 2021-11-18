@@ -24,6 +24,8 @@ import { AppRoutingModule } from './app-routing.module';
     AppComponent,
   ],
   imports: [
+    MatDialogModule,
+    FormsModule,
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
