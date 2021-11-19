@@ -15,7 +15,7 @@ import { EmployeeComponent } from './feature-module/employee/employee.component'
 import { FeedbackComponent } from './feature-module/feedback/feedback.component';
 import { FoodAndDrinkComponent } from './feature-module/food-and-drink/food-and-drink.component';
 import { OrderComponent } from './feature-module/order/order.component';
-import { TableComponent } from './feature-module/table/table.component';
+
 import { FeatureModule } from './feature-module/feature.module';
 import { AppRoutingModule } from './app-routing.module';
 

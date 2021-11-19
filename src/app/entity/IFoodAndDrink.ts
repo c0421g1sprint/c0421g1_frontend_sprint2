@@ -11,4 +11,6 @@ export interface IFoodAndDrink {
   deleteFlag: boolean;
   category: ICategory;
   orderDetails: IOrderDetail[];
+
+
 }

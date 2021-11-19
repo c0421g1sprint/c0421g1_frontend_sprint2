@@ -1,5 +1,7 @@
+import {IFoodAndDrink} from "./IFoodAndDrink";
+
 export interface IOrderDetail {
-  orderId: number;
-  fadId: number;
+  orderId: IOrderDetail;
+  fadId: IFoodAndDrink;
   quantity: number;
 }

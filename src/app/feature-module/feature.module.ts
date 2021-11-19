@@ -6,18 +6,11 @@ import { EmployeeModule } from './employee/employee.module';
 import { FeedbackModule } from './feedback/feedback.module';
 import { FoodAndDrinkModule } from './food-and-drink/food-and-drink.module';
 import { OrderModule } from './order/order.module';
-import { TableModule } from './table/table.module';
-import {AccountComponent} from './account/account.component';
-import {EmployeeComponent} from './employee/employee.component';
-import {FeedbackComponent} from './feedback/feedback.component';
-import {FoodAndDrinkComponent} from './food-and-drink/food-and-drink.component';
-import {OrderComponent} from './order/order.component';
-import {TableComponent} from './table/table.component';
-
+import { CartComponent } from './cart/cart.component';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [CartComponent],
   imports: [
     CommonModule,
     AccountModule,
@@ -25,7 +18,6 @@ import {TableComponent} from './table/table.component';
     FeedbackModule,
     FoodAndDrinkModule,
     OrderModule,
-    TableModule
   ],
   exports: [
     AccountModule,
@@ -34,7 +26,6 @@ import {TableComponent} from './table/table.component';
     FeedbackModule,
     FoodAndDrinkModule,
     OrderModule,
-    TableModule
   ]
 })
 export class FeatureModule { }
