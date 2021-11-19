@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { OrderRoutingModule } from './order-routing.module';
 import {ShareModule} from '../../share-module/share.module';
 import { IncomeStatisticsComponent } from './income-statistics/income-statistics.component';
+import {OrderComponent} from "./order.component";
 
 
 
 @NgModule({
-    declarations: [IncomeStatisticsComponent],
+    declarations: [IncomeStatisticsComponent, OrderComponent],
     exports: [
         IncomeStatisticsComponent
     ],

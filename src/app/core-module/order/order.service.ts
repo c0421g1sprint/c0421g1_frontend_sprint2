@@ -9,7 +9,6 @@ export class OrderService {
   private API = "http://localhost:8080/api/order";
   constructor(private http: HttpClient) { }
 
-
   getIncomeWithDate(startDate: string, endDate: string): Observable<any>{
     return this.http.get<any>(this.API + "/income-date" + "?startDate=" + startDate + "&endDate=" + endDate);
   }
