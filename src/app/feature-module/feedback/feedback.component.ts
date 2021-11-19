@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {FeedbackService} from "../../core-module/feedback/feedback.service";
+import {MatDialog} from "@angular/material/dialog";
+import {IFeedback} from "../../entity/IFeedback";
 
 @Component({
   selector: 'app-feedback',
@@ -11,5 +14,6 @@ export class FeedbackComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
 
 }

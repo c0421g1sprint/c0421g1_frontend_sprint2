@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col-lg-12">
+    <h1 style="text-align: center" mat-dialog-title>{{data.feedbackCode}}</h1>
+    <hr style="border-top: 2px solid black;">
+  </div>
+</div>
+<mat-dialog-content>
+  <div class="row">
+    <div class="col-lg-4">
+      <span><strong>Tên khách hàng: </strong></span><br>
+      <span><strong>Ngày phản hồi: </strong></span><br>
+      <span><strong>Email khách hàng: </strong></span><br>
+      <span><strong>Nội dung phản hồi:</strong></span><br>
+      <span><strong>Hình Ảnh: </strong></span>
+    </div>
+    <div class="col-lg-8">
+      <span>{{data.feedbackCreator}}</span><br>
+      <span>{{data.feedbackDate | date : 'dd/MM/yyyy'}}</span><br>
+      <span>{{data.feedbackEmail}}</span><br>
+      <span>{{data.feedbackContent}}</span><br>
+      <span *ngIf="!data.feedbackImage">không có hình ảnh</span>
+      <span *ngIf="data.feedbackImage"><img [src]="data.feedbackImage" alt="" height="140px" width="140px"></span>
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button class="btn btn-danger" mat-dialog-close="false" style="margin-right: 20px">Đóng</button>
+</mat-dialog-actions>
+
+
+
