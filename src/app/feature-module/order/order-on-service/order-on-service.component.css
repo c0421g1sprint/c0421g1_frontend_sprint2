@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+* {
+  color: white;
+  font-family: 'Patrick Hand', cursive;
+}
+h4 {
+  text-align: center;
+}
+.cardItem {
+  border: none;
+  align-items: center;
+  width: 150px;
+  height: 180px;
+  margin: 20px;
+}
+
+@keyframes flickerAnimation {
+  0%   { opacity:1; }
+  50%  { opacity:0; }
+  100% { opacity:1; }
+}
+@-o-keyframes flickerAnimation{
+  0%   { opacity:1; }
+  50%  { opacity:0; }
+  100% { opacity:1; }
+}
+@-moz-keyframes flickerAnimation{
+  0%   { opacity:1; }
+  50%  { opacity:0; }
+  100% { opacity:1; }
+}
+@-webkit-keyframes flickerAnimation{
+  0%   { opacity:1; }
+  50%  { opacity:0; }
+  100% { opacity:1; }
+}
+.animate-flicker {
+  -webkit-animation: flickerAnimation .3s infinite;
+  -moz-animation: flickerAnimation .3s infinite;
+  -o-animation: flickerAnimation .3s infinite;
+  animation: flickerAnimation .3s infinite;
+}
+
+img:hover{
+  transform: scale(1.25);
+}
+
+img {
+  max-width: 120px; height: 70px;
+  transition: transform .5s;
+  padding-left: 30px;
+}
+
+button{
+  font-weight: bold;
+}
+
+button:hover{
+  transform: scale(1.2);
+}
+
+button svg:hover, a svg:hover{
+  transition: width 2s, height 2s, transform 1s;
+  transform: rotate(-360deg);
+}
+table {
+  text-align: center;
+  vertical-align: middle;
+  max-width: 90%;
+}
+
+table th{
+  font-size: 25px;
+}
+
+table td{
+  font-size: 20px;
+}
+
+li, input, button {
+  margin: 2px;
+}
+
+.sale-screen {
+  background-image: url(/assets/img-TaiHVK/pexels-octavio-gómez-8414072.jpg);
+  min-height: 100vh;
+  background-size: cover;
+}
+
+.marquee-parent {
+  width: 100%;
+  overflow: hidden;
+  height: 100px;
+}
+.marquee-child {
+  display: block;
+  width: 450px;
+  /* width of your text div */
+  height: 80px;
+  /* height of your text div */
+  position: absolute;
+  animation: marquee 13s linear infinite; /* change 5s value to your desired speed */
+}
+.marquee-child:hover {
+  animation-play-state: paused;
+  cursor: pointer;
+}
+
+@keyframes marquee {
+  0% {
+    left: 100%;
+  }
+  100% {
+    left: -450px /* same as your text width */
+  }
+}
+
+
+.blink{
+  width:400px;
+  height:400px;
+  animation: blink 5s infinite;
+}
+@keyframes blink{
+  0% {
+    color: white;
+  }
+  20% {
+    color: white;
+  }
+  40% {
+    color: slategray;
+  }
+  60% {
+    color: slategray;
+  }
+  80% {
+    color: white;
+  }
+  100% {
+    color: white;
+  }
+}
+
+@-webkit-keyframes blink{
+  0% {
+    color: white;
+  }
+  20% {
+    color: white;
+  }
+  40% {
+    color: slategray;
+  }
+  60% {
+    color: slategray;
+  }
+  80% {
+    color: white;
+  }
+  100% {
+    color: white;
+  }
+}
