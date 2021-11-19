@@ -8,6 +8,8 @@ import {FoodAndDrinkModule} from './food-and-drink/food-and-drink.module';
 import {OrderModule} from './order/order.module';
 import {TableModule} from './table/table.module';
 import {FeedbackComponent} from './feedback/feedback.component';
+import {HomepageBodyComponent} from "./homepage-body/homepage-body.component";
+import {HomepageModule} from "./homepage-body/homepage.module";
 
 
 @NgModule({

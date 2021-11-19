@@ -7,7 +7,8 @@
 /*}*/
 
 h1 {
-  color: #e3cc6f
+  color: black;
+  font-weight: bold;
 }
 
 span strong {
@@ -17,3 +18,4 @@ span strong {
 span {
   font-size: 20px;
 }
+

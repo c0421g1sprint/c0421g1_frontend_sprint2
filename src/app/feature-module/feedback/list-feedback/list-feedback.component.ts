@@ -4,11 +4,13 @@ import {MatDialog} from "@angular/material/dialog";
 import {IFeedback} from "../../../entity/IFeedback";
 import {DialogDetailComponent} from "../dialog-detail/dialog-detail.component";
 import {SnackbarService} from "../../../core-module/snackbar/snackbar.service";
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-list-feedback',
   templateUrl: './list-feedback.component.html',
-  styleUrls: ['./list-feedback.component.css']
+  styleUrls: ['./list-feedback.component.css'],
+  providers: [DatePipe]
 })
 export class ListFeedbackComponent implements OnInit {
   feedBackList : IFeedback[];
@@ -16,15 +18,20 @@ export class ListFeedbackComponent implements OnInit {
   messError = '';
   inputDate = null;
   totalPages :number = 0;
+  myDate: any = new Date();
+
   constructor(private feedbackService : FeedbackService,
               private matDialog : MatDialog,
-              private snackBar : SnackbarService) { }
+              private snackBar : SnackbarService,
+              private datePipe: DatePipe) {
+  }
 
   ngOnInit(): void {
     this.findAllFeedBackList();
   }
   // method get list
   findAllFeedBackList(){
+    this.myDate = this.datePipe.transform(this.myDate, 'yyyy-MM-dd');
     this.feedbackService.findAllFeedBack(this.inputDate,this.currentPage).subscribe(next =>{
       console.log(next.totalPages)
       this.totalPages = next.totalPages;
@@ -47,30 +54,31 @@ export class ListFeedbackComponent implements OnInit {
   // sang trang
   nextPage() {
     console.log(this.currentPage);
-    this.currentPage++;
-    this.ngOnInit();
+    if (this.currentPage < this.totalPages - 1) {
+      this.currentPage++;
+      this.ngOnInit();
+    }
   }
   // search list by date
   searchByDate(value: string) {
-    if (value == ''){
-      this.snackBar.showSnackbar('Vui lòng chọn ngày','error')
-    } else {
       this.inputDate = value;
+      if (this.inputDate == ""){
+        this.inputDate = null
+      }
       console.log(this.inputDate)
       this.feedbackService.findAllFeedBack(this.inputDate,this.currentPage).subscribe(next =>{
         this.feedBackList = next.content;
         console.log(this.feedBackList)
       }, error => {
         if (error.status == '404'){
-          this.messError = 'Hiện tại không có phản hồi của khách hàng'
+          this.feedBackList = [];
         }
       })
-    }
   }
   // open dialog
-  openDialog(items: IFeedback) {
-    let dialogRef = this.matDialog.open(DialogDetailComponent, {data : items,
-      height : "65%",
+  openDialog(id: number) {
+    let dialogRef = this.matDialog.open(DialogDetailComponent, {data : id,
+      minHeight : "60%",
       width : "35%",
       panelClass : 'custom-dialog-container'
     })

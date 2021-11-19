@@ -14,4 +14,8 @@ export class FeedbackService {
     return this.http.get(this.API_FEED_BACK + '/list-by-date/' + inputDate +'/?page='+ currentPage);
   }
 
+  findFeedBackById(id : number) : Observable<IFeedback> | any{
+    return this.http.get(this.API_FEED_BACK + "/find-feed-back-by-id/" + id);
+  }
+
 }
