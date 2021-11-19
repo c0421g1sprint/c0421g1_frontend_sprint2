@@ -16,7 +16,6 @@ import {MatGridListModule} from "@angular/material/grid-list";
         OrderRoutingModule,
         ShareModule,
         MatGridListModule,
-
     ]
 })
 export class OrderModule { }
