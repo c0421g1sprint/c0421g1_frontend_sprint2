@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chỉnh sửa bàn</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+        integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+  <style>
+
+    @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+
+
+    td {
+      padding-left: 100px;
+      font-weight: bolder;
+    }
+
+    span {
+      padding-left: 200px
+    }
+
+    button {
+      margin-left: 20px;
+      font-family: 'Dancing Script', cursive;
+    }
+
+    fieldset {
+      border-radius: 50px;
+      /*#868080*/
+    }
+
+    .inputSize {
+      margin: 1px 50px 1px 50px;
+    }
+
+    label {
+      font-family: 'Patrick Hand', cursive;
+      color: white
+    }
+
+    small {
+      font-family: 'Patrick Hand', cursive;
+    }
+  </style>
+</head>
+<body>
+<div>
+  <div class="container-fluid"
+       style="background-image: url('~assets/img/pexels-octavio-gómez-8414072.jpg');background-size: cover;">
+    <div class="row">
+      <fieldset style="background-color: #2d353e;margin: 150px 0px 150px 460px">
+        <table class="table-hover table-responsive-lg">
+          <form [formGroup]="tableForm" (ngSubmit)="update()">
+            <div class="form-group inputSize">
+              <label for="exampleInputEmail1">Mã số bàn</label>
+              <input type="text" class="form-control" id="exampleInputEmail1" formControlName="tableCode"
+                     aria-describedby="emailHelp">
+              <small style="color: wheat ">không được để trống</small>
+              <br>
+              <small style="color: wheat">Mã bàn phải đúng ký tự MBxxx.</small>
+            </div>
+            <div class="form-group inputSize">
+              <label for="exampleInputPassword1">Số lượng người tối đa trong một bàn</label>
+              <input type="text" class="form-control" id="exampleInputPassword1" formControlName="maximumCapacity">
+              <small style="color: wheat ">không được để trống</small>
+              <br>
+              <small style="color: wheat">số lượng lớn hơn 0 và nhỏ hơn 20.</small>
+            </div>
+            <div class="form-group inputSize">
+              <label>vị trí bàn</label>
+              <input type="text" class="form-control" formControlName="location">
+              <small style="color: wheat ">không được để trống</small>
+              <br>
+              <small style="color: wheat">Vị trí phải chỉ rõ ở Tâng nào.</small>
+            </div>
+            <div class="form-group inputSize">
+              <label>Trạng thái: </label>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="0" checked formControlName="tableStatus">
+                <label class="form-check-label" for="gridRadios1">
+                  Tốt
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="1" formControlName="tableCode">
+                <label class="form-check-label" for="gridRadios3">
+                  Hỏng
+                </label>
+              </div>
+            </div>
+            <div class="form-group inputSize">
+              <label>Trống</label>
+              <div class="custom-control custom-switch">
+                <input type="checkbox" class="custom-control-input" id="customSwitch1" formControlName="availableFlag">
+                <label class="custom-control-label" for="customSwitch1"></label>
+              </div>
+            </div>
+          </form>
+        </table>
+        <br>
+        <div style="margin: 1px 1px 50px 200px">
+          <button type="button" class="btn btn-warning">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
+              <path d="M0 0h24v24H0V0z" fill="none"/>
+              <path
+                d="M12.5 8c-2.65 0-5.05.99-6.9 2.6L3.71 8.71C3.08 8.08 2 8.52 2 9.41V15c0 .55.45 1 1 1h5.59c.89 0 1.34-1.08.71-1.71l-1.91-1.91c1.39-1.16 3.16-1.88 5.12-1.88 3.16 0 5.89 1.84 7.19 4.5.27.56.91.84 1.5.64.71-.23 1.07-1.04.75-1.72C20.23 10.42 16.65 8 12.5 8z"/>
+            </svg>
+            Quay lại
+          </button>
+          <button type="button" class="btn btn-warning">
+            <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24"
+                 width="24px" fill="#000000">
+              <g>
+                <path d="M0,0h24v24H0V0z" fill="none"/>
+              </g>
+              <g>
+                <path
+                  d="M12,2L4,5v6.09c0,5.05,3.41,9.76,8,10.91c4.59-1.15,8-5.86,8-10.91V5L12,2z M18,11.09c0,4-2.55,7.7-6,8.83 c-3.45-1.13-6-4.82-6-8.83V6.31l6-2.12l6,2.12V11.09z M8.82,10.59L7.4,12l3.54,3.54l5.66-5.66l-1.41-1.41l-4.24,4.24L8.82,10.59z"/>
+              </g>
+            </svg>
+            Chỉnh sửa
+          </button>
+        </div>
+      </fieldset>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+
