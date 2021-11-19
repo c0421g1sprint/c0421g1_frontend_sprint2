@@ -13,11 +13,12 @@ import {FeedbackComponent} from './feedback/feedback.component';
 import {FoodAndDrinkComponent} from './food-and-drink/food-and-drink.component';
 import {OrderComponent} from './order/order.component';
 import {TableComponent} from './table/table.component';
+import { CategoryComponent } from './category/category.component';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [CategoryComponent],
   imports: [
     CommonModule,
     AccountModule,

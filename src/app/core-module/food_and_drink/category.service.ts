@@ -8,7 +8,7 @@ import {Observable} from "rxjs";
 })
 export class CategoryService {
 
-  url = "http://localhost:8080/api/category";
+  private url = "http://localhost:8080/api/category/";
 
   constructor(private http: HttpClient) {
   }
@@ -21,5 +21,10 @@ export class CategoryService {
   //LamNT update
   update(updateCategory: ICategory): Observable<ICategory | any> {
     return this.http.patch(this.url + 'update', updateCategory);
+  }
+
+  //LamNT findAllCategory
+  findAllCategory(): Observable<ICategory[] | any> {
+    return this.http.get(this.url + 'find-all')
   }
 }

@@ -1,164 +1,129 @@
-<div class="container-fluid"
-     style="background-image: url('/assets/img/pexels-octavio-gómez-8414072.jpg');min-height: 100vh; font-family: 'Patrick Hand', cursive;">
-  <div class="row">
-    <div class="col-lg-1"></div>
-    <div class="col-lg-10">
-      <h3 class="modal-title" id="exampleModalLabel" style="color: #e3cc6f; font-size: 40px">
-        Thêm món mới
-      </h3>
+<h1 mat-dialog-title style="color: #e3cc6f; font-size: 25px">Thêm món mới</h1>
+<mat-dialog-content>
+  <form [formGroup]="createForm" (ngSubmit)="createFoodAndDrink(createForm)" style="font-size: 20px">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="name" class="font-weight" style="color: #e3cc6f">
+          Tên món <span style="color: red">*</span> :
+        </label>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <div class="input-group-text">
+              <img src="assets/icon/emoji_food_beverage_black_24dp.svg" alt="">
+            </div>
+          </div>
+          <input type="text" class="form-control" formControlName="fadName" id="name"
+                 placeholder="VD: Cà phê muối">
+        </div>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="class" class="font-weight" style="color: #e3cc6f">
+          Nhóm món
+          <span style="color: red">*</span> :
+        </label>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <label class="input-group-text" for="class">
+              <img src="assets/icon/menu_black_24dp.svg" alt="">
+            </label>
+          </div>
+          <select class=" form-control custom-select" id="class" formControlName="category">
+            <option [selected]>Vui lòng chọn nhóm</option>
+            <option *ngFor="let type of categoryList" [ngValue]="type">{{type.categoryName}}</option>
+          </select>
+        </div>
+      </div>
     </div>
-    <div class="col-lg-1"></div>
-  </div>
-  <div class="row" style="font-size: 20px">
-    <form [formGroup]="createForm" (ngSubmit)="createFoodAndDrink(createForm)">
-      <div class="form-row">
-        <div class="form-group col-md-6">
-          <label for="name" class="font-weight" style="color: #e3cc6f">
-            Tên món <span style="color: red">*</span> :
-          </label>
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <div class="input-group-text">
-                <img src="assets/icon/emoji_food_beverage_black_24dp.svg" alt="">
-              </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="code" class="font-weight" style="color: #e3cc6f">
+          Mã số món
+          <span style="color: red">*</span> :
+        </label>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <div class="input-group-text">
+              <img src="/assets/icon/qr_code_black_24dp.svg" alt="">
             </div>
-            <input type="text" class="form-control" id="name"
-                   placeholder="VD: Cà phê muối">
           </div>
-          <div>
-            <small style="color: red">Tên món không được để trống.</small><br>
-            <small style="color: red">Tên món phải nhiều hơn 5 chữ cái.</small>
-          </div>
+          <input type="text" class="form-control" id="code" formControlName="fadCode"
+                 placeholder="VD: CF123">
         </div>
-        <div class="form-group col-md-6">
-          <label for="class" class="font-weight" style="color: #e3cc6f">
-            Nhóm món
-            <span style="color: red">*</span> :
-          </label>
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <label class="input-group-text" for="class">
-                <img src="assets/icon/menu_black_24dp.svg" alt="">
-              </label>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="price" class="font-weight" style="color: #e3cc6f">
+          Giá (VNĐ)
+          <span style="color: red">*</span> :
+        </label>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <div class="input-group-text">
+              <img src="/assets/icon/local_atm_black_24dp.svg" alt="">
             </div>
-            <select class=" form-control custom-select" id="class">
-              <option value="Chọn nhóm món" selected>Chọn nhóm món</option>
-              <option value="Nước tăng lực">Nước tăng lực</option>
-              <option value="Nước giải khát">Nước giải khát</option>
-              <option value="Trà">Trà</option>
-              <option value="Cà phê">Cà phê</option>
-            </select>
           </div>
-          <div>
-            <small style="color: red">Nhóm món không được để trống.</small>
+          <input type="text" class="form-control" id="price"
+                 placeholder="VD: 10.000" formControlName="fadPrice">
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label class="form-label" style="color: #e3cc6f">Ảnh món <span
+          style="color: red">*</span> :</label>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <div class="input-group-text">
+              <img src="/assets/icon/add_photo_alternate_black_24dp.svg" alt="">
+            </div>
+          </div>
+          <div class="custom-file">
+            <input type="file" class="custom-file-input form-control-file"
+                   id="img" aria-label="file" #fileUploader formControlName="fadImage"
+                   (change)="showPreview($event)" accept="image/*">
+            <label class="custom-file-label" for="img">Chọn ảnh món</label>
           </div>
         </div>
       </div>
-      <div class="form-row">
-        <div class="form-group col-md-6">
-          <label for="code" class="font-weight" style="color: #e3cc6f">
-            Mã số món
-            <span style="color: red">*</span> :
-          </label>
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <div class="input-group-text">
-                <img src="/assets/icon/qr_code_black_24dp.svg" alt="">
-              </div>
-            </div>
-            <input type="text" class="form-control" id="code"
-                   placeholder="VD: CF123">
-          </div>
-          <div>
-            <small style="color: red">Mã số món không được để trống.</small><br>
-            <small style="color: red">Mã số phải nhiều hơn 3 chữ cái.</small>
-          </div>
-        </div>
-        <div class="form-group col-md-6">
-          <label for="price" class="font-weight" style="color: #e3cc6f">
-            Giá (VNĐ)
-            <span style="color: red">*</span> :
-          </label>
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <div class="input-group-text">
-                <img src="/assets/icon/local_atm_black_24dp.svg" alt="">
-              </div>
-            </div>
-            <input type="text" class="form-control" id="price"
-                   placeholder="VD: 10.000">
-          </div>
-          <div>
-            <small style="color: red">Giá không được để trống.</small><br>
-            <small style="color: red">Giá phải lớn hơn 5.000 VNĐ.</small>
-          </div>
-        </div>
+      <div class="form-group col-md-6">
+        <img [src]="imgSrc" (click)="fileUploader.click()"
+             style="height: 250px; width: 260px"
+             id="output" alt="" class="img-fluid float-right"/>
       </div>
-      <div class="form-row">
-        <div class="form-group col-md-6">
-          <label class="form-label" style="color: #e3cc6f">Ảnh món <span
-            style="color: red">*</span> :</label>
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <div class="input-group-text">
-                <img src="/assets/icon/add_photo_alternate_black_24dp.svg" alt="">
-              </div>
-            </div>
-            <div class="custom-file">
-              <input type="file" class="custom-file-input form-control-file"
-                     id="img" aria-label="file"
-                     onchange="loadFile(event)" accept="image/*">
-              <label class="custom-file-label" for="img">Chọn ảnh món</label>
-            </div>
-          </div>
-        </div>
-        <img src="/assets/img/default-placeholder.png" style="height: 250px; width: 260px"
-             id="output" alt=""/>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal" style="color: black">
-          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="-2 1 24 27" width="24px"
-               fill="#000000">
-            <path d="M0 0h24v24H0V0z" fill="none" opacity=".87"/>
-            <path
-              d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.59-13L12 10.59 8.41 7 7 8.41 10.59 12 7 15.59 8.41 17 12 13.41 15.59 17 17 15.59 13.41 12 17 8.41z"/>
-          </svg>
-          Huỷ
-        </button>
-        <button type="reset" class="btn btn-warning" onclick="resetPicture()">
-          <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px"
-               viewBox="-2 1 24 27" width="24px" fill="#000000">
+    </div>
+    <div class="float-right">
+      <button mat-dialog-close type="button" class="btn btn-danger" data-dismiss="modal" style="color: black">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="-2 1 24 27" width="24px"
+             fill="#000000">
+          <path d="M0 0h24v24H0V0z" fill="none" opacity=".87"/>
+          <path
+            d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.59-13L12 10.59 8.41 7 7 8.41 10.59 12 7 15.59 8.41 17 12 13.41 15.59 17 17 15.59 13.41 12 17 8.41z"/>
+        </svg>
+        Huỷ
+      </button>
+      <button type="reset" class="btn btn-warning">
+        <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px"
+             viewBox="-2 1 24 27" width="24px" fill="#000000">
+          <g>
+            <path d="M0,0h24v24H0V0z" fill="none"/>
+          </g>
+          <g>
             <g>
-              <path d="M0,0h24v24H0V0z" fill="none"/>
+              <path
+                d="M6,13c0-1.65,0.67-3.15,1.76-4.24L6.34,7.34C4.9,8.79,4,10.79,4,13c0,4.08,3.05,7.44,7,7.93v-2.02 C8.17,18.43,6,15.97,6,13z M20,13c0-4.42-3.58-8-8-8c-0.06,0-0.12,0.01-0.18,0.01l1.09-1.09L11.5,2.5L8,6l3.5,3.5l1.41-1.41 l-1.08-1.08C11.89,7.01,11.95,7,12,7c3.31,0,6,2.69,6,6c0,2.97-2.17,5.43-5,5.91v2.02C16.95,20.44,20,17.08,20,13z"/>
             </g>
-            <g>
-              <g>
-                <path
-                  d="M6,13c0-1.65,0.67-3.15,1.76-4.24L6.34,7.34C4.9,8.79,4,10.79,4,13c0,4.08,3.05,7.44,7,7.93v-2.02 C8.17,18.43,6,15.97,6,13z M20,13c0-4.42-3.58-8-8-8c-0.06,0-0.12,0.01-0.18,0.01l1.09-1.09L11.5,2.5L8,6l3.5,3.5l1.41-1.41 l-1.08-1.08C11.89,7.01,11.95,7,12,7c3.31,0,6,2.69,6,6c0,2.97-2.17,5.43-5,5.91v2.02C16.95,20.44,20,17.08,20,13z"/>
-              </g>
-            </g>
-          </svg>
-          Xoá biểu mẫu
-        </button>
-        <button type="button" class="btn btn-info" style="color: black">
-          <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px"
-               viewBox="-2 1 24 27" width="24px" fill="#000000">
-            <rect fill="none" height="24" width="24"/>
-            <path
-              d="M12,9L12,9c0.55,0,1-0.45,1-1V6h2c0.55,0,1-0.45,1-1v0c0-0.55-0.45-1-1-1h-2V2c0-0.55-0.45-1-1-1h0c-0.55,0-1,0.45-1,1v2H9 C8.45,4,8,4.45,8,5v0c0,0.55,0.45,1,1,1h2v2C11,8.55,11.45,9,12,9z M7,18c-1.1,0-1.99,0.9-1.99,2S5.9,22,7,22s2-0.9,2-2S8.1,18,7,18 z M17,18c-1.1,0-1.99,0.9-1.99,2s0.89,2,1.99,2s2-0.9,2-2S18.1,18,17,18z M8.1,13h7.45c0.75,0,1.41-0.41,1.75-1.03l3.24-6.14 c0.25-0.48,0.08-1.08-0.4-1.34v0c-0.49-0.27-1.1-0.08-1.36,0.41L15.55,11H8.53L4.27,2H2C1.45,2,1,2.45,1,3v0c0,0.55,0.45,1,1,1h1 l3.6,7.59l-1.35,2.44C4.52,15.37,5.48,17,7,17h11c0.55,0,1-0.45,1-1v0c0-0.55-0.45-1-1-1H7L8.1,13z"/>
-          </svg>
-          Thêm
-        </button>
-      </div>
-    </form>
-  </div>
-</div>
-<script>
-  var loadFile = function (event) {
-    var output = document.getElementById('output');
-    output.src = URL.createObjectURL(event.target.files[0]);
-    output.onload = function () {
-      URL.revokeObjectURL(output.src)
-    }
-  };
-</script>
+          </g>
+        </svg>
+        Xoá biểu mẫu
+      </button>
+      <button type="submit" class="btn btn-info" style="color: black">
+        <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px"
+             viewBox="-2 1 24 27" width="24px" fill="#000000">
+          <rect fill="none" height="24" width="24"/>
+          <path
+            d="M12,9L12,9c0.55,0,1-0.45,1-1V6h2c0.55,0,1-0.45,1-1v0c0-0.55-0.45-1-1-1h-2V2c0-0.55-0.45-1-1-1h0c-0.55,0-1,0.45-1,1v2H9 C8.45,4,8,4.45,8,5v0c0,0.55,0.45,1,1,1h2v2C11,8.55,11.45,9,12,9z M7,18c-1.1,0-1.99,0.9-1.99,2S5.9,22,7,22s2-0.9,2-2S8.1,18,7,18 z M17,18c-1.1,0-1.99,0.9-1.99,2s0.89,2,1.99,2s2-0.9,2-2S18.1,18,17,18z M8.1,13h7.45c0.75,0,1.41-0.41,1.75-1.03l3.24-6.14 c0.25-0.48,0.08-1.08-0.4-1.34v0c-0.49-0.27-1.1-0.08-1.36,0.41L15.55,11H8.53L4.27,2H2C1.45,2,1,2.45,1,3v0c0,0.55,0.45,1,1,1h1 l3.6,7.59l-1.35,2.44C4.52,15.37,5.48,17,7,17h11c0.55,0,1-0.45,1-1v0c0-0.55-0.45-1-1-1H7L8.1,13z"/>
+        </svg>
+        Thêm
+      </button>
+    </div>
+  </form>
+</mat-dialog-content>

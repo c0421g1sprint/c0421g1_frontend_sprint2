@@ -4,14 +4,15 @@
 
 export const environment = {
   production: false,
-  firebaseConfig : {
-    apiKey: "AIzaSyDwkPqBjyHRLMahvYT5z73vv4sDbJpoiLg",
-    authDomain: "dishes-image.firebaseapp.com",
-    projectId: "dishes-image",
-    storageBucket: "dishes-image.appspot.com",
-    messagingSenderId: "192070568254",
-    appId: "1:192070568254:web:7dcd6526ade86478be846f",
-    measurementId: "G-0GCR13GF9J"
+  firebaseConfig: {
+    apiKey: "AIzaSyDipDcyN6NfUogNnGZKPXYDNmsNKs1ix9I",
+    authDomain: "student-image.firebaseapp.com",
+    databaseURL: "https://student-image-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "student-image",
+    storageBucket: "student-image.appspot.com",
+    messagingSenderId: "208065484201",
+    appId: "1:208065484201:web:8890dc080924a870d2a0b8",
+    measurementId: "G-S7VVD8ZG1M"
   }
 };
 

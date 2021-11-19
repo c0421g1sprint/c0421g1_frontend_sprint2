@@ -7,8 +7,8 @@ import {AngularFireStorage} from "@angular/fire/storage";
 import {SnackbarService} from "../../../core-module/snackbar/snackbar.service";
 import {FormControl, FormGroup} from "@angular/forms";
 import {finalize} from "rxjs/operators";
-import * as url from "url";
 import {MatDialogRef} from "@angular/material/dialog";
+import {ICategory} from "../../../entity/ICategory";
 
 @Component({
   selector: 'app-food-and-drink-create',
@@ -17,10 +17,11 @@ import {MatDialogRef} from "@angular/material/dialog";
 })
 export class FoodAndDrinkCreateComponent implements OnInit {
 
-  imgSrc: string = '/assets/img/default_placeholder.png';
+  imgSrc: string = '/assets/img/default-placeholder.png';
   selectedImage: any = null;
   isSubmitted: boolean = false;
   showSpinner = false;
+  categoryList: ICategory[];
 
   constructor(private foodAndDrinkService: FoodAndDrinkService,
               private router: Router,
@@ -41,6 +42,14 @@ export class FoodAndDrinkCreateComponent implements OnInit {
   })
 
   ngOnInit(): void {
+    this.getCategory();
+  }
+
+  getCategory() {
+    return this.categoryService.findAllCategory().subscribe(list => {
+      this.categoryList = list;
+      console.log(this.categoryList);
+    })
   }
 
   createFoodAndDrink(createForm) {
@@ -66,7 +75,7 @@ export class FoodAndDrinkCreateComponent implements OnInit {
         })
       ).subscribe();
     } else {
-      this.snackbarService.showSnackbar('Biểu mẫu sai, vuilongf nhập chính xác', 'error')
+      this.snackbarService.showSnackbar('Biểu mẫu sai, vui lòng nhập chính xác', 'error')
     }
   }
 
@@ -81,7 +90,7 @@ export class FoodAndDrinkCreateComponent implements OnInit {
       reader.readAsDataURL(event.target.files[0]);
       this.selectedImage = event.target.files[0];
     } else {
-      this.imgSrc = './assets/img/img_placeholder1.png';
+      this.imgSrc = './assets/img/default-placeholder.png';
       this.selectedImage = null;
     }
   }
