@@ -11,7 +11,7 @@ import {FeedbackComponent} from './feedback/feedback.component';
 
 
 @NgModule({
-  declarations: [FeedbackComponent],
+  declarations: [FeedbackComponent,HomepageBodyComponent],
   imports: [
     CommonModule,
     AccountModule,
@@ -19,7 +19,8 @@ import {FeedbackComponent} from './feedback/feedback.component';
     FeedbackModule,
     FoodAndDrinkModule,
     OrderModule,
-    TableModule
+    TableModule,
+    HomepageModule
   ],
   exports: [
     AccountModule,
@@ -28,8 +29,8 @@ import {FeedbackComponent} from './feedback/feedback.component';
     FeedbackModule,
     FoodAndDrinkModule,
     OrderModule,
-    TableModule
+    TableModule,
+    HomepageModule
   ]
 })
-export class FeatureModule {
-}
+export class FeatureModule { }
