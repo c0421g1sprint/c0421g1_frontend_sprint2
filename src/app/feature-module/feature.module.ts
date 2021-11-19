@@ -13,11 +13,15 @@ import {FeedbackComponent} from './feedback/feedback.component';
 import {FoodAndDrinkComponent} from './food-and-drink/food-and-drink.component';
 import {OrderComponent} from './order/order.component';
 import {TableComponent} from './table/table.component';
+import { CategoryComponent } from './category/category.component';
+import { ListComponent } from './category/list/list.component';
+import { EditComponent } from './category/edit/edit.component';
+import { DeleteComponent } from './category/delete/delete.component';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [CategoryComponent, ListComponent, EditComponent, DeleteComponent],
   imports: [
     CommonModule,
     AccountModule,
