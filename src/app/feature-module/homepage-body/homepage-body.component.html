@@ -25,11 +25,11 @@
 </nav>
 <!--ảnh bìa-->
 <div class="video-container">
-  <video autoplay muted loop>
-    <source src="assets/img/video_header.mp4" type="video/mp4"/>
-    <source src="assets/img/video_header.ogg" type="video/ogg"/>
-    Not support video
-  </video>
+      <video autoplay [muted]="true" loop>
+        <source src="assets/img/video_header.mp4" type="video/mp4">
+        <source src="assets/img/video_header.ogg" type="video/ogg"/>
+      </video>
+
   <div class="caption">
     <header id="fh5co-header" class="fh5co-cover js-fullheight  pt-5" role="banner"
             data-stellar-background-ratio="0.5">
@@ -107,7 +107,11 @@
   </section>
 
   <!--    section2 - phong cách của chúng tôi - carousel-->
-  <section class="section2-bg-img">
+  <section class="section2-bg-img"
+           style="background: linear-gradient(
+            rgba(0, 0, 0, 0.7),
+            rgba(0, 0, 0, 0.7)
+           ),url('../assets/img/section2.jpg')">
     <!--        text kiểu:-->
     <div class="row">
       <div class="col-md-12 text-center">
@@ -176,7 +180,7 @@
           <div class="card-deck">
             <!--                            4-->
             <div class="card">
-              <img src="assets/img/coffe-bar_3.jpg" class="card-img-top" alt="...">
+              <img src="assets/img/coffee-bar_3.jpg" class="card-img-top" alt="...">
               <div class="card-body">
                 <h2 class="card-title text-gold">Thursday</h2>
                 <p class="card-text">Cà phê trên tay, đánh bay xì-trét</p>
@@ -251,69 +255,49 @@
         </div>
       </div>
     </div>
+<!--    BE - carousel-->
     <div class="container-fluid px-5">
       <!--            carousel-->
       <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
-          <div class="carousel-item active position-relative data-interval='1000'">
-            <img src="assets/img/section-carousel-1.jpeg" class="d-block" width="100%" height="700px" alt="...">
+          <div class="carousel-item active position-relative data-interval='100'" *ngFor="let item of fivePopularFoodList">
+            <img [src]="item.fadImage" class="d-block" width="100%" height="700px" alt="...">
             <div style="transform: translate3d(0px, 6.57358px, 0px);"
                  class="col-lg-4 col-md-12 text-attack-carousel position-absolute">
               <div class="align-text-carousel">
-                <h2>Latte</h2>
-                <h3>Hương vị hòa quyện</h3>
-                <p>Sự kết hợp tuyệt vời giữa Espresso và sữa, một trong những loại
-                  cà phê phổ biến nhất trên thế giới …
-                </p>
-                <p style="text-align: center">60.000VND</p>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item position-relative data-interval='1000'">
-            <img src="assets/img/section-carousel-2.jpeg" class="d-block" width="100%" height="700px" alt="...">
-            <div style="transform: translate3d(0px, 6.57358px, 0px);"
-                 class="col-lg-4 col-md-12 text-attack-carousel position-absolute">
-              <div class="align-text-carousel">
-                <h2>Trứng dừa</h2>
-                <h3>Kết hợp hoàn mỹ</h3>
-                <p>Sự kết hợp tuyệt vời giữa Espresso và sữa, một trong những loại
-                  cà phê phổ biến nhất trên thế giới …
-                </p>
-                <p style="text-align: center">120.000VND</p>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item position-relative data-interval='1000'">
-            <img src="assets/img/section-carousel-3.png" class="d-block" width="100%" height="700px" alt="...">
-            <div style="transform: translate3d(0px, 6.57358px, 0px);"
-                 class="col-lg-4 col-md-12 text-attack-carousel position-absolute">
-              <div class="align-text-carousel">
-                <h2>Dalgona</h2>
-                <h3>Sáng tạo ngọt ngào</h3>
-                <p>Sự kết hợp tuyệt vời giữa Espresso và sữa, một trong những loại
-                  cà phê phổ biến nhất trên thế giới …
-                </p>
-                <p style="text-align: center">90.000VND</p>
+                <h2>{{item.fadName}}</h2>
+<!--                <h3>Hương vị hòa quyện</h3>-->
+<!--                <p>Sự kết hợp tuyệt vời giữa Espresso và sữa, một trong những loại-->
+<!--                  cà phê phổ biến nhất trên thế giới …-->
+<!--                </p>-->
+                <p style="text-align: center">{{item.fadPrice | currency : "VND":"symbol"}}</p>
               </div>
             </div>
           </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-target="#carouselExampleControls"
-                data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-target="#carouselExampleControls"
-                data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </button>
+<!--        <button class="carousel-control-prev" type="button" data-target="#carouselExampleControls"-->
+<!--                data-slide="prev">-->
+<!--          <span class="carousel-control-prev-icon" aria-hidden="true"></span>-->
+<!--          <span class="sr-only">Previous</span>-->
+<!--        </button>-->
+<!--        <button class="carousel-control-next" type="button" data-target="#carouselExampleControls"-->
+<!--                data-slide="next">-->
+<!--          <span class="carousel-control-next-icon" aria-hidden="true"></span>-->
+<!--          <span class="sr-only">Next</span>-->
+<!--        </button>-->
       </div>
     </div>
+
+
   </section>
 
   <!--    SECTION-4: new menu-->
-  <section class="section4-new" style="height: 750px;margin-top: 80px">
+  <section class="section4-new" style="
+  height: 750px;margin-top: 80px;
+background: linear-gradient(
+            rgba(0, 0, 0, 0.7),
+            rgba(0, 0, 0, 0.7)
+           ),url('/assets/img/section3_bg.jpg')">
     <div class="row">
       <div class="col-md-12 text-center">
         <div class="display-t js-fullheight">
@@ -349,26 +333,9 @@
       <div class="row">
         <div class="col-lg-1 col-md-1"></div>
 
-        <div class="col-lg-2 col-md-2">
-          <img src="assets/img/section4-new-1.png" style="max-width: 100%; max-height: 300px">
-          <h3>Cà phê dâu</h3>
-        </div>
-        <div class="col-lg-2 col-md-2">
-          <img src="assets/img/section4-new-2.png" style="max-width: 100%; max-height: 300px">
-          <h3>Cà phê hạt lựu</h3>
-        </div>
-        <div class="col-lg-2 col-md-2">
-          <img src="assets/img/section4-new-3.png" style="max-width: 100%; max-height: 300px">
-          <h3>Cơn lốc mùa hè</h3>
-        </div>
-        <div class="col-lg-2 col-md-2">
-          <img src="assets/img/section4-new-4.png" style="max-width: 100%; max-height: 300px">
-          <h3>Cà phê bia</h3>
-        </div>
-
-        <div class="col-lg-2 col-md-2">
-          <img src="assets/img/section4-new-3.png" style="max-width: 100%; max-height: 300px">
-          <h3>Rượu cà phê</h3>
+        <div class="col-lg-2 col-md-2" *ngFor="let item of fiveNewFoodList">
+          <img [src]="item.fadImage" style="max-width: 100%; max-height: 300px">
+          <h3 style="text-align: center">{{item.fadName}}</h3>
         </div>
         <div class="col-lg-1 col-md-1"></div>
       </div>
@@ -431,7 +398,7 @@
         <p>Cake & Coffee của quán phải nói là đẹp và đỉnh ở khu trung tâm. Cả bánh và cafe đều rất ngon!Tuần nào cũng ít
           nhất phải
           một lần ghé quán không là cứ bị thương thương nhớ nhớ :))</p>
-        <h3>Nhật Nhạt Nhẽo</h3>
+        <h3>Nhật Thực</h3>
         <span>Rất hài lòng</span>
       </div>
 
@@ -514,12 +481,7 @@
     </div>
 
     <audio autoplay>
-      <source src="./assets/img/audio_homepage.mp3" type="audio/mp3">
-      <!--      <source src="./src/assets/img/audio_homepage.mp3" type="audio/ogg">-->
-      <!--      <source src="./src/assets/img/audio_homepage.mp3" type="audio/mpeg">-->
-
-      <source src="https://pixabay.com/music/search/genre/cafe/" type="audio/ogg">
-      <source src="https://pixabay.com/music/search/genre/cafe/" type="audio/mpeg">
+      <source src="assets/img/audio_homepage.mp3" type="audio/mp3">
     </audio>
   </div>
 </section>
@@ -530,8 +492,6 @@
        viewBox="0 0 16 16" style="color: white;font-weight: bolder">
     <path fill-rule="evenodd"
           d="M7.646 2.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 3.707 2.354 9.354a.5.5 0 1 1-.708-.708l6-6z"/>
-    <path fill-rule="evenodd"
-          d="M7.646 6.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 7.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"/>
   </svg>
 </button>
 

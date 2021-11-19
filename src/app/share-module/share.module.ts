@@ -10,6 +10,7 @@ import {RouterModule} from '@angular/router';
 import { SnackbarComponent } from './snackbar/snackbar.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import {MatVideoModule} from "mat-video";
 
 
 
@@ -28,6 +29,7 @@ import { FooterComponent } from './footer/footer.component';
     MatButtonModule,
     MatProgressSpinnerModule,
     RouterModule,
+    MatVideoModule
   ],
   exports: [
     SnackbarComponent,
@@ -40,6 +42,7 @@ import { FooterComponent } from './footer/footer.component';
     MatButtonModule,
     RouterModule,
     MatProgressSpinnerModule,
+    MatVideoModule
   ],
 })
 export class ShareModule { }

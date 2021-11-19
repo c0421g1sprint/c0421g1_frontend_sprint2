@@ -8,6 +8,7 @@ import { OrderModule } from './order/order.module';
 import { TableModule } from './table/table.module';
 import { HomepageBodyComponent } from './homepage-body/homepage-body.component';
 import { HomepageModule } from './homepage-body/homepage.module';
+import {ShareModule} from "../share-module/share.module";
 
 @NgModule({
   declarations: [HomepageBodyComponent],
@@ -19,7 +20,8 @@ import { HomepageModule } from './homepage-body/homepage.module';
     FoodAndDrinkModule,
     OrderModule,
     TableModule,
-    HomepageModule
+    HomepageModule,
+    ShareModule
   ],
   exports: [
     AccountModule,

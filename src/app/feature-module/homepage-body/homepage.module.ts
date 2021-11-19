@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomepageRoutingModule } from './homepage-routing.module';
+import {ShareModule} from "../../share-module/share.module";
 
 
 
@@ -8,7 +9,8 @@ import { HomepageRoutingModule } from './homepage-routing.module';
   declarations: [],
   imports: [
     CommonModule,
-    HomepageRoutingModule
+    HomepageRoutingModule,
+    ShareModule
   ]
 })
 export class HomepageModule { }
