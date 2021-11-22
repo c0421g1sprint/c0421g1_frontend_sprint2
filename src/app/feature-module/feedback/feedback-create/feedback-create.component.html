@@ -1,12 +1,12 @@
 <div class="container-fluid">
-  <form [formGroup]="feedbackForm">
+  <form [formGroup]="feedbackForm " style="overflow-x: scroll; min-width: 1100px;">
     <div class="container" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
       <div class="modal-dialog modal-lg"style="padding-top: 20px; padding-bottom: 30px">
         <div class="modal-content">
           <div class="modal-header" style="background-color: #e3cc6f">
             <h5 class="modal-title; font-weight " id="exampleModalLabel"
-                style="color: black; font-size: 50px; margin-left: 33%">Phản hồi của bạn</h5>
+                style="color: black; font-size: 50px; margin-left: 30%">Phản hồi của bạn</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -18,7 +18,7 @@
                 <div class="form-row">
                   <div class="form-group col-md-6">
 
-                    <label for="feedbackCode" style="color: black" class="font-weight-bold">Mã Code<span
+                    <label for="feedbackCode" style="color: black" class="font-weight-bold">Mã Code <span
                       style="color: red">*</span> :
                     </label>
                     <input type="text" class="form-control" id="feedbackCode" placeholder="FEB-XXXX"
@@ -33,7 +33,7 @@
                   </div>
                   <div class="form-group col-md-6">
                     <label for="name" style="color: black" class="font-weight-bold">
-                      Tên người tạo<span
+                      Tên người tạo <span
                       style="color: red">*</span> :
                     </label>
                     <input type="text" class="form-control" id="name" placeholder="Họ và tên"
@@ -58,7 +58,7 @@
                 <div class="form-row">
                   <div class="form-group col-md-6">
                     <label for="date" style="color: black" class="font-weight-bold">Ngày
-                      Tạo<span
+                      Tạo <span
                         style="color: red">*</span> :</label>
                     <input type="date" class="form-control" id="date" formControlName="feedbackDate">
                     <!--            <input matInput [matDatepicker]="picker"  formControlName="teacherDateOfBirth" placeholder="dd/mm/yyyyy" class="form-control"id="date">-->
@@ -73,7 +73,7 @@
                     </div>
                   </div>
                   <div class="form-group col-md-6">
-                    <label for="feedbackEmail" style="color: black" class="font-weight-bold">Email<span
+                    <label for="feedbackEmail" style="color: black" class="font-weight-bold">Email <span
                       style="color: red">*</span> :
                     </label>
                     <input type="email" class="form-control" id="feedbackEmail" placeholder="Nhập email của bạn"
@@ -90,7 +90,7 @@
                 </div>
                 <div class="form-row">
                   <div class="form-group col-md-6">
-                    <label for="feedbackContent" style="color: black" class="font-weight-bold">Nôi dung phản hồi<span
+                    <label for="feedbackContent" style="color: black" class="font-weight-bold">Nội dung phản hồi <span
                       style="color: red">*</span> :
                     </label>
                     <!--                    <input type="text" class="form-control" id="feedbackContent"-->
@@ -114,21 +114,24 @@
                   </div>
                   <div class="form-group col-md-6">
                     <label for="" style="color: black"
-                           class="font-weight-bold">Ảnh phản hồi <span
-                      style="color: red">*</span> : </label>
-                    <div class="form-group col-12">
+                           class="font-weight-bold">Ảnh phản hồi  : </label>
+<!--                    <div class="form-group col-12">-->
+                    <div class="custom-file">
                       <input type="file"
+                             class="custom-file-input form-control-file"
                              id="file"
                              blackuserPhoto
                              (change)="onFileSelected($event)"
                              name="image"
                              autocomplete="off" (change)="showPreview($event)">
+                      <label class="custom-file-label" data-browse="Chọn ảnh" style="width: 270px">Chọn ảnh phản hồi</label>
                     </div>
+<!--                    </div>-->
                     <!--              <img [src]="imgSrc" alt="" width="220px" height="250px">-->
-                    <img src="/assets/anh/anh.macdinh.jpg" alt="" width="220px" height="229px"
+                    <img src="/assets/anh/anh.macdinh.jpg" alt="" width="270px" height="239px"
                          *ngIf="feedbackForm.value.feedbackImage == null; else elseBlock" value="null">
                     <ng-template #elseBlock>
-                      <img [src]="imgSrc" alt="" width="220px" height="229px">
+                      <img [src]="imgSrc" alt="" width="270px" height="239px">
                     </ng-template>
 <!--                    <div class="card" style="width: 200px; width: 230px">-->
 <!--                      <input type="file" accept="image/*" #fileUploader class="form-control-file"-->
@@ -149,7 +152,7 @@
             </div>
           </div>
           <div class="d-flex justify-content-center" style="margin-bottom: 10px; ">
-            <button type="button" class="btn btn-success" style="width: 155px" (click)="saveFeedback()">
+            <button type="button" class="btn btn-success" style="width: 170px" (click)="saveFeedback()" [disabled]="feedbackForm.invalid">
 <!--              <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24"-->
 <!--                   height="24px"-->
 <!--                   viewBox="-2 1 24 27" width="24px" fill="#000000">-->
@@ -161,7 +164,7 @@
               Gửi phản hồi
             </button>
             <button type="button" class="btn btn-warning" data-dismiss="modal"
-                    style="width: 155px; margin-left: 10px;margin-right: 10px" [routerLink]="['/feed-back-list']">
+                    style="width: 160px; margin-left: 10px;margin-right: 10px" [routerLink]="['/feed-back-list']">
               <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
                 <path d="M0 0h24v24H0V0z" fill="none"/>
                 <path
@@ -169,7 +172,7 @@
               </svg>
               Quay lại
             </button>
-            <button type="reset" class="btn btn-danger" style="width: 160px">
+            <button type="reset" class="btn btn-danger" style="width: 175px">
 
               <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
                 <path d="M0 0h24v24H0z" fill="none"/>

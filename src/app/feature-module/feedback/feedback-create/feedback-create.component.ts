@@ -20,6 +20,7 @@ export class FeedbackCreateComponent implements OnInit {
   downloadURL: Observable<string>;
   imgSrc: string = '/assets/anh/anh.macdinh.jpg';
   selectedImage: any = null;
+  feedbackCode: String = '';
   feedbackForm: FormGroup = new FormGroup({
     feedbackCode: new FormControl('',[Validators.pattern('^FEB-\\d{4}$')]),
     feedbackDate: new FormControl('',[Validators.required]),
@@ -117,6 +118,7 @@ export class FeedbackCreateComponent implements OnInit {
       {type: 'required', message: 'Ảnh không được để trống.'}
     ]
   }
+
 
 
 }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {IFeedback} from "../../entity/IFeedback";
-import {Observable} from "rxjs";
+import {BehaviorSubject, Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +9,6 @@ import {Observable} from "rxjs";
 export class FeedbackService {
 
   private url2 = "http://localhost:8080/api/feed-back/add";
-  private url1 = 'http://localhost:8080/api/feed-back';
 
   private httpOptions;
 
@@ -21,7 +20,6 @@ export class FeedbackService {
   saveFeedback(feedback: IFeedback): Observable<IFeedback | any> {
     return this.http.post(this.url2, feedback, this.httpOptions);
   }
-  findAll() :Observable<IFeedback[]> {
-    return this.http.get<IFeedback[]>(this.url1);
-  }
+
+
 }
