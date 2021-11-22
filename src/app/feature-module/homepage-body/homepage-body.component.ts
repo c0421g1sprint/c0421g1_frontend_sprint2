@@ -11,6 +11,9 @@ export class HomepageBodyComponent implements OnInit {
   //HaNTT: 19/11/2021 - get top 5 food for homepage
   fiveNewFoodList: IFoodAndDrink[] =[];
   fivePopularFoodList: IFoodAndDrink[] =[];
+  topPopularFood: IFoodAndDrink;
+  fourPopularFood: IFoodAndDrink[] =[];
+
 
 
   constructor(private foodAndDrinkService: FoodAndDrinkService) { }
@@ -18,6 +21,7 @@ export class HomepageBodyComponent implements OnInit {
   ngOnInit(): void {
     this.getTopFiveNew();
     this.getTopFivePopular();
+
   }
 
   //HaNTT: 19/11/2021 - get top 5 NEW food for homepage
@@ -37,8 +41,12 @@ export class HomepageBodyComponent implements OnInit {
       console.log('data: ')
       console.log(data)
       this.fivePopularFoodList = data;
-      console.log('fivePopularFoodList: ')
-      console.log(this.fivePopularFoodList)
+      this.topPopularFood = data.shift();
+      console.log('topPopularFood: ')
+      console.log(this.topPopularFood)
+      this.fourPopularFood = this.fivePopularFoodList;
+      console.log('fourPopularFood: ')
+      console.log(this.fourPopularFood)
     })
   }
 }

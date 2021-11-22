@@ -1,7 +1,4 @@
-/*@import url('https://fonts.google.com/specimen/Alfa+Slab+One?subset=latin#standard-styles');*/
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap');
-@import url('https://fonts.google.com/specimen/Fredericka+the+Great');
-@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
 
 html {
   /*font-size: 100%;*/
@@ -27,11 +24,12 @@ body {
   --border-hover: .2rem dashed var(--main-color);
 }
 
-.big-img {
+/*----------section 1: introduce--------*/
+.section1 .big-img {
   flex: 1 1 42rem;
 }
 
-.big-img img {
+.section1 .big-img img {
   width: 100%;
   animation: aboutImage 4s linear infinite;
 }
@@ -47,35 +45,9 @@ body {
   }
 }
 
-
-/*.lec_animation_block {*/
-/*    !*transition: all 2s ease-out;*!*/
-/*    !*position: relative;*!*/
-/*}*/
-
-/*.big-img {*/
-/*    position: relative;*/
-/*    left: 0;*/
-/*    animation-name: move-big-img;*/
-/*    animation-duration: 10s;*/
-/*    animation-iteration-count: 1;*/
-/*    transition: all 2s ease-out;*/
-/*}*/
-
-/*@keyframes move-big-img {*/
-/*    0% {*/
-/*        left: 0;*/
-/*    }*/
-/*    40% {*/
-/*        left: 200px;*/
-/*    }*/
-/*}*/
-
 /*text animation*/
-.text-attack-img {
-  /*background-image: url('img/main_back_gr.jpg');*/
+.section1 .text-attack-img {
   transform: translate3d(0px, 26.7097px, 0px);
-  /*right: 45px;*/
   color: white;
   height: 400px;
   opacity: 0.8;
@@ -84,39 +56,36 @@ body {
   border-radius: 10%;
 }
 
-.align-text-middle {
+.section1 .align-text-middle {
   display: table-cell;
   vertical-align: middle;
   text-align: justify;
   padding: 10px 10px 10px 10px;
 }
 
-.text-attack-img h2 {
-  font-size: 50px;
-  text-align: center;
-  text-decoration: peru underline;
-  font-weight: bolder;
-  font-family: Dancing script, cursive;
-  /*font-family: 'Patrick Hand', cursive;*/
-  color: #e3cc6f;
-}
+/*.section1 .text-attack-img h2 {*/
+/*  font-size: 50px;*/
+/*  text-align: center;*/
+/*  text-decoration: peru underline;*/
+/*  font-weight: bolder;*/
+/*  font-family: Dancing script, cursive;*/
+/*  color: #e3cc6f;*/
+/*}*/
 
-.text-attack-img h3, p {
+.section1 .text-attack-img h3, p {
   text-align: center;
   font-family: Dancing script, cursive;
-  /*font-family: 'Patrick Hand', cursive;*/
   color: white;
 }
 
-.text-attack-img p {
+.section1 .text-attack-img p {
   font-size: 20px;
   font-family: Dancing script, cursive;
-  /*font-family: 'Patrick Hand', cursive;*/
   color: white;
   text-align: justify;
 }
 
-/*header*/
+/*-----------------header:video + caption----------------*/
 .video-container {
   padding: 0;
   position: relative;
@@ -128,6 +97,7 @@ body {
   position: absolute;
   object-fit: cover;
   z-index: 0;
+  padding: 0;
 
 }
 
@@ -135,7 +105,6 @@ body {
   z-index: 1;
   position: relative;
   text-align: center;
-  /*padding: 10px;*/
 }
 
 #fh5co-header {
@@ -151,13 +120,6 @@ body {
 
 .lec-gold {
   color: #e3cc6f;
-  /*font-weight: bolder;*/
-  /*font-size: 50px;*/
-  /*font-family:Dancing script, cursive;*/
-  /*text-transform: lowercase;*/
-  /*transform: ;*/
-  /*font: 900 24px/18px Bree Serif, Arial;*/
-  /*font: 900 20px Calibri;*/
 }
 
 .lec-gold-shop-name {
@@ -180,29 +142,23 @@ body {
   z-index: 1001;
   top: 0;
   padding: 14px 0;
-  animation-name: nav-change-bg-color;
-  /*animation-duration: 10s;*/
-  animation-iteration-count: 1;
-  transition: all;
-  /*-webkit-transition: 0.3s;*/
-  /*-o-transition: 0.3s;*/
-  /*transition: 0.3s;*/
-  /*background-color: #ea1313;*/
-
+  /*animation-name: nav-change-bg-color;*/
+  /*animation-iteration-count: 1;*/
+  /*transition: all;*/
 }
 
 /*nav-animation-change background*/
-@keyframes nav-change-bg-color {
-  0% {
-    background: transparent;
-  }
-  40% {
-    background-color: #7b7676;
-  }
-  100% {
-    background-color: #7b7676;
-  }
-}
+/*@keyframes nav-change-bg-color {*/
+/*  0% {*/
+/*    background: transparent;*/
+/*  }*/
+/*  40% {*/
+/*    background-color: #7b7676;*/
+/*  }*/
+/*  100% {*/
+/*    background-color: #7b7676;*/
+/*  }*/
+/*}*/
 
 
 @media screen and (max-width: 480px) {
@@ -221,21 +177,17 @@ body {
   /*font-size: 25px;*/
 }
 
-.fh5co-nav a:hover {
+.fh5co-nav div a:hover {
   color: #e0c200;
+  text-decoration: none;
 }
 
-.fh5co-nav .lec_gold_li svg:hover {
-  color: #e0c200;
-}
+/*.fh5co-nav .lec_gold_li svg:hover {*/
+/*  color: #e0c200;*/
+/*}*/
 
 .lec_slide_title {
-  /*font: 63px Alfa Slab One, cursive;*/
-  /*font: 63px SansSerif;*/
-  /*font: 900 50px Bree Serif, Arial;*/
-  /*font: 55px cursive;*/
   font: 43px Calibri;
-  /*font: 55px Fredericka the Great;*/
   margin-top: 5px;
   text-transform: uppercase;
   color: white;
@@ -244,11 +196,7 @@ body {
 }
 
 .lec_slide_subtitle {
-  /*font: 32px SansSerif;*/
-  /*font: 900 26px Bree Serif, Arial;*/
-  /*font: 28px Fredericka the Great;*/
   font: 900 20px Calibri;
-  /*font-style: italic;*/
   color: white;
   font-weight: bolder;
   line-height: 45px;
@@ -281,14 +229,15 @@ body {
   width: 38px;
   height: 74px;
   background-position: -154px -90px;
-  margin-right: 3px;
-  margin-left: 3px;
+  margin-right: 8px;
+  margin-left: 8px;
 }
 
 .lec_gold .lec_letter_a {
   width: 34px;
   height: 90px;
   background-position: 0 0;
+  margin-right: 12px;
 }
 
 .lec_gold .lec_letter_h {
@@ -303,6 +252,7 @@ body {
   height: 90px;
   background-position: -249px 0;
   margin-left: -15px;
+  margin-right: 10px;
 }
 
 .lec_gold .lec_letter_t {
@@ -310,6 +260,7 @@ body {
   height: 89px;
   background-position: -1204px 0;
   margin-left: -15px;
+  margin-right: 8px
 }
 
 .lec_gold .lec_letter_r {
@@ -317,6 +268,7 @@ body {
   height: 90px;
   background-position: -1098px 0;
   margin-left: -15px;
+  margin-right: 10px;
 }
 
 .lec_gold .lec_letter_n {
@@ -324,7 +276,7 @@ body {
   height: 90px;
   background-position: -823px 0;
   margin-left: -15px;
-
+  margin-right: 6px;
 }
 
 .lec_gold .lec_letter_y {
@@ -346,6 +298,7 @@ body {
   height: 90px;
   background-position: -736px 0;
   margin-left: -15px;
+  margin-right: 8px;
 }
 
 .lec_gold .lec_letter_G {
@@ -366,19 +319,11 @@ body {
   width: 33px;
   height: 90px;
   background-position: -897px 0;
-  margin-left: -15px;
+  margin-left: -14px;
+  margin-right: 6px;
 }
 
-
-/*body {*/
-/*    font-family: "Cormorant Garamond", Georgia, serif;*/
-/*    font-weight: 400;*/
-/*    font-size: 18px;*/
-/*    line-height: 1.7;*/
-/*    color: rgba(255, 255, 255, 0.3);*/
-/*    background: #000 url(assets/img/broken_noise.png) repeat;*/
-/*}*/
-/*section2: */
+/*-----------section2: your style----------*/
 /*animation for image (phóng to)*/
 /*animation-img*/
 .section2-bg-img .card-deck .card {
@@ -394,13 +339,12 @@ body {
 .section2-bg-img {
   box-sizing: border-box;
   margin-top: 80px;
-  padding: 0 200px 0 200px;
-  height: 1000px;
-  /*background: linear-gradient(*/
-  /*        rgba(0, 0, 0, 0.7),*/
-  /*        rgba(0, 0, 0, 0.7)*/
-  /*), url("assets/img/section2.jpg") !important;*/
+  /*padding: 0 200px 0 200px;*/
+  min-height: 900px;
   background-size: cover;
+}
+.section2-bg-img #carouselExampleIndicators {
+  padding: 0 100px 0 100px;
 }
 
 .section2-bg-img .card {
@@ -432,11 +376,33 @@ div .card-deck {
   color: #e3cc6f;
 }
 
-.owl-dot {
-  display: inline-block;
-  color: #000;
+.owl-dot-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+/*.owl-dot {*/
+/*  display: inline-block;*/
+/*  color: #000;*/
+/*}*/
+.btn-owl-dot {
 
+  background: url(http://lecker.maskandesign.com/html/css/../images/badge_mini.png);
+  width: 15px;
+  height: 15px;
+  display: inline-block;
+  -webkit-background-size: cover;
+  background-size: cover;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding: 25px 25px;
+  top: 50%;
+  bottom: 50%;
+  justify-content: center;
+  background-clip: padding-box;
+  text-align: center;
+opacity: inherit;
+}
 .owl-dot span {
   background: url(http://lecker.maskandesign.com/html/css/../images/badge_mini.png);
   width: 15px;
@@ -444,7 +410,9 @@ div .card-deck {
   display: inline-block;
   -webkit-background-size: cover;
   background-size: cover;
-  margin: 100px 2px 0;
+  margin: 100px 5px 0;
+  /*padding: 100px 100px;*/
+  /*padding: unset;*/
   justify-content: center;
   background-clip: padding-box;
 }
@@ -459,19 +427,49 @@ div .card-deck {
   color: white;
   line-height: 30px;
 }
+.section2-bg-img .lec_gold .lec_letter_k {
+  width: 47px;
+  height: 90px;
+  background-position: -596px 0;
+  margin-left: -29px;
+  margin-right: 11px;
+}
 
+.section2-bg-img .lec_gold #char_y {
+  width: 58px;
+  height: 90px;
+  background-position: -1515px 0;
+  margin-left: -6px;
+}
+
+.section2-bg-img .lec_gold #char_o2 {
+  width: 33px;
+  height: 90px;
+  background-position: -897px 0;
+  margin-left: 1px;
+  margin-right: 6px;
+}
+
+.section2-bg-img .lec_gold .lec_letter_a {
+  width: 34px;
+  height: 90px;
+  background-position: 0 0;
+  margin-right: 12px;
+  margin-left: -11px;
+}
 .lec_gold .lec_letter_S {
   width: 44px;
   height: 74px;
   background-position: -1326px -90px;
-  margin-right: -4px;
+  margin-right: -26px;
 }
 
 .lec_gold .lec_letter_p {
   width: 44px;
   height: 90px;
   background-position: -949px 0;
-  margin-left: -17px;
+  margin-left: 14px;
+  margin-right: 6px;
 }
 
 .lec_gold .lec_letter_c {
@@ -479,6 +477,7 @@ div .card-deck {
   height: 90px;
   background-position: -124px 0;
   margin-left: -17px;
+  margin-right: 7px;
 }
 
 .lec_gold .lec_letter_i {
@@ -492,8 +491,8 @@ div .card-deck {
   width: 47px;
   height: 90px;
   background-position: -536px 0;
-  margin-left: -32px;
-  /*margin-right: -1px;*/
+  margin-left: -29px;
+  margin-right: 2px;
 }
 
 .lec_gold #y1 {
@@ -515,7 +514,8 @@ div .card-deck {
   width: 32px;
   height: 90px;
   background-position: -1147px 0;
-  margin-left: -15px;
+  margin-left: -18px;
+  margin-right: 8px;
 }
 
 .lec_gold .lec_letter_u {
@@ -523,6 +523,7 @@ div .card-deck {
   height: 90px;
   background-position: -1259px 0;
   margin-left: -15px;
+  margin-right: 11px
 
 }
 
@@ -530,6 +531,9 @@ div .card-deck {
   margin-left: 15px;
 }
 
+
+
+/*----------------section 3: top 5 order--------------*/
 .section3 {
   height: 1000px;
 }
@@ -595,13 +599,19 @@ div .card-deck {
   text-align: justify;
 }
 
-/*section 4*/
+/*------------section 4: new product-------------*/
 .section4-new {
   /*height: 750px;*/
   padding-bottom: 30px;
   margin-top: 90px;
   background-color: #6a6663;
 
+}
+
+.div-content {
+  display:table-cell;
+  vertical-align:middle;
+  text-align:center
 }
 
 .section4-new h3 {
@@ -614,7 +624,9 @@ div .card-deck {
 /*animation-img*/
 .section4-new img {
   max-width: 100%;
+  max-height: 300px;
   transition: transform 0.5s ease-in-out;
+
 }
 
 .section4-new img:hover {
@@ -632,8 +644,8 @@ div .card-deck {
   width: 32px;
   height: 90px;
   background-position: -1469px 0;
-  margin-left: -15px;
-  /*margin-right: 8px;*/
+  margin-left: -12px;
+  margin-right: -14px;
 }
 
 .lec_gold .lec_letter_N {
@@ -641,6 +653,7 @@ div .card-deck {
   height: 74px;
   background-position: -927px -90px;
   margin-left: 8px;
+  margin-right: 9px;
 }
 
 .lec_gold .lec_letter_w {
@@ -648,6 +661,29 @@ div .card-deck {
   height: 90px;
   background-position: -1404px 0;
   margin-left: -15px;
+  margin-right: 9px;
+}
+
+.section2-bg-img .lec_gold .lec_letter_s {
+  width: 32px;
+  height: 90px;
+  background-position: -1147px 0;
+  margin-left: 0;
+  margin-right: 8px;
+}
+
+.section2-bg-img .lec_gold .lec_letter_t {
+  width: 33px;
+  height: 89px;
+  background-position: -1204px 0;
+  margin-left: -15px;
+  margin-right: 1px;
+}
+.section2-bg-img .lec_gold .lec_letter_l {
+  width: 33px;
+  height: 90px;
+  background-position: -682px 0;
+  margin-left: -11px;
 }
 
 .lec_gold .lec_letter_M {
@@ -655,37 +691,50 @@ div .card-deck {
   height: 74px;
   background-position: -836px -90px;
   margin-left: 8px;
+  margin-right: 8px;
 }
 
 /*SECTION 5-feedback*/
-/*.img-feedback {*/
-
-/*}*/
 .lec_gold .lec_letter_L {
   width: 36px;
   height: 74px;
   background-position: -783px -90px;
+  margin-left: 5px;
+  margin-right: 16px;
 }
-
+.lec_gold #char_L {
+  width: 36px;
+  height: 74px;
+  background-position: -783px -90px;
+  margin-right: 10px;
+}
 .lec_gold .lec_letter_v {
   width: 37px;
   height: 90px;
   background-position: -1330px 0;
   margin-left: -15px;
 }
+.lec_gold #char_r {
+  width: 28px;
+  height: 90px;
+  background-position: -1098px 0;
+  margin-left: -15px;
+  margin-right: 14px;
+}
+.lec_gold #char_f {
+  width: 38px;
+  height: 90px;
+  background-position: -299px 0;
+  margin-left: 1px;
+  margin-right: 5px;
+}
 
 #review {
-  /*padding:2rem 9%;*/
   margin-top: 35px;
-  /*background-color: #1a1919;*/
 }
 
-.review .review-slider {
-  /*padding:7rem 0;*/
-}
 
 .review .review-slider .row {
-  /*padding-left: 20px;*/
   align-items: center;
   justify-content: center;
 
@@ -711,7 +760,6 @@ div .card-deck {
   left: 2.5rem;
   font-size: 35px;
   color: #e3cc6f;
-  /*color:#ccc;*/
   z-index: -1;
 }
 
@@ -748,7 +796,6 @@ div .card-deck {
 .review .review-slider .box .stars i {
   font-size: 1.7rem;
   margin-top: 20px;
-  /*color:var(--main-color);*/
   color: #e3cc6f;
 }
 
@@ -784,7 +831,7 @@ div .card-deck {
   background: var(--main-color);
 }
 
-
+/*---------footer------------*/
 footer {
   margin-top: 80px;
   padding-top: 87px;
@@ -804,7 +851,15 @@ footer {
   width: 38px;
   height: 90px;
   background-position: -299px 0;
-  margin-left: -17px;
+  margin-left: -8px;
+  margin-right: 5px;
+}
+.lec_gold #char_o {
+  width: 33px;
+  height: 90px;
+  background-position: -897px 0;
+  margin-left: -16px;
+  margin-right: 6px;
 }
 
 .lec_gold .lec_letter_B {
@@ -817,7 +872,8 @@ footer {
 .footer {
   margin-top: 80px;
   background-color: #6a6663;
-  height: 600px;
+  /*position: relative;*/
+  /*height: 600px;*/
 }
 
 .footer .box-container {
@@ -866,16 +922,12 @@ footer {
   text-align: center;
   font-size: 2rem;
   padding: 2rem 1rem;
-  margin-top: 1rem;
-  position: absolute;
-  top: 400px;
+  margin-top: 3rem;
+  bottom: -50px;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
-/*.footer .credit img {*/
-/*    position: absolute;*/
-/*}*/
 
 .footer .credit p {
   position: absolute;
@@ -888,3 +940,60 @@ footer {
 .footer .credit span {
   border-bottom: var(--border-hover)
 }
+
+
+/*TEST: SLIDER*/
+/*.slider{*/
+/*  !*height: 250px;*!*/
+/*  margin: auto;*/
+/*  position: relative;*/
+/*  width: 100%;*/
+/*  display: grid;*/
+/*  place-items: center;*/
+/*}*/
+/*.slide-track {*/
+/*  display: flex;*/
+/*  width: calc(250px*18);*/
+/*  animation: scroll 30s linear infinite;*/
+/*}*/
+/*@keyframes scroll {*/
+/*  0% {*/
+/*    transform: translateX(0);*/
+/*  }*/
+/*  100% {*/
+/*    transform: translateX(calc(-250px*9));*/
+/*  }*/
+/*}*/
+/*.slide {*/
+/*  height: 200px;*/
+/*  width: 290px;*/
+/*  display: flex;*/
+/*  align-items: center;*/
+/*  padding: 15px;*/
+/*  perspective: 100px;*/
+/*}*/
+/*.slider .slide-track .slide img {*/
+/*  width: 100%;*/
+/*  height: 350px;*/
+/*  transition: transform 1s;*/
+/*}*/
+/*.slider .slide-track .slide img:hover {*/
+/*  transform: translateZ(20px);*/
+/*}*/
+/*.slider::before,*/
+/*.slider::after {*/
+/*  content:'';*/
+/*  height: 100%;*/
+/*  position: absolute;*/
+/*  width: 15%;*/
+/*  z-index: 2;*/
+/*}*/
+/*.slider::before {*/
+/*  left: 0;*/
+/*  top:0;*/
+/*}*/
+/*.slider::after {*/
+/*  right: 0;*/
+/*  top: 0;*/
+/*  transform: rotate(180deg);*/
+/*}*/
