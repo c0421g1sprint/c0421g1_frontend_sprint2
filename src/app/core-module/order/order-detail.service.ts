@@ -36,4 +36,8 @@ export class OrderDetailService {
   resetTableStatus(id: number): Observable<any> {
     return this.httpClient.patch<ITables>(this.orderUrlApi + '/reset/' + id, this.httpOptions).pipe();
   }
+
+  showOrderDetailSum(id: number): Observable<any> {
+    return this.httpClient.get<Number>(this.orderUrlApi + '/sum-' + id, this.httpOptions).pipe();
+  }
 }

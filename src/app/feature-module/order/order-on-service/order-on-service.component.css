@@ -90,13 +90,13 @@ li, input, button {
 .marquee-parent {
   width: 100%;
   overflow: hidden;
-  height: 100px;
+  height: 150px;
 }
 .marquee-child {
   display: block;
   width: 450px;
   /* width of your text div */
-  height: 80px;
+  height: 100px;
   /* height of your text div */
   position: absolute;
   animation: marquee 13s linear infinite; /* change 5s value to your desired speed */
@@ -123,42 +123,72 @@ li, input, button {
 }
 @keyframes blink{
   0% {
-    color: white;
+    color: saddlebrown;
+  }
+  10% {
+    color: slategray;
   }
   20% {
-    color: white;
+    color: saddlebrown;
+  }
+  30% {
+    color: slategray;
   }
   40% {
+    color: saddlebrown;
+  }
+  50% {
     color: slategray;
   }
   60% {
+    color: saddlebrown;
+  }
+  70% {
     color: slategray;
   }
   80% {
-    color: white;
+    color: saddlebrown;
+  }
+  90% {
+    color: slategray;
   }
   100% {
-    color: white;
+    color: saddlebrown;
   }
 }
 
 @-webkit-keyframes blink{
   0% {
-    color: white;
+    color: saddlebrown;
+  }
+  10% {
+    color: slategray;
   }
   20% {
-    color: white;
+    color: saddlebrown;
+  }
+  30% {
+    color: slategray;
   }
   40% {
+    color: saddlebrown;
+  }
+  50% {
     color: slategray;
   }
   60% {
+    color: saddlebrown;
+  }
+  70% {
     color: slategray;
   }
   80% {
-    color: white;
+    color: saddlebrown;
+  }
+  90% {
+    color: slategray;
   }
   100% {
-    color: white;
+    color: saddlebrown;
   }
 }

@@ -21,8 +21,9 @@ export class OrderOnServiceComponent implements OnInit {
   tables: ITables;
   id: number = 1;
   orderDetail: IOrderDetail[];
-  focusImg: string = 'assets/img-TaiHVK//table-icon-2.png';
-  focusImg2: string = 'assets/img-TaiHVK//table-icon-3.png';
+  totalMoney: number;
+  focusImg: string = 'assets/img-TaiHVK/table-icon-2.png';
+  focusImg2: string = 'assets/img-TaiHVK/table-icon-3.png';
   focusImg3: string = 'assets/img-TaiHVK/table-icon.png';
 
   constructor(private orderDetailService: OrderDetailService, private activatedRoute: ActivatedRoute,
@@ -86,9 +87,16 @@ export class OrderOnServiceComponent implements OnInit {
     this.ngOnInit();
   }
 
+  getTotalMoney(id: number) {
+    this.orderDetailService.showOrderDetailSum(id).subscribe(value => {
+      this.totalMoney = value;
+      console.log(this.totalMoney);
+    })
+  }
 
   seeDetail(id: number) {
     this.orderDetailService.findOrderById(id).subscribe(value => {
+      this.getTotalMoney(id);
       this.order = value;
       this.id = id;
       this.orderDetail = value.orderDetails;

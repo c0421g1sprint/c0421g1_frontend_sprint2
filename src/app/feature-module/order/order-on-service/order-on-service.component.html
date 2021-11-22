@@ -87,15 +87,15 @@
                 <td>{{i + 1}}</td>
                 <td>{{o.fad.fadName}}</td>
                 <td>{{o.quantity}}</td>
-                <td>{{o.fad.fadPrice}}</td>
-                <td>{{o.fad.fadPrice * o.quantity}}</td>
+                <td>{{o.fad.fadPrice | currency: ' ' :'symbol' : '1.0-0'}}</td>
+                <td>{{o.fad.fadPrice * o.quantity | currency: ' ' :'symbol' : '1.0-0'}}</td>
               </tr>
               <tr style="background: #341d1c">
-                <td>TỔNG TIỀN</td>
+                <td style="font-size: 30px">TỔNG TIỀN</td>
                 <td></td>
                 <td></td>
                 <td></td>
-                <td></td>
+                <td style="font-size: 30px">{{this.totalMoney | currency: ' ' :'symbol' : '1.0-0'}}</td>
               </tr>
               </tbody>
             </table>
@@ -106,7 +106,7 @@
             <ng-template #elseBlock>
               <div style="margin: 0 auto">
                 <h1 style=" color: red">BÀN CHƯA CÓ ORDER!</h1><br><br>
-                <img src="assets/img-TaiHVK//404.png" style="min-width: 250px; min-height: 150px; margin-left: 30px">
+                <img src="assets/img-TaiHVK/404.png" style="min-width: 250px; min-height: 150px; margin-left: 30px">
               </div>
             </ng-template>
           </div>
@@ -135,7 +135,7 @@
         </div>
         <div class="row">
           <div class="col-lg-12 marquee-parent" style="position: absolute ; top: 550px; right: 50px; left: 30px">
-            <div class="marquee-child" style="width: 500px"><h2 style="font-weight: bold"> <img src="assets/img-TaiHVK//gif.gif"><span class="blink">  C0421G1 Coffee House</span></h2></div>
+            <div class="marquee-child" style="width: 500px"><h2 style="font-weight: bold"> <img src="assets/img-TaiHVK/gif.gif"><span class="blink">  C0421G1 Coffee House</span></h2></div>
           </div>
         </div>
       </div>

@@ -4,7 +4,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {OrderOnServiceComponent} from "./order-on-service/order-on-service.component";
 
 const routes: Routes = [
-  {path: "order", component: OrderOnServiceComponent}
+  {path: "sale", component: OrderOnServiceComponent}
 ];
 
 @NgModule({
