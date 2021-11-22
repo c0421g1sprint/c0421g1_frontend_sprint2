@@ -19,6 +19,7 @@ import { TableComponent } from './feature-module/table/table.component';
 import { FeatureModule } from './feature-module/feature.module';
 import { AppRoutingModule } from './app-routing.module';
 import { CategoryRoutingModule } from './feature-module/category/category-routing.module';
+import {CategoryModule} from "./feature-module/category/category.module";
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { CategoryRoutingModule } from './feature-module/category/category-routin
     ShareModule,
     FeatureModule,
     AppRoutingModule,
-    CategoryRoutingModule,
+    CategoryModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

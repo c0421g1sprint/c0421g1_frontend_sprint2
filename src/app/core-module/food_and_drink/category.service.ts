@@ -13,7 +13,7 @@ export class CategoryService {
 
   //LinhDN hien thi danh sach category
   viewAllCategory(pageObj: any, code: String, name: String): Observable<ICategory[]|any>{
-    return this.http.get(`${this.url}/list/page=${pageObj.page}&size=${pageObj.size}&code=${code}&name=${name}`);
+    return this.http.get(`${this.url}/list?page=${pageObj.page}&size=${pageObj.size}&code=${code}&name=${name}`);
   }
 
   //LinhDN xoa 1 category

@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import {CategoryService} from "../../../core-module/food_and_drink/category.service";
 import {ICategory} from "../../../entity/ICategory";
+import {CategoryService} from "../../../core-module/food_and_drink/category.service";
 import {SnackbarService} from "../../../core-module/snackbar/snackbar.service";
 
 @Component({
-  selector: 'app-list',
-  templateUrl: './list.component.html',
-  styleUrls: ['./list.component.css']
+  selector: 'app-list-category',
+  templateUrl: './list-category.component.html',
+  styleUrls: ['./list-category.component.css']
 })
-export class ListComponent implements OnInit {
+export class ListCategoryComponent implements OnInit {
+
   categoryList: ICategory[];
   category: ICategory;
   name: string = '';
@@ -24,6 +25,7 @@ export class ListComponent implements OnInit {
               private snackBar: SnackbarService) { }
 
   ngOnInit(): void {
+    this.viewAllCategory(this.pageObj);
   }
 
   //hien thi danh sach category
@@ -37,6 +39,7 @@ export class ListComponent implements OnInit {
     }
     let name = this.name.trim();
     this.categoryService.viewAllCategory(pageObj,this.code,name).subscribe(data =>{
+      console.log(data);
       this.responsePage = data;
       this.categoryList = this.responsePage.content;
       this.totalPages = this.responsePage.totalPages;
@@ -46,4 +49,20 @@ export class ListComponent implements OnInit {
     })
   }
 
+  openDialogCreate() {
+
+  }
+
+
+  getCode($event: any) {
+    this.code = $event.target.value
+  }
+
+  getName($event: any) {
+    this.name = $event.target.value;
+  }
+
+  openDialogDelete(categoryName: string, categoryId: number) {
+
+  }
 }
