@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+.container-fluid {
+  font-family: 'Patrick Hand', cursive;
+  background-size: inherit;
+  background-repeat: no-repeat;
+  color: #eeee4e;
+}
+h1 {
+  font-size: 50px;
+}
+label {
+  font-size: 20px;
+}
+button {
+  font-size: 20px;
+}
+table th{
+  font-size: 25px;
+}
+button{
+  background-color: #eeee4e;
+}

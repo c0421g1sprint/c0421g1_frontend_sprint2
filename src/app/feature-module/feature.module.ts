@@ -7,12 +7,9 @@ import { FeedbackModule } from './feedback/feedback.module';
 import { FoodAndDrinkModule } from './food-and-drink/food-and-drink.module';
 import { OrderModule } from './order/order.module';
 import { TableModule } from './table/table.module';
-import {AccountComponent} from './account/account.component';
-import {EmployeeComponent} from './employee/employee.component';
-import {FeedbackComponent} from './feedback/feedback.component';
-import {FoodAndDrinkComponent} from './food-and-drink/food-and-drink.component';
-import {OrderComponent} from './order/order.component';
-import {TableComponent} from './table/table.component';
+import { CategoryComponent } from './category/category.component';
+import { CategoryModule } from './category/category.module';
+import {ListCategoryComponent} from "./category/list-category/list-category.component";
 
 
 
@@ -25,7 +22,8 @@ import {TableComponent} from './table/table.component';
     FeedbackModule,
     FoodAndDrinkModule,
     OrderModule,
-    TableModule
+    TableModule,
+    CategoryModule
   ],
   exports: [
     AccountModule,
@@ -34,7 +32,8 @@ import {TableComponent} from './table/table.component';
     FeedbackModule,
     FoodAndDrinkModule,
     OrderModule,
-    TableModule
+    TableModule,
+    CategoryModule
   ]
 })
 export class FeatureModule { }

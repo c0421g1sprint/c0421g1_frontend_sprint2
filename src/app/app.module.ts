@@ -18,6 +18,8 @@ import { OrderComponent } from './feature-module/order/order.component';
 import { TableComponent } from './feature-module/table/table.component';
 import { FeatureModule } from './feature-module/feature.module';
 import { AppRoutingModule } from './app-routing.module';
+import { CategoryRoutingModule } from './feature-module/category/category-routing.module';
+import {CategoryModule} from "./feature-module/category/category.module";
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { AppRoutingModule } from './app-routing.module';
     ShareModule,
     FeatureModule,
     AppRoutingModule,
+    CategoryModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
