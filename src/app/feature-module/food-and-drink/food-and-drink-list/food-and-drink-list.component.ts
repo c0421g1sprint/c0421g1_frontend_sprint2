@@ -25,6 +25,6 @@ export class FoodAndDrinkListComponent implements OnInit {
   }
 
   openDialogCreate(){
-    this.dialog.open(FoodAndDrinkCreateComponent)
+    this.dialog.open(FoodAndDrinkCreateComponent,{panelClass: 'my-bg'})
   }
 }

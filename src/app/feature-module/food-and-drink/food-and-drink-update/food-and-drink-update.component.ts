@@ -121,6 +121,5 @@ export class FoodAndDrinkUpdateComponent implements OnInit {
       };
     }
   }
-
   defaultValue
 }

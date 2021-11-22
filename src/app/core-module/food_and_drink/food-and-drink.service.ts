@@ -25,6 +25,6 @@ export class FoodAndDrinkService {
 
   //LamNT FindById
   findById(id: number): Observable<IFoodAndDrink | any> {
-    return this.http.get(this.url + '/find/' + id)
+    return this.http.get(this.url + '/detail/' + id)
   }
 }

@@ -1,5 +1,8 @@
-<h1 mat-dialog-title style="color: #e3cc6f; font-size: 25px">Thêm món mới</h1>
-<mat-dialog-content>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+</style>
+<h1 mat-dialog-title style="color: #e3cc6f; font-size: 40px;font-family: 'Patrick Hand', cursive">Thêm món mới</h1>
+<mat-dialog-content style="font-family: 'Patrick Hand',cursive">
   <form [formGroup]="createForm" (ngSubmit)="createFoodAndDrink(createForm)" style="font-size: 20px">
     <div class="form-row">
       <div class="form-group col-md-6">
@@ -15,6 +18,28 @@
           <input type="text" class="form-control" formControlName="fadName" id="name"
                  placeholder="VD: Cà phê muối">
         </div>
+        <div *ngFor="let valid of validationMessage.fadName">
+          <small style="color: red"
+                 *ngIf="createForm.get('fadName').hasError(valid.type) && (createForm.get('fadName').touched || createForm.get('fadName').dirty)">
+            {{valid.message}}
+          </small>
+        </div>
+        <div
+          *ngIf="!createForm.controls.fadName.valid && (createForm.controls.fadName.dirty || createForm.controls.fadName.touched)">
+          <small style="color: red" *ngIf="createForm.controls.fadName.errors.invalidMsg">
+            {{createForm.controls.fadName.errors.invalidMsg}}
+          </small>
+        </div>
+        <small style="color: red"
+               *ngIf="createForm.controls.fadName.hasError('minlength') &&
+                 (createForm.controls.fadName.touched || createForm.controls.fadName.dirty)">
+          Món tối thiểu 5 chữ cái.
+        </small>
+        <small style="color: red"
+               *ngIf="createForm.controls.fadName.hasError('maxlength') &&
+                 (createForm.controls.fadName.touched || createForm.controls.fadName.dirty)">
+          Món tối đa 50 chữ cái.
+        </small>
       </div>
       <div class="form-group col-md-6">
         <label for="class" class="font-weight" style="color: #e3cc6f">
@@ -28,10 +53,16 @@
             </label>
           </div>
           <select class="form-control custom-select" id="class" formControlName="category">
-<!--            <option selected [value]="null" disabled>Vui lòng chọn nhóm</option>-->
+            <!--            <option selected [value]="null" disabled>Vui lòng chọn nhóm</option>-->
             <option selected value=" " disabled>Vui lòng chọn nhóm</option>
             <option *ngFor="let type of categoryList" [ngValue]="type">{{type.categoryName}}</option>
           </select>
+        </div>
+        <div *ngFor="let valid of validationMessage.category">
+          <small style="color: red"
+                 *ngIf="createForm.get('category').hasError(valid.type) && (createForm.get('category').touched || createForm.get('category').dirty)">
+            {{valid.message}}
+          </small>
         </div>
       </div>
     </div>
@@ -50,6 +81,26 @@
           <input type="text" class="form-control" id="code" formControlName="fadCode"
                  placeholder="VD: CF123">
         </div>
+        <small style="color: red"
+               *ngIf="createForm.controls.fadCode.hasError('minlength') &&
+                 (createForm.controls.fadCode.touched || createForm.controls.fadCode.dirty)">
+          Mã món tối thiểu 3 chữ cái.
+        </small>
+        <small style="color: red"
+               *ngIf="createForm.controls.fadCode.hasError('maxlength') &&
+                 (createForm.controls.fadCode.touched || createForm.controls.fadCode.dirty)">
+          Mã món tối đa 10 chữ cái.
+        </small>
+        <small style="color: red" *ngIf="createForm.controls.fadCode.hasError('whitespace') &&
+              (createForm.controls.fadCode.touched || createForm.controls.fadCode.dirty)">
+          Không được có khoảng trắng
+        </small>
+        <div *ngFor="let valid of validationMessage.fadCode">
+          <small style="color: red"
+                 *ngIf="createForm.get('fadCode').hasError(valid.type) && (createForm.get('fadCode').touched || createForm.get('fadCode').dirty)">
+            {{valid.message}}
+          </small>
+        </div>
       </div>
       <div class="form-group col-md-6">
         <label for="price" class="font-weight" style="color: #e3cc6f">
@@ -65,11 +116,17 @@
           <input type="text" class="form-control" id="price"
                  placeholder="VD: 10.000" formControlName="fadPrice">
         </div>
+        <div *ngFor="let valid of validationMessage.fadPrice">
+          <small style="color: red"
+                 *ngIf="createForm.get('fadPrice').hasError(valid.type) && (createForm.get('fadPrice').touched || createForm.get('fadPrice').dirty)">
+            {{valid.message}}
+          </small>
+        </div>
       </div>
     </div>
     <div class="form-row">
       <div class="form-group col-md-6">
-        <label class="form-label" style="color: #e3cc6f">Ảnh món <span
+        <label for="img" class="form-label" style="color: #e3cc6f">Ảnh món <span
           style="color: red">*</span> :</label>
         <div class="input-group">
           <div class="input-group-prepend">
@@ -84,6 +141,12 @@
             <label class="custom-file-label" for="img" data-browse="Chọn tệp">Chọn ảnh món</label>
           </div>
         </div>
+        <div *ngFor="let valid of validationMessage.fadImage">
+          <small style="color: red"
+                 *ngIf="createForm.get('fadImage').hasError(valid.type) && (createForm.get('fadImage').touched || createForm.get('fadImage').dirty)">
+            {{valid.message}}
+          </small>
+        </div>
       </div>
       <div class="form-group col-md-6">
         <img [src]="imgSrc" (click)="fileUploader.click()"
@@ -92,7 +155,10 @@
       </div>
     </div>
     <div class="float-right">
-      <button mat-dialog-close type="button" class="btn btn-danger" data-dismiss="modal" style="color: black">
+      <div class="spinner-border text-info mt-1 mr-2" *ngIf="showSpinner">
+        <span class="sr-only">Loading...</span>
+      </div>
+      <button mat-dialog-close type="button" class="btn btn-danger mr-2" data-dismiss="modal" style="color: black">
         <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="-2 1 24 27" width="24px"
              fill="#000000">
           <path d="M0 0h24v24H0V0z" fill="none" opacity=".87"/>
@@ -101,7 +167,7 @@
         </svg>
         Huỷ
       </button>
-      <button type="reset" class="btn btn-warning">
+      <button type="reset" class="btn btn-warning mr-2">
         <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px"
              viewBox="-2 1 24 27" width="24px" fill="#000000">
           <g>

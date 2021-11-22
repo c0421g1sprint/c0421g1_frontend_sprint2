@@ -30,6 +30,6 @@ export class CategoryService {
 
   //LamNT findById
   findCategoryById(id: number): Observable<ICategory | any> {
-    return this.http.get(this.url + '/find/' + id);
+    return this.http.get(this.url + 'detail/' + id);
   }
 }
