@@ -29,6 +29,7 @@ export class ListFeedbackComponent implements OnInit {
   ngOnInit(): void {
     this.findAllFeedBackList();
   }
+
   // method get list
   findAllFeedBackList(){
     this.myDate = this.datePipe.transform(this.myDate, 'yyyy-MM-dd');
@@ -85,6 +86,9 @@ export class ListFeedbackComponent implements OnInit {
   }
   // nhay trang
   jumpingPage(value: string) {
+    if (value == ''){
+      this.snackBar.showSnackbar('Vui lòng nhập số trang','error')
+    }
     let numberValue = +value;
     if (numberValue > 0 && numberValue <= this.totalPages){
       this.currentPage = numberValue-1;
