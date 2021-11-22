@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid" style="min-height: 800px; min-width: 750px">
   <h1 align="center" style="color: #e3cc6f">Quản lý thông tin nhân viên</h1>
   <div class="row d-flex justify-content-end" style="margin-right: 40px">
     <div class="col-lg-12 d-flex justify-content-end">
@@ -11,6 +11,9 @@
         </div>
         <div class="col-lg-3">
           <input type="text" class="form-control m-2" placeholder="Tìm số điện thoại" aria-describedby="basic-addon1" formControlName="phone">
+          <div style="margin-left: 10px" *ngFor="let validation of validateMsg.phone">
+            <p style="color: red"  *ngIf="this.searchForm.get('phone').hasError(validation.type)">{{validation.message}}</p>
+          </div>
         </div>
         <div class="col-lg-3">
           <button type="submit" class="btn btn-warning d-flex justify-content-center" style="margin-top: 9px" data-toggle="tooltip" >
@@ -22,8 +25,8 @@
     </div>
   </div>
   <div class="row" style="margin-top: 50px">
-    <div class="col-md-1"></div>
-    <div class="col-md-10">
+    <div class="col-lg-1"></div>
+    <div class="col-lg-10" style="min-height: 800px">
       <div class="table-responsive-lg">
         <button class="btn btn-warning mb-2" data-toggle="tooltip">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -44,7 +47,7 @@
             <th>Số điện thoại</th>
             <th>Giới tính</th>
             <th>Ngày sinh</th>
-            <th>Lương VND</th>
+            <th>Lương (VND)</th>
             <th>Vị trí</th>
             <th>Chức năng</th>
 
@@ -59,18 +62,18 @@
             <td>{{item.employeePhone}}</td>
             <td>{{item.employeeGender == 1 ? "Nam" : (item.employeeGender == 0 ? "Nữ" : "Khác")}}</td>
             <td>{{item.employeeBirthday | date:"dd/MM/yyyy"}}</td>
-            <td>{{item.employeeSalary | currency: "VND"}}</td>
+            <td>{{item.employeeSalary | currency: "VND": "":"": "vi"}}</td>
             <td>{{item.level.levelName}}</td>
             <td>
               <button class="btn btn-warning text-white" data-toggle="tooltip" placement="right"
-                      title="Chỉnh sửa">
+                      title="Chỉnh sửa" >
                 <img src="/assets/img/edit_note_black_24dp.svg" alt="">
               </button>
-              <button class="btn btn-warning text-white ml-1" data-toggle="tooltip" placement="right"
+              <button class="btn btn-warning text-white ml-1 " data-toggle="tooltip" placement="right"
                       title="Sửa mật khẩu">
                 <img src="/assets/img/vpn_key_black_24dp.svg" alt="">
               </button>
-              <button class="btn btn-warning text-white ml-1" data-toggle="tooltip" placement="right"
+              <button class="btn btn-warning text-white ml-1 " data-toggle="tooltip" placement="right"
                       title="Xoá" (click)="openDialogDelete(item.employeeId, item.employeeName)">
                 <img src="/assets/img/delete_sweep_black_24dp.svg" alt="">
               </button>

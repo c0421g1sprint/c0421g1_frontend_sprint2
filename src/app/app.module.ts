@@ -19,6 +19,7 @@ import { TableComponent } from './feature-module/table/table.component';
 import { FeatureModule } from './feature-module/feature.module';
 import { AppRoutingModule } from './app-routing.module';
 
+
 @NgModule({
   declarations: [
     AppComponent,
