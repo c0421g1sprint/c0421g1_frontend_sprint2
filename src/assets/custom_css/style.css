@@ -401,7 +401,7 @@ div .card-deck {
   justify-content: center;
   background-clip: padding-box;
   text-align: center;
-opacity: inherit;
+opacity: 0.8;
 }
 .owl-dot span {
   background: url(http://lecker.maskandesign.com/html/css/../images/badge_mini.png);

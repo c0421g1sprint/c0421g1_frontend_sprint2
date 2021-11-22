@@ -1,24 +1,29 @@
 #back-to-top-btn {
-    display: none;
     position: fixed;
     bottom: 20px;
     right: 20px;
-    font-size: 26px;
-    width: 50px;
-    height: 50px;
-    background-color: #e3cc6f;
-    /*color: #333;*/
-    color: #e3cc6f;
     cursor: pointer;
-    outline: #e3cc6f;
-    border: 3px solid #333;
-    border-radius: 50%;
+
     transition-duration: 0.2s;
     transition-timing-function: ease-in-out;
     transition-property: background-color, color;
+
+  background: url(http://lecker.maskandesign.com/html/css/../images/badge_mini.png);
+  width: 15px;
+  height: 15px;
+  display: inline-block;
+  -webkit-background-size: cover;
+  background-size: cover;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding: 25px 25px;
+  background-clip: padding-box;
+  text-align: center;
+  opacity: 0.8;
+  border: none;
+  z-index: 1;
 }
 #back-to-top-btn:hover, #back-to-top-btn:focus {
-    background-color: #333;
     color: #e3cc6f;
 }
 
@@ -41,16 +46,6 @@
     animation-fill-mode: both;
     animation-name: btnEntrance;
 }
-/* zoomIn */
-/* @keyframes btnEntrance {
-  from {
-    opacity: 0;
-    transform: scale3d(0.3, 0.3, 0.3);
-  }
-  to {
-    opacity: 1;
-  }
-} */
 
 /* fadeInUp */
 @keyframes btnEntrance {
@@ -69,16 +64,7 @@
     animation-fill-mode: both;
     animation-name: btnExit;
 }
-/* zoomOut */
-/* @keyframes btnExit {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-    transform: scale3d(0.3, 0.3, 0.3);
-  }
-} */
+
 
 /* fadeOutDown */
 @keyframes btnExit {
@@ -90,3 +76,13 @@
         transform: translate3d(0, 100%, 0);
     }
 }
+
+/*.test-to-top {*/
+/*  position: fixed;*/
+/*  bottom: 20px;*/
+/*  right: 20px;*/
+/*  border: none;*/
+/*  transition-duration: 0.2s;*/
+/*  transition-timing-function: ease-in-out;*/
+/*  transition-property: background-color, color;*/
+/*}*/
