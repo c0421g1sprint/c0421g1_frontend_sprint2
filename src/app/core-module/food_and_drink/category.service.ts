@@ -25,6 +25,11 @@ export class CategoryService {
 
   //LamNT findAllCategory
   findAllCategory(): Observable<ICategory[] | any> {
-    return this.http.get(this.url + 'find-all')
+    return this.http.get(this.url + 'find-all');
+  }
+
+  //LamNT findById
+  findCategoryById(id: number): Observable<ICategory | any> {
+    return this.http.get(this.url + '/find/' + id);
   }
 }

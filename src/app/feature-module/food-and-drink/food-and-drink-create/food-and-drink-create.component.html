@@ -27,8 +27,9 @@
               <img src="assets/icon/menu_black_24dp.svg" alt="">
             </label>
           </div>
-          <select class=" form-control custom-select" id="class" formControlName="category">
-            <option [selected]>Vui lòng chọn nhóm</option>
+          <select class="form-control custom-select" id="class" formControlName="category">
+<!--            <option selected [value]="null" disabled>Vui lòng chọn nhóm</option>-->
+            <option selected value=" " disabled>Vui lòng chọn nhóm</option>
             <option *ngFor="let type of categoryList" [ngValue]="type">{{type.categoryName}}</option>
           </select>
         </div>
@@ -80,7 +81,7 @@
             <input type="file" class="custom-file-input form-control-file"
                    id="img" aria-label="file" #fileUploader formControlName="fadImage"
                    (change)="showPreview($event)" accept="image/*">
-            <label class="custom-file-label" for="img">Chọn ảnh món</label>
+            <label class="custom-file-label" for="img" data-browse="Chọn tệp">Chọn ảnh món</label>
           </div>
         </div>
       </div>

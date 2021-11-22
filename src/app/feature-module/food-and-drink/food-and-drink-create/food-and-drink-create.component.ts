@@ -65,11 +65,12 @@ export class FoodAndDrinkCreateComponent implements OnInit {
           fileRef.getDownloadURL().subscribe(url => {
             this.createForm.value.fadImage = url;
             console.log(url);
-            this.foodAndDrinkService.create(value);
-            setTimeout(() => {
-              this.showSpinner = false;
-              this.dialogRef.close();
-              this.snackbarService.showSnackbar('Tạo món mới thành công', 'success')
+            this.foodAndDrinkService.create(value).subscribe(() =>{
+              setTimeout(() => {
+                this.showSpinner = false;
+                this.dialogRef.close();
+                this.snackbarService.showSnackbar('Tạo món mới thành công', 'success')
+              });
             });
           });
         })
