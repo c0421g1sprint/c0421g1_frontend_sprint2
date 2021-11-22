@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {FormControl, FormGroup} from "@angular/forms";
 
-import {DeleteEmployeeComponent} from "../delete-employee/delete-employee.component";
+import {DialogDeleteComponent} from "../../../share-module/delete/dialog-delete.component";
 import {IEmployee} from "../../../entity/IEmployee";
 import {EmployeeService} from "../../../core-module/employee/employee.service";
 import {SnackbarService} from "../../../core-module/snackbar/snackbar.service";
@@ -27,14 +27,15 @@ export class ListEmployeeComponent implements OnInit {
 
   constructor(private employeeService: EmployeeService,
               private snackbarService: SnackbarService,
-              private dialog: MatDialog) { }
+              private dialog: MatDialog) {
+  }
 
   ngOnInit(): void {
     this.searchAllEmployee(this.currentPage);
   }
 
   getAllEmployee(page: number) {
-    this.employeeService.getAllEmployee(page).subscribe(next=> {
+    this.employeeService.getAllEmployee(page).subscribe(next => {
       this.employees = next.content;
       this.totalPage = next.totalPages;
       console.log(next)
@@ -47,21 +48,22 @@ export class ListEmployeeComponent implements OnInit {
     } else {
       this.flagSearch = 1;
       this.employeeService.search(page, this.searchForm.value.username,
-        this.searchForm.value.nameEmployee,this.searchForm.value.phone).subscribe(data=> {
-          this.employees = data.content;
-          this.totalPage = data.totalPages;
-          console.log(data);
-          console.log(this.totalPage)
-      },error => {
-          if (this.employees == null) {
-            this.snackbarService.showSnackbar("Không có dữ liệu", "error")
-          }
+        this.searchForm.value.nameEmployee, this.searchForm.value.phone).subscribe(data => {
+        this.employees = data.content;
+        this.totalPage = data.totalPages;
+        console.log(data);
+        console.log(this.totalPage)
+      }, error => {
+        if (error.status == '404') {
+          this.snackbarService.showSnackbar("Không tìm thấy dữ liệu", "error")
+        }
       })
     }
+
   }
 
   openDialogDelete(idEmployee: number, nameEmployee: String) {
-    let dialog = this.dialog.open(DeleteEmployeeComponent, {
+    let dialog = this.dialog.open(DialogDeleteComponent, {
       width: "450px",
       data: {
         id: idEmployee,
@@ -69,11 +71,11 @@ export class ListEmployeeComponent implements OnInit {
         object: "người dùng"
       }
     })
-    dialog.afterClosed().subscribe(next=> {
+    dialog.afterClosed().subscribe(next => {
       if (next == "true") {
-        this.employeeService.deleteEmployee(idEmployee, this.employee).subscribe(data=>{
+        this.employeeService.deleteEmployee(idEmployee, this.employee).subscribe(data => {
           console.log(data);
-          this.snackbarService.showSnackbar("Xóa thành công " + nameEmployee, "error");
+          this.snackbarService.showSnackbar("Xóa thành công " + nameEmployee, "success");
           this.ngOnInit()
         })
       }
@@ -102,9 +104,9 @@ export class ListEmployeeComponent implements OnInit {
     }
   }
 
-  toPage(page: number) {
-    if (page < this.totalPage && page > 0) {
-      this.currentPage = page - 1;
+  toPage(inputPage: number) {
+    if (Number(inputPage) <= this.totalPage && Number(inputPage) > 0) {
+      this.currentPage = inputPage - 1;
       this.searchAllEmployee(this.currentPage);
     } else {
       this.currentPage = 0;

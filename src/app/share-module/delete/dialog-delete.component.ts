@@ -3,10 +3,10 @@ import {MAT_DIALOG_DATA} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-delete-employee',
-  templateUrl: './delete-employee.component.html',
-  styleUrls: ['./delete-employee.component.css']
+  templateUrl: './dialog-delete.component.html',
+  styleUrls: ['./dialog-delete.component.css']
 })
-export class DeleteEmployeeComponent implements OnInit {
+export class DialogDeleteComponent implements OnInit {
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any) { }
 
