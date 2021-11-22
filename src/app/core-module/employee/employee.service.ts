@@ -11,6 +11,6 @@ export class EmployeeService {
   }
   // xem thông tin user by Nhật
   getUserDetail(userDetail:any): Observable<IEmployee|any>{
-    return this.http.get('/api/employee/userDetail?name='+userDetail)
+    return this.http.get('http://localhost:8080/api/employee/userDetail?name='+userDetail)
   }
 }

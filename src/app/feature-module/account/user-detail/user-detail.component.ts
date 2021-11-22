@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {IEmployee} from "../../../entity/IEmployee";
 import {ActivatedRoute, ParamMap, Router} from "@angular/router";
 import {EmployeeService} from "../../../core-module/employee/employee.service";
 import {MatDialog, MatDialogModule} from "@angular/material/dialog";
+import $ from 'jquery';
 
 @Component({
   selector: 'app-user-detail',
@@ -12,21 +13,23 @@ import {MatDialog, MatDialogModule} from "@angular/material/dialog";
 export class UserDetailComponent implements OnInit {
   employee: IEmployee
   name: string;
-
+  userName: any;
   constructor(private activatedRouter: ActivatedRoute,
               private employeeService: EmployeeService,
               private router: Router,
               private dialog: MatDialog) {
     this.activatedRouter.paramMap.subscribe((paramMap: ParamMap)=> {
       this.name= paramMap.get('name')
-            this.employeeService.getUserDetail(name).subscribe(next=>{
-              this.employee=next
-            })
+      this.employeeService.getUserDetail(this.name).subscribe(next=>{
+        this.employee=next
+      })
     })
   }
-
+  @ViewChild('exampleModal', { static: true }) MyDOMElement: ElementRef;
+  showModal: any;
   ngOnInit(): void {
   }
+
 
   userDetail(id: string) {
     let dialog = this.dialog.open(UserDetailComponent,{
@@ -36,5 +39,16 @@ export class UserDetailComponent implements OnInit {
       },
     });
     dialog.afterClosed().subscribe(()=>this.ngOnInit())
+  }
+
+
+  dataEdit(name: string) {
+    this.router.navigateByUrl('/editPass/'+name)
+    console.log(this.name)
+  }
+
+  closeModal() {
+    // $('#exampleModal').hide();
+    // this.MyDOMElement.nativeElement.style.display='none';
   }
 }
