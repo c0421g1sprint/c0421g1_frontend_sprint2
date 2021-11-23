@@ -46,10 +46,10 @@ img:hover{
 }
 
 img {
-  max-width: 120px; height: 70px;
-  transition: transform .5s;
-  padding-left: 30px;
-}
+   max-width: 120px; height: 70px;
+   transition: transform .5s;
+   padding-left: 30px;
+ }
 
 button{
   font-weight: bold;
@@ -111,14 +111,14 @@ li, input, button {
     left: 100%;
   }
   100% {
-    left: -450px /* same as your text width */
+    left: -500px /* same as your text width */
   }
 }
 
 
 .blink{
-  width:400px;
   height:400px;
+  margin-left: 20px;
   animation: blink 5s infinite;
 }
 @keyframes blink{

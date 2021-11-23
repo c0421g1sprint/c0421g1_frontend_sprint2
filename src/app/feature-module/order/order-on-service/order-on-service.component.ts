@@ -77,6 +77,11 @@ export class OrderOnServiceComponent implements OnInit {
     })
   }
 
+  changeTableOnServiceStatusNoNotification(id: number) {
+    this.orderDetailService.changeTableOnServiceStatus(id).subscribe(() => {
+    })
+  }
+
 
   searchPage() {
     if (this.pageNumberInput - 1 < this.totalPage && this.pageNumberInput - 1 >= 0) {
@@ -116,6 +121,15 @@ export class OrderOnServiceComponent implements OnInit {
       this.matSnackBar.showSnackbar('Reset trạng thái bàn thành công!', 'success');
       this.seeDetail(id);
     });
+    this.ngOnInit();
+  }
+
+  writeBillAndResetTableStatus(id: number) {
+    this.orderDetailService.resetTableStatus(id).subscribe(() => {
+      this.matSnackBar.showSnackbar('Đã xuất hóa đơn!', 'success');
+      this.changeTableOnServiceStatusNoNotification(id);
+    });
+    this.seeDetail(id);
     this.ngOnInit();
   }
 }

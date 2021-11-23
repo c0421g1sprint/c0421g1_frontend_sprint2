@@ -116,11 +116,11 @@
             <div class="row">
               <div class="col-lg-4"></div>
               <div class="col-lg-8" style="text-align: right; padding-right: 55px">
-                <button class="btn btn-warning" style="margin-right: 10px; transition: transform 0.5s; width: 130px; color: black" data-toggle="tooltip" data-placement="right" title="In hóa đơn" >
+                <button class="btn btn-warning" data-toggle="modal" data-target="#exampleModal2" type="button" style="margin-right: 10px; transition: transform 0.5s; width: 130px; color: black" data-placement="right" title="In hóa đơn" >
                   <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><rect fill="none" height="24" width="24"/><path d="M3,10h11v2H3V10z M3,8h11V6H3V8z M3,16h7v-2H3V16z M18.01,12.87l0.71-0.71c0.39-0.39,1.02-0.39,1.41,0l0.71,0.71 c0.39,0.39,0.39,1.02,0,1.41l-0.71,0.71L18.01,12.87z M17.3,13.58l-5.3,5.3V21h2.12l5.3-5.3L17.3,13.58z"/></svg>
                   Tính tiền
                 </button>
-                <button class="btn btn-warning" data-toggle="tooltip" data-placement="right" title="Làm mới" style="transition: transform 0.5s; width: 130px; color: black" (click)="resetTableStatus(this.tables.tableId)">
+                <button class="btn btn-warning"  data-toggle="modal" data-target="#exampleModal"  data-placement="right" title="Làm mới" style="transition: transform 0.5s; width: 130px; color: black">
                   <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
                     <g><path d="M0,0h24v24H0V0z" fill="none"/></g>
                     <g><g>
@@ -135,9 +135,39 @@
         </div>
         <div class="row">
           <div class="col-lg-12 marquee-parent" style="position: absolute ; top: 550px; right: 50px; left: 30px">
-            <div class="marquee-child" style="width: 500px"><h2 style="font-weight: bold"> <img src="assets/img-TaiHVK/gif.gif"><span class="blink">  C0421G1 Coffee House</span></h2></div>
+            <div class="marquee-child" style="width: 500px"><h2 style="font-weight: bold"> <img src="assets/img-TaiHVK/gif.gif" style="transform: scale(1)"><span class="blink">C0421G1 Coffee House</span></h2></div>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Modal làm mới bàn-->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content" style="background: url(https://image.shutterstock.com/image-photo/coffee-beans-on-grain-wood-260nw-248750701.jpg)">
+      <div class="modal-body">
+        <h1 style="color: #0b2e13; text-align: center">Làm mới bàn số <span style="color: red">{{this.tables.tableCode}}</span>?</h1>
+      </div>
+      <div class="modal-footer" style="margin: 0 auto">
+        <button type="button" class="btn btn-danger" data-dismiss="modal" style="color: black">Đóng</button>
+        <button type="button" class="btn btn-warning"  style="color: black" (click)="resetTableStatus(this.tables.tableId)" data-dismiss="modal">Làm mới</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Modal tính tiền-->
+<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content" style="background: url(https://image.freepik.com/free-photo/wooden-backdrop_23-2147961532.jpg)">
+      <div class="modal-body">
+        <h1 style="color: #0b2e13; text-align: center">Tính tiền bàn số <span style="color: red">{{this.tables.tableCode}}</span>?</h1>
+      </div>
+      <div class="modal-footer" style="margin: 0 auto">
+        <button type="button" class="btn btn-danger" data-dismiss="modal" style="color: black">Đóng</button>
+        <button type="button" class="btn btn-warning"  style="color: black" (click)="writeBillAndResetTableStatus(this.tables.tableId)" data-dismiss="modal">Tạo hóa đơn</button>
       </div>
     </div>
   </div>
