@@ -64,9 +64,9 @@ export class ListEmployeeComponent implements OnInit {
         name: nameEmployee,
         object: "người dùng"
       }
-    })
+    });
     dialog.afterClosed().subscribe(next => {
-      if (next == "true") {
+      if (next == "yes") {
         this.employeeService.deleteEmployee(idEmployee, this.employee).subscribe(data => {
           console.log(data);
           this.snackbarService.showSnackbar("Xóa thành công " + nameEmployee, "success");
