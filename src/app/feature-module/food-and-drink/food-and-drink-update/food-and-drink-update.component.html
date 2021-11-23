@@ -23,6 +23,28 @@
               <input type="text" class="form-control" formControlName="fadName" id="name"
                      placeholder="VD: Cà phê muối">
             </div>
+            <div *ngFor="let valid of validationMessage.fadName">
+              <small style="color: red"
+                     *ngIf="editForm.get('fadName').hasError(valid.type) && (editForm.get('fadName').touched || editForm.get('fadName').dirty)">
+                {{valid.message}}
+              </small>
+            </div>
+            <div
+              *ngIf="!editForm.controls.fadName.valid && (editForm.controls.fadName.dirty || editForm.controls.fadName.touched)">
+              <small style="color: red" *ngIf="editForm.controls.fadName.errors.invalidMsg">
+                {{editForm.controls.fadName.errors.invalidMsg}}
+              </small>
+            </div>
+            <small style="color: red"
+                   *ngIf="editForm.controls.fadName.hasError('minlength') &&
+                 (editForm.controls.fadName.touched || editForm.controls.fadName.dirty)">
+              Món tối thiểu 5 chữ cái.
+            </small>
+            <small style="color: red"
+                   *ngIf="editForm.controls.fadName.hasError('maxlength') &&
+                 (editForm.controls.fadName.touched || editForm.controls.fadName.dirty)">
+              Món tối đa 50 chữ cái.
+            </small>
           </div>
           <div class="form-group col-md-6">
             <label for="class" class="font-weight" style="color: #e3cc6f">
@@ -58,6 +80,22 @@
               <input type="text" class="form-control" id="code" formControlName="fadCode"
                      placeholder="VD: CF123">
             </div>
+            <small style="color: red"
+                   *ngIf="editForm.controls.fadCode.hasError('minlength') &&
+                 (editForm.controls.fadCode.touched || editForm.controls.fadCode.dirty)">
+              Mã món tối thiểu 3 chữ cái.
+            </small>
+            <small style="color: red"
+                   *ngIf="editForm.controls.fadCode.hasError('maxlength') &&
+                 (editForm.controls.fadCode.touched || editForm.controls.fadCode.dirty)">
+              Mã món tối đa 10 chữ cái.
+            </small>
+            <div *ngFor="let valid of validationMessage.fadCode">
+              <small style="color: red"
+                     *ngIf="editForm.get('fadCode').hasError(valid.type) && (editForm.get('fadCode').touched || editForm.get('fadCode').dirty)">
+                {{valid.message}}
+              </small>
+            </div>
           </div>
           <div class="form-group col-md-6">
             <label for="price" class="font-weight" style="color: #e3cc6f">
@@ -72,6 +110,12 @@
               </div>
               <input type="text" class="form-control" id="price"
                      placeholder="VD: 10.000" formControlName="fadPrice">
+            </div>
+            <div *ngFor="let valid of validationMessage.fadPrice">
+              <small style="color: red"
+                     *ngIf="editForm.get('fadPrice').hasError(valid.type) && (editForm.get('fadPrice').touched || editForm.get('fadPrice').dirty)">
+                {{valid.message}}
+              </small>
             </div>
           </div>
         </div>
@@ -91,6 +135,12 @@
                        (change)="showPreview($event)" accept="image/*">
                 <label class="custom-file-label" for="img" data-browse="Chọn tệp">Chọn ảnh món</label>
               </div>
+            </div>
+            <div *ngFor="let valid of validationMessage.fadImage">
+              <small style="color: red"
+                     *ngIf="editForm.get('fadImage').hasError(valid.type) && (editForm.get('fadImage').touched || editForm.get('fadImage').dirty)">
+                {{valid.message}}
+              </small>
             </div>
           </div>
           <div class="form-group col-md-6">

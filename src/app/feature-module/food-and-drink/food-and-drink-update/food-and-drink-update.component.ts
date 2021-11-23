@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {IFoodAndDrink} from "../../../entity/IFoodAndDrink";
-import {FormControl, FormGroup} from "@angular/forms";
+import {FormControl, FormGroup, ValidatorFn, Validators} from "@angular/forms";
 import {ICategory} from "../../../entity/ICategory";
 import {FoodAndDrinkService} from "../../../core-module/food_and_drink/food-and-drink.service";
 import {ActivatedRoute, ParamMap, Router} from "@angular/router";
@@ -27,11 +27,22 @@ export class FoodAndDrinkUpdateComponent implements OnInit {
 
   editForm = new FormGroup({
     fadId: new FormControl(''),
-    fadName: new FormControl(''),
-    fadCode: new FormControl(''),
-    fadImage: new FormControl(''),
-    fadPrice: new FormControl(''),
-    category: new FormControl(''),
+    fadName: new FormControl('', [Validators.required,
+      Validators.minLength(5), Validators.maxLength(50),
+      Validators.pattern(/^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀẾỂưạảấầẩẫậắằẳẵặẹẻẽềếểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s ]*$/),
+      this.customPatternValid({
+        pattern: /^\s?\S+(?: \S+)*\s?$/, msg: 'Không thể nhập nhiều khoảng trắng.'
+      })
+    ]),
+    fadCode: new FormControl('', [Validators.required,
+      Validators.minLength(3), Validators.maxLength(10),
+      Validators.pattern(/^\s?\S+(?: \S+)*\s?$/),
+    ]),
+    fadImage: new FormControl('', [Validators.required]),
+    fadPrice: new FormControl('', [Validators.required,
+      Validators.pattern(/^[0-9]*$/),
+    ]),
+    category: new FormControl(' ', Validators.required),
     deleteFlag: new FormControl(''),
     fadWaitTime: new FormControl(''),
   })
@@ -45,6 +56,46 @@ export class FoodAndDrinkUpdateComponent implements OnInit {
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
       this.id = +paramMap.get('id');
     });
+  }
+
+  validationMessage = {
+    fadName: [
+      {type: 'required', message: 'Món không được để trống.'},
+      {type: 'pattern', message: 'Món không được chứa ký tự đặc biệt và số.'}
+    ],
+    fadCode: [
+      {type: 'required', message: 'Mã Món không được để trống.'},
+      {type: 'pattern', message: 'Mã Món không được nhập nhiều khoảng trắng.'},
+    ],
+    fadPrice: [
+      {type: 'required', message: 'Giá món không được để trống.'},
+      {type: 'pattern', message: 'Giá món chỉ có thể nhập số.'}
+    ],
+    fadImage: [
+      {type: 'required', message: 'Ảnh món không được để trống.'},
+    ],
+    category: [
+      {type: 'required', message: 'Nhóm món không được để trống.'},
+    ]
+  }
+
+  public customPatternValid(config: any): ValidatorFn {
+    return (control: FormControl) => {
+      let urlRegEx: RegExp = config.pattern;
+      if (control.value && !control.value.match(urlRegEx)) {
+        return {
+          invalidMsg: config.msg
+        };
+      } else {
+        return null;
+      }
+    };
+  }
+
+  public noWhiteSpaceValidator(control: FormControl) {
+    const isWhiteSpace = (control.value || '').trim().length === 0;
+    const isValid = !isWhiteSpace;
+    return isValid ? null : {'whitespace': true};
   }
 
   getFoodAndDrink(id: number) {
@@ -121,5 +172,6 @@ export class FoodAndDrinkUpdateComponent implements OnInit {
       };
     }
   }
+
   defaultValue
 }
