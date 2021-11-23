@@ -1,14 +1,13 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { AccountModule } from './account/account.module';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {AccountModule} from './account/account.module';
 import {ShareModule} from '../share-module/share.module';
-import { EmployeeModule } from './employee/employee.module';
-import { FeedbackModule } from './feedback/feedback.module';
-import { OrderModule } from './order/order.module';
-import { TableModule } from './table/table.module';
-import { CategoryModule } from './category/category.module';
+import {EmployeeModule} from './employee/employee.module';
+import {FeedbackModule} from './feedback/feedback.module';
+import {OrderModule} from './order/order.module';
+import {TableModule} from './table/table.module';
+import {CategoryModule} from './category/category.module';
 import {FoodAndDrinkModule} from "./food-and-drink/food-and-drink.module";
-
 
 
 @NgModule({
@@ -34,4 +33,5 @@ import {FoodAndDrinkModule} from "./food-and-drink/food-and-drink.module";
     CategoryModule
   ]
 })
-export class FeatureModule { }
+export class FeatureModule {
+}
