@@ -11,6 +11,8 @@ import {OrderDetailComponent} from "../order-detail/order-detail.component";
   styleUrls: ['./order-list.component.css']
 })
 export class OrderListComponent implements OnInit {
+  //DanhNT
+
   orderList: IOrders[]; //bil list
   searchCode: string = "null"; //search for bill code
   searchDate: string = "null"; //search for create date
@@ -47,6 +49,7 @@ export class OrderListComponent implements OnInit {
     });
   }
 
+  //DanhNT get price and display in column Total
   getPrice() {
     for (let i = 0; i < this.orderList.length; i++) {
       let tempPrice = 0;
@@ -60,6 +63,7 @@ export class OrderListComponent implements OnInit {
     console.log(this.priceList);
   }
 
+  //button next page
   nextPage() {
     if (this.currentPage < this.totalPage - 1) {
       this.currentPage++;
@@ -69,6 +73,7 @@ export class OrderListComponent implements OnInit {
     }
   }
 
+  //button previous page
   previousPage() {
     if (this.currentPage > 0) {
       this.currentPage--;
@@ -78,6 +83,7 @@ export class OrderListComponent implements OnInit {
     }
   }
 
+  //input page number
   forwardTo(value: string) {
     if (Number(value) <= this.totalPage && Number(value) > 0) {
       this.currentPage = Number(value) - 1;
@@ -88,6 +94,7 @@ export class OrderListComponent implements OnInit {
     }
   }
 
+  //search
   findAdv(code: string, date: string) {
     this.searchCode = code;
     this.searchDate = date;
@@ -103,7 +110,7 @@ export class OrderListComponent implements OnInit {
     this.ngOnInit();
   }
 
-
+  //click to button to view detail
   viewDetail(item: IOrders, total: number) {
     this.matDialog.open(OrderDetailComponent,
       {
