@@ -1,11 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ITables} from "../../../entity/ITables";
-import {Observable, Subscription} from "rxjs";
 import {TableService} from "../../../core-module/table/table.service";
-import {ActivatedRoute, Params, Router} from "@angular/router";
+import {ActivatedRoute, ParamMap, Params, Router} from "@angular/router";
 import {SnackbarService} from "../../../core-module/snackbar/snackbar.service";
-import {finalize} from "rxjs/operators";
 
 @Component({
   selector: 'app-edit-table',
@@ -16,17 +14,7 @@ export class EditTableComponent implements OnInit {
   table!: ITables;
   id: number;
 
-  public subcription: Subscription | undefined;
-  public subcriptionParam: Subscription | undefined;
-
-  tableForm: FormGroup = new FormGroup({
-    tableId: new FormControl(''),
-    tableCode: new FormControl([Validators.required]),
-    maximumCapacity: new FormControl([Validators.required]),
-    location: new FormControl([Validators.required]),
-    tableStatus: new FormControl([Validators.required]),
-    availableFlag: new FormControl([Validators.required])
-  });
+  tableForm: FormGroup;
 
   constructor(private tableService: TableService, private router: Router, private activeRouter: ActivatedRoute, private snackBar: SnackbarService) {
 
@@ -34,33 +22,28 @@ export class EditTableComponent implements OnInit {
   }
 
   ngOnInit(): void {
-  }
-
-  loadData() {
-    this.subcriptionParam = this.activeRouter.params.subscribe((data: Params) => {
-      this.id = data['id'];
-      console.log(this.id);
-      this.tableService.findByIdTable(this.id).subscribe((tableData: ITables) => {
-
-        this.table = tableData;
-        console.log(this.table);
-        this.tableForm.patchValue({
-          tableId: this.table.tableId,
-          tableCode: this.table.tableCode,
-          maximumCapacity: this.table.maximumCapacity,
-          location: this.table.location,
-          tableStatus: this.table.tableStatus,
-          availableFlag: this.table.availableFlag,
-        });
-      });
+    this.activeRouter.paramMap.subscribe((paramMap: ParamMap) => {
+      this.id = +paramMap.get('id');
+      this.tableService.findByIdTable(this.id).subscribe(data=>{
+        this.table=data
+       this. tableForm = new FormGroup({
+          tableId: new FormControl(data.tableId),
+          tableCode: new FormControl(data.tableCode,[Validators.required,Validators.pattern("^(MB-)\\d{4}$")]),
+          maximumCapacity: new FormControl(data.maximumCapacity,[Validators.required,Validators.pattern("^\\d{1,20}$")]),
+          location: new FormControl(data.location,[Validators.required,Validators.pattern("^(Tang-)\\d{1}$")]),
+          tableStatus: new FormControl(data.tableStatus,[Validators.required]),
+          availableFlag: new FormControl(data.availableFlag,[Validators.required])
+      })
+        console.log(this.tableForm.value);
     });
+  })
   }
+
 
   update(): void {
     if (this.tableForm.valid) {
       const value = this.tableForm.value;
       this.tableService.update(value).subscribe(() => {
-        // this.ngOnInit();
         this.snackBar.showSnackbar('Sửa thông tin ban thanh cong', 'success');
         this.router.navigateByUrl("table/list");
       });

@@ -18,10 +18,11 @@ import { OrderComponent } from './feature-module/order/order.component';
 import { TableComponent } from './feature-module/table/table.component';
 import { FeatureModule } from './feature-module/feature.module';
 import { AppRoutingModule } from './app-routing.module';
+import {TableModule} from "./feature-module/table/table.module";
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -30,6 +31,7 @@ import { AppRoutingModule } from './app-routing.module';
     ShareModule,
     FeatureModule,
     AppRoutingModule,
+    TableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
