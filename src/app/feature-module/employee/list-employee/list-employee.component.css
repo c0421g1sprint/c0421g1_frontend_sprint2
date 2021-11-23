@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+
+table {
+  vertical-align: middle;
+  min-width: 1000px;
+}
+
+h1 {
+  margin-bottom: 60px;
+  color: yellow;
+}
+
+td {
+  font-size: 20px;
+}
+
+th {
+
+  font-size: 20px;
+}
+
+.container-fluid {
+  font-family: 'Patrick Hand', cursive;
+  background-image: url("/assets/img/pexels-octavio-gómez-8414072.jpg");
+  background-size: cover;
+
+}
+.pagination-item {
+  height: 100%;
+}
