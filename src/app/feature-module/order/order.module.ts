@@ -4,6 +4,7 @@ import { OrderRoutingModule } from './order-routing.module';
 import {ShareModule} from '../../share-module/share.module';
 import { IncomeStatisticsComponent } from './income-statistics/income-statistics.component';
 import {OrderComponent} from "./order.component";
+import {ChartsModule} from "ng2-charts";
 
 
 
@@ -12,10 +13,11 @@ import {OrderComponent} from "./order.component";
     exports: [
         IncomeStatisticsComponent
     ],
-    imports: [
-        CommonModule,
-        OrderRoutingModule,
-        ShareModule
-    ]
+  imports: [
+    CommonModule,
+    OrderRoutingModule,
+    ShareModule,
+    ChartsModule
+  ]
 })
 export class OrderModule { }

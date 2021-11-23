@@ -1,4 +1,5 @@
-<div class="container-fluid">
+<div class="container-fluid" style="background-image: url('assets/img/backgroud.jpg');
+ background-size: 100%; background-repeat: no-repeat;  min-height: 800px;min-width: 1000px; color: #e3cc6f;">
   <div class="row">
     <div class="col-lg-12 text-center ">
       <h1 class="my-color">Thống kê thu nhập</h1>
@@ -8,7 +9,7 @@
       <div class="row">
         <div class="col-lg-3" style="color:red">
           <label style="display: inline-block; margin-top: 39px" for="code" class="form-label">Tổng thu nhập:</label>
-          <span style="display: inline-block; margin-left: 7px">{{incomeWithDateDto.incomeWithDate | currency:"VND": true}}</span>
+          <span id ="income" style="display: inline-block; margin-left: 7px">{{incomeWithDateDto.incomeWithDate | currency:"VND": true}}</span>
         </div>
         <div class="col-lg-3">
           <label for="code"  class="form-label">Từ ngày :</label>
@@ -30,7 +31,7 @@
     <div class="col-lg-1"></div>
     <div class="col-lg-3">
       <div class="table-responsive-lg">
-        <table class="table bg-dark table-hover text-center" style="height: 350px">
+        <table class="table bg-dark table-hover text-center" style="height: 430px">
           <tr>
             <th style="color: orange">Hôm nay</th>
             <td style="color: orange">{{statisticsIncome[0].incomes| currency:"VND": true}}</td>
@@ -51,7 +52,9 @@
       </div>
     </div>
     <div class="col-lg-7">
-      <canvas id="myChart" style="width:100%; height: 350px; background-color: white"></canvas>
+      <canvas baseChart [colors]="barChartColors" [chartType]="barChartType" [legend]="barChartLegend"
+              [options]="barChartOptions" [labels]="barChartLabels" [datasets]="barChartData"
+              id="myChart" style="width:100%; height: 350px; background-color: white"></canvas>
     </div>
     <div class="col-lg-1"></div>
   </div>
