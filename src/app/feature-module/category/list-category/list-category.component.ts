@@ -29,13 +29,13 @@ export class ListCategoryComponent implements OnInit {
 
   ngOnInit(): void {
     this.viewAllCategory(this.pageObj);
+    console.log(this.pageObj)
   }
 
-  //hien thi danh sach category
+  //hien thi danh sach category - LinhDN
   viewAllCategory(pageObj: any){
     if ((this.code||this.name)!=""){
-      this.pageObj.page = 0;
-      if ((this.code==this.oldCode&&this.name==this.oldName)){
+      if (!(this.code==this.oldCode&&this.name==this.oldName)){
         this.pageObj.page = 0;
         this.oldName = this.name;
         this.oldCode = this.code;
@@ -46,7 +46,6 @@ export class ListCategoryComponent implements OnInit {
     this.categoryService.viewAllCategory(pageObj,code,name).subscribe(data =>{
       console.log(data);
       this.responsePage = data;
-      console.log(this.responsePage);
       this.categoryList = this.responsePage.content;
       this.totalPages = this.responsePage.totalPages;
       this.totalElement = this.responsePage.totalElement;
@@ -59,15 +58,16 @@ export class ListCategoryComponent implements OnInit {
 
   }
 
-
+//lay code tu form - LinhDN
   getCode($event: any) {
     this.code = $event.target.value
   }
-
+//lay name tu form - LinhDN
   getName($event: any) {
     this.name = $event.target.value;
   }
 
+  //xoa categogy - LinhDN
   openDialogDelete(categoryName: string, categoryId: number) {
     let dialog =this.dialog.open(DialogDeleteComponent, {
       data: {
@@ -87,6 +87,7 @@ export class ListCategoryComponent implements OnInit {
   })
   }
 
+  //previous trang - LinhDN
   previousPage() {
     this.pageObj.page--;
     if (this.pageObj.page<=0){
@@ -96,16 +97,18 @@ export class ListCategoryComponent implements OnInit {
     this.viewAllCategory(this.pageObj)
   }
 
+  //next trang - LinhDN
   nextPage() {
     console.log(this.totalPages)
     this.pageObj.page++;
-    if (this.pageObj.page>=this.responsePage.totalPages-1){
+    if (this.pageObj.page>this.responsePage.totalPages-1){
       this.pageObj.page = this.responsePage.totalPages-1 ;
     }
     console.log(this.pageObj)
     this.viewAllCategory(this.pageObj)
   }
 
+  //nhap so trang trang - LinhDN
   getPage(value: string) {
     if (value == null) {
       this.snackBar.showSnackbar("Vui lòng nhập số trang cần tìm", 'error');

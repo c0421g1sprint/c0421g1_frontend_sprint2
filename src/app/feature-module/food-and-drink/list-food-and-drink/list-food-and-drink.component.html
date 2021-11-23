@@ -2,23 +2,37 @@
 <div class="container-fluid">
   <div class="row ">
     <div class="col-lg-12 text-center ">
-      <h1 class="my-color">Danh sách nhóm món</h1>
+      <h1 class="my-color">Danh sách món</h1>
     </div>
-  </div>
-  <div class="row">
     <div class="col-lg-2"></div>
-    <div class="col-lg-8" >
+    <div class="col-lg-8">
       <form class="row g-3">
-        <div class="col-lg-4">
-          <label for="code" class="form-label ml-2">Mã nhóm món:</label>
-          <input type="text" id="code" class="form-control m-3" style="height: 40px" placeholder="vd: N01" (change)="getCode($event)">
+        <div class="col-lg-5">
+          <label for="code" class="form-label">Mã món:</label>
+          <input type="text" id="code" class="form-control " placeholder="vd: FAD-0001" (change)="getCode($event)">
         </div>
-        <div class="col-lg-4">
-          <label for="date" class="form-label ml-2">Tên nhóm món:</label>
-          <input type="text" id="date" class="form-control m-3 " style="height: 40px" placeholder="Vd: Coffe..." (change)="getName($event)">
+        <div class="col-lg-5">
+          <label for="name" class="form-label">Tên món:</label>
+          <input type="text" id="name" class="form-control " placeholder="vd: Coffe" (change)="getName($event)" >
         </div>
-        <div class="col-lg-4" style="margin-top: 39px">
-          <button class="btn btn-warning m-3 " style="background-color: #eeee4e;height: 40px" (click)="viewAllCategory(pageObj)">
+        <div class="col-lg-2 mt-5">
+        </div>
+        <div class="col-lg-5">
+          <label for="category" class="form-label">Nhóm món:</label>
+          <br>
+          <select class="form-control" name="" id="category" (change)="getCategory($event)">
+            <option selected [value]="0">--Chọn nhóm món--</option>
+            <option *ngFor="let obj of categoryList" [value]="obj.categoryId">
+              {{obj.categoryName}}
+            </option>
+          </select>
+        </div>
+        <div class="col-lg-5">
+          <label for="date" class="form-label">Giá:</label>
+          <input type="text" id="date" class="form-control " placeholder="vd: 15,000..." (change)="getPrice($event)">
+        </div>
+        <div class="col-lg-2" style="margin-top: 35px">
+          <button class="btn btn-warning mt-1" style="background-color: #eeee4e ;height: 38px" (click)="viewAllFoodAndDrink(this.pageObj)">
             Tìm kiếm
           </button>
         </div>
@@ -44,21 +58,27 @@
           <thead>
           <tr>
             <th scope="col">STT</th>
-            <th scope="col">Mã số nhóm</th>
-            <th scope="col">Tên nhóm</th>
+            <th scope="col">Mã số món</th>
+            <th scope="col">Tên món</th>
+            <th scope="col">Giá (VNĐ)</th>
+            <th scope="col">Nhóm món</th>
+            <th scope="col"> Thời gian chờ (phút) </th>
             <th scope="col">Chức năng</th>
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let obj of categoryList, let i = index">
+          <tr *ngFor="let obj of fadList, let i = index">
             <td scope="row">{{responsePage.pageable.pageNumber*responsePage.pageable.pageSize+i+1}}</td>
-            <td>{{obj.categoryCode}}</td>
-            <td>{{obj.categoryName}}</td>
+            <td>{{obj.fadCode}}</td>
+            <td>{{obj.fadName}}</td>
+            <td>{{obj.fadPrice| number: '3.'}}</td>
+            <td>{{obj.category.categoryName}}</td>
+            <td>{{obj.fadWaitTime}}</td>
             <td>
               <button class="btn p-0 m-1 text-white" style=" width: 32px; height: 32px; background-color:#eeee4e"  title="Chỉnh sửa nhóm món">
                 <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><rect fill="none" height="24" width="24"/><path d="M3,10h11v2H3V10z M3,8h11V6H3V8z M3,16h7v-2H3V16z M18.01,12.87l0.71-0.71c0.39-0.39,1.02-0.39,1.41,0l0.71,0.71 c0.39,0.39,0.39,1.02,0,1.41l-0.71,0.71L18.01,12.87z M17.3,13.58l-5.3,5.3V21h2.12l5.3-5.3L17.3,13.58z"/></svg>
               </button>
-              <button class="btn p-0 m-1" style="background-color:#eeee4e; width: 34px; height: 34px;" data-toggle="modal" data-target="#exampleModal"   title="Xoá nhóm món" (click)="openDialogDelete(obj.categoryName,obj.categoryId)">
+              <button class="btn p-0 m-1" style="background-color:#eeee4e; width: 34px; height: 34px;" data-toggle="modal" data-target="#exampleModal"   title="Xoá nhóm món" (click)="openDialogDelete(obj.fadName,obj.fadId)">
                 <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0z" fill="none"/><path d="M15 16h4v2h-4zm0-8h7v2h-7zm0 4h6v2h-6zM3 18c0 1.1.9 2 2 2h6c1.1 0 2-.9 2-2V8H3v10zM14 5h-3l-1-1H6L5 5H2v2h12z"/></svg>
               </button>
             </td>
@@ -69,7 +89,7 @@
     </div>
     <div class="col-lg-1"></div>
   </div>
-  <!--    phan trang-->
+<!--  phan trang-->
   <div class="row">
     <div class="col-lg-4" ></div>
     <div class="col-lg-4">
