@@ -13,7 +13,7 @@ import $ from 'jquery';
 export class UserDetailComponent implements OnInit {
   employee: IEmployee
   name: string;
-  userName: any;
+
   constructor(private activatedRouter: ActivatedRoute,
               private employeeService: EmployeeService,
               private router: Router,
@@ -26,7 +26,6 @@ export class UserDetailComponent implements OnInit {
     })
   }
   @ViewChild('exampleModal', { static: true }) MyDOMElement: ElementRef;
-  showModal: any;
   ngOnInit(): void {
   }
 

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, ParamMap, Router} from "@angular/router";
 import {AccountService} from "../../../core-module/account/account.service";
 import {SnackbarService} from "../../../core-module/snackbar/snackbar.service";
@@ -13,6 +13,7 @@ import {IEditAccount} from "../../../entity/IEditAccount";
   styleUrls: ['./edit-password.component.css']
 })
 export class EditPasswordComponent implements OnInit {
+
 
   checkPasswords: ValidatorFn = (group: AbstractControl): ValidationErrors | null => {
     const pass = group.get('accountPassword').value;
@@ -73,7 +74,9 @@ export class EditPasswordComponent implements OnInit {
         this.router.navigateByUrl("");
       },
       error => {
+        this.router.navigateByUrl('/editPass/'+this.accountUsername)
         this.matSnackBar.showSnackbar("Mật khẩu cũ chưa đúng. Vui lòng nhập lại.", "error");
+
       });
   }
 
