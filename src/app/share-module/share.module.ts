@@ -12,8 +12,6 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import {DialogDeleteComponent} from "./dialog-delete/dialog-delete.component";
 
-
-
 @NgModule({
   declarations: [
     SnackbarComponent,

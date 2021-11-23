@@ -15,6 +15,10 @@ export class CategoryService {
   viewAllCategory(pageObj: any, code: String, name: String): Observable<ICategory[]|any>{
     return this.http.get(`${this.url}/list?page=${pageObj.page}&size=${pageObj.size}&code=${code}&name=${name}`);
   }
+  //LinhDN hien thi danh sach category khong co tham so
+  viewAllCategoryNoAgrument(): Observable<ICategory[]|any>{
+    return this.http.get(`${this.url}/listFull`);
+  }
 
   //LinhDN xoa 1 category
   delete(id: number, category: ICategory): Observable<ICategory | any> {
