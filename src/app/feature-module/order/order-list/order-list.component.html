@@ -60,7 +60,7 @@
             <td class="text-left">{{item.employee.employeeName}}</td>
             <td>{{item.tables.tableCode}}</td>
             <td class="text-right">
-              {{priceList[i]}}
+              {{priceList[i]| currency: 'VND':''}}
             </td>
             <td class="text-center">
               <button class="btn btn-warning" data-toggle="tooltip" data-placement="right"
