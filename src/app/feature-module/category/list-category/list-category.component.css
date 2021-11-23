@@ -3,8 +3,9 @@
   font-family: 'Patrick Hand', cursive;
   background-size: inherit;
   background-repeat: no-repeat;
-  color: #eeee4e;
+  color: #e3cc6f;
   background-image: url("src/assets/img/pexels-octavio-gómez-8414072.jpg");
+  min-height: 100%;
 }
 h1 {
   font-size: 50px;

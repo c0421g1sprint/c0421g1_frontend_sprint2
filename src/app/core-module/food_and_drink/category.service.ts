@@ -32,21 +32,21 @@ export class CategoryService {
 
   //LamNT create
   create(newCategory: ICategory): Observable<ICategory | any> {
-    return this.http.post(this.url + 'create', newCategory);
+    return this.http.post(this.url + '/create', newCategory);
   }
 
   //LamNT update
   update(updateCategory: ICategory): Observable<ICategory | any> {
-    return this.http.patch(this.url + 'update', updateCategory);
+    return this.http.patch(this.url + '/update', updateCategory);
   }
 
   //LamNT findAllCategory
   findAllCategory(): Observable<ICategory[] | any> {
-    return this.http.get(this.url + 'find-all');
+    return this.http.get(this.url + '/find-all');
   }
 
   //LamNT findById
   findCategoryById(id: number): Observable<ICategory | any> {
-    return this.http.get(this.url + 'detail/' + id);
+    return this.http.get(this.url + '/detail/' + id);
   }
 }

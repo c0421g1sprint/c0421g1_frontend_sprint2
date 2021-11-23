@@ -4,6 +4,8 @@ import {CategoryService} from "../../../core-module/food_and_drink/category.serv
 import {SnackbarService} from "../../../core-module/snackbar/snackbar.service";
 import {MatDialog} from "@angular/material/dialog";
 import {DialogDeleteComponent} from "../../../share-module/dialog-delete/dialog-delete.component";
+import {CategoryCreateComponent} from "../category-create/category-create.component";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-list-category',
@@ -18,14 +20,15 @@ export class ListCategoryComponent implements OnInit {
   code: string = '';
   oldName: string = '';
   oldCode: string = '';
-  pageObj: any = {page: 0, size: 5}
+  pageObj: any = {page: 0, size: 5};
   responsePage: any; //tạo biến để nhận giá trị Observable
   totalPages: number = 0;
   totalElement: number = 0;
 
   constructor(private categoryService: CategoryService,
               private snackBar: SnackbarService,
-              private dialog: MatDialog) { }
+              private dialog: MatDialog,
+              private router : Router) { }
 
   ngOnInit(): void {
     this.viewAllCategory(this.pageObj);
@@ -55,7 +58,7 @@ export class ListCategoryComponent implements OnInit {
   }
 
   openDialogCreate() {
-
+    this.dialog.open(CategoryCreateComponent, {panelClass: 'my-bg'});
   }
 
 //lay code tu form - LinhDN
@@ -75,7 +78,7 @@ export class ListCategoryComponent implements OnInit {
         name: categoryName,
         object: "nhóm món"
       }
-    })
+    });
   dialog.afterClosed().subscribe(nextClose=>{
     if (nextClose == `true`) {
       this.categoryService.delete(categoryId, this.category).subscribe(data => {
@@ -120,5 +123,10 @@ export class ListCategoryComponent implements OnInit {
     } else {
       this.snackBar.showSnackbar("Trang cần tìm không hợp lệ", 'error');
     }
+  }
+
+  //LamNT
+  updateCategory(categoryId: number) {
+    this.router.navigateByUrl('category/update/'+categoryId);
   }
 }

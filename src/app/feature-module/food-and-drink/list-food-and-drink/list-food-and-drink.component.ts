@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ICategory} from "../../../entity/ICategory";
 import {IFoodAndDrink} from "../../../entity/IFoodAndDrink";
 import {CategoryService} from "../../../core-module/food_and_drink/category.service";
@@ -6,6 +6,8 @@ import {SnackbarService} from "../../../core-module/snackbar/snackbar.service";
 import {MatDialog} from "@angular/material/dialog";
 import {FoodAndDrinkService} from "../../../core-module/food_and_drink/food-and-drink.service";
 import {DialogDeleteComponent} from "../../../share-module/dialog-delete/dialog-delete.component";
+import {FoodAndDrinkCreateComponent} from "../food-and-drink-create/food-and-drink-create.component";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-list-food-and-drink',
@@ -18,8 +20,8 @@ export class ListFoodAndDrinkComponent implements OnInit {
   categoryList: ICategory[];
   name: string = '';
   code: string = '';
-  price: number| any = '';
-  categoryId: number| any = '';
+  price: number | any = '';
+  categoryId: number | any = '';
   oldName: string = '';
   oldCode: string = '';
   oldPrice: number | any = '';
@@ -33,28 +35,32 @@ export class ListFoodAndDrinkComponent implements OnInit {
     private categoryService: CategoryService,
     private fadService: FoodAndDrinkService,
     private snackBar: SnackbarService,
-    private dialog: MatDialog
-  ) { }
+    private dialog: MatDialog,
+    private router: Router
+  ) {
+  }
 
   ngOnInit(): void {
     this.getAllCategory();
     this.viewAllFoodAndDrink(this.pageObj);
     console.log(this.pageObj.page)
   }
+
   //hien thi danh sach category
   getAllCategory() {
     this.categoryService.viewAllCategoryNoAgrument().subscribe(category => {
-      console.log(category)
+      console.log(category);
       this.categoryList = category;
       console.log(this.categoryList)
     })
   }
+
 //hien thi danh sach fad - LinhDN
-  viewAllFoodAndDrink(pageObj: any){
-    if ((this.code||this.name||this.pageObj||this.categoryId)!=""){
-      if (!(this.code==this.oldCode&&this.name==this.oldName&&this.price==this.oldPrice&&this.categoryId==this.oldCategoryId)){
+  viewAllFoodAndDrink(pageObj: any) {
+    if ((this.code || this.name || this.pageObj || this.categoryId) != "") {
+      if (!(this.code == this.oldCode && this.name == this.oldName && this.price == this.oldPrice && this.categoryId == this.oldCategoryId)) {
         this.pageObj.page = 0;
-        console.log("acvv")
+        console.log("acvv");
         this.oldName = this.name;
         this.oldCode = this.code;
         this.oldPrice = this.price;
@@ -63,41 +69,43 @@ export class ListFoodAndDrinkComponent implements OnInit {
     }
     let name = this.name.trim();
     let code = this.code.trim();
-    this.fadService.viewAllFoodAndDrink(pageObj,code,name,this.price,this.categoryId).subscribe(data =>{
+    this.fadService.viewAllFoodAndDrink(pageObj, code, name, this.price, this.categoryId).subscribe(data => {
       console.log(data);
       this.responsePage = data;
       console.log(this.responsePage);
       this.fadList = this.responsePage.content;
       this.totalPages = this.responsePage.totalPages;
       this.totalElement = this.responsePage.totalElement;
-    },error => {
-      if (this.categoryId == 0){
-        this.fadService.viewAllFoodAndDrinkNoId(pageObj,code,name,this.price).subscribe(data =>{
+    }, error => {
+      if (this.categoryId == 0) {
+        this.fadService.viewAllFoodAndDrinkNoId(pageObj, code, name, this.price).subscribe(data => {
           this.responsePage = data;
           this.fadList = this.responsePage.content;
           this.totalPages = this.responsePage.totalPages;
           this.totalElement = this.responsePage.totalElement;
-        },error => {
-          this.snackBar.showSnackbar("Không tìm thấy danh mục sản phẩm","error");
+        }, error => {
+          this.snackBar.showSnackbar("Không tìm thấy danh mục sản phẩm", "error");
         })
-      }else{
-        this.snackBar.showSnackbar("Không tìm thấy danh mục sản phẩm","error");
+      } else {
+        this.snackBar.showSnackbar("Không tìm thấy danh mục sản phẩm", "error");
       }
     })
   }
 
   openDialogCreate() {
-
+    this.dialog.open(FoodAndDrinkCreateComponent, {panelClass: 'my-bg'})
   }
 
 //lay code tu form - LinhDN
   getCode($event: any) {
     this.code = $event.target.value
   }
+
 //lay name tu form - LinhDN
   getName($event: any) {
     this.name = $event.target.value;
   }
+
 //lay gia tu form
   getPrice($event: any) {
     this.price = $event.target.value;
@@ -106,14 +114,14 @@ export class ListFoodAndDrinkComponent implements OnInit {
 
   //xoa fad - LinhDN
   openDialogDelete(fadName: string, fadId: number) {
-    let dialog =this.dialog.open(DialogDeleteComponent, {
+    let dialog = this.dialog.open(DialogDeleteComponent, {
       data: {
         id: fadId,
         name: fadName,
         object: "món"
       }
-    })
-    dialog.afterClosed().subscribe(nextClose=>{
+    });
+    dialog.afterClosed().subscribe(nextClose => {
       if (nextClose == `true`) {
         this.fadService.delete(fadId, this.fad).subscribe(data => {
           console.log(data);
@@ -127,7 +135,7 @@ export class ListFoodAndDrinkComponent implements OnInit {
   //previous trang - LinhDN
   previousPage() {
     this.pageObj.page--;
-    if (this.pageObj.page<=0){
+    if (this.pageObj.page <= 0) {
       this.pageObj.page = 0;
     }
     console.log(this.pageObj)
@@ -136,9 +144,9 @@ export class ListFoodAndDrinkComponent implements OnInit {
 
   //next trang - LinhDN
   nextPage() {
-    this.pageObj.page = ++ this.pageObj.page;
-    if (this.pageObj.page>this.responsePage.totalPages-1){
-      this.pageObj.page = this.responsePage.totalPages-1 ;
+    this.pageObj.page = ++this.pageObj.page;
+    if (this.pageObj.page > this.responsePage.totalPages - 1) {
+      this.pageObj.page = this.responsePage.totalPages - 1;
     }
     console.log(this.pageObj)
     this.viewAllFoodAndDrink(this.pageObj)
@@ -161,5 +169,10 @@ export class ListFoodAndDrinkComponent implements OnInit {
 
   getCategory($event: any) {
     this.categoryId = $event.target.value;
+  }
+
+  //LamNT update
+  updateFad(fadId: number) {
+    this.router.navigateByUrl('/food-and-drink/update/' + fadId);
   }
 }

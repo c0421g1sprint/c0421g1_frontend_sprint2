@@ -138,10 +138,8 @@ export class FoodAndDrinkUpdateComponent implements OnInit {
               setTimeout(() => {
                 this.showSpinner = false;
                 this.snackBar.showSnackbar("Sửa thông tin món thành công", "success");
-              })
-              // this.router.navigate(['students', {
-              //   "idClassroom": this.student.classroom.classroomId
-              // }]);
+              });
+              this.router.navigateByUrl('food-and-drink/list');
             });
           }));
         })
@@ -172,6 +170,4 @@ export class FoodAndDrinkUpdateComponent implements OnInit {
       };
     }
   }
-
-  defaultValue
 }

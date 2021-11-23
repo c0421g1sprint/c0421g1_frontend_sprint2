@@ -65,7 +65,7 @@ export class CategoryUpdateComponent implements OnInit {
     categoryCode: [
       {type: 'required', message: 'Mã số nhóm món không được để trống'}
     ]
-  }
+  };
 
   ngOnInit(): void {
     this.getCategory(this.id)
@@ -85,6 +85,7 @@ export class CategoryUpdateComponent implements OnInit {
     if (this.editForm.valid) {
       this.categoryService.update(value).subscribe(() => {
         this.snackBarService.showSnackbar("Sửa nhóm món thành công", "success");
+        this.router.navigateByUrl('/category/list');
       });
     } else {
       this.snackBarService.showSnackbar('Biểu mẫu sai, vui lòng nhập đúng', 'error')

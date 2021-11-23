@@ -10,7 +10,7 @@ const routes: Routes = [
     path: 'food-and-drink', component: FoodAndDrinkComponent,
     children: [
       {path: 'list', component: ListFoodAndDrinkComponent},
-      {path: "update/:id", component: FoodAndDrinkUpdateComponent}
+      {path: 'update/:id', component: FoodAndDrinkUpdateComponent}
     ]
   },
 ];

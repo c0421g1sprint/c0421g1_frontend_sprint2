@@ -71,7 +71,7 @@ export class FoodAndDrinkCreateComponent implements OnInit {
     category: [
       {type: 'required', message: 'Nhóm món không được để trống.'},
     ]
-  }
+  };
 
   public noWhitespaceValidator(control: FormControl) {
     const isWhitespace = (control.value || '').trim().length === 0;
