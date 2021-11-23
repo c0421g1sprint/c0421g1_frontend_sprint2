@@ -7,7 +7,6 @@ import {OrderComponent} from "./order.component";
 import { OrderDetailComponent } from './order-detail/order-detail.component';
 import {MatGridListModule} from "@angular/material/grid-list";
 import { IncomeStatisticsComponent } from './income-statistics/income-statistics.component';
-import {OrderComponent} from "./order.component";
 
 
 

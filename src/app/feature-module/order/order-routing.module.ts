@@ -1,7 +1,6 @@
 import {NgModule} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
-import {OrderComponent} from "./order.component";
 import {IncomeStatisticsComponent} from "./income-statistics/income-statistics.component";
 import {OrderComponent} from "./order.component";
 import {OrderListComponent} from "./order-list/order-list.component";

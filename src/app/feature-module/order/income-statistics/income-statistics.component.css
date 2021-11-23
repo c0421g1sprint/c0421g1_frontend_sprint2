@@ -23,8 +23,9 @@ button {
   font-size: 20px;
 }
 .container-fluid {
-  background-image: url("../../../../assets/img/backgroud.jpg");
+  background-image: url("src/assets/img/backgroud.jpg");
   background-size: 100%;
   background-repeat: no-repeat;
   color: #e3cc6f;
+  height: 100%;
 }
