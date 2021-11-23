@@ -18,12 +18,14 @@ import { OrderComponent } from './feature-module/order/order.component';
 import { TableComponent } from './feature-module/table/table.component';
 import { FeatureModule } from './feature-module/feature.module';
 import { AppRoutingModule } from './app-routing.module';
+import { TableModule} from "./feature-module/table/table.module";
 
 @NgModule({
   declarations: [
     AppComponent,
   ],
   imports: [
+    TableModule,
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,

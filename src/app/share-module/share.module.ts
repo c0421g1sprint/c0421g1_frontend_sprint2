@@ -10,6 +10,7 @@ import {RouterModule} from '@angular/router';
 import { SnackbarComponent } from './snackbar/snackbar.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { DialogDeleteComponent } from './dialog-delete/dialog-delete.component';
 
 
 
@@ -17,7 +18,8 @@ import { FooterComponent } from './footer/footer.component';
   declarations: [
     SnackbarComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    DialogDeleteComponent
   ],
   imports: [
     CommonModule,

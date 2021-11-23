@@ -6,6 +6,7 @@ export interface ITables {
   tableStatus: string;
   location: string;
   maximumCapacity: string;
+  onService: number;
   availableFlag: boolean;
   deleteFlag: boolean;
   orders: IOrders[]
