@@ -6,11 +6,12 @@ import { OrderListComponent } from './order-list/order-list.component';
 import {OrderComponent} from "./order.component";
 import { OrderDetailComponent } from './order-detail/order-detail.component';
 import {MatGridListModule} from "@angular/material/grid-list";
+import { IncomeStatisticsComponent } from './income-statistics/income-statistics.component';
 
 
 
 @NgModule({
-  declarations: [OrderComponent,OrderListComponent, OrderDetailComponent],
+  declarations: [OrderComponent,OrderListComponent, OrderDetailComponent,IncomeStatisticsComponent],
     imports: [
         CommonModule,
         OrderRoutingModule,

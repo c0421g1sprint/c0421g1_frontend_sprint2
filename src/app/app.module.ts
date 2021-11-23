@@ -13,6 +13,7 @@ import {OrderModule} from "./feature-module/order/order.module";
 @NgModule({
   declarations: [
     AppComponent,
+
   ],
   imports: [
     BrowserModule,

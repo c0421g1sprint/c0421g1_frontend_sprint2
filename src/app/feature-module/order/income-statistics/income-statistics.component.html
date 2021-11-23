@@ -1,0 +1,58 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-12 text-center ">
+      <h1 class="my-color">Thống kê thu nhập</h1>
+    </div>
+    <div class="col-lg-2"></div>
+    <div class="col-lg-10" style="margin-top: 40px">
+      <div class="row">
+        <div class="col-lg-3" style="color:red">
+          <label style="display: inline-block; margin-top: 39px" for="code" class="form-label">Tổng thu nhập:</label>
+          <span style="display: inline-block; margin-left: 7px">{{incomeWithDateDto.incomeWithDate | currency:"VND": true}}</span>
+        </div>
+        <div class="col-lg-3">
+          <label for="code"  class="form-label">Từ ngày :</label>
+          <input type="date" [(ngModel)] = "startDate" id="code" class="form-control">
+        </div>
+        <div class="col-lg-3">
+          <label for="date"  class="form-label">Đến ngày:</label>
+          <input type="date" [(ngModel)] = "endDate" id="date" class="form-control">
+        </div>
+        <div class="col-lg-2">
+          <button (click)="getIncomeWithDate()" class="btn btn-warning" style="margin-top: 37px">
+            <span style="font-weight: bold">Tính thu nhập</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row" style="margin-top: 5%">
+    <div class="col-lg-1"></div>
+    <div class="col-lg-3">
+      <div class="table-responsive-lg">
+        <table class="table bg-dark table-hover text-center" style="height: 350px">
+          <tr>
+            <th style="color: orange">Hôm nay</th>
+            <td style="color: orange">{{statisticsIncome[0].incomes| currency:"VND": true}}</td>
+          </tr>
+          <tr>
+            <th style="color: blue">Tuần này</th>
+            <td style="color: blue">{{statisticsIncome[1].incomes | currency:"VND": true}}</td>
+          </tr>
+          <tr>
+            <th style="color: cornflowerblue">Tháng này</th>
+            <td style="color: cornflowerblue">{{statisticsIncome[2].incomes| currency:"VND": true}}</td>
+          </tr>
+          <tr>
+            <th style="color: green">Năm này</th>
+            <td style="color: green">{{statisticsIncome[3].incomes | currency:"VND": true}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="col-lg-7">
+      <canvas id="myChart" style="width:100%; height: 350px; background-color: white"></canvas>
+    </div>
+    <div class="col-lg-1"></div>
+  </div>
+</div>
