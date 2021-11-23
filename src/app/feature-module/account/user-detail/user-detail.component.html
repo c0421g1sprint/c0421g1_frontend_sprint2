@@ -1,0 +1,80 @@
+
+<div>
+  <div class="container-fluid " style="background-image: url('assets/pexels-octavio-gómez-8414072.jpg');background-size: cover; min-height: 130vh">
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content"  style="font-family: 'Dancing Script', cursive;
+  background-image: url('assets/detail-bg_cleanup.png');
+  color: #d4b955;
+  background-size: cover;">
+          <div class="modal-header">
+            <h1 class="modal-title" id="exampleModalLabel" style="margin-left: 20%"><strong>Xem chi tiết</strong></h1>
+          </div>
+          <div class="modal-body">
+            <div>
+
+              <table id="tbDetail">
+                <tr>
+                  <td  class="tdDetail">Tài khoản</td>
+                  <td class="tdDetail">{{employee.account.accountUsername}}</td>
+                </tr>
+
+                <tr>
+                  <td class="tdDetail">Họ và tên</td>
+                  <td class="tdDetail">{{employee.employeeName}}</td>
+                </tr>
+
+                <tr>
+                  <td class="tdDetail">Địa chỉ </td>
+                  <td class="tdDetail">{{employee.employeeAddress}}</td>
+                </tr>
+
+
+                <tr>
+                  <td class="tdDetail">Giới tính</td>
+                  <td class="tdDetail"  [ngSwitch]="employee.employeeGender" >
+                    <span id="sp" class="p-0" *ngSwitchCase="1">Nữ </span>
+                    <span id="sp1" class="p-0" *ngSwitchCase="0">Nam </span>
+                    <span id="sp2" class="p-0" *ngSwitchDefault>LGBT </span>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="tdDetail">Số điện thoại</td>
+                  <td class="tdDetail">{{employee.employeePhone}}</td>
+                </tr>
+                <tr>
+                  <td class="tdDetail">Ngày sinh</td>
+                  <td class="tdDetail">{{employee.employeeBirthday}}</td>
+                </tr>
+                <tr>
+                  <td class="tdDetail">Lương</td>
+                  <td class="tdDetail">{{employee.employeeSalary}}</td>
+                </tr>
+                <tr>
+                  <td class="tdDetail">Vị trí</td>
+                  <td class="tdDetail">{{employee.level.levelName}}</td>
+                </tr>
+
+              </table>
+            </div>
+          </div>
+          <div class="modal-footer" style="padding-right: 100px">
+
+            <button id="btDetail" class="btn btn-warning" data-dismiss="modal" type="button" style="color: black"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12.5 8c-2.65 0-5.05.99-6.9 2.6L3.71 8.71C3.08 8.08 2 8.52 2 9.41V15c0 .55.45 1 1 1h5.59c.89 0 1.34-1.08.71-1.71l-1.91-1.91c1.39-1.16 3.16-1.88 5.12-1.88 3.16 0 5.89 1.84 7.19 4.5.27.56.91.84 1.5.64.71-.23 1.07-1.04.75-1.72C20.23 10.42 16.65 8 12.5 8z"/></svg>Quay lại</button>
+            <button class="btn btn-warning" id="btDetail2" data-dismiss="modal" (click)="dataEdit(this.employee.account.accountUsername)" type="button" ><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M22 19h-6v-4h-2.68c-1.14 2.42-3.6 4-6.32 4-3.86 0-7-3.14-7-7s3.14-7 7-7c2.72 0 5.17 1.58 6.32 4H24v6h-2v4zm-4-2h2v-4h2v-2H11.94l-.23-.67C11.01 8.34 9.11 7 7 7c-2.76 0-5 2.24-5 5s2.24 5 5 5c2.11 0 4.01-1.34 4.71-3.33l.23-.67H18v4zM7 15c-1.65 0-3-1.35-3-3s1.35-3 3-3 3 1.35 3 3-1.35 3-3 3zm0-4c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"/></svg> Đổi mật khẩu</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <button  type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 4C7 4 2.73 7.11 1 11.5 2.73 15.89 7 19 12 19s9.27-3.11 11-7.5C21.27 7.11 17 4 12 4zm0 12.5c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+      User Detail
+    </button>
+
+  </div>
+</div>
+
+
+
