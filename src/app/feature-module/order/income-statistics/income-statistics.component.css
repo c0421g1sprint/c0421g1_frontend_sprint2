@@ -1,0 +1,30 @@
+table th {
+  font-size: 25px;
+}
+
+td {
+  font-size: 20px;
+}
+table td, th{
+  color: white;
+  vertical-align: middle;
+}
+
+
+h1 {
+  font-size: 50px;
+}
+
+label {
+  font-size: 20px;
+}
+
+button {
+  font-size: 20px;
+}
+.container-fluid {
+  background-image: url("../../../../assets/img/backgroud.jpg");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  color: #e3cc6f;
+}

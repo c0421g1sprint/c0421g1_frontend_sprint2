@@ -8,5 +8,6 @@ export interface ITables {
   maximumCapacity: string;
   availableFlag: boolean;
   deleteFlag: boolean;
-  orders: IOrders[]
+  orders: IOrders[];
+  onService: number;
 }
