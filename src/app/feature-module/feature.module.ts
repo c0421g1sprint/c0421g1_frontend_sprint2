@@ -25,7 +25,7 @@ import {ShareModule} from "../share-module/share.module";
   ],
   exports: [
     AccountModule,
-    // ShareModule,
+    ShareModule,
     EmployeeModule,
     FeedbackModule,
     FoodAndDrinkModule,

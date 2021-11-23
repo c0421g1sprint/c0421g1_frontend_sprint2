@@ -7,6 +7,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { ShareModule } from './share-module/share.module';
 import { FeatureModule } from './feature-module/feature.module';
 import { AppRoutingModule } from './app-routing.module';
+import {OrderModule} from "./feature-module/order/order.module";
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { AppRoutingModule } from './app-routing.module';
     ShareModule,
     FeatureModule,
     AppRoutingModule,
+    OrderModule
   ],
   providers: [],
   bootstrap: [AppComponent]

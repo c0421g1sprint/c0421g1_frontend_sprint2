@@ -1,14 +1,21 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
+import {OrderComponent} from "./order.component";
+import {OrderListComponent} from "./order-list/order-list.component";
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path: "order", component: OrderComponent, children: [
+      {path: "", component: OrderListComponent}
+    ]
+  }
+];
 
 @NgModule({
   imports: [
-    CommonModule,
     RouterModule.forChild(routes)
   ],
   exports: [RouterModule]
 })
-export class OrderRoutingModule { }
+export class OrderRoutingModule {
+}
