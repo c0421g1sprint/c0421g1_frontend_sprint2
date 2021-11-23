@@ -9,11 +9,12 @@ import { FeatureModule } from './feature-module/feature.module';
 import { AppRoutingModule } from './app-routing.module';
 import {OrderModule} from "./feature-module/order/order.module";
 
+import {FoodAndDrinkModule} from "./feature-module/food-and-drink/food-and-drink.module";
+import {CategoryModule} from "./feature-module/category/category.module";
 
 @NgModule({
   declarations: [
     AppComponent,
-
   ],
   imports: [
     BrowserModule,
@@ -22,6 +23,8 @@ import {OrderModule} from "./feature-module/order/order.module";
     ShareModule,
     FeatureModule,
     AppRoutingModule,
+    FoodAndDrinkModule,
+    CategoryModule
     OrderModule
   ],
   providers: [],
