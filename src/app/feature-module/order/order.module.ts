@@ -5,10 +5,11 @@ import {ShareModule} from '../../share-module/share.module';
 import { MenuComponent } from './menu/menu.component';
 import {NgxPaginationModule} from "ngx-pagination";
 import {CountdownModule} from "ngx-countdown";
+import { DeleteOrderComponent } from './delete-order/delete-order.component';
 
 
 @NgModule({
-  declarations: [MenuComponent],
+  declarations: [MenuComponent, DeleteOrderComponent],
   imports: [
     CommonModule,
     OrderRoutingModule,

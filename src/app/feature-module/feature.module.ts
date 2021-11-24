@@ -7,6 +7,7 @@ import { FeedbackModule } from './feedback/feedback.module';
 import { FoodAndDrinkModule } from './food-and-drink/food-and-drink.module';
 import { OrderModule } from './order/order.module';
 import { CartComponent } from './cart/cart.component';
+import {CountdownModule} from "ngx-countdown";
 
 
 @NgModule({
@@ -18,6 +19,8 @@ import { CartComponent } from './cart/cart.component';
     FeedbackModule,
     FoodAndDrinkModule,
     OrderModule,
+
+
   ],
   exports: [
     AccountModule,

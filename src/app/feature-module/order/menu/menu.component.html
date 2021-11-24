@@ -10,40 +10,11 @@
 </head>
 <body>
 <div class="container-fruid">
-  <header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">Logo</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Trang chủ</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Sản phẩm</a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="#">Trải nghiệm</a>
-          </li>
-
-
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-      </div>
-    </nav>
-  </header>
   <div class="row ">
     <div class="col-2">
-      <div class="col-12">
-        <div class="row">
+      <div class="row">
+        <div class="col-12">
+
 
           <ul class="list-group" *ngFor="let objCategory of ListCategory">
 
@@ -63,36 +34,37 @@
 
         <div class="col-md-12">
 
-          <div class="row row-cols-1 row-cols-md-2 g-4">
+          <div class="row row-cols-1 row-cols-md-2" style="margin-top: -15px">
 
             <div class="col"
                  *ngFor="let objFood of FoodAndDrink |  paginate:{itemsPerPage:4,  currentPage:page,totalItems:totalLength} "
-                 style="margin-top: -30px">
-              <div class="card" style="margin-top: 45px">
+                 style="">
+
+              <div class="card" style="margin-top: 15px">
                 <img [src]="objFood.fadImage" class="card-img-top" alt="..." width="230px" height="250px">
                 <div class="card-body">
                   <h5 class="card-title">{{objFood.fadName}}</h5>
-                  <p class="card-text"><span>Thời gian chờ </span>{{objFood.fadWaitTime}} <span> phút</span></p>
-                  <p class="card-text"><span class="money">Giá: </span> <span class="tien">{{objFood.fadPrice}}
-                    VND</span></p>
+                  <p class="card-text"><span>Thời gian chờ: </span>{{objFood.fadWaitTime}} phút</p>
+                  <p class="card-text"><span class="money" style="color: red">Giá: </span>{{objFood.fadPrice}}
+                    VND</p>
                 </div>
-                <button class="btn btn-warning" (click)="addToCart(objFood)">Add</button>
+
+                <button class="btn btn-warning" (click)="addToCart(objFood)">Thêm <img
+                  src="assets/icon/icon/add_shopping_cart_white_24dp.svg" alt=""></button>
+
               </div>
+
             </div>
-
-
+            <nav aria-label="Page navigation example" style="margin-top: 25px;margin-left: auto;margin-right: auto">
+              <ul class="pagination">
+                <li>
+                  <pagination-controls (pageChange)="page = $event "
+                                       style="background: black;color: white"></pagination-controls>
+                </li>
+              </ul>
+            </nav>
           </div>
-
         </div>
-
-        <nav aria-label="Page navigation example" style="margin-top: 25px;margin-left: auto;margin-right: auto">
-          <ul class="pagination">
-            <li>
-              <pagination-controls (pageChange)="page = $event "></pagination-controls>
-            </li>
-          </ul>
-        </nav>
-
       </div>
     </div>
 
@@ -108,7 +80,7 @@
             <th scope="col">Giá</th>
             <th scope="col">Tổng tiền</th>
             <th scope="col">Thời gian chờ</th>
-            <th scope="col" colspan="2">Active</th>
+            <th scope="col" *ngIf="checkDelete == false">Active</th>
 
           </tr>
           </thead>
@@ -116,52 +88,64 @@
 
           <tr *ngFor="let objFood of product;let i = index">
             <th scope="row">{{i + 1}}</th>
-            <td>{{objFood.fadName}}</td>
+            <td style="max-width: 100px">{{objFood.fadName}}</td>
             <td>
-              <button (click)="truCart(objFood)">Giảm</button>
+              <button (click)="truCart(objFood)" class="btn btn-warning">Giảm</button>
               {{objFood.quantity}}
-              <button (click)="addToCart(objFood)">Tang</button>
+              <button (click)="addToCart(objFood)" class="btn btn-warning">Tăng</button>
             </td>
             <td>{{objFood.fadPrice}}</td>
             <td>{{objFood.total}}</td>
             <td>
-              <countdown #countdown [config]="{leftTime:objFood.fadWaitTime,demand:true}"></countdown>
+              <countdown #countdown [config]="{leftTime:objFood.fadWaitTime}" *ngIf="check == true else blockTime"></countdown>
             </td>
 
 
+              <ng-template #blockTime><countdown  [config]="{leftTime:objFood.fadWaitTime,demand:true}" ></countdown></ng-template>
+
+
             <td>
-              <button type="button" class="btn btn-danger" (click)="removeCart(objFood)">Xóa Món</button>
+
+              <button type="button" class="btn btn-danger"
+                      (click)="removeCartDialog(objFood.fadId,objFood.fadName,objFood.quantity,objFood)" *ngIf="checkDelete == false"><img
+                src="assets/icon/icon/delete_sweep_black_24dp.svg" alt=""></button>
+
             </td>
-            <td>
-              <button type="button" class="btn btn-info"
-                      (click)="countdown.resume()">Gọi Món
-              </button>
-            </td>
+
           </tr>
           </tbody>
+
         </table>
-        <button (click)="newOrderDetail()">Add món</button>
 
-        <nav aria-label="Page navigation example"
-             style="margin-top: 25px;margin-left: auto;margin-right: auto">
-          <ul class="pagination">
-            <li class="page-item"><a class="page-link" href="#"><img
-              src="assets/icon/icon/skip_previous_black_24dp.svg" alt="" width="16px"></a></li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#"><img
-              src="assets/icon/icon/skip_next_black_24dp.svg" alt="" width="16px"></a></li>
-
-          </ul>
-
-        </nav>
         <nav>
-
-          <button type="button" class="btn btn-success" style="margin-top: 20px;margin-right: 20px" (click)="getCallPay(table,table.tableId)">Thanh
-            toán
+          <button type="button" class="btn btn-info"
+                  (click)="newOrderDetail()"
+                  (click)="getCallFood(table,table.tableId)"  *ngIf="product != null">Gọi Món
+            <img src="/assets/icon/icon/local_dining_black_24dp.svg" alt="">
           </button>
         </nav>
+
+        <!--        <nav aria-label="Page navigation example"-->
+        <!--             style="margin-top: 25px;margin-left: auto;margin-right: auto">-->
+        <!--          <ul class="pagination">-->
+        <!--            <li class="page-item"><a class="page-link" href="#"><img-->
+        <!--              src="assets/icon/icon/skip_previous_black_24dp.svg" alt="" width="16px"></a></li>-->
+        <!--            <li class="page-item"><a class="page-link" href="#">1</a></li>-->
+        <!--            <li class="page-item"><a class="page-link" href="#">2</a></li>-->
+        <!--            <li class="page-item"><a class="page-link" href="#">3</a></li>-->
+        <!--            <li class="page-item"><a class="page-link" href="#"><img-->
+        <!--              src="assets/icon/icon/skip_next_black_24dp.svg" alt="" width="16px"></a></li>-->
+
+        <!--          </ul>-->
+
+        <!--        </nav>-->
+
+        <nav>
+          <button class="btn btn-success " style="margin-left: 65px;margin-top: -5px;width: auto;margin-left: 500px"
+                  (click)="getCallPay(table,table.tableId)"  *ngIf="check === true">{{thanhtoan}} <img
+            src="assets/icon/icon/paid_black_24dp.svg" alt=""></button>
+        </nav>
+
 
 
       </div>
@@ -169,44 +153,27 @@
 
       <div class="row" style="margin-top: 25px">
         <div class="col-md-3">
-          <p style="color: tan">Số bàn: <span style="color: sienna">{{table.tableCode}}</span></p><br/>
+          <p style="color: tan">Số bàn: <span style="color: Yellow">{{table.tableCode}}</span></p><br/>
 
-          <p style="color: tan">Ngày: <span style="color: sienna"> 11/11/2021 </span></p>
+          <p style="color: tan">Ngày: <span style="color: Yellow">{{dateNow}} </span></p>
         </div>
 
         <div class="col-4">
-          <button class="btn btn-primary" style="margin-left: 65px;margin-top: -5px" (click)="getCallEmp(table,table.tableId)">Gọi phục vụ</button>
 
-          <button class="btn btn-secondary btn-feedbkack" style="margin-left: 65px;margin-top: 18px">Phản
-            hồi
+
+          <button type="button" class="btn " style="background: #F781F3"
+                  (click)="getCallEmp(table,table.tableId)">{{phucVu}} <img
+            src="assets/icon/icon/support_agent_black_24dp.svg" alt="">
+
           </button>
 
+
+          <button class="btn btn-secondary btn-feedbkack" style=";margin-top: 18px;width: 132px">Phản
+            hồi <img src="assets/icon/icon/feedback_black_24dp.svg" alt="">
+          </button>
+
+
         </div>
-      </div>
-    </div>
-  </div>
-  <footer>footer</footer>
-</div>
-
-
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel"><span
-          style="margin-left: auto;margin-right: auto;color: red;text-align: center;font-size: 25px">Cafee sữa đá <img
-          src="assets/icon/icon/local_cafe_black_24dp.svg" alt=""></span></h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <label for="" style="color: blue;font-size:22px ">Nhập vào số lượng</label>
-        <input type="text" class="form-control">
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
-        <button type="button" class="btn btn-primary">Đặt món</button>
       </div>
     </div>
   </div>

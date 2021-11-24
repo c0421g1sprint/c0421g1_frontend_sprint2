@@ -5,6 +5,7 @@ import {Observable} from "rxjs";
 import {IOrders} from "../../entity/IOrders";
 import {IOrderDetail} from "../../entity/IOrderDetail";
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -15,6 +16,8 @@ export class OrderService {
   private urlNewOrder = "http://localhost:8080/api/order/create/orderTable";
   private getNewOrder = "http://localhost:8080/api/order/list/orderNew";
   private urlCreateOrderDetail = "http://localhost:8080/api/order/create/orderDetail";
+  private urlFindOrderDetail = "http://localhost:8080/api/order/orderDetail";
+  private deleteOrderDetail = "http://localhost:8080/api/order/delete/orderDetail";
 
   constructor(private http: HttpClient) {
 
@@ -33,16 +36,24 @@ export class OrderService {
     return this.http.patch(this.urlPay + "/" + id, table);
   }
 
-  createNewOrder(order: IOrders): Observable<IOrders | any> {
+  createNewOrder(order: IOrders): Observable<IOrders | any> {   // tao trc 1 thang order voi 1 table
     return this.http.post(this.urlNewOrder, order);
   }
 
-  getOrder(): Observable<IOrders | any> {
+  getOrder(): Observable<IOrders | any> {   // lay ra thang order moi nhat
     return this.http.get(this.getNewOrder);
   }
 
   createNewOrderDetail(orderDetail: IOrderDetail): Observable<IOrderDetail | any> {
     return this.http.post(this.urlCreateOrderDetail, orderDetail);
+  }
+
+  findByIdOrderDetail(id: number): Observable<IOrderDetail | any> {
+    return this.http.get(this.urlFindOrderDetail + "/" + id);
+  }
+
+  deleteOrderDetailById(id: number): Observable<IOrderDetail | any> {
+    return this.http.delete(this.deleteOrderDetail + "/" + id);
   }
 
 }

@@ -1,15 +1,18 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap');
 
 * {
-  font-family: 'Dancing Script';
+
   /*font-family: 'Patrick Hand';*/
   margin: 0;
   padding: 0;
 }
 
 body {
-  /*background-image: url("/assets/img/background.jpg");*/
+  background-image: url("/assets/img/background.jpg");
   background-size: cover;
+  font-family: 'Dancing Script';
+  max-width: 100%;
 
 }
 
@@ -123,3 +126,7 @@ header ul li:hover {
   background-repeat: no-repeat;
   background-size: cover;
 }
+span{
+  color: red;;
+}
+
