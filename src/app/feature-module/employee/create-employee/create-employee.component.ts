@@ -9,6 +9,7 @@ import {SnackbarService} from "../../../core-module/snackbar/snackbar.service";
 import {AngularFireStorage} from "@angular/fire/storage";
 import {finalize} from "rxjs/operators";
 import {MatDialog} from "@angular/material/dialog";
+import {invalid} from "@angular/compiler/src/render3/view/util";
 
 
 
@@ -20,6 +21,32 @@ import {MatDialog} from "@angular/material/dialog";
 export class CreateEmployeeComponent implements OnInit {
   messAccount:String="";
   levelList:ILevel []=[];
+
+  //thêm tối nay
+  listAccount: any[];
+
+
+  ngOnInit(): void {
+    this.getAllLevel();
+    this.employeeForm.value.employeeImage = this.image;
+    this.getAllListAccount();
+  }
+
+  getAllListAccount(){
+    this.employeeService.listAccount().subscribe(dataAccount =>{
+      console.log(dataAccount)
+      this.listAccount = dataAccount;
+      console.log(this.listAccount);
+    })
+    console.log(this.listAccount);
+  }
+
+  // getAllLevel() {
+  //   this.levelService.findAllLevel().subscribe(dataLevel => {
+  //     this.levelList = dataLevel;
+  //   });
+  // }
+
 
   // selectedFile: File = null;
   image='http://vietsolutionco.com/assets/theme/img/avatar.jpg'
@@ -50,7 +77,7 @@ Validators.pattern('^(090|091|\\(84\\)\\+90|\\(84\\)\\+91)[0-9]{7}$')
 
       employeeImage:new FormControl(''),
       employeeGender:new FormControl('',[Validators.required]),
-      employeeBirthday:new FormControl('',[Validators.required,this.check18]),
+      employeeBirthday:new FormControl('',[Validators.required,this.check18cong]),
 
       employeeSalary:new FormControl('',[Validators.required,Validators.min(1),this.checkSalary]),
       level:new FormControl('',[Validators.required]),
@@ -58,21 +85,67 @@ Validators.pattern('^(090|091|\\(84\\)\\+90|\\(84\\)\\+91)[0-9]{7}$')
         pattern: /^\s?\S+(?: \S+)*\s?$/, msg: 'Không thể nhập nhiều khoảng trắng.'
       }),
         Validators.pattern('^[A-Za-z_]\\w*$'),
-        // this.checkAccount
+        this.checkAccountEmployee,
       ]),
     }
   )
+
+
+  checkSalary(check: AbstractControl) {
+    let salary=check.value;
+    if (salary%100000===0) {
+      return null;
+    } else {
+      return {'overSalary': true};
+    }
+  }
+
+  booleanForm = true;
+  onSearchChange(searchValue: string): void {
+    for (let i = 0; i< this.listAccount.length; i++) {
+      if (searchValue.trim() == this.listAccount[i]) {
+        this.snackBar.showSnackbar("Tên đăng nhập đã được sử dụng.", 'error');
+        this.booleanForm = false;
+        break;
+      } else {
+        this.booleanForm = true;
+        // this.snackBar.showSnackbar("Tên đăng nhập", 'success')
+      }
+    }
+  }
+
+  // checkAccountEmployee(checkAccount: AbstractControl) {
+  //   let accountName=checkAccount.value;
+  //   for(let i=0;i++;i<this.listAccount.length){
+  //      if(this.listAccount[i] != accountName){
+  //        return null
+  //      }
+  //      else {
+  //        return {'oro':true}
+  //      }
+  //   }
+  //
+  // }
+
+  checkAccountEmployee(checkAccount: AbstractControl) {
+    let accountName=checkAccount.value;
+    for(let i=0;i++;i<this.listAccount.length){
+      if(this.listAccount[i] === accountName){
+        console.log(accountName)
+        console.log(this.listAccount)
+        return {'oro':true}
+      }
+    }
+  }
 
   constructor(private employeeService: EmployeeService, private levelService: LevelService, private router: Router,
               private snackBar: SnackbarService,
               private storage: AngularFireStorage,
               private dialog: MatDialog
-  ) { }
-
-  ngOnInit(): void {
-    this.getAllLevel();
-    this.employeeForm.value.employeeImage = this.image;
+  ) {
+      this.getAllListAccount();
   }
+
 
   resetForm() {
     this.employeeForm.reset();
@@ -82,6 +155,7 @@ Validators.pattern('^(090|091|\\(84\\)\\+90|\\(84\\)\\+91)[0-9]{7}$')
     this.levelService.findAllLevel().subscribe(dataLevel => {
       this.levelList = dataLevel;
     });
+    console.log(this.levelList);
   }
 
   public customPatternValid(config: any): ValidatorFn {
@@ -137,20 +211,11 @@ Validators.pattern('^(090|091|\\(84\\)\\+90|\\(84\\)\\+91)[0-9]{7}$')
       {type: 'maxlength', message: 'Tên đăng nhập không tối đa 50 kí tự.'},
       {type: 'pattern', message: 'Tên đăng nhập không bắt đầu là số,không có dấu và phải viết liền.'},
       {type: 'overAccount', message: 'Tên đăng nhập không được là admin hoặc root.'},
+      {type: 'oro', message: 'Tên đăng nhập đã được sử dụng,vui lòng chọn tên khác.'},
     ],
 
   };
 
-
-
-  checkSalary(check: AbstractControl) {
-  let salary=check.value;
-  if (salary%100000===0) {
-    return null;
-  } else {
-    return {'overSalary': true};
-  }
-}
 
   checkAccount(check: AbstractControl){
     if(check.value=='admin'||check.value=='root') {
@@ -161,7 +226,7 @@ Validators.pattern('^(090|091|\\(84\\)\\+90|\\(84\\)\\+91)[0-9]{7}$')
     }
   }
 
-  check18(check: AbstractControl) {
+  check18cong(check: AbstractControl) {
     let birthday = new Date(check.value);
     let age = Date.now() - birthday.getTime() - 86400000;
     const ageDate = new Date(age);
@@ -175,9 +240,11 @@ Validators.pattern('^(090|091|\\(84\\)\\+90|\\(84\\)\\+91)[0-9]{7}$')
     return null;
   }
 
+
+
+
   saveEmployee() {
     const employee=this.employeeForm.value;
-
     if(this.employeeForm.valid){
       this.employeeForm.value.employeeImage = this.image;
       this.employeeService.saveEmployee(employee).subscribe(data => {
@@ -190,12 +257,16 @@ Validators.pattern('^(090|091|\\(84\\)\\+90|\\(84\\)\\+91)[0-9]{7}$')
         if(error.status=='406') {
           this.messAccount="Tên đăng nhập đã tồn tại."
         }
-        this.snackBar.showSnackbar('Tên đăng nhập đã tồn tại,vui lòng tạo tên lại tên khác', 'error');
+        this.snackBar.showSnackbar('Kiểm tra lại thông tin.', 'error');
       });
     }
     else {
       this.snackBar.showSnackbar('Vui lòng kiểm tra lại thông tin đã nhập.', 'error');
     }
+  }
+
+  checKAccount() {
+
   }
 
   onFileSelected(event) {

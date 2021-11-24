@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from "rxjs";
 import {IEmployee} from "../../entity/IEmployee";
+import {ILevel} from "../../entity/ILevel";
 
 @Injectable({
   providedIn: 'root'
@@ -31,4 +32,13 @@ export class EmployeeService {
     return this.http.patch(this.urlEditEmployee, employee);
   }
 
+//  thêm tối nay
+  private urlListAccount='http://localhost:8080/api/employee/listAccountName'
+  listAccount():Observable<String[] | any>{
+    return this.http.get<String[]>(this.urlListAccount);
+  }
+
+  // findAllLevel(): Observable<ILevel[]>{
+  //   return this.http.get<ILevel[]>(this.urlGetLevelList);
+  // }
 }

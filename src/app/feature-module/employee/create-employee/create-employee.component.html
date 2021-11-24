@@ -10,7 +10,7 @@
 
 <div class="container-fluid"
      style="background-image: url('/assets/img/pexels-octavio-gómez-8414072.jpg');
-     min-height: 130vh;font-family: 'Patrick Hand', cursive;background-repeat: no-repeat;background-size: 100%;height: 100%">
+     min-height: 180vh;font-family: 'Patrick Hand', cursive;background-repeat: no-repeat;background-size: 100%;height: 100%">
 
   <form [formGroup]="employeeForm">
 
@@ -51,7 +51,7 @@
               <label for="tendangnhap" style="color:  #e3cc6f" class="font-weight-bold">Tên đăng nhập<span
                 style="color: red">*</span> :
               </label>
-              <input type="text" class="form-control" id="tendangnhap" formControlName="accountName">
+              <input type="text" class="form-control" id="tendangnhap" formControlName="accountName" (input)="onSearchChange($event.target.value)">
 
               <div *ngFor="let valid of validationMessage.accountName">
                 <small style="color: red"
@@ -70,6 +70,8 @@
               </div>
 
               <span style="color: red">{{messAccount}}</span>
+
+
             </div>
           </div>
 
@@ -263,7 +265,7 @@
             </button>
 
             <button type="submit" class="btn btn-warning" mat-dialog-close=""
-                    (click)="saveEmployee()" [disabled]="employeeForm.invalid">
+                    (click)="saveEmployee()" [disabled]="employeeForm.invalid || this.booleanForm == false">
               <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px"
                    viewBox="0 0 24 24" width="24px" fill="#FFFFFF">
                 <rect fill="none" height="24" width="24"/>
