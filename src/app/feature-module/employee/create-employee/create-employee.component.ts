@@ -58,7 +58,7 @@ Validators.pattern('^(090|091|\\(84\\)\\+90|\\(84\\)\\+91)[0-9]{7}$')
         pattern: /^\s?\S+(?: \S+)*\s?$/, msg: 'Không thể nhập nhiều khoảng trắng.'
       }),
         Validators.pattern('^[A-Za-z_]\\w*$'),
-        this.checkAccount
+        // this.checkAccount
       ]),
     }
   )
@@ -188,9 +188,9 @@ Validators.pattern('^(090|091|\\(84\\)\\+90|\\(84\\)\\+91)[0-9]{7}$')
         this.messAccount='';
       }, error => {
         if(error.status=='406') {
-          this.messAccount="tên đăng nhập đã tồn tại"
+          this.messAccount="Tên đăng nhập đã tồn tại."
         }
-        this.snackBar.showSnackbar('Thêm mới thất  bại.', 'error');
+        this.snackBar.showSnackbar('Tên đăng nhập đã tồn tại,vui lòng tạo tên lại tên khác', 'error');
       });
     }
     else {

@@ -16,9 +16,10 @@ export class TestSkillMyselfComponent implements OnInit {
 
   openDialogCreate() {
     let dialogRef = this.dialog.open(CreateEmployeeComponent,{
-      width:'1100px',
+      width:'1200px',
       autoFocus:false,
       maxHeight:'100vh'
+
     });
     dialogRef.afterClosed().subscribe(result => {
       this.ngOnInit();
