@@ -15,4 +15,5 @@ export interface IEmployee {
   level: ILevel;
   account: IAccount;
   ordersSet: IOrders[];
+  accountName:String
 }
