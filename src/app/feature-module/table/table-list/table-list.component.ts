@@ -133,6 +133,7 @@ export class TableListComponent implements OnInit {
 
   openDialogCreate() {
     this.matDialog.open(CreateTableComponent, {
+      panelClass:'my-bg',
       width: '550px'
     })
   }

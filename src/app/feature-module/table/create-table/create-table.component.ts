@@ -22,8 +22,8 @@ export class CreateTableComponent implements OnInit {
   ) {
     this.formAddTable = this.formBuilder.group({
       tableCode: ['', [Validators.required, Validators.pattern("^(TB-)\\d{4}$")]],
-      location: ['', [Validators.required, Validators.pattern("^(Tang-)\\d{1}$")]],
-      maximumCapacity: ['', [Validators.required,Validators.pattern("^\\d{1,20}$")]]
+      location: ['', [Validators.required, Validators.pattern("^(Tầng )\\d{1}$")]],
+      maximumCapacity: ['', [Validators.required,Validators.pattern("^([0-9]|[0-1][0-9])$")]]
     });
   }
 
@@ -32,10 +32,11 @@ export class CreateTableComponent implements OnInit {
 
   addWewTable() {
     this.tableService.addWewTables(this.formAddTable.value).subscribe(data => {
+      console.log(this.formAddTable.value)
       this.snackBar.showSnackbar('Thêm mới thành công', 'success');
       window.location.reload();
     }, error => {
-      this.snackBar.showSnackbar('Thêm mới thất bại tài khoản đã tồn tại', 'error');
+      this.snackBar.showSnackbar('Thêm mới thất bại hoặc bàn đã tồn tại', 'error');
     })
   }
 }

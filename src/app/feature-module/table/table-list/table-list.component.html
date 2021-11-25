@@ -66,14 +66,14 @@
             <td>{{table.tableStatus}}</td>
             <td>{{table.maximumCapacity}}</td>
             <td>
-              <div class="custom-control custom-switch">
-                <input type="checkbox" [checked]="table.availableFlag" [value]="table.availableFlag" class="custom-control-input" >
+              <div class="custom-control custom-switch" >
+                <input type="checkbox" [checked]="table.availableFlag" [value]="table.availableFlag" class="custom-control-input"  >
                 <label class="custom-control-label" ></label>
               </div>
             </td>
             <td>
               <button class="btn btn-warning mr-1" data-toggle="tooltip" data-placement="right"
-                      title="Sửa">
+                      title="Sửa" (click)="editTable(table.tableId)">
                 <img src="/assets/img/edit_note_black_24dp.svg" alt="">
               </button>
               <button class="btn btn-warning text-white" data-toggle="modal" placement="right"

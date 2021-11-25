@@ -14,16 +14,16 @@
               </div>
             </div>
             <input type="text" class="form-control"  formControlName="tableCode"
-                   placeholder="VD: TB-0001">
+                   placeholder="VD: TB-0001" >
           </div>
           <div>
             <small
               *ngIf="formAddTable.controls.tableCode.errors?.required && formAddTable.controls.tableCode.touched"
-              class="text-danger">Vui lòng nhập thông tin
+              class="text-danger" >Vui lòng nhập mã bàn
             </small>
             <small
               *ngIf="formAddTable.controls.tableCode.errors?.pattern && formAddTable.controls.tableCode.touched"
-              class="text-danger">Mã bàn phải đúng ký tự TB-xxxx
+              class="text-danger">Mã bàn phải đúng ký tự TB-xxx
             </small>
           </div>
         </div>
@@ -45,7 +45,7 @@
           <div>
             <small
               *ngIf="formAddTable.controls.location.errors?.required && formAddTable.controls.location.touched"
-              class="text-danger">Vui lòng nhập thông tin
+              class="text-danger">Vui lòng nhập vị trí bàn
             </small>
             <small
               *ngIf="formAddTable.controls.location.errors?.pattern && formAddTable.controls.location.touched"
@@ -66,12 +66,12 @@
               </div>
             </div>
             <input type="text" class="form-control" formControlName="maximumCapacity"
-                   placeholder="VD: 5 người">
+                   placeholder="VD: 5">
           </div>
           <div>
             <small
               *ngIf="formAddTable.controls.maximumCapacity.errors?.required && formAddTable.controls.maximumCapacity.touched"
-              class="text-danger">Vui lòng nhập thông tin
+              class="text-danger">Vui lòng nhập số lượng
             </small>
             <small
               *ngIf="formAddTable.controls.maximumCapacity.errors?.pattern && formAddTable.controls.maximumCapacity.touched"
@@ -82,8 +82,8 @@
       </div>
     </div>
     <br>
-    <div class="float-right">
-      <button mat-dialog-close type="button" class="btn btn-danger" data-dismiss="modal" style="color: black">
+    <div class="float-right ">
+      <button mat-dialog-close type="button" class="btn btn-danger mr-2" data-dismiss="modal" style="color: black">
         <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="-2 1 24 27" width="24px"
              fill="#000000">
           <path d="M0 0h24v24H0V0z" fill="none" opacity=".87"/>
@@ -92,7 +92,7 @@
         </svg>
         Huỷ
       </button>
-      <button type="reset" class="btn btn-warning">
+      <button type="reset" class="btn btn-warning mr-2">
         <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px"
              viewBox="-2 1 24 27" width="24px" fill="#000000">
           <g>
@@ -107,7 +107,7 @@
         </svg>
         Xoá biểu mẫu
       </button>
-      <button type="submit" class="btn btn-info" style="color: black" (click)="addWewTable()">
+      <button type="submit" [disabled]="formAddTable.invalid" class="btn btn-info" style="color: black" (click)="addWewTable()">
         <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px"
              viewBox="-2 1 24 27" width="24px" fill="#000000">
           <rect fill="none" height="24" width="24"/>
