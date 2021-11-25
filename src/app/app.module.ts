@@ -24,7 +24,7 @@ import {CategoryModule} from "./feature-module/category/category.module";
     FeatureModule,
     AppRoutingModule,
     FoodAndDrinkModule,
-    CategoryModule
+    CategoryModule,
     OrderModule
   ],
   providers: [],
