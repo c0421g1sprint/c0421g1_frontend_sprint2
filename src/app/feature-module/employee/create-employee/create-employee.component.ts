@@ -81,9 +81,10 @@ Validators.pattern('^(090|091|\\(84\\)\\+90|\\(84\\)\\+91)[0-9]{7}$')
 
       employeeSalary:new FormControl('',[Validators.required,Validators.min(1),this.checkSalary]),
       level:new FormControl('',[Validators.required]),
-      accountName:new FormControl('',[Validators.required,Validators.minLength(6),Validators.maxLength(50),this.customPatternValid({
-        pattern: /^\s?\S+(?: \S+)*\s?$/, msg: 'Không thể nhập nhiều khoảng trắng.'
-      }),
+      accountName:new FormControl('',[Validators.required,Validators.minLength(6),Validators.maxLength(50),
+      //   this.customPatternValid({
+      //   pattern: /^\s?\S+(?: \S+)*\s?$/, msg: 'Không thể nhập nhiều khoảng trắng.'
+      // }),
         Validators.pattern('^[A-Za-z_]\\w*$'),
         this.checkAccountEmployee,
       ]),
@@ -208,8 +209,8 @@ Validators.pattern('^(090|091|\\(84\\)\\+90|\\(84\\)\\+91)[0-9]{7}$')
     accountName: [
       {type: 'required', message: 'Tên đăng nhập không được để trống.'},
       {type: 'minlength', message: 'Tên đăng nhập tối thiểu phải có 6 kí tự.'},
-      {type: 'maxlength', message: 'Tên đăng nhập không tối đa 50 kí tự.'},
-      {type: 'pattern', message: 'Tên đăng nhập không bắt đầu là số,không có dấu và phải viết liền.'},
+      {type: 'maxlength', message: 'Tên đăng nhập tối đa 50 kí tự.'},
+      {type: 'pattern', message: 'Tên không bắt đầu là số,tên không có dấu,tên không là kí tự đặc biệt,không có khoảng trắng.'},
       {type: 'overAccount', message: 'Tên đăng nhập không được là admin hoặc root.'},
       {type: 'oro', message: 'Tên đăng nhập đã được sử dụng,vui lòng chọn tên khác.'},
     ],

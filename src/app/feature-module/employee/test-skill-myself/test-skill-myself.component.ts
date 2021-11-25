@@ -14,12 +14,12 @@ export class TestSkillMyselfComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
   openDialogCreate() {
     let dialogRef = this.dialog.open(CreateEmployeeComponent,{
       width:'1200px',
       autoFocus:false,
       maxHeight:'100vh'
-
     });
     dialogRef.afterClosed().subscribe(result => {
       this.ngOnInit();
