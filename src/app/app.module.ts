@@ -7,6 +7,9 @@ import {HttpClientModule} from '@angular/common/http';
 import { ShareModule } from './share-module/share.module';
 import { FeatureModule } from './feature-module/feature.module';
 import { AppRoutingModule } from './app-routing.module';
+import {OrderModule} from "./feature-module/order/order.module";
+
+import {FoodAndDrinkModule} from "./feature-module/food-and-drink/food-and-drink.module";
 
 @NgModule({
   declarations: [
@@ -19,6 +22,8 @@ import { AppRoutingModule } from './app-routing.module';
     ShareModule,
     FeatureModule,
     AppRoutingModule,
+    FoodAndDrinkModule,
+    OrderModule
   ],
   providers: [],
   bootstrap: [AppComponent]
