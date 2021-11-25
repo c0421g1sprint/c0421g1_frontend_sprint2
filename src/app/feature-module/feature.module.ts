@@ -21,7 +21,7 @@ import {CategoryModule} from './category/category.module';
     FeedbackModule,
     FoodAndDrinkModule,
     OrderModule,
-    CategoryModule
+    CategoryModule,
     TableModule,
     HomepageModule,
     ShareModule
@@ -34,7 +34,7 @@ import {CategoryModule} from './category/category.module';
     FoodAndDrinkModule,
     OrderModule,
     TableModule,
-    CategoryModule
+    CategoryModule,
     HomepageModule
   ]
 })

@@ -35,7 +35,7 @@ import {HttpClientModule} from '@angular/common/http';
     MatButtonModule,
     MatProgressSpinnerModule,
     RouterModule,
-    MatVideoModule
+    MatVideoModule,
     HttpClientModule,
     AngularFireStorageModule,
     AngularFireDatabaseModule,
@@ -52,7 +52,7 @@ import {HttpClientModule} from '@angular/common/http';
     MatButtonModule,
     RouterModule,
     MatProgressSpinnerModule,
-    MatVideoModule
+    MatVideoModule,
     HttpClientModule,
     AngularFireStorageModule,
     AngularFireDatabaseModule,

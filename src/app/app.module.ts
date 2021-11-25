@@ -26,7 +26,7 @@ import { TableModule} from "./feature-module/table/table.module";
     FeatureModule,
     AppRoutingModule,
     FoodAndDrinkModule,
-    CategoryModule
+    CategoryModule,
     OrderModule
   ],
   providers: [],

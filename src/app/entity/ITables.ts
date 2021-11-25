@@ -10,5 +10,4 @@ export interface ITables {
   availableFlag: boolean;
   deleteFlag: boolean;
   orders: IOrders[];
-  onService: number;
 }
