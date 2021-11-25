@@ -4,6 +4,11 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 /*for snackbar*/
+.error.mat-snack-bar-container{
+  min-width: 250px;
+  background-color: #c82333;
+  color: white;
+}
 .success.mat-snack-bar-container{
   min-width: 250px;
   background-color: #35a028;
@@ -15,6 +20,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   color: black !important;
 }
 
+/*//DanhNT*/
 .my-font-bg .mat-dialog-container {
   font-family: 'Patrick Hand', cursive;
   background-image: url("src/assets/img/detail-bg.png");
@@ -23,9 +29,17 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   height: 100%;
   width: 100%;
 }
+
+/*LamNT*/
 .my-bg .mat-dialog-container {
   background-image: url('src/assets/img/pexels-octavio-gómez-8414072.jpg');
   /*background-size: cover;*/
   /*background-repeat: repeat;*/
+}
+
+.my-bg .mat-dialog-container {
+  background-image: url('src/assets/img/pexels-octavio-gómez-8414072.jpg');
+  background-size: cover;
+  background-repeat: repeat;
 }
 
