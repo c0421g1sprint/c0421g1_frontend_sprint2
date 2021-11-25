@@ -3,35 +3,35 @@
   <div class="container-fluid " style="background-image: url('assets/pexels-octavio-gómez-8414072.jpg');background-size: cover; min-height: 130vh">
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
-        <div class="modal-content"  style="font-family: 'Dancing Script', cursive;
+        <div class="modal-content modal-user"  style="font-family: 'Dancing Script', cursive;
   background-image: url('assets/detail-bg_cleanup.png');
   color: #d4b955;
   background-size: cover;">
           <div class="modal-header">
-            <h1 class="modal-title" id="exampleModalLabel" style="margin-left: 20%"><strong>Xem chi tiết</strong></h1>
+            <h1 class="modal-title" id="exampleModalLabel" style="margin-left: 23%"><strong>Xem chi tiết</strong></h1>
           </div>
           <div class="modal-body">
             <div>
 
               <table id="tbDetail">
                 <tr>
-                  <td  class="tdDetail">Tài khoản</td>
+                  <td class="tdDetail item">Tài khoản</td>
                   <td class="tdDetail">{{employee.account.accountUsername}}</td>
                 </tr>
 
                 <tr>
-                  <td class="tdDetail">Họ và tên</td>
+                  <td class="tdDetail item">Họ và tên</td>
                   <td class="tdDetail">{{employee.employeeName}}</td>
                 </tr>
 
                 <tr>
-                  <td class="tdDetail">Địa chỉ </td>
+                  <td class="tdDetail item">Địa chỉ </td>
                   <td class="tdDetail">{{employee.employeeAddress}}</td>
                 </tr>
 
 
                 <tr>
-                  <td class="tdDetail">Giới tính</td>
+                  <td class="tdDetail item">Giới tính</td>
                   <td class="tdDetail"  [ngSwitch]="employee.employeeGender" >
                     <span id="sp" class="p-0" *ngSwitchCase="1">Nữ </span>
                     <span id="sp1" class="p-0" *ngSwitchCase="0">Nam </span>
@@ -40,19 +40,19 @@
                 </tr>
 
                 <tr>
-                  <td class="tdDetail">Số điện thoại</td>
+                  <td class="tdDetail item">Số điện thoại</td>
                   <td class="tdDetail">{{employee.employeePhone}}</td>
                 </tr>
                 <tr>
-                  <td class="tdDetail">Ngày sinh</td>
-                  <td class="tdDetail">{{employee.employeeBirthday}}</td>
+                  <td class="tdDetail item">Ngày sinh</td>
+                  <td class="tdDetail">{{employee.employeeBirthday | date: "dd/MM/yyyy"}}</td>
                 </tr>
                 <tr>
-                  <td class="tdDetail">Lương</td>
+                  <td class="tdDetail item">Lương</td>
                   <td class="tdDetail">{{employee.employeeSalary}}</td>
                 </tr>
                 <tr>
-                  <td class="tdDetail">Vị trí</td>
+                  <td class="tdDetail item">Vị trí</td>
                   <td class="tdDetail">{{employee.level.levelName}}</td>
                 </tr>
 

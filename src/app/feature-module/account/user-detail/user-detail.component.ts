@@ -19,7 +19,7 @@ export class UserDetailComponent implements OnInit {
               private router: Router,
               private dialog: MatDialog) {
     this.activatedRouter.paramMap.subscribe((paramMap: ParamMap)=> {
-      this.name= paramMap.get('name')
+      this.name= paramMap.get('userName')
       this.employeeService.getUserDetail(this.name).subscribe(next=>{
         this.employee=next
       })
@@ -42,7 +42,7 @@ export class UserDetailComponent implements OnInit {
 
 
   dataEdit(name: string) {
-    this.router.navigateByUrl('/editPass/'+name)
+    this.router.navigateByUrl('/editPass/'+name,{skipLocationChange:true})
     console.log(this.name)
   }
 

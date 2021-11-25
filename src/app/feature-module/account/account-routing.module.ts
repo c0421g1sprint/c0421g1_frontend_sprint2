@@ -5,8 +5,9 @@ import {UserDetailComponent} from "./user-detail/user-detail.component";
 import {EditPasswordComponent} from "./edit-password/edit-password.component";
 
 const routes: Routes = [
+
   {
-    path:":name",component: UserDetailComponent
+    path:":userName",component: UserDetailComponent
   },
   {
     path: "editPass/:name",component: EditPasswordComponent

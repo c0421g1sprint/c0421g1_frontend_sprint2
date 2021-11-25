@@ -17,4 +17,11 @@
   font-size: 18px;
   height: 600px;
 }
+.modal-user {
+  border-radius: 20px;
+}
+.item {
+  font-weight: bolder;
+  font-size: 27px;
 
+}
