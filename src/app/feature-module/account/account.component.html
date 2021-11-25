@@ -1,1 +1,35 @@
-<p>account works!</p>
+<form class="login-form" [formGroup] = "loginForm" (ngSubmit) = "onLogin()">
+  <h1 style="padding-left: 240px; color: white">Đăng nhập</h1>
+  <p class="login-text">
+    <span class="fa-stack fa-lg">
+      <i class="fa fa-circle fa-stack-2x"></i>
+      <i class="fa fa-lock fa-stack-1x"></i>
+    </span>
+  </p>
+  <input type="text" class="login-username" autofocus="true" required="true" formControlName="username" placeholder="Tên tài khoản" style="text-align: center"/>
+  <div class = "errors">
+    <ng-container *ngFor = "let errors of validationMessage.username">
+      <ng-template
+        [ngIf] = "loginForm.get('username').hasError(errors.type) && loginForm.get('username').dirty">
+        <p>{{errors.message}}</p>
+      </ng-template>
+    </ng-container>
+  </div>
+  <input type="password" class="login-password" required="true" placeholder="Mật khẩu" formControlName="password" style="text-align: center" />
+  <div class = "errors">
+    <ng-container *ngFor = "let errors of validationMessage.password">
+      <ng-template
+        [ngIf] = "loginForm.get('password').hasError(errors.type) && loginForm.get('password').dirty">
+        <p>{{errors.message}}</p>
+      </ng-template>
+    </ng-container>
+  </div>
+  <input type="checkbox" [checked] = "saveInfo" (change) = "rememberMe($event.target.checked)" class="form-check-inline" style="margin-left: 270px; margin-top: 20px"><span style="color: white"> Lưu tài khoản </span> <br>
+  <div>
+    <input type="button" [routerLink]="'/'" name="Login" value="Trở lại" class="login-submit rounded"  style="margin-left: 220px; width: 100px"/> &nbsp;&nbsp;&nbsp;
+    <input type="submit" name="Login" value="Xác nhận" class="login-submit rounded" style="width: 100px" />
+  </div>
+</form>
+<a href="#" class="login-forgot-pass" style="font-size: 17px">Quên mật khẩu?</a>
+<div class="underlay-photo"></div>
+<div class="underlay-black"></div>
