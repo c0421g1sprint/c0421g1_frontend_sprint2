@@ -39,5 +39,4 @@ import {CategoryModule} from './category/category.module';
     HomepageModule
   ]
 })
-export class FeatureModule {
-}
+export class FeatureModule { }
