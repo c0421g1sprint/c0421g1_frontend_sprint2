@@ -24,6 +24,6 @@ export class FeedbackService {
 
   //DiepLV
   saveFeedback(feedback: IFeedback): Observable<IFeedback | any> {
-    return this.http.post(this.url2, feedback, this.httpOptions);
+    return this.http.post(this.API_FEED_BACK+"/add", feedback);
   }
 }

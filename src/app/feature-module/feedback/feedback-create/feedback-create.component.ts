@@ -51,6 +51,7 @@ export class FeedbackCreateComponent implements OnInit {
       feedbackContent: this.feedbackForm.get('feedbackContent').value,
       feedbackImage: this.image
     };
+    console.log(this.feedbackForm);
     this.feedbackService.saveFeedback(feedbacks).subscribe(data => {
       console.log(data);
       console.log(this.feedbackForm.value);
