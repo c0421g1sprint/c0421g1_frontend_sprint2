@@ -8,18 +8,20 @@ import {AngularFireStorageModule} from "@angular/fire/storage";
 import {AngularFireDatabaseModule} from "@angular/fire/database";
 import {FeedbackComponent} from "./feedback.component";
 import {FeedbackCreateComponent} from "./feedback-create/feedback-create.component";
+import {MatFormFieldModule} from "@angular/material/form-field";
 
 
 
 @NgModule({
   declarations: [FeedbackCreateComponent, FeedbackComponent],
-  imports: [
-    CommonModule,
-    FeedbackRoutingModule,
-    ShareModule,
-    AngularFireStorageModule,
-    AngularFireDatabaseModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig, "cloud"),
-  ]
+    imports: [
+        CommonModule,
+        FeedbackRoutingModule,
+        ShareModule,
+        AngularFireStorageModule,
+        AngularFireDatabaseModule,
+        AngularFireModule.initializeApp(environment.firebaseConfig, "cloud"),
+        MatFormFieldModule,
+    ]
 })
 export class FeedbackModule { }

@@ -25,7 +25,8 @@ import {TableComponent} from './table/table.component';
     FeedbackModule,
     FoodAndDrinkModule,
     OrderModule,
-    TableModule
+    TableModule,
+    ShareModule
   ],
   exports: [
     AccountModule,

@@ -5,7 +5,7 @@ import {FeedbackCreateComponent} from "./feedback-create/feedback-create.compone
 
 
 const routes: Routes = [ {path:"feedback/create", component: FeedbackCreateComponent},
-  ];
+];
 
 @NgModule({
   imports: [
