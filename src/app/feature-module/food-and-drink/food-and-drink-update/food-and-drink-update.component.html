@@ -1,0 +1,190 @@
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+</style>
+<div class="container-fluid"
+     style="background-image: url('/assets/img/pexels-octavio-gómez-8414072.jpg');
+     min-height: 100vh; font-family: 'Patrick Hand', cursive">
+  <div class="row">
+    <div class="col-lg-3"></div>
+    <div class="col-lg-6 mt-5" style="background-color: white; border: solid black 2px; border-radius: 25px">
+      <h1 class="mt-3" style="color: #e3cc6f; font-size: 40px">Sửa món</h1>
+      <form [formGroup]="editForm" (ngSubmit)="updateFoodAndDrink(editForm)" style="font-size: 20px">
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="name" class="font-weight" style="color: #e3cc6f">
+              Tên món <span style="color: red">*</span> :
+            </label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text">
+                  <img src="assets/icon/emoji_food_beverage_black_24dp.svg" alt="">
+                </div>
+              </div>
+              <input type="text" class="form-control" formControlName="fadName" id="name"
+                     placeholder="VD: Cà phê muối">
+            </div>
+            <div *ngFor="let valid of validationMessage.fadName">
+              <small style="color: red"
+                     *ngIf="editForm.get('fadName').hasError(valid.type) && (editForm.get('fadName').touched || editForm.get('fadName').dirty)">
+                {{valid.message}}
+              </small>
+            </div>
+            <div
+              *ngIf="!editForm.controls.fadName.valid && (editForm.controls.fadName.dirty || editForm.controls.fadName.touched)">
+              <small style="color: red" *ngIf="editForm.controls.fadName.errors.invalidMsg">
+                {{editForm.controls.fadName.errors.invalidMsg}}
+              </small>
+            </div>
+            <small style="color: red"
+                   *ngIf="editForm.controls.fadName.hasError('minlength') &&
+                 (editForm.controls.fadName.touched || editForm.controls.fadName.dirty)">
+              Món tối thiểu 5 chữ cái.
+            </small>
+            <small style="color: red"
+                   *ngIf="editForm.controls.fadName.hasError('maxlength') &&
+                 (editForm.controls.fadName.touched || editForm.controls.fadName.dirty)">
+              Món tối đa 50 chữ cái.
+            </small>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="class" class="font-weight" style="color: #e3cc6f">
+              Nhóm món
+              <span style="color: red">*</span> :
+            </label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <label class="input-group-text" for="class">
+                  <img src="assets/icon/menu_black_24dp.svg" alt="">
+                </label>
+              </div>
+              <select class=" form-control custom-select" id="class" formControlName="category">
+                <option *ngFor="let type of categoryList"
+                        [ngValue]="type"
+                        [selected]="type.categoryName == editForm.controls.category.value.categoryName">{{type.categoryName}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="code" class="font-weight" style="color: #e3cc6f">
+              Mã số món
+              <span style="color: red">*</span> :
+            </label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text">
+                  <img src="/assets/icon/qr_code_black_24dp.svg" alt="">
+                </div>
+              </div>
+              <input type="text" class="form-control" id="code" formControlName="fadCode"
+                     placeholder="VD: CF123">
+            </div>
+            <small style="color: red"
+                   *ngIf="editForm.controls.fadCode.hasError('minlength') &&
+                 (editForm.controls.fadCode.touched || editForm.controls.fadCode.dirty)">
+              Mã món tối thiểu 3 chữ cái.
+            </small>
+            <small style="color: red"
+                   *ngIf="editForm.controls.fadCode.hasError('maxlength') &&
+                 (editForm.controls.fadCode.touched || editForm.controls.fadCode.dirty)">
+              Mã món tối đa 10 chữ cái.
+            </small>
+            <div *ngFor="let valid of validationMessage.fadCode">
+              <small style="color: red"
+                     *ngIf="editForm.get('fadCode').hasError(valid.type) && (editForm.get('fadCode').touched || editForm.get('fadCode').dirty)">
+                {{valid.message}}
+              </small>
+            </div>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="price" class="font-weight" style="color: #e3cc6f">
+              Giá (VNĐ)
+              <span style="color: red">*</span> :
+            </label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text">
+                  <img src="/assets/icon/local_atm_black_24dp.svg" alt="">
+                </div>
+              </div>
+              <input type="text" class="form-control" id="price"
+                     placeholder="VD: 10.000" formControlName="fadPrice">
+            </div>
+            <div *ngFor="let valid of validationMessage.fadPrice">
+              <small style="color: red"
+                     *ngIf="editForm.get('fadPrice').hasError(valid.type) && (editForm.get('fadPrice').touched || editForm.get('fadPrice').dirty)">
+                {{valid.message}}
+              </small>
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="img" class="form-label" style="color: #e3cc6f">Ảnh món <span
+              style="color: red">*</span> :</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text">
+                  <img src="/assets/icon/add_photo_alternate_black_24dp.svg" alt="">
+                </div>
+              </div>
+              <div class="custom-file">
+                <input type="file" class="custom-file-input form-control-file"
+                       id="img" #fileUploader
+                       (change)="showPreview($event)" accept="image/*">
+                <label class="custom-file-label" for="img" data-browse="Chọn tệp">Chọn ảnh món</label>
+              </div>
+            </div>
+            <div *ngFor="let valid of validationMessage.fadImage">
+              <small style="color: red"
+                     *ngIf="editForm.get('fadImage').hasError(valid.type) && (editForm.get('fadImage').touched || editForm.get('fadImage').dirty)">
+                {{valid.message}}
+              </small>
+            </div>
+          </div>
+          <div class="form-group col-md-6">
+            <img [src]="editForm.value.fadImage"
+                 (click)="fileUploader.click()"
+                 *ngIf="foodAndDrink?.fadImage; else elseBlock"
+                 style="height: 250px; width: 260px"
+                 id="output" alt="" class="rounded mx-auto d-block"/>
+            <ng-template #elseBlock>
+              <img src="/assets/img/default-placeholder.png" alt="">
+            </ng-template>
+          </div>
+        </div>
+        <div class="float-right mb-4">
+          <div class="spinner-border text-info mt-2 mr-2" *ngIf="showSpinner">
+            <span class="sr-only">Loading...</span>
+          </div>
+          <button type="button" class="btn btn-warning mr-2" routerLink="/food-and-drink/list">
+            <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px"
+                 viewBox="-2 1 24 27" width="24px" fill="#000000">
+              <g>
+                <path d="M0,0h24v24H0V0z" fill="none"/>
+              </g>
+              <g>
+                <g>
+                  <path
+                    d="M6,13c0-1.65,0.67-3.15,1.76-4.24L6.34,7.34C4.9,8.79,4,10.79,4,13c0,4.08,3.05,7.44,7,7.93v-2.02 C8.17,18.43,6,15.97,6,13z M20,13c0-4.42-3.58-8-8-8c-0.06,0-0.12,0.01-0.18,0.01l1.09-1.09L11.5,2.5L8,6l3.5,3.5l1.41-1.41 l-1.08-1.08C11.89,7.01,11.95,7,12,7c3.31,0,6,2.69,6,6c0,2.97-2.17,5.43-5,5.91v2.02C16.95,20.44,20,17.08,20,13z"/>
+                </g>
+              </g>
+            </svg>
+            Quay lại
+          </button>
+          <button type="submit" class="btn btn-info" style="color: black">
+            <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px"
+                 viewBox="-2 1 24 27" width="24px" fill="#000000">
+              <rect fill="none" height="24" width="24"/>
+              <path
+                d="M12,9L12,9c0.55,0,1-0.45,1-1V6h2c0.55,0,1-0.45,1-1v0c0-0.55-0.45-1-1-1h-2V2c0-0.55-0.45-1-1-1h0c-0.55,0-1,0.45-1,1v2H9 C8.45,4,8,4.45,8,5v0c0,0.55,0.45,1,1,1h2v2C11,8.55,11.45,9,12,9z M7,18c-1.1,0-1.99,0.9-1.99,2S5.9,22,7,22s2-0.9,2-2S8.1,18,7,18 z M17,18c-1.1,0-1.99,0.9-1.99,2s0.89,2,1.99,2s2-0.9,2-2S18.1,18,17,18z M8.1,13h7.45c0.75,0,1.41-0.41,1.75-1.03l3.24-6.14 c0.25-0.48,0.08-1.08-0.4-1.34v0c-0.49-0.27-1.1-0.08-1.36,0.41L15.55,11H8.53L4.27,2H2C1.45,2,1,2.45,1,3v0c0,0.55,0.45,1,1,1h1 l3.6,7.59l-1.35,2.44C4.52,15.37,5.48,17,7,17h11c0.55,0,1-0.45,1-1v0c0-0.55-0.45-1-1-1H7L8.1,13z"/>
+            </svg>
+            Chỉnh sửa món
+          </button>
+        </div>
+      </form>
+    </div>
+    <div class="col-lg-3"></div>
+  </div>
+</div>

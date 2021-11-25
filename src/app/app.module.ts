@@ -9,6 +9,10 @@ import { FeatureModule } from './feature-module/feature.module';
 import { AppRoutingModule } from './app-routing.module';
 import {registerLocaleData} from "@angular/common";
 import localeVi from '@angular/common/locales/vi'
+import {OrderModule} from "./feature-module/order/order.module";
+
+import {FoodAndDrinkModule} from "./feature-module/food-and-drink/food-and-drink.module";
+import {CategoryModule} from "./feature-module/category/category.module";
 
 registerLocaleData(localeVi, "vi-VN");
 @NgModule({
@@ -21,7 +25,10 @@ registerLocaleData(localeVi, "vi-VN");
     HttpClientModule,
     ShareModule,
     FeatureModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FoodAndDrinkModule,
+    CategoryModule,
+    OrderModule
   ],
   providers: [],
   bootstrap: [AppComponent]

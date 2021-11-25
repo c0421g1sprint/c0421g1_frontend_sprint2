@@ -15,3 +15,17 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   color: black !important;
 }
 
+.my-font-bg .mat-dialog-container {
+  font-family: 'Patrick Hand', cursive;
+  background-image: url("src/assets/img/detail-bg.png");
+  background-size: auto;
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 100%;
+}
+.my-bg .mat-dialog-container {
+  background-image: url('src/assets/img/pexels-octavio-gómez-8414072.jpg');
+  /*background-size: cover;*/
+  /*background-repeat: repeat;*/
+}
+
