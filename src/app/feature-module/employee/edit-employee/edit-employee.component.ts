@@ -21,6 +21,8 @@ export class EditEmployeeComponent implements OnInit {
   messAccount: String = "";
   showSpinner = false;
 
+  salary:number;
+
   selectedFile: File = null;
   id: number;
   image;

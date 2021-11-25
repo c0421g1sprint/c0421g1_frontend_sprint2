@@ -19,6 +19,13 @@ import { TableComponent } from './feature-module/table/table.component';
 import { FeatureModule } from './feature-module/feature.module';
 import { AppRoutingModule } from './app-routing.module';
 
+
+//TỰ THÊM VÀO PHUCnK
+import localeVi from '@angular/common/locales/vi';
+import {registerLocaleData} from "@angular/common";
+
+registerLocaleData(localeVi, "vi-VN");
+
 @NgModule({
   declarations: [
     AppComponent,

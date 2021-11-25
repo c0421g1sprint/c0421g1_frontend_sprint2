@@ -25,6 +25,8 @@ export class CreateEmployeeComponent implements OnInit {
   //thêm tối nay
   listAccount: any[];
 
+  salary:number;
+
 
   ngOnInit(): void {
     this.getAllLevel();
@@ -256,9 +258,10 @@ Validators.pattern('^(090|091|\\(84\\)\\+90|\\(84\\)\\+91)[0-9]{7}$')
         this.messAccount='';
       }, error => {
         if(error.status=='406') {
-          this.messAccount="Tên đăng nhập đã tồn tại."
+          this.messAccount="Tên đăng nhập đã tồn tại,vui lòng chọn tên khác và bấm thêm mới để biết tên hơp lệ hay không."
+        }else{ this.snackBar.showSnackbar('Kiểm tra lại thông tin.', 'error');
         }
-        this.snackBar.showSnackbar('Kiểm tra lại thông tin.', 'error');
+
       });
     }
     else {

@@ -10,20 +10,20 @@ import {CreateEmployeeComponent} from "../create-employee/create-employee.compon
 export class TestSkillMyselfComponent implements OnInit {
 
   constructor( private dialog: MatDialog) { }
-
   ngOnInit(): void {
   }
 
-
   openDialogCreate() {
-    let dialogRef = this.dialog.open(CreateEmployeeComponent,{
+    // let dialogRef = this.dialog.open(CreateEmployeeComponent,{
+
+      this.dialog.open(CreateEmployeeComponent,{
       width:'1200px',
       autoFocus:false,
       maxHeight:'100vh'
     });
-    dialogRef.afterClosed().subscribe(result => {
-      this.ngOnInit();
-    })
+    // dialogRef.afterClosed().subscribe(result => {
+    //   this.ngOnInit();
+    // })
   }
 
 }
