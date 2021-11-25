@@ -14,7 +14,6 @@ const routes: Routes = [
       //Phuc router
       {path: 'createEmployee', component: CreateEmployeeComponent},
       {path: 'updateEmployee/:id', component: EditEmployeeComponent},
-
       {path:'testEmployee',component:TestSkillMyselfComponent},
 
     ]},
