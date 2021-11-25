@@ -4,15 +4,29 @@
   </a>
 
   <div class="ml-auto" id="navbarText">
-    <a class="navbar-text lec-gold lec-gold-li">
-      Đăng nhập
-    </a>
+    <div *ngIf="!this.username" >
+      <a [routerLink]="['/login']">Đăng nhập</a>
+    </div>
+    <div *ngIf="this.username" class="nav-item dropdown" >
+      <a class="nav-link dropdown-toggle" data-toggle="dropdown"
+         aria-haspopup="true" aria-expanded="false">
+        Chào {{this.username}}
+      </a>
+      <div class="dropdown-menu" >
+        <a class="dropdown-item" data-toggle="modal"  data-target="#exampleModal" > Đăng xuất </a>
+        <a  class="dropdown-item" [routerLink]="['account','editPass', this.username]">Đổi mật khẩu</a>
+        <a *ngIf="role.indexOf('ROLE_USER') != -1" class="dropdown-item" [routerLink]="['teacher', 'update']" >Thông tin cá nhân</a>
+      </div>
+    </div>
     <a class="navbar-text lec-gold lec-gold-li px-2" title="Menu">
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
-        <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-list"
+           viewBox="0 0 16 16">
+        <path fill-rule="evenodd"
+              d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
       </svg>
     </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+            aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
   </div>
