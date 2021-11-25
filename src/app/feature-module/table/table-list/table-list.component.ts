@@ -6,6 +6,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {Router} from "@angular/router";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {DialogDeleteComponent} from "../../../share-module/dialog-delete/dialog-delete.component";
+import {CreateTableComponent} from "../create-table/create-table.component";
 
 @Component({
   selector: 'app-table-list',
@@ -34,6 +35,10 @@ export class TableListComponent implements OnInit {
 
   ngOnInit(): void {
     //HauPT do at 21/11/2021
+    this.currentPage = 0;
+    this.totalPage = 0;
+    this.tableStatus = '';
+    this.tableCode = '';
    this.getTableList(this.currentPage);
   }
 
@@ -78,7 +83,11 @@ export class TableListComponent implements OnInit {
       }
     } else {
       this.currentPage = 0;
-      this.getTableList(this.currentPage);
+      if (this.tableCode == '' && this.tableStatus == ''){
+        this.getTableList(this.currentPage);
+      } else {
+        this.getSearch();
+      }
       this.snackBar.showSnackbar("Trang bạn nhập vào không có","error");
     }
   }
@@ -99,9 +108,10 @@ export class TableListComponent implements OnInit {
   //HauPT do delete table at 23/11/2021
   deleteTable(tableId: number){
     this.tableService.deleteTables(tableId).subscribe(next => {
+      this.ngOnInit();
       this.snackBar.showSnackbar("Xoá thành công!!", "success");
     }, error => {
-      this.snackBar.showSnackbar("Không tồn tại dữ liệu học sinh", "error");
+      this.snackBar.showSnackbar("Không tồn tại dữ liệu bàn", "error");
     })
   }
 
@@ -117,8 +127,17 @@ export class TableListComponent implements OnInit {
     dialogRef.afterClosed().subscribe(next => {
       if (next == 'yes') {
         this.deleteTable(tableId);
-        this.ngOnInit()
       }
     })
+  }
+
+  openDialogCreate() {
+    this.matDialog.open(CreateTableComponent, {
+      width: '550px'
+    })
+  }
+
+  editTable(tableId: number) {
+    this.router.navigate(['table/edit/' + tableId])
   }
 }
