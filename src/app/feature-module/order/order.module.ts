@@ -7,23 +7,18 @@ import { OrderListComponent } from './order-list/order-list.component';
 import { OrderComponent } from "./order.component";
 import { OrderDetailComponent } from './order-detail/order-detail.component';
 import { MatGridListModule } from "@angular/material/grid-list";
-import { IncomeStatisticsComponent } from './income-statistics/income-statistics.component';
 import { ChartsModule } from "ng2-charts";
-
 
 
 
 @NgModule({
     declarations: [IncomeStatisticsComponent, OrderComponent,OrderListComponent, OrderDetailComponent],
-    exports: [
-        IncomeStatisticsComponent
-    ],
-    imports: [
-        CommonModule,
-        OrderRoutingModule,
-        ShareModule,
-      ChartsModule,
-      MatGridListModule
-    ]
+  imports: [
+    CommonModule,
+    OrderRoutingModule,
+    ShareModule,
+    ChartsModule,
+    MatGridListModule
+  ]
 })
 export class OrderModule { }

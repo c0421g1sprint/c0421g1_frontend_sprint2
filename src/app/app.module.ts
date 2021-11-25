@@ -7,12 +7,14 @@ import {HttpClientModule} from '@angular/common/http';
 import { ShareModule } from './share-module/share.module';
 import { FeatureModule } from './feature-module/feature.module';
 import { AppRoutingModule } from './app-routing.module';
-import {registerLocaleData} from "@angular/common";
-import localeVi from '@angular/common/locales/vi'
+
+
 import {OrderModule} from "./feature-module/order/order.module";
 
 import {FoodAndDrinkModule} from "./feature-module/food-and-drink/food-and-drink.module";
 import {CategoryModule} from "./feature-module/category/category.module";
+import localeVi from '@angular/common/locales/vi';
+import {registerLocaleData} from "@angular/common";
 
 registerLocaleData(localeVi, "vi-VN");
 @NgModule({

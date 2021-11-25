@@ -21,12 +21,11 @@ export class IncomeStatisticsComponent implements OnInit {
   public barChartType = "bar";
   public barChartOptions = {
     scaleShowVerticalLines: false,
-    responsive: true
+    responsive: true,
   }
   public barChartLabels = ["Thu nhập được tính", "Hôm nay", "Tuần này", "Tháng này", "Năm này"];
   public barChartLegend  = false;
   public barChartData = [{data: [0,0,0,0,0]}];
-
 
   constructor(private orderService: OrderService,
               private snackBarService: SnackbarService,) {
@@ -75,8 +74,25 @@ export class IncomeStatisticsComponent implements OnInit {
         }
       },
       error => {
+      if(error.status == "406"){
         this.incomeWithDateDto.incomeWithDate = 0;
+        this.barChartData[0].data = [
+          0,
+          this.statisticsIncome[0].incomes,
+          this.statisticsIncome[1].incomes,
+          this.statisticsIncome[2].incomes,
+          this.statisticsIncome[3].incomes];
+        this.snackBarService.showSnackbar("Ngày bắt đầu phải trước ngày kết thúc", 'error');
+      }else {
+        this.incomeWithDateDto.incomeWithDate = 0;
+        this.barChartData[0].data = [
+          0,
+          this.statisticsIncome[0].incomes,
+          this.statisticsIncome[1].incomes,
+          this.statisticsIncome[2].incomes,
+          this.statisticsIncome[3].incomes];
         this.snackBarService.showSnackbar("Vui lòng nhập ngày bắt đầu và ngày kết thúc", 'error');
+      }
       });
   }
 }
