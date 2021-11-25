@@ -9,8 +9,7 @@ import {BehaviorSubject, Observable} from "rxjs";
 export class FeedbackService {
 
   private url2 = "http://localhost:8080/api/feed-back/add";
-  private url1 = "http://localhost:8080/api/feed-back";
-  private API_FEED_BACK = 'http://localhost:8080/api/feed-back';
+
 
 
   private httpOptions;
@@ -23,23 +22,7 @@ export class FeedbackService {
   saveFeedback(feedback: IFeedback): Observable<IFeedback | any> {
     return this.http.post(this.url2, feedback, this.httpOptions);
   }
-  //check code trùng:
-  isCodeDuplicated(feedbackCode: String): Observable<IFeedback | any> {
-    return this.http.get(`${this.url1}/find-class-room?feedbackCode=${feedbackCode}`, this.httpOptions)
-  }
-  private codeService = new BehaviorSubject('');
-  currentFeedback = this.codeService.asObservable();
 
-  changeCode(feedbackCode: string) {
-    this.codeService.next(name);
-  }
-  findAllFeedBack(inputDate : String, currentPage : number): Observable<IFeedback[] | any> {
-    return this.http.get(this.API_FEED_BACK + '/list-by-date/' + inputDate +'/?page='+ currentPage);
-  }
-
-  findFeedBackById(id : number) : Observable<IFeedback> | any{
-    return this.http.get(this.API_FEED_BACK + "/find-feed-back-by-id/" + id);
-  }
 
 
 }
