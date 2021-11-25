@@ -33,8 +33,8 @@ export class MenuComponent implements OnInit {
   public cartItemList: any = [];
   public productList = new BehaviorSubject<any>([]);
   public product: any;
-
-
+  nameSearch: string;
+  a: string
   quantity: number = 1;
   public table: ITables;
   // order
@@ -82,20 +82,20 @@ export class MenuComponent implements OnInit {
 
   }
 
-  getAllCategory() {
+  getAllCategory() {  //BaoHG
     this.categoryService.getAll().subscribe(data => {
       this.ListCategory = data;
     })
   }
 
-  getAllFood() {
+  getAllFood() { //BaoHG
     this.foodAndDrinkService.getAllFoodAndDrink().subscribe(data => {
       this.FoodAndDrink = data;
       this.totalLength = data.length;
     })
   }
 
-  getAllFoodTheoIdCategory(id: number) {
+  getAllFoodTheoIdCategory(id: number) { //BaoHG
     this.foodAndDrinkService.getFoodAndDinkTheoCategory(id).subscribe(dataFood => {
       this.FoodAndDrink = dataFood;
       this.totalLength = dataFood.length;
@@ -106,7 +106,7 @@ export class MenuComponent implements OnInit {
   }
 
 
-  addToCart(product: any) {
+  addToCart(product: any) { //BaoHG
 
     let check = false;
     let obj = [];
@@ -170,7 +170,7 @@ export class MenuComponent implements OnInit {
     console.log(this.obj2);
   }
 
-  truCart(product: any) {
+  truCart(product: any) { //BaoHG
 
     let check = false;
 
@@ -203,21 +203,7 @@ export class MenuComponent implements OnInit {
   }
 
 
-  // removeCart(product: any) {
-  //   console.log(this.time);
-  //   this.cartItemList.map((a: any, index: any) => {
-  //     if (product.fadName === a.fadName) {
-  //       if (this.time <= 0) {
-  //         alert("Món của bn đã làm xong");
-  //
-  //       } else {
-  //         this.cartItemList.splice(index, 1);
-  //       }
-  //     }
-  //   })
-  // }
-
-  removeCartDialog(fadId: number, fadName: string, quantity: number, product: any) {
+  removeCartDialog(fadId: number, fadName: string, quantity: number, product: any) { //BaoHG
     let dialog = this.dialog.open(DeleteOrderComponent, {
       data: {
         id: fadId,
@@ -245,27 +231,27 @@ export class MenuComponent implements OnInit {
   }
 
 
-  getProduct() {
+  getProduct() { //BaoHG
     return this.productList.asObservable();
   }
 
-  getTable() {
+  getTable() { //BaoHG
 
     this.tableService.randomTableNull().subscribe(next => {
       this.table = next;
       console.log(this.table);
-      this.createTableNewOrder();
+      // this.createTableNewOrder();
 
     })
   }
 
-  getDate() {
+  getDate() { //BaoHG
     let date = new Date()
     console.log(this.dateNow);
     this.dateNow = date.getDate() + "/" + "11" + "/" + date.getFullYear()
   }
 
-  getCallEmp(table: ITables, id: number) {
+  getCallEmp(table: ITables, id: number) { //BaoHG
     this.orderService.callEmp(table, id).subscribe(data => {
       console.log(data);
     });
@@ -273,7 +259,7 @@ export class MenuComponent implements OnInit {
 
   }
 
-  getCallFood(table: ITables, id: number) {
+  getCallFood(table: ITables, id: number) { //BaoHG
     this.orderService.callFood(table, id).subscribe(next => {
       console.log(next);
     })
@@ -282,14 +268,14 @@ export class MenuComponent implements OnInit {
 
   }
 
-  getCallPay(table: ITables, id: number) {
+  getCallPay(table: ITables, id: number) { //BaoHG
     this.orderService.callPay(table, id).subscribe(next => {
       console.log(next);
     })
     this.thanhtoan = 'Đang chờ thanh toán';
   }
 
-  createTableNewOrder() {
+  createTableNewOrder() { //BaoHG
     this.orderForm.value.tables = this.table;
     let orderNew: IOrders | any = {
       tables: this.table
@@ -301,7 +287,7 @@ export class MenuComponent implements OnInit {
     })
   }
 
-  getOrder() {
+  getOrder() {  //BaoHG
     this.orderService.getOrder().subscribe(data => {
       this.orderList = data;
       console.log(data);
@@ -309,7 +295,8 @@ export class MenuComponent implements OnInit {
 
   }
 
-  newOrderDetail() {
+
+  newOrderDetail() {  //BaoHG
 
     this.orderService.getOrder().subscribe(data => {
       this.orderList = data;
@@ -352,4 +339,23 @@ export class MenuComponent implements OnInit {
     })
   }
 
+  valueInput($event: any) { //BaoHG
+    this.a = $event.target.value;
+  }
+  searchFoodAndDrinkAndMoney() {  //BaoHG
+    if (this.a == "") {
+      this.getAllFood();
+    }
+    this.foodAndDrinkService.searchFood(this.a).subscribe(data => {
+      this.FoodAndDrink = data;
+
+
+    }, error => {
+      if (this.a == "") {
+        console.log("")
+      } else {
+        this.snackBar.showSnackbar("không có dữ liệu", "error");
+      }
+    })
+  }
 }

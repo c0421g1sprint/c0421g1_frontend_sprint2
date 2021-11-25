@@ -14,6 +14,7 @@ body {
   font-family: 'Dancing Script';
   max-width: 100%;
 
+
 }
 
 .container-fruid {
@@ -33,7 +34,9 @@ header ul {
 header nav ul li {
 
 }
-
+.form-control{
+  width: 250px;
+}
 .navbar {
   height: 85px;
 }

@@ -13,7 +13,7 @@ export class CategoryService {
 
   }
 
-  getAll(): Observable<ICategory | any> {
+  getAll(): Observable<ICategory | any> {  //BaoHG
     return this.http.get(this.urlCategory);
   }
 }

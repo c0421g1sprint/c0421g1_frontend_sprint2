@@ -10,10 +10,22 @@
 </head>
 <body>
 <div class="container-fruid">
+
+  <div class="row">
+    <div class="col-md-12"></div>
+    <form class="form-inline my-2 my-lg-0" style="margin-left: 600px">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" (change)="valueInput($event)">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="searchFoodAndDrinkAndMoney()">Search</button>
+    </form>
+
+  </div>
+
   <div class="row ">
+
     <div class="col-2">
       <div class="row">
         <div class="col-12">
+
 
 
           <ul class="list-group" *ngFor="let objCategory of ListCategory">
@@ -28,6 +40,7 @@
         </div>
       </div>
     </div>
+
 
     <div class="col-5">
       <div class="row">
@@ -69,8 +82,14 @@
     </div>
 
     <div class="col-md-5">
-      <div class="row">
 
+      <p style="color: tan;font-size: 30px;text-align: center">Số bàn: <span style="color: Yellow">{{table.tableCode}}</span></p><br/>
+
+      <p style="color: tan;font-size: 30px;text-align: center">Ngày: <span style="color: Yellow">{{dateNow}} </span></p>
+      <div class="row">
+        <button class="btn btn-secondary btn-feedbkack" style=";margin-top: -18px;width: 132px">Phản
+          hồi <img src="assets/icon/icon/feedback_black_24dp.svg" alt="">
+        </button>
         <table class="table table-hover table-dark text-center">
           <thead>
           <tr>
@@ -84,7 +103,7 @@
 
           </tr>
           </thead>
-          <tbody>
+          <tbody *ngIf="product != null else block">
 
           <tr *ngFor="let objFood of product;let i = index">
             <th scope="row">{{i + 1}}</th>
@@ -115,36 +134,39 @@
           </tr>
           </tbody>
 
+          <ng-template #block>
+            <span style="text-align: center;margin-left: auto;margin-right: auto;font-size: 25px">Giỏ hàng đang trống</span>
+          </ng-template>
+
         </table>
 
-        <nav>
-          <button type="button" class="btn btn-info"
-                  (click)="newOrderDetail()"
-                  (click)="getCallFood(table,table.tableId)"  *ngIf="product != null">Gọi Món
-            <img src="/assets/icon/icon/local_dining_black_24dp.svg" alt="">
-          </button>
-        </nav>
 
-        <!--        <nav aria-label="Page navigation example"-->
-        <!--             style="margin-top: 25px;margin-left: auto;margin-right: auto">-->
-        <!--          <ul class="pagination">-->
-        <!--            <li class="page-item"><a class="page-link" href="#"><img-->
-        <!--              src="assets/icon/icon/skip_previous_black_24dp.svg" alt="" width="16px"></a></li>-->
-        <!--            <li class="page-item"><a class="page-link" href="#">1</a></li>-->
-        <!--            <li class="page-item"><a class="page-link" href="#">2</a></li>-->
-        <!--            <li class="page-item"><a class="page-link" href="#">3</a></li>-->
-        <!--            <li class="page-item"><a class="page-link" href="#"><img-->
-        <!--              src="assets/icon/icon/skip_next_black_24dp.svg" alt="" width="16px"></a></li>-->
-
-        <!--          </ul>-->
-
-        <!--        </nav>-->
 
         <nav>
-          <button class="btn btn-success " style="margin-left: 65px;margin-top: -5px;width: auto;margin-left: 500px"
-                  (click)="getCallPay(table,table.tableId)"  *ngIf="check === true">{{thanhtoan}} <img
-            src="assets/icon/icon/paid_black_24dp.svg" alt=""></button>
+          <ul>
+            <li style="margin-top: 20px">  <button type="button" class="btn " style="background: #F781F3;width: 140px"
+                          (click)="getCallEmp(table,table.tableId)">{{phucVu}} <img
+              src="assets/icon/icon/support_agent_black_24dp.svg" alt="">
+
+            </button>
+            </li>
+            <li style="margin-top: 20px">
+              <button type="button" class="btn btn-info"
+                      (click)="newOrderDetail()"
+                      (click)="getCallFood(table,table.tableId)"  *ngIf="product != null" style="width: 140px">Gọi Món
+                <img src="/assets/icon/icon/local_dining_black_24dp.svg" alt="">
+              </button>
+            </li>
+            <li style="margin-top: 20px">
+              <button class="btn btn-success" style="width: 140px"
+                      (click)="getCallPay(table,table.tableId)"  *ngIf="check === true">{{thanhtoan}} <img
+                src="assets/icon/icon/paid_black_24dp.svg" alt=""></button>
+            </li>
+          </ul>
+
+
         </nav>
+
 
 
 
@@ -153,24 +175,15 @@
 
       <div class="row" style="margin-top: 25px">
         <div class="col-md-3">
-          <p style="color: tan">Số bàn: <span style="color: Yellow">{{table.tableCode}}</span></p><br/>
 
-          <p style="color: tan">Ngày: <span style="color: Yellow">{{dateNow}} </span></p>
         </div>
 
         <div class="col-4">
 
 
-          <button type="button" class="btn " style="background: #F781F3"
-                  (click)="getCallEmp(table,table.tableId)">{{phucVu}} <img
-            src="assets/icon/icon/support_agent_black_24dp.svg" alt="">
-
-          </button>
 
 
-          <button class="btn btn-secondary btn-feedbkack" style=";margin-top: 18px;width: 132px">Phản
-            hồi <img src="assets/icon/icon/feedback_black_24dp.svg" alt="">
-          </button>
+
 
 
         </div>
