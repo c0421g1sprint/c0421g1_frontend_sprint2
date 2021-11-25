@@ -1,0 +1,49 @@
+
+.body-bg {
+  font-family: 'Patrick Hand', cursive;
+  background-image: url("src/assets/img/pexels-octavio-gómez-8414072.jpg");
+  background-size: auto;
+  background-repeat: no-repeat;
+  color: #e3cc6f;
+  height: 100%;
+}
+
+th {
+  font-size: 25px;
+}
+
+td {
+  font-size: 20px;
+}
+
+label {
+  font-size: 20px;
+}
+
+table {
+  min-width: 1000px;
+}
+
+.animate:hover {
+  color: white;
+  background-color: #EA272D;
+}
+
+.text {
+  display: block;
+  width: 150px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.pagination-item {
+  height: 100%;
+}
+
+.my-font-size {
+  font-weight: bolder;
+  font-size: 25px;
+}
+
+
