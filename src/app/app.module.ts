@@ -7,8 +7,10 @@ import {HttpClientModule} from '@angular/common/http';
 import { ShareModule } from './share-module/share.module';
 import { FeatureModule } from './feature-module/feature.module';
 import { AppRoutingModule } from './app-routing.module';
-import {ChartsModule} from "ng2-charts";
+import {registerLocaleData} from "@angular/common";
+import localeVi from '@angular/common/locales/vi'
 
+registerLocaleData(localeVi, "vi-VN");
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,8 +21,7 @@ import {ChartsModule} from "ng2-charts";
     HttpClientModule,
     ShareModule,
     FeatureModule,
-    AppRoutingModule,
-    ChartsModule
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

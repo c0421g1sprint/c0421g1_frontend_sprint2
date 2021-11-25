@@ -21,12 +21,3 @@ label {
 button {
   font-size: 20px;
 }
-.container-fluid {
-  background-image: url("../../../../assets/img/backgroud.jpg");
-  background-size: 100%;
-  background-repeat: no-repeat;
-  min-height: 800px;
-  min-width: 1000px;
-  height: 100%;
-  color: #e3cc6f;
-}
