@@ -49,7 +49,7 @@
                 </tr>
                 <tr>
                   <td class="tdDetail item">Lương</td>
-                  <td class="tdDetail">{{employee.employeeSalary}}</td>
+                  <td class="tdDetail">{{employee.employeeSalary | currency: 'VND' :'symbol' : '1.0-0'}}</td>
                 </tr>
                 <tr>
                   <td class="tdDetail item">Vị trí</td>
