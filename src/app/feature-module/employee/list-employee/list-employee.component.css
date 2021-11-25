@@ -21,7 +21,7 @@ th {
 
 .container-fluid {
   font-family: 'Patrick Hand', cursive;
-  background-image: url("/assets/img/pexels-octavio-gómez-8414072.jpg");
+  background-image: url("src/assets/img/pexels-octavio-gómez-8414072.jpg");
   background-size: cover;
 
 }
