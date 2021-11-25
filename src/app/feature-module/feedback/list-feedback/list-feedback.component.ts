@@ -34,7 +34,7 @@ export class ListFeedbackComponent implements OnInit {
   findAllFeedBackList(){
     this.myDate = this.datePipe.transform(this.myDate, 'yyyy-MM-dd');
     this.feedbackService.findAllFeedBack(this.inputDate,this.currentPage).subscribe(next =>{
-      console.log(next.totalPages)
+      console.log(next.totalPages);
       this.totalPages = next.totalPages;
       this.feedBackList = next.content;
       console.log(this.feedBackList)

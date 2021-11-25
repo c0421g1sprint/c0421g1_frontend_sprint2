@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ICategory} from "../../../entity/ICategory";
 import {CategoryService} from "../../../core-module/food_and_drink/category.service";
 import {SnackbarService} from "../../../core-module/snackbar/snackbar.service";
@@ -28,7 +28,8 @@ export class ListCategoryComponent implements OnInit {
   constructor(private categoryService: CategoryService,
               private snackBar: SnackbarService,
               private dialog: MatDialog,
-              private router : Router) { }
+              private router: Router) {
+  }
 
   ngOnInit(): void {
     this.viewAllCategory(this.pageObj);
@@ -36,9 +37,9 @@ export class ListCategoryComponent implements OnInit {
   }
 
   //hien thi danh sach category - LinhDN
-  viewAllCategory(pageObj: any){
-    if ((this.code||this.name)!=""){
-      if (!(this.code==this.oldCode&&this.name==this.oldName)){
+  viewAllCategory(pageObj: any) {
+    if ((this.code || this.name) != "") {
+      if (!(this.code == this.oldCode && this.name == this.oldName)) {
         this.pageObj.page = 0;
         this.oldName = this.name;
         this.oldCode = this.code;
@@ -46,14 +47,14 @@ export class ListCategoryComponent implements OnInit {
     }
     let name = this.name.trim();
     let code = this.code.trim();
-    this.categoryService.viewAllCategory(pageObj,code,name).subscribe(data =>{
+    this.categoryService.viewAllCategory(pageObj, code, name).subscribe(data => {
       console.log(data);
       this.responsePage = data;
       this.categoryList = this.responsePage.content;
       this.totalPages = this.responsePage.totalPages;
       this.totalElement = this.responsePage.totalElement;
-    },error => {
-      this.snackBar.showSnackbar("Không tìm thấy danh mục sản phẩm","error");
+    }, error => {
+      this.snackBar.showSnackbar("Không tìm thấy danh mục sản phẩm", "error");
     })
   }
 
@@ -65,6 +66,7 @@ export class ListCategoryComponent implements OnInit {
   getCode($event: any) {
     this.code = $event.target.value
   }
+
 //lay name tu form - LinhDN
   getName($event: any) {
     this.name = $event.target.value;
@@ -72,31 +74,31 @@ export class ListCategoryComponent implements OnInit {
 
   //xoa categogy - LinhDN
   openDialogDelete(categoryName: string, categoryId: number) {
-    let dialog =this.dialog.open(DialogDeleteComponent, {
+    let dialog = this.dialog.open(DialogDeleteComponent, {
       data: {
         id: categoryId,
         name: categoryName,
         object: "nhóm món"
       }
     });
-  dialog.afterClosed().subscribe(nextClose=>{
-    if (nextClose == `true`) {
-      this.categoryService.delete(categoryId, this.category).subscribe(data => {
-        console.log(data);
-        this.snackBar.showSnackbar("Xoá nhóm món " + name + " thành công", "success");
-        this.ngOnInit();
-      })
-    }
-  })
+    dialog.afterClosed().subscribe(nextClose => {
+      if (nextClose == `true`) {
+        this.categoryService.delete(categoryId, this.category).subscribe(data => {
+          console.log(data);
+          this.snackBar.showSnackbar("Xoá nhóm món " + name + " thành công", "success");
+          this.ngOnInit();
+        })
+      }
+    })
   }
 
   //previous trang - LinhDN
   previousPage() {
     this.pageObj.page--;
-    if (this.pageObj.page<=0){
+    if (this.pageObj.page <= 0) {
       this.pageObj.page = 0;
     }
-    console.log(this.pageObj)
+    console.log(this.pageObj);
     this.viewAllCategory(this.pageObj)
   }
 
@@ -104,8 +106,8 @@ export class ListCategoryComponent implements OnInit {
   nextPage() {
     console.log(this.totalPages)
     this.pageObj.page++;
-    if (this.pageObj.page>this.responsePage.totalPages-1){
-      this.pageObj.page = this.responsePage.totalPages-1 ;
+    if (this.pageObj.page > this.responsePage.totalPages - 1) {
+      this.pageObj.page = this.responsePage.totalPages - 1;
     }
     console.log(this.pageObj)
     this.viewAllCategory(this.pageObj)
@@ -127,6 +129,6 @@ export class ListCategoryComponent implements OnInit {
 
   //LamNT
   updateCategory(categoryId: number) {
-    this.router.navigateByUrl('category/update/'+categoryId);
+    this.router.navigateByUrl('category/update/' + categoryId);
   }
 }

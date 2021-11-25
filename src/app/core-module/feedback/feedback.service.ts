@@ -10,10 +10,12 @@ export class FeedbackService {
   private API_FEED_BACK = 'http://localhost:8080/api/feed-back';
   constructor(private http: HttpClient) { }
 
+  //QuanTA
   findAllFeedBack(inputDate : String, currentPage : number): Observable<IFeedback[] | any> {
     return this.http.get(this.API_FEED_BACK + '/list-by-date/' + inputDate +'/?page='+ currentPage);
   }
 
+  //QuanTa
   findFeedBackById(id : number) : Observable<IFeedback> | any{
     return this.http.get(this.API_FEED_BACK + "/find-feed-back-by-id/" + id);
   }
