@@ -13,13 +13,13 @@
                     <img [src]="focusImg" class="card-img-top" alt="..." (click)="seeDetail(table.tableId)">
                   </span>
                     <span *ngSwitchCase="1">
-                    <img [src]="focusImg2" class="card-img-top" alt="..." (click)="seeDetail(table.tableId)">
+                    <img [src]="focusImg2" class="card-img-top" [ngClass]="flicker" alt="..." (click)="seeDetail(table.tableId)">
                   </span>
                     <span *ngSwitchCase="2">
-                    <img [src]="focusImg2" class="card-img-top" alt="..." (click)="seeDetail(table.tableId)">
+                    <img [src]="focusImg2" class="card-img-top" [ngClass]="flicker" alt="..." (click)="seeDetail(table.tableId)">
                   </span>
                     <span *ngSwitchCase="3">
-                    <img [src]="focusImg3" class="card-img-top" alt="..." (click)="seeDetail(table.tableId)">
+                    <img [src]="focusImg3" class="card-img-top" [ngClass]="flicker" alt="..." (click)="seeDetail(table.tableId)">
                   </span>
                   </div>
                   <div class="card-body">
@@ -95,7 +95,7 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td style="font-size: 30px">{{this.totalMoney | currency: ' ' :'symbol' : '1.0-0'}}</td>
+                <td style="font-size: 30px; color: #34ce57">{{this.totalMoney | currency: ' ' :'symbol' : '1.0-0'}}</td>
               </tr>
               </tbody>
             </table>

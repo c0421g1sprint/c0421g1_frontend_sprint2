@@ -14,6 +14,7 @@ import {IOrderDetail} from "../../../entity/IOrderDetail";
 export class OrderOnServiceComponent implements OnInit {
 
   tableOnServiceList: ITables[];
+  flicker: string = 'animate-flicker';
   order: IOrders[];
   totalPage: number;
   page = 0;
@@ -50,6 +51,8 @@ export class OrderOnServiceComponent implements OnInit {
     if (this.page < this.totalPage - 1) {
       this.page = this.page + 1;
       this.pageNumberInput = this.page + 1;
+    } else {
+      this.matSnackBar.showSnackbar('Bạn đang ở trang cuối', 'error')
     }
     this.ngOnInit();
   }
@@ -59,6 +62,7 @@ export class OrderOnServiceComponent implements OnInit {
       this.page = this.page - 1;
     } else {
       this.page = 0;
+      this.matSnackBar.showSnackbar('Bạn đang ở trang đầu', 'error')
     }
     this.pageNumberInput = this.page + 1;
     this.ngOnInit();
@@ -126,10 +130,10 @@ export class OrderOnServiceComponent implements OnInit {
 
   writeBillAndResetTableStatus(id: number) {
     this.orderDetailService.resetTableStatus(id).subscribe(() => {
-      this.matSnackBar.showSnackbar('Đã xuất hóa đơn!', 'success');
       this.changeTableOnServiceStatusNoNotification(id);
+      this.matSnackBar.showSnackbar('Đã xuất hóa đơn!', 'success');
+      this.ngOnInit();
+      this.seeDetail(id);
     });
-    this.seeDetail(id);
-    this.ngOnInit();
   }
 }
