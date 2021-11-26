@@ -1,9 +1,16 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
+import {ListFeedbackComponent} from "./list-feedback/list-feedback.component";
+import {FeedbackCreateComponent} from "./feedback-create/feedback-create.component";
 
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path: "feed-back-list", component: ListFeedbackComponent
+  },
+  {path: "feedback/create", component: FeedbackCreateComponent}
+];
 
 @NgModule({
   imports: [
@@ -12,4 +19,5 @@ const routes: Routes = [];
   ],
   exports: [RouterModule]
 })
-export class FeedbackRoutingModule { }
+export class FeedbackRoutingModule {
+}

@@ -3,7 +3,6 @@ import {IEmployee} from "../../../entity/IEmployee";
 import {ActivatedRoute, ParamMap, Router} from "@angular/router";
 import {EmployeeService} from "../../../core-module/employee/employee.service";
 import {MatDialog, MatDialogModule} from "@angular/material/dialog";
-import $ from 'jquery';
 
 @Component({
   selector: 'app-user-detail',
