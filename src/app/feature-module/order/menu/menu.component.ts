@@ -17,6 +17,7 @@ import {CountdownComponent, CountdownConfig, CountdownModule, CountdownTimer} fr
 import {SnackbarService} from "../../../core-module/snackbar/snackbar.service";
 import {MatDialog} from "@angular/material/dialog";
 import {DeleteOrderComponent} from "../delete-order/delete-order.component";
+import {FeedbackCreateComponent} from "../../feedback/feedback-create/feedback-create.component";
 
 @Component({
   selector: 'app-menu',
@@ -70,7 +71,9 @@ export class MenuComponent implements OnInit {
 
   constructor(private categoryService: CategoryService, private foodAndDrinkService: FoodAndDrinkService,
               private cardService: CartService, private orderService: OrderService,
-              private tableService: TableService, private cartService: CartService, private snackBar: SnackbarService, private dialog: MatDialog) {
+              private tableService: TableService, private cartService: CartService,
+              private snackBar: SnackbarService,
+              private dialog: MatDialog) {
   }
 
 
@@ -353,5 +356,9 @@ export class MenuComponent implements OnInit {
         this.snackBar.showSnackbar("không có dữ liệu", "error");
       }
     })
+  }
+
+  openDialogCreateFeedBack() {
+    let dialogRef = this.dialog.open(FeedbackCreateComponent, {height: '100%', width: '100%'})
   }
 }
