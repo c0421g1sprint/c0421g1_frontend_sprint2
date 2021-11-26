@@ -226,8 +226,6 @@ export class MenuComponent implements OnInit {
         }
       })
     })
-
-
   }
 
 
@@ -236,19 +234,18 @@ export class MenuComponent implements OnInit {
   }
 
   getTable() { //BaoHG
-
     this.tableService.randomTableNull().subscribe(next => {
       this.table = next;
       console.log(this.table);
-      // this.createTableNewOrder();
-
+      this.createTableNewOrder();
     })
   }
+
 
   getDate() { //BaoHG
     let date = new Date()
     console.log(this.dateNow);
-    this.dateNow = date.getDate() + "/" + "11" + "/" + date.getFullYear()
+    this.dateNow = date.getDate() + "/" + "11" + "/" + date.getFullYear();
   }
 
   getCallEmp(table: ITables, id: number) { //BaoHG
@@ -256,7 +253,6 @@ export class MenuComponent implements OnInit {
       console.log(data);
     });
     this.phucVu = 'Đang gọi phục vụ';
-
   }
 
   getCallFood(table: ITables, id: number) { //BaoHG

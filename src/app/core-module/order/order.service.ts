@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from "rxjs";
 import {IOrders} from "../../entity/IOrders";
 import {IOrderDetail} from "../../entity/IOrderDetail";
+import {ITables} from "../../entity/ITables";
 
 
 @Injectable({

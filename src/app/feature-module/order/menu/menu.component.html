@@ -1,58 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Title</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
-        integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-
-
-</head>
-<body>
-<div class="container-fruid">
-
+<div class="container-fruid body-custom" style="margin-top: 6%">
   <div class="row">
     <div class="col-md-12"></div>
     <form class="form-inline my-2 my-lg-0" style="margin-left: 600px">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" (change)="valueInput($event)">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="searchFoodAndDrinkAndMoney()">Search</button>
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
+             (change)="valueInput($event)">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="searchFoodAndDrinkAndMoney()">Search
+      </button>
     </form>
-
   </div>
-
   <div class="row ">
-
     <div class="col-2">
       <div class="row">
         <div class="col-12">
-
-
-
           <ul class="list-group" *ngFor="let objCategory of ListCategory">
 
             <li class="list-group-item"><a class="list-food" (click)="getAllFoodTheoIdCategory(objCategory.categoryId)"
                                            style="color: black"><span></span>{{objCategory.categoryName}}
             </a>
             </li>
-
           </ul>
-
         </div>
       </div>
     </div>
-
-
     <div class="col-5">
       <div class="row">
-
         <div class="col-md-12">
-
           <div class="row row-cols-1 row-cols-md-2" style="margin-top: -15px">
-
             <div class="col"
                  *ngFor="let objFood of FoodAndDrink |  paginate:{itemsPerPage:4,  currentPage:page,totalItems:totalLength} "
                  style="">
-
               <div class="card" style="margin-top: 15px">
                 <img [src]="objFood.fadImage" class="card-img-top" alt="..." width="230px" height="250px">
                 <div class="card-body">
@@ -83,7 +59,8 @@
 
     <div class="col-md-5">
 
-      <p style="color: tan;font-size: 30px;text-align: center">Số bàn: <span style="color: Yellow">{{table.tableCode}}</span></p><br/>
+      <p style="color: tan;font-size: 30px;text-align: center">Số bàn: <span
+        style="color: Yellow">{{table.tableCode}}</span></p><br/>
 
       <p style="color: tan;font-size: 30px;text-align: center">Ngày: <span style="color: Yellow">{{dateNow}} </span></p>
       <div class="row">
@@ -116,17 +93,21 @@
             <td>{{objFood.fadPrice}}</td>
             <td>{{objFood.total}}</td>
             <td>
-              <countdown #countdown [config]="{leftTime:objFood.fadWaitTime}" *ngIf="check == true else blockTime"></countdown>
+              <countdown #countdown [config]="{leftTime:objFood.fadWaitTime}"
+                         *ngIf="check == true else blockTime"></countdown>
             </td>
 
 
-              <ng-template #blockTime><countdown  [config]="{leftTime:objFood.fadWaitTime,demand:true}" ></countdown></ng-template>
+            <ng-template #blockTime>
+              <countdown [config]="{leftTime:objFood.fadWaitTime,demand:true}"></countdown>
+            </ng-template>
 
 
             <td>
 
               <button type="button" class="btn btn-danger"
-                      (click)="removeCartDialog(objFood.fadId,objFood.fadName,objFood.quantity,objFood)" *ngIf="checkDelete == false"><img
+                      (click)="removeCartDialog(objFood.fadId,objFood.fadName,objFood.quantity,objFood)"
+                      *ngIf="checkDelete == false"><img
                 src="assets/icon/icon/delete_sweep_black_24dp.svg" alt=""></button>
 
             </td>
@@ -135,56 +116,41 @@
           </tbody>
 
           <ng-template #block>
-            <span style="text-align: center;margin-left: auto;margin-right: auto;font-size: 25px">Giỏ hàng đang trống</span>
+            <span
+              style="text-align: center;margin-left: auto;margin-right: auto;font-size: 25px">Giỏ hàng đang trống</span>
           </ng-template>
 
         </table>
 
 
-
         <nav>
           <ul>
-            <li style="margin-top: 20px">  <button type="button" class="btn " style="background: #F781F3;width: 140px"
-                          (click)="getCallEmp(table,table.tableId)">{{phucVu}} <img
-              src="assets/icon/icon/support_agent_black_24dp.svg" alt="">
+            <li style="margin-top: 20px">
+              <button type="button" class="btn " style="background: #F781F3;width: 140px"
+                      (click)="getCallEmp(table,table.tableId)">{{phucVu}} <img
+                src="assets/icon/icon/support_agent_black_24dp.svg" alt="">
 
-            </button>
+              </button>
             </li>
             <li style="margin-top: 20px">
               <button type="button" class="btn btn-info"
                       (click)="newOrderDetail()"
-                      (click)="getCallFood(table,table.tableId)"  *ngIf="product != null" style="width: 140px">Gọi Món
+                      (click)="getCallFood(table,table.tableId)" *ngIf="product != null" style="width: 140px">Gọi Món
                 <img src="/assets/icon/icon/local_dining_black_24dp.svg" alt="">
               </button>
             </li>
             <li style="margin-top: 20px">
               <button class="btn btn-success" style="width: 140px"
-                      (click)="getCallPay(table,table.tableId)"  *ngIf="check === true">{{thanhtoan}} <img
+                      (click)="getCallPay(table,table.tableId)" *ngIf="check === true">{{thanhtoan}} <img
                 src="assets/icon/icon/paid_black_24dp.svg" alt=""></button>
             </li>
           </ul>
-
-
         </nav>
-
-
-
-
       </div>
-
-
       <div class="row" style="margin-top: 25px">
         <div class="col-md-3">
-
         </div>
-
         <div class="col-4">
-
-
-
-
-
-
 
         </div>
       </div>
@@ -192,12 +158,3 @@
   </div>
 </div>
 
-<!--<button>Card</button>-->
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
-        crossorigin="anonymous"></script>
-</body>
-</html>

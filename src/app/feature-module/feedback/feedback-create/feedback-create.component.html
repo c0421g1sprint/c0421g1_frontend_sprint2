@@ -55,19 +55,7 @@
                       (feedbackForm.get('feedbackDate').touched || feedbackForm.get('feedbackDate').dirty)">
                         {{valid.message}}
                       </small>
-                      <!--                      <small style="color: red"-->
-                      <!--                             *ngIf="feedbackForm.get('feedbackDate').hasError('errorCodeTime') &&-->
-                      <!--                      (feedbackForm.get('feedbackDate').touched || feedbackForm.get('feedbackDate').dirty)">-->
-                      <!--                        {{valid.message}}-->
-                      <!--                      </small>-->
-
-
                     </div>
-                    <!--                    <div-->
-                    <!--                      *ngIf="feedbackForm.hasError('errorCodeTime') && (feedbackForm.get('feedbackDate').get('feedbackDate').dirty || (feedbackForm.get('feedbackDate').get('feedbackDate').touched))">-->
-                    <!--                      <p style="color: red">Ngày gửi phải cùng hoặc trước ngày mở sổ !</p>-->
-                    <!--                    </div>-->
-                    <!--                    <p *ngIf="feedbackForm.controls.feedbackDate.errors"></p>-->
                   </div>
 
                 </div>
@@ -124,26 +112,11 @@
                       <label class="custom-file-label" data-browse="Ảnh" style="width: 70%">Chọn ảnh phản
                         hồi</label>
                     </div>
-                    <!--                    </div>-->
-                    <!--              <img [src]="imgSrc" alt="" width="220px" height="250px">-->
-                    <img src="/assets/anh/anh.macdinh.jpg" alt="" width="70%" height="245px"
+                    <img src="/assets/anh/anh.macdinh.png" alt="" width="70%" height="245px"
                          *ngIf="feedbackForm.value.feedbackImage == null; else elseBlock" value="null">
                     <ng-template #elseBlock>
                       <img [src]="imgSrc" alt="" width="70%" height="245">
                     </ng-template>
-                    <!--                    <div class="card" style="width: 200px; width: 230px">-->
-                    <!--                      <input type="file" accept="image/*" #fileUploader class="form-control-file"-->
-                    <!--                             formControlName="feedbackImage" id="file"-->
-                    <!--                             (change)="showPreview($event)">-->
-                    <!--                      <img [src]="imgSrc" (click)="fileUploader.click()">-->
-                    <!--                    </div>-->
-                    <!--                    <div *ngFor="let valid of validationMessage.feedbackImage">-->
-                    <!--                      <small style="color: red"-->
-                    <!--                             *ngIf="feedbackForm.get('feedbackImage').hasError(valid.type) &&-->
-                    <!--                     (feedbackForm.get('feedbackImage').dirty || feedbackForm.get('feedbackImage').touched)">-->
-                    <!--                        {{valid.message}}-->
-                    <!--                      </small>-->
-                    <!--                    </div>-->
                   </div>
                   </div>
                 </div>
