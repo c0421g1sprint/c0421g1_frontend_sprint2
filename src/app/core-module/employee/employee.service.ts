@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from "rxjs";
 import {IEmployee} from "../../entity/IEmployee";
@@ -19,13 +19,12 @@ export class EmployeeService {
   private urlFindEmployeeById = 'http://localhost:8080/api/employee';
   private urlCreateEmployee = 'http://localhost:8080/api/employee/createEmployee';
   private urlEditEmployee = 'http://localhost:8080/api/employee/updateEmployee';
-  private urlListAccount = 'http://localhost:8080/api/employee/listAccountName'
+
 
   //MinhNN
   getAllEmployee(page: number): Observable<IEmployee[] | any> {
     return this.http.get(this.urlFindEmployeeById + "/list" + "?page=" + page);
   }
-
 
 
   //MinhNN
@@ -44,6 +43,7 @@ export class EmployeeService {
     return this.http.get(this.urlFindEmployeeById + '/' + id);
   }
 
+
   // them  PhucNK
   saveEmployee(employee: IEmployee): Observable<IEmployee | any> {
     return this.http.post(this.urlCreateEmployee, employee);
@@ -52,12 +52,6 @@ export class EmployeeService {
   // update  PhucNK
   updateEmployee(employee: IEmployee): Observable<IEmployee | any> {
     return this.http.patch(this.urlEditEmployee, employee);
-  }
-
-//  thêm tối nay PhucNK
-
-  listAccount(): Observable<String[] | any> {
-    return this.http.get<String[]>(this.urlListAccount);
   }
 
 }
