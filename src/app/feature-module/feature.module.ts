@@ -8,13 +8,16 @@ import {OrderModule} from './order/order.module';
 import {TableModule} from './table/table.module';
 import {HomepageBodyComponent} from './homepage-body/homepage-body.component';
 import {HomepageModule} from './homepage-body/homepage.module';
-import {ShareModule} from "../share-module/share.module";
 import {CategoryModule} from './category/category.module';
+import {CountdownModule} from "ngx-countdown";
+
 
 
 
 @NgModule({
-  declarations: [HomepageBodyComponent],
+  declarations: [
+    HomepageBodyComponent,
+    CartComponent],
   imports: [
     CommonModule,
     AccountModule,
@@ -25,18 +28,17 @@ import {CategoryModule} from './category/category.module';
     CategoryModule,
     TableModule,
     HomepageModule,
-    ShareModule
   ],
   exports: [
     AccountModule,
-    ShareModule,
     EmployeeModule,
     FeedbackModule,
     FoodAndDrinkModule,
     OrderModule,
     TableModule,
     CategoryModule,
-    HomepageModule
+    TableModule,
+    HomepageModule,
   ]
 })
 export class FeatureModule { }

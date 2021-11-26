@@ -9,5 +9,5 @@ export interface ITables {
   onService: number;
   availableFlag: boolean;
   deleteFlag: boolean;
-  orders: IOrders[];
+  orders: IOrders[]
 }
