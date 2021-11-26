@@ -65,8 +65,8 @@
 
       <p style="color: tan;font-size: 30px;text-align: center">Ngày: <span style="color: Yellow">{{dateNow}} </span></p>
       <div class="row">
-        <button class="btn btn-secondary btn-feedbkack" style=";margin-top: -18px;width: 132px" [routerLink]="['/feedback/create']">Phản
-          hồi <img src="assets/icon/icon/feedback_black_24dp.svg" alt="">
+        <button class="btn btn-secondary btn-feedbkack" style=";margin-top: -18px;width: 132px" (click)="openDialogCreateFeedBack()">Phản
+          hồi <img src="assets/icon/icon/feedback_black_24dp.svg" alt="" >
         </button>
         <table class="table table-hover table-dark text-center">
           <thead>
