@@ -167,7 +167,7 @@ export class EditEmployeeComponent implements OnInit {
                 this.showSpinner = false;
                 this.messAccount = "";
                 this.snackBar.showSnackbar('Sửa thông tin nhân viên thành công', 'success');
-                // this.router.navigateByUrl("employee/list");
+                this.router.navigateByUrl("employee/list");
               })
             },error => {
               this.showSpinner = false;
