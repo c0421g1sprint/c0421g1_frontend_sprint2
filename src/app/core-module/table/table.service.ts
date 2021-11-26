@@ -7,10 +7,15 @@ import {Observable} from "rxjs";
   providedIn: 'root'
 })
 export class TableService {
-
+  private urlTable = "http://localhost:8080/api/order/table"; //BaoHG
   private api_table = 'http://localhost:8080/api/table';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
+
+  randomTableNull(): Observable<ITables | any> { //BaoHG
+    return this.http.get(this.urlTable);
+  }
 
   //HauPT do at 19/11/2021
   getListTables(currentPage: number): Observable<ITables[] | any> {
@@ -18,26 +23,26 @@ export class TableService {
   }
 
   //HauPT do at 19/11/2021
-  searchTables(currentPage: number , tableCode: string , tableStatus: string): Observable<ITables[] | any> {
-    if (tableCode == '' && tableStatus =='' ){
+  searchTables(currentPage: number, tableCode: string, tableStatus: string): Observable<ITables[] | any> {
+    if (tableCode == '' && tableStatus == '') {
       return this.http.get(this.api_table + '/list?page=' + currentPage);
     }
-    if (tableStatus == '' ){
-      return this.http.get(this.api_table + '/search?tableCode='+ tableCode + '&page=' +currentPage);
+    if (tableStatus == '') {
+      return this.http.get(this.api_table + '/search?tableCode=' + tableCode + '&page=' + currentPage);
     }
-    if (tableCode == '' ){
-      return this.http.get(this.api_table + '/search?tableStatus='+ tableStatus + '&page=' +currentPage);
+    if (tableCode == '') {
+      return this.http.get(this.api_table + '/search?tableStatus=' + tableStatus + '&page=' + currentPage);
     }
-    return this.http.get(this.api_table + '/search?tableCode='+ tableCode + '&tableStatus=' + tableStatus + '&page=' +currentPage);
+    return this.http.get(this.api_table + '/search?tableCode=' + tableCode + '&tableStatus=' + tableStatus + '&page=' + currentPage);
   }
 
   //HauPT do at 23/11/2021
-  deleteTables(tableId: number): Observable<any>{
-    return this.http.patch(this.api_table + "/delete" , tableId);
+  deleteTables(tableId: number): Observable<any> {
+    return this.http.patch(this.api_table + "/delete", tableId);
   }
 
   //DucLVH do at 24/11/2021
-  addWewTables(tables: ITables): Observable<any>{
+  addWewTables(tables: ITables): Observable<any> {
     return this.http.post(this.api_table + '/add', tables);
   }
 
@@ -46,6 +51,6 @@ export class TableService {
   }
 
   update(tables: ITables): Observable<ITables | any> {
-    return this.http.patch(this.api_table+'/update', tables);
+    return this.http.patch(this.api_table + '/update', tables);
   }
 }

@@ -10,7 +10,11 @@ import { FoodAndDrinkUpdateComponent } from './food-and-drink-update/food-and-dr
 
 
 @NgModule({
-  declarations: [ListFoodAndDrinkComponent,FoodAndDrinkComponent,FoodAndDrinkCreateComponent,FoodAndDrinkUpdateComponent],
+  declarations: [
+    ListFoodAndDrinkComponent,
+    FoodAndDrinkComponent,
+    FoodAndDrinkCreateComponent,
+    FoodAndDrinkUpdateComponent],
   imports: [
     CommonModule,
     FoodAndDrinkRoutingModule,

@@ -22,7 +22,7 @@ export class FeedbackCreateComponent implements OnInit {
   maxDate = new Date();
   image;
   downloadURL: Observable<string>;
-  imgSrc: string = '/assets/anh/anh.macdinh.jpg';
+  imgSrc: string = '/assets/anh/anh.macdinh.png';
   selectedImage: any = null;
   feedbackCode: String = '';
   feedbackForm: FormGroup = new FormGroup({

@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from "rxjs";
 import {IFoodAndDrink} from "../../entity/IFoodAndDrink";
@@ -7,8 +7,10 @@ import {IFoodAndDrink} from "../../entity/IFoodAndDrink";
   providedIn: 'root'
 })
 export class FoodAndDrinkService {
-  // find-top-five-new
-  // find-top-five-popular
+  private urlfoodTheoCategory = "http://localhost:8080/api/food-and-drink"; //BaoHG
+  private urlFoodById = "http://localhost:8080/api/food-and-drink/food"; //BaoHG
+  private urlAllFood = "http://localhost:8080/api/food-and-drink/allFood"; //BaoHG
+  private urlSearch = "http://localhost:8080/api/food-and-drink/search/food?search="; //BaoHG
   private url = "http://localhost:8080/api/food-and-drink"
 
   constructor(private http: HttpClient) {
@@ -58,4 +60,20 @@ export class FoodAndDrinkService {
   findById(id: number): Observable<IFoodAndDrink | any> {
     return this.http.get(this.url + '/detail/' + id)
   }
+  getAllFoodAndDrink(): Observable<IFoodAndDrink[] | any> { //BaoHG
+    return this.http.get(this.urlAllFood)
+  }
+
+  getFoodAndDinkTheoCategory(id: number): Observable<IFoodAndDrink | any> { //BaoHG
+    return this.http.get(this.urlfoodTheoCategory + "/" + id);
+  }
+
+  getFoodById(id: number): Observable<IFoodAndDrink | any> { //BaoHG
+    return this.http.get(this.urlFoodById + "/" + id);
+  }
+
+  searchFood(search: string): Observable<IFoodAndDrink | any> { //BaoHG
+    return this.http.get(this.urlSearch  + search);
+  }
+
 }

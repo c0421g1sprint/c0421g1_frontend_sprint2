@@ -5,13 +5,16 @@ import {IncomeStatisticsComponent} from "./income-statistics/income-statistics.c
 import {OrderComponent} from "./order.component";
 import {OrderListComponent} from "./order-list/order-list.component";
 import {OrderOnServiceComponent} from "./order-on-service/order-on-service.component";
+import {MenuComponent} from "./menu/menu.component";
 
 const routes: Routes = [
   {
     path: "order", component: OrderComponent, children: [
       {path: "", component: OrderListComponent},
       {path: "income", component: IncomeStatisticsComponent},
-      {path: "sale", component: OrderOnServiceComponent}
+      {path: "sale", component: OrderOnServiceComponent},
+      {path: "menu", component: MenuComponent}
+
     ]
   }
 ];

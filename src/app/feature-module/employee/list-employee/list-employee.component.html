@@ -1,22 +1,31 @@
-<div class="container-fluid" style="min-height: 800px; min-width: 750px">
-  <h1 align="center" style="color: #e3cc6f">Quản lý thông tin nhân viên</h1>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+</style>
+<div class="container-fluid" style="margin-top: 80px; margin-bottom: -80px; min-height: 150vh">
+  <h1 align="center" style="color: #e3cc6f; margin-top: 30px">Quản lý thông tin nhân viên</h1>
   <div class="row d-flex justify-content-end" style="margin-right: 40px">
     <div class="col-lg-12 d-flex justify-content-end">
       <form [formGroup]="searchForm" (ngSubmit)="searchAllEmployee(0); setPage()" class="row">
         <div class="col-lg-3">
           <input type="text" class="form-control m-2" placeholder="Tìm tên tài khoản" aria-describedby="basic-addon1" formControlName="username">
+          <div style="margin-left: 10px" *ngFor="let validation of validateMsg.username">
+            <p style="color: red; font-family: 'Patrick Hand', cursive"  *ngIf="this.searchForm.get('username').hasError(validation.type)">{{validation.message}}</p>
+          </div>
         </div>
         <div class="col-lg-3">
           <input type="text" class="form-control m-2" placeholder="Tìm tên nhân viên" aria-describedby="basic-addon1" formControlName="nameEmployee">
+          <div style="margin-left: 10px" *ngFor="let validation of validateMsg.nameEmployee">
+            <p style="color: red ; font-family: 'Patrick Hand', cursive"  *ngIf="this.searchForm.get('nameEmployee').hasError(validation.type)">{{validation.message}}</p>
+          </div>
         </div>
         <div class="col-lg-3">
           <input type="text" class="form-control m-2" placeholder="Tìm số điện thoại" aria-describedby="basic-addon1" formControlName="phone">
           <div style="margin-left: 10px" *ngFor="let validation of validateMsg.phone">
-            <p style="color: red"  *ngIf="this.searchForm.get('phone').hasError(validation.type)">{{validation.message}}</p>
+            <p style="color: red; font-family: 'Patrick Hand', cursive"  *ngIf="this.searchForm.get('phone').hasError(validation.type)">{{validation.message}}</p>
           </div>
         </div>
         <div class="col-lg-3">
-          <button type="submit" class="btn btn-warning d-flex justify-content-center" style="margin-top: 9px" data-toggle="tooltip" >
+          <button type="submit" class="btn btn-warning d-flex justify-content-center" style="margin-top: 9px" data-toggle="tooltip" [disabled]="!this.searchForm.valid">
             <img src="/assets/img/manage_search_black_24dp.svg" alt="">
             Tìm kiếm
           </button>
@@ -25,10 +34,11 @@
     </div>
   </div>
   <div class="row" style="margin-top: 50px">
-    <div class="col-lg-1"></div>
-    <div class="col-lg-10" style="min-height: 800px">
-      <div class="table-responsive-lg">
+
+    <div class="col-lg-12" style=" padding-left: 50px; padding-right: 50px">
+      <div class="table-responsive-lg" style="margin: 0 auto">
         <button class="btn btn-warning mb-2" data-toggle="tooltip">
+
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                class="bi bi-person-plus m-0" viewBox="0 0 16 16">
             <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
@@ -37,7 +47,7 @@
           </svg>
           Thêm mới
         </button>
-        <table class="table table-dark table-hover table-responsive-lg">
+        <table class="table table-dark table-hover">
           <thead style="text-align: center">
           <tr>
             <th>STT</th>
@@ -50,7 +60,6 @@
             <th>Lương (VND)</th>
             <th>Vị trí</th>
             <th>Chức năng</th>
-
           </tr>
           </thead>
           <tbody style="text-align: center">
@@ -64,26 +73,25 @@
             <td>{{item.employeeBirthday | date:"dd/MM/yyyy"}}</td>
             <td>{{item.employeeSalary | currency: "VND": "":"": "vi"}}</td>
             <td>{{item.level.levelName}}</td>
-            <td>
-              <button class="btn btn-warning text-white" data-toggle="tooltip" placement="right"
-                      title="Chỉnh sửa" >
-                <img src="/assets/img/edit_note_black_24dp.svg" alt="">
-              </button>
-              <button class="btn btn-warning text-white ml-1 " data-toggle="tooltip" placement="right"
-                      title="Sửa mật khẩu">
-                <img src="/assets/img/vpn_key_black_24dp.svg" alt="">
-              </button>
-              <button class="btn btn-warning text-white ml-1 " data-toggle="tooltip" placement="right"
-                      title="Xoá" (click)="openDialogDelete(item.employeeId, item.employeeName)">
-                <img src="/assets/img/delete_sweep_black_24dp.svg" alt="">
-              </button>
+            <td class="d-flex">
+                <button class="btn btn-warning text-white" data-toggle="tooltip" placement="right"
+                        title="Chỉnh sửa" routerLink="/employee/updateEmployee/{{item.employeeId}}" >
+                  <img src="/assets/img/edit_note_black_24dp.svg" alt="" class="img-button">
+                </button>
+                <button class="btn btn-warning text-white ml-1 " data-toggle="tooltip" placement="right"
+                        title="Sửa mật khẩu" routerLink="/employee/edit-pass">
+                  <img src="/assets/img/vpn_key_black_24dp.svg" alt="" class="img-button">
+                </button>
+                <button class="btn btn-warning text-white ml-1 " data-toggle="tooltip" placement="right"
+                        title="Xoá" (click)="openDialogDelete(item.employeeId, item.employeeName)">
+                  <img src="/assets/img/delete_sweep_black_24dp.svg" alt="" class="img-button">
+                </button>
             </td>
           </tr>
           </tbody>
         </table>
       </div>
     </div>
-    <div class="col-md-1"></div>
   </div>
   <div class="row mt-lg-3">
     <div class="col-6">
@@ -137,3 +145,4 @@
     </div>
   </div>
 </div>
+

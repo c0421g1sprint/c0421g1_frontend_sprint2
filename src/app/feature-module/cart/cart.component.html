@@ -1,0 +1,15 @@
+<p>cart works!</p>
+<table border="1px">
+<tr>
+  <td>1</td>
+  <td>bao</td>
+  <td>hoang</td>
+</tr>
+<tr *ngFor="let item of products;let i = index">
+  <td>{{i+1}}</td>
+  <td>{{item.fad}}</td>
+  <td>{{item.fadPrice}}</td>
+  <td>{{item.total}}</td>
+</tr>
+</table>
+

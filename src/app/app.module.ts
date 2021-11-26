@@ -11,6 +11,9 @@ import {OrderModule} from "./feature-module/order/order.module";
 import {FoodAndDrinkModule} from "./feature-module/food-and-drink/food-and-drink.module";
 import {CategoryModule} from "./feature-module/category/category.module";
 import { TableModule} from "./feature-module/table/table.module";
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatButtonModule} from '@angular/material/button';
+
 
 @NgModule({
   declarations: [

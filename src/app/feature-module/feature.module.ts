@@ -6,15 +6,16 @@ import {FeedbackModule} from './feedback/feedback.module';
 import {FoodAndDrinkModule} from './food-and-drink/food-and-drink.module';
 import {OrderModule} from './order/order.module';
 import {TableModule} from './table/table.module';
-import {HomepageBodyComponent} from './homepage-body/homepage-body.component';
+// import {HomepageBodyComponent} from './homepage-body/homepage-body.component';
 import {HomepageModule} from './homepage-body/homepage.module';
-import {ShareModule} from "../share-module/share.module";
 import {CategoryModule} from './category/category.module';
+// import {CountdownModule} from "ngx-countdown";
+
 
 
 
 @NgModule({
-  declarations: [HomepageBodyComponent],
+  declarations: [],
   imports: [
     CommonModule,
     AccountModule,
@@ -25,18 +26,17 @@ import {CategoryModule} from './category/category.module';
     CategoryModule,
     TableModule,
     HomepageModule,
-    ShareModule
   ],
   exports: [
     AccountModule,
-    ShareModule,
     EmployeeModule,
     FeedbackModule,
     FoodAndDrinkModule,
     OrderModule,
     TableModule,
     CategoryModule,
-    HomepageModule
+    TableModule,
+    HomepageModule,
   ]
 })
 export class FeatureModule { }
