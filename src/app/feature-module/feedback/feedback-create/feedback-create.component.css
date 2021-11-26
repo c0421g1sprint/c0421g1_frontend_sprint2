@@ -1,0 +1,12 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+* {
+  font-size: 20px;
+  color: black;
+  font-family: 'Dancing script', cursive;
+
+}
+form {
+  background-image: url(/assets/anh/back.ground.jpg); background-size: inherit;
+  background-repeat: no-repeat;
+}

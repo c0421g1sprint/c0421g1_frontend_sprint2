@@ -1,0 +1,127 @@
+<div class="container-fluid body-bg">
+  <!--    title-->
+  <div class="row">
+    <div class="col-lg-12 text-lg-center">
+      <h1>Phản hồi của khách yêu <3</h1>
+    </div>
+  </div>
+  <!--    item search-->
+  <div class="row mt-lg-5 mb-lg-5">
+    <div class="col-lg-1"></div>
+    <div class="col-lg-10">
+      <nav class="navbar navbar-expand-sm p-0">
+        <!-- Right -->
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <label class="justify-content-lg-end">Ngày phản hồi</label>
+          </li>
+          <li class="nav-item ml-lg-2">
+            <input class="form-control w-100" type="date" #dateInput [max]="myDate" onkeydown="return false" />
+          </li>
+          <li class="nav-item ml-lg-3">
+            <button class="btn btn-warning" (click)="searchByDate(dateInput.value)">
+              <img alt="" height="26" src="./assets/img/manage_search_black_24dp.svg" width="26">
+              Tìm kiếm
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <div class="col-lg-1"></div>
+  </div>
+  <!--    table content-->
+  <div class="row mb-lg-5" style="margin-top: 2%">
+    <div class="col-lg-1"></div>
+    <div class="col-lg-10">
+      <div class="table-responsive-lg">
+        <table class=" table bg-dark" *ngIf="feedBackList.length != 0; else errorContent">
+          <thead class="text-white" style="font-size: 25px">
+          <tr>
+            <th>Số thứ tự</th>
+            <th>Mã phản hồi</th>
+            <th>Ngày phản hồi</th>
+            <th>Người tạo</th>
+            <th>Email</th>
+            <th>Phản hồi</th>
+            <th>Chức năng</th>
+          </tr>
+          </thead>
+          <tbody class="text-white">
+          <tr class="animate" *ngFor="let items of feedBackList; let i = index">
+            <td>{{i + 1}}</td>
+            <td>{{items.feedbackCode}}</td>
+            <td>{{items.feedbackDate | date: "dd/MM/yyyy"}}</td>
+            <td>{{items.feedbackCreator}}</td>
+            <td>{{items.feedbackEmail}}</td>
+            <td>
+              <div class="text">
+                {{items.feedbackContent}}
+              </div>
+            </td>
+            <td>
+              <button class="btn btn-warning" title="Xem chi tiết" (click)="openDialog(items.feedbackId)">
+                <img alt="" src="./assets/img/visibility_black_24dp.svg">
+              </button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <ng-template #errorContent>
+      <div class="col-lg-12"  style="text-align: center">
+        <h1 style="color: red">Không có phản hồi trong ngày này</h1>
+      </div>
+    </ng-template>
+    <div class="col-lg-1"></div>
+  </div>
+  <!--    phan trang-->
+  <div class="row mt-lg-3">
+    <div class="col-12">
+      <nav aria-label="Pagination" class="d-flex align-items-center justify-content-center">
+        <ul class="pagination">
+          <li class="page-item" style="height: 40px">
+            <a class="page-link pagination-item" aria-label="Previous" (click)="previousPage()">
+               <span aria-hidden="true">
+                  <svg xmlns="http://www.w3.org/2000/svg" height="21px" viewBox="0 0 24 24" width="21px" fill="#000000">
+                    <path d="M7 6c.55 0 1 .45 1 1v10c0 .55-.45 1-1 1s-1-.45-1-1V7c0-.55.45-1 1-1zm3.66 6.82l5.77 4.07c.66.47 1.58-.01 1.58-.82V7.93c0-.81-.91-1.28-1.58-.82l-5.77 4.07c-.57.4-.57 1.24 0 1.64z"/>
+                  </svg>
+               </span>
+            </a>
+          </li>
+          <li class="page-item" style="height: 40px">
+            <p class="page-link pagination-item text-dark">{{currentPage+1}}/{{totalPages}}</p>
+          </li>
+          <li class="page-item" style="height: 40px">
+            <a class="page-link pagination-item" aria-label="Next" (click)="nextPage()">
+               <span aria-hidden="true">
+                  <svg xmlns="http://www.w3.org/2000/svg" height="21px" viewBox="0 0 24 24" width="21px" fill="#000000">
+                    <path d="M7.58 16.89l5.77-4.07c.56-.4.56-1.24 0-1.63L7.58 7.11C6.91 6.65 6 7.12 6 7.93v8.14c0 .81.91 1.28 1.58.82zM16 7v10c0 .55.45 1 1 1s1-.45 1-1V7c0-.55-.45-1-1-1s-1 .45-1 1z"/>
+                  </svg>
+               </span>
+            </a>
+          </li>
+          <li class="page-item ml-lg-2" style="height: 40px">
+            <div class="input-group pagination-item">
+              <input type="text" class="form-control" placeholder="Tới trang..."
+                     style="width: 100px;" #jumpPage>
+              <div class="input-group-append d-flex">
+                <button class="btn btn-warning" (click)="jumpingPage(jumpPage.value)">
+                  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24"
+                       width="24px" fill="#000000">
+                    <path d="M0 0h24v24H0V0z" fill="none"/>
+                    <path
+                      d="M10.09 15.59L11.5 17l5-5-5-5-1.41 1.41L12.67 11H3v2h9.67l-2.58 2.59zM19 3H5c-1.11 0-2 .9-2 2v4h2V5h14v14H5v-4H3v4c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+

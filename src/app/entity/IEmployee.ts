@@ -5,6 +5,7 @@ import {IOrders} from './IOrders';
 export interface IEmployee {
   employeeId: number;
   employeeName: string;
+  accountName: string;
   employeeAddress: string;
   employeePhone: string;
   employeeImage: string;

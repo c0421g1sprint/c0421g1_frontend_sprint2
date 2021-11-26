@@ -8,6 +8,7 @@ import {EmployeeService} from "../../../core-module/employee/employee.service";
 import {SnackbarService} from "../../../core-module/snackbar/snackbar.service";
 import {registerLocaleData } from "@angular/common";
 import localeVn from "@angular/common/locales/vi"
+// import {CreateEmployeeComponent} from "../create-employee/create-employee.component";
 registerLocaleData(localeVn,'vi')
 
 @Component({
@@ -114,6 +115,14 @@ export class ListEmployeeComponent implements OnInit {
       this.snackbarService.showSnackbar("Trang bạn nhập vào không có", "error");
     }
   }
+
+  // openDialogCreate() {
+  //   this.dialog.open(CreateEmployeeComponent,{
+  //     width:'1200px',
+  //     autoFocus:false,
+  //     maxHeight:'100vh'
+  //   });
+  // }
 
   validateMsg = {
     phone: [
