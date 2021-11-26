@@ -58,10 +58,17 @@
                 </label>
               </div>
               <select class=" form-control custom-select" id="class" formControlName="category">
+                <option value="">Vui lòng chọn nhóm món</option>
                 <option *ngFor="let type of categoryList"
                         [ngValue]="type"
                         [selected]="type.categoryName == editForm.controls.category.value.categoryName">{{type.categoryName}}</option>
               </select>
+            </div>
+            <div *ngFor="let valid of validationMessage.category">
+              <small style="color: red"
+                     *ngIf="editForm.get('category').hasError(valid.type) && (editForm.get('category').touched || editForm.get('category').dirty)">
+                {{valid.message}}
+              </small>
             </div>
           </div>
         </div>

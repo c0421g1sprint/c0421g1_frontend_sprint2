@@ -53,8 +53,7 @@
             </label>
           </div>
           <select class="form-control custom-select" id="class" formControlName="category">
-            <!--            <option selected [value]="null" disabled>Vui lòng chọn nhóm</option>-->
-            <option selected value=" " disabled>Vui lòng chọn nhóm</option>
+            <option value="" selected>Vui lòng chọn nhóm</option>
             <option *ngFor="let type of categoryList" [ngValue]="type">{{type.categoryName}}</option>
           </select>
         </div>
@@ -91,10 +90,12 @@
                  (createForm.controls.fadCode.touched || createForm.controls.fadCode.dirty)">
           Mã món tối đa 10 chữ cái.
         </small>
-        <small style="color: red" *ngIf="createForm.controls.fadCode.hasError('whitespace') &&
-              (createForm.controls.fadCode.touched || createForm.controls.fadCode.dirty)">
-          Không được có khoảng trắng
-        </small>
+        <div
+          *ngIf="!createForm.controls.fadCode.valid && (createForm.controls.fadCode.dirty || createForm.controls.fadCode.touched)">
+          <small style="color: red" *ngIf="createForm.controls.fadCode.errors.invalidMsg">
+            {{createForm.controls.fadCode.errors.invalidMsg}}
+          </small>
+        </div>
         <div *ngFor="let valid of validationMessage.fadCode">
           <small style="color: red"
                  *ngIf="createForm.get('fadCode').hasError(valid.type) && (createForm.get('fadCode').touched || createForm.get('fadCode').dirty)">

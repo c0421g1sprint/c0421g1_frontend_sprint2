@@ -42,7 +42,7 @@ export class FoodAndDrinkUpdateComponent implements OnInit {
     fadPrice: new FormControl('', [Validators.required,
       Validators.pattern(/^[0-9]*$/),
     ]),
-    category: new FormControl(' ', Validators.required),
+    category: new FormControl('', Validators.required),
     deleteFlag: new FormControl(''),
     fadWaitTime: new FormControl(''),
   })
@@ -75,7 +75,7 @@ export class FoodAndDrinkUpdateComponent implements OnInit {
       {type: 'required', message: 'Ảnh món không được để trống.'},
     ],
     category: [
-      {type: 'required', message: 'Nhóm món không được để trống.'},
+      {type: 'required', message: 'Vui lòng chọn nhóm món.'},
     ]
   }
 
