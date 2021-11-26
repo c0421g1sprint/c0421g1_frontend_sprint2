@@ -338,6 +338,7 @@ export class MenuComponent implements OnInit {
   valueInput($event: any) { //BaoHG
     this.a = $event.target.value;
   }
+
   searchFoodAndDrinkAndMoney() {  //BaoHG
     if (this.a == "") {
       this.getAllFood();

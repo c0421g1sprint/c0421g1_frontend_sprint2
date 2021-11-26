@@ -14,6 +14,8 @@ h4 {
   margin: 20px;
 }
 
+
+
 @keyframes flickerAnimation {
   0%   { opacity:1; }
   50%  { opacity:0; }
@@ -83,8 +85,10 @@ li, input, button {
 
 .sale-screen {
   background-image: url(/assets/img-TaiHVK/pexels-octavio-gómez-8414072.jpg);
-  min-height: 100vh;
+  min-height: 110vh;
   background-size: cover;
+  margin-top: 80px;
+  margin-bottom: -80px;
 }
 
 .marquee-parent {
