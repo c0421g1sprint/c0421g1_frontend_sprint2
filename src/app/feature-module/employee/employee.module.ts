@@ -10,7 +10,7 @@ import {CreateEmployeeComponent} from "./create-employee/create-employee.compone
 
 
 @NgModule({
-  declarations: [EmployeeComponent,ListEmployeeComponent, DialogDeleteComponentCreateEmployeeComponent,EditEmployeeComponent,CreateEmployeeComponent],
+  declarations: [EmployeeComponent,ListEmployeeComponent, DialogDeleteComponent,CreateEmployeeComponent,EditEmployeeComponent,CreateEmployeeComponent],
   imports: [
     CommonModule,
     EmployeeRoutingModule,

@@ -31,24 +31,8 @@ export class CreateEmployeeComponent implements OnInit {
   ngOnInit(): void {
     this.getAllLevel();
     this.employeeForm.value.employeeImage = this.image;
-    this.getAllListAccount();
+
   }
-
-  getAllListAccount(){
-    this.employeeService.listAccount().subscribe(dataAccount =>{
-      console.log(dataAccount)
-      this.listAccount = dataAccount;
-      console.log(this.listAccount);
-    })
-    console.log(this.listAccount);
-  }
-
-  // getAllLevel() {
-  //   this.levelService.findAllLevel().subscribe(dataLevel => {
-  //     this.levelList = dataLevel;
-  //   });
-  // }
-
 
   // selectedFile: File = null;
   image='http://vietsolutionco.com/assets/theme/img/avatar.jpg'
@@ -117,18 +101,7 @@ Validators.pattern('^(090|091|\\(84\\)\\+90|\\(84\\)\\+91)[0-9]{7}$')
     }
   }
 
-  // checkAccountEmployee(checkAccount: AbstractControl) {
-  //   let accountName=checkAccount.value;
-  //   for(let i=0;i++;i<this.listAccount.length){
-  //      if(this.listAccount[i] != accountName){
-  //        return null
-  //      }
-  //      else {
-  //        return {'oro':true}
-  //      }
-  //   }
-  //
-  // }
+
 
   checkAccountEmployee(checkAccount: AbstractControl) {
     let accountName=checkAccount.value;
@@ -146,7 +119,7 @@ Validators.pattern('^(090|091|\\(84\\)\\+90|\\(84\\)\\+91)[0-9]{7}$')
               private storage: AngularFireStorage,
               private dialog: MatDialog
   ) {
-      this.getAllListAccount();
+
   }
 
 
@@ -269,9 +242,6 @@ Validators.pattern('^(090|091|\\(84\\)\\+90|\\(84\\)\\+91)[0-9]{7}$')
     }
   }
 
-  checKAccount() {
-
-  }
 
   onFileSelected(event) {
     var n = Date.now();
