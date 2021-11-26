@@ -5,4 +5,5 @@ export interface ICategory {
   categoryName: string;
   categoryCode: string;
   foodAndDrink: IFoodAndDrink[];
+  deleteFlag: boolean;
 }

@@ -26,3 +26,16 @@ $C0421G1-frontend-sprint2-theme: mat-light-theme($C0421G1-frontend-sprint2-prima
 // that you are using.
 @include angular-material-theme($C0421G1-frontend-sprint2-theme);
 
+// Custom.scss
+// Option A: Include all of Bootstrap
+
+// Include any default variable overrides here (though functions won't be available)
+
+//$custom-file-text: (
+//  en: "Browse",
+//  vi: "Chọn tệp"
+//);
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+// Then add additional custom code here
+

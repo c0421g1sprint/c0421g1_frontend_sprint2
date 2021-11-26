@@ -10,10 +10,13 @@ import {RouterModule} from '@angular/router';
 import { SnackbarComponent } from './snackbar/snackbar.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import {AngularFireStorageModule} from "@angular/fire/storage";
+import {MatVideoModule} from "mat-video";
+import {DialogDeleteComponent} from "./dialog-delete/dialog-delete.component";
 import {AngularFireModule} from "@angular/fire";
-import {environment} from "../../environments/environment";
+import {AngularFireStorageModule} from "@angular/fire/storage";
 import {AngularFireDatabaseModule} from "@angular/fire/database";
+import {environment} from "../../environments/environment";
+
 
 
 
@@ -32,8 +35,11 @@ import {AngularFireDatabaseModule} from "@angular/fire/database";
     MatButtonModule,
     MatProgressSpinnerModule,
     RouterModule,
+    MatVideoModule,
+    HttpClientModule,
     AngularFireStorageModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig, "cloud")
+    AngularFireDatabaseModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
   exports: [
     SnackbarComponent,
@@ -46,10 +52,10 @@ import {AngularFireDatabaseModule} from "@angular/fire/database";
     MatButtonModule,
     RouterModule,
     MatProgressSpinnerModule,
+    MatVideoModule,
     HttpClientModule,
     AngularFireStorageModule,
     AngularFireDatabaseModule,
-
   ],
 })
 export class ShareModule { }
