@@ -8,6 +8,7 @@ import {EmployeeService} from "../../../core-module/employee/employee.service";
 import {SnackbarService} from "../../../core-module/snackbar/snackbar.service";
 import {registerLocaleData } from "@angular/common";
 import localeVn from "@angular/common/locales/vi"
+// import {CreateEmployeeComponent} from "../create-employee/create-employee.component";
 registerLocaleData(localeVn,'vi')
 
 @Component({
@@ -18,9 +19,9 @@ registerLocaleData(localeVn,'vi')
 export class ListEmployeeComponent implements OnInit {
 
   searchForm: FormGroup = new FormGroup({
-    username: new FormControl(""),
-    nameEmployee: new FormControl(""),
-    phone: new FormControl("",[Validators.pattern("^[0-9]*$")]),
+    username: new FormControl("", [Validators.maxLength(100)]),
+    nameEmployee: new FormControl("",[Validators.maxLength(100)]),
+    phone: new FormControl("",[Validators.pattern("^[0-9]*$"),Validators.maxLength(11)])
   })
   employees: IEmployee[];
   currentPage: number = 0;
@@ -40,9 +41,10 @@ export class ListEmployeeComponent implements OnInit {
 
 
   searchAllEmployee(page: number) {
+    if (this.searchForm.valid) {
       this.flagSearch = 1;
-      this.employeeService.search(page, this.searchForm.value.username,
-        this.searchForm.value.nameEmployee, this.searchForm.value.phone).subscribe(data => {
+      this.employeeService.search(page, this.searchForm.value.username.trim(),
+        this.searchForm.value.nameEmployee.trim(), this.searchForm.value.phone.trim()).subscribe(data => {
         this.employees = data.content;
         this.totalPage = data.totalPages;
         console.log(data);
@@ -53,7 +55,7 @@ export class ListEmployeeComponent implements OnInit {
         }
       })
 
-
+    }
   }
 
   openDialogDelete(idEmployee: number, nameEmployee: String) {
@@ -70,7 +72,10 @@ export class ListEmployeeComponent implements OnInit {
         this.employeeService.deleteEmployee(idEmployee, this.employee).subscribe(data => {
           console.log(data);
           this.snackbarService.showSnackbar("Xóa thành công " + nameEmployee, "success");
-          this.ngOnInit()
+          this.employeeService.getAllEmployee(this.currentPage).subscribe(list => {
+            this.employees = list.content
+            this.totalPage = list.totalPages;
+          })
         })
       }
     })
@@ -111,10 +116,31 @@ export class ListEmployeeComponent implements OnInit {
     }
   }
 
+  // openDialogCreate() {
+  //   this.dialog.open(CreateEmployeeComponent,{
+  //     width:'1200px',
+  //     autoFocus:false,
+  //     maxHeight:'100vh'
+  //   });
+  // }
+
   validateMsg = {
     phone: [
       {
         type: "pattern", message: "Chỉ nhập số"
+      },
+      {
+        type: "maxlength", message: "Không được nhập quá 12 số"
+      }
+    ],
+    username: [
+      {
+        type: "maxlength", message: "Không được nhập quá 100 kí tự"
+      }
+    ],
+    nameEmployee: [
+      {
+        type: "maxlength", message: "Không được nhập quá 100 kí tự"
       }
     ]
   }
