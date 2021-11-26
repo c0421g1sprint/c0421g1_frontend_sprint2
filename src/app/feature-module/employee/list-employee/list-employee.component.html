@@ -74,19 +74,19 @@
             <td>{{item.employeeBirthday | date:"dd/MM/yyyy"}}</td>
             <td>{{item.employeeSalary | currency: "VND": "":"": "vi"}}</td>
             <td>{{item.level.levelName}}</td>
-            <td>
-              <button class="btn btn-warning text-white" data-toggle="tooltip" placement="right"
-                      title="Chỉnh sửa" routerLink="/employee/updateEmployee/{{item.employeeId}}" >
-                <img src="/assets/img/edit_note_black_24dp.svg" alt="">
-              </button>
-              <button class="btn btn-warning text-white ml-1 " data-toggle="tooltip" placement="right"
-                      title="Sửa mật khẩu" routerLink="/employee/edit-pass">
-                <img src="/assets/img/vpn_key_black_24dp.svg" alt="">
-              </button>
-              <button class="btn btn-warning text-white ml-1 " data-toggle="tooltip" placement="right"
-                      title="Xoá" (click)="openDialogDelete(item.employeeId, item.employeeName)">
-                <img src="/assets/img/delete_sweep_black_24dp.svg" alt="">
-              </button>
+            <td class="d-flex">
+                <button class="btn btn-warning text-white" data-toggle="tooltip" placement="right"
+                        title="Chỉnh sửa" routerLink="/employee/updateEmployee/{{item.employeeId}}" >
+                  <img src="/assets/img/edit_note_black_24dp.svg" alt="" class="img-button">
+                </button>
+                <button class="btn btn-warning text-white ml-1 " data-toggle="tooltip" placement="right"
+                        title="Sửa mật khẩu" routerLink="/employee/edit-pass">
+                  <img src="/assets/img/vpn_key_black_24dp.svg" alt="" class="img-button">
+                </button>
+                <button class="btn btn-warning text-white ml-1 " data-toggle="tooltip" placement="right"
+                        title="Xoá" (click)="openDialogDelete(item.employeeId, item.employeeName)">
+                  <img src="/assets/img/delete_sweep_black_24dp.svg" alt="" class="img-button">
+                </button>
             </td>
           </tr>
           </tbody>
