@@ -30,6 +30,6 @@ export class AccountService {
   //NhatDV function getUserByName
   getUserByName(userName: any): Observable<Account | any> {
     console.log(userName)
-    return this.http.get(this.accountURL + 'userName?name=' + userName, this.httpOptions)
+    return this.http.get(this.accountURL + 'userName?name=' + userName)
   }
 }
