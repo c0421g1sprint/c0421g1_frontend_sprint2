@@ -114,6 +114,8 @@ export class FoodAndDrinkUpdateComponent implements OnInit {
   getCategory() {
     return this.categoryService.findAllCategory().subscribe(list => {
       this.categoryList = list;
+      console.log(list)
+      console.log(this.categoryList)
       this.getFoodAndDrink(this.id);
     });
   }
