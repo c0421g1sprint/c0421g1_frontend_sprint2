@@ -51,7 +51,6 @@ export class EditPasswordComponent implements OnInit {
       }, [Validators.compose([this.checkPasswords, this.checkOldPassword])])
     },
       error => {
-        console.log('error');
         console.log(error);
       })
   }

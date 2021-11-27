@@ -3,6 +3,7 @@ import {HttpClient, HttpClientModule, HttpHeaders} from '@angular/common/http';
 import {IEditPasswordAccountDto} from "../../entity/iedit-password-account-dto";
 import {Observable} from "rxjs";
 import {IEmployee} from "../../entity/IEmployee";
+import {StorageService} from "./storage.service";
 
 @Injectable({
   providedIn: 'root'
@@ -12,13 +13,12 @@ export class AccountService {
   private accountURL = 'http://localhost:8080/api/account/'
   private httpOptions;
 
-  constructor(private http: HttpClient) {
-    this.httpOptions = {
-      headers: new HttpHeaders({'Content-Type': 'application/json'}),
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Headers': 'Content-Type',
+  constructor(private http: HttpClient, private storageService: StorageService) {
+    this.httpOptions ={
+      headers: new HttpHeaders({'Content-Type': 'application/json', 'Authorization': 'DUNG ' + `${this.storageService.getToken()}`}),
+      'Access-Control-Allow-Origin': 'http://localhost:4200',
       'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS'
-    };
+    }
   }
 
   //NhatDV function change password

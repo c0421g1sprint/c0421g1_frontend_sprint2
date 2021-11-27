@@ -15,7 +15,6 @@ const routes: Routes = [
       {path: "income", component: IncomeStatisticsComponent},
       {path: "sale", component: OrderOnServiceComponent},
       {path: "menu", component: MenuComponent}
-
     ]
   }
 ];
