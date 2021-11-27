@@ -63,6 +63,23 @@ input:focus :-ms-input-placeholder {
   transition: 250ms background ease-in;
   width: calc(80% - 3rem);
 }
+.rememberme-and-forget-password{
+  width: calc(80% - 3rem);
+  margin: 0 auto;
+  padding: 0.5rem;
+  display: flex;
+}
+
+#span-forget-pass{
+  color: white;
+  text-decoration-line: underline;
+  float: right;
+}
+
+#span-forget-pass:hover{
+  cursor: pointer;
+}
+
 .login-username:focus,
 .login-password:focus {
   background: white;

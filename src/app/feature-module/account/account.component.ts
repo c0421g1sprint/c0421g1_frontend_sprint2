@@ -11,7 +11,6 @@ import {LinkService} from "../../core-module/account/link.service";
   styleUrls: ['./account.component.css']
 })
 export class AccountComponent implements OnInit {
-
   role: string[] = [];
   saveInfo: boolean = false;
   loginForm: FormGroup =new FormGroup({
@@ -19,12 +18,14 @@ export class AccountComponent implements OnInit {
     password: new FormControl('', Validators.compose([Validators.required,Validators.minLength(6), Validators.maxLength(30)]))
   });
 
-
   constructor(private loginService: LoginService, private router: Router,
               private storageService: StorageService, private linkService: LinkService,
               private snackBar: SnackbarService) {
-
-    // //Kiet login 26/10:  Fill vao form group neu username da luu vao local storage
+    let usernameInSession = this.storageService.getUsernameFromSession();
+    if(usernameInSession != null){
+      this.router.navigateByUrl("");
+      this.snackBar.showSnackbar("Bạn đã đăng nhập với tài khoản " + usernameInSession, "error");
+    }
     if (this.storageService.getUsernameFromLocal() != null) {
       this.loginForm.patchValue({username: this.storageService.getUsernameFromLocal()});
       this.loginForm.patchValue({password: this.storageService.getPassword()});
@@ -35,7 +36,6 @@ export class AccountComponent implements OnInit {
   ngOnInit(): void {}
 
 
-//Kiet login 26/10: Luu mat khau va tai khoan luc dang nhap
   onLogin() {
     if (this.saveInfo){
       this.storageService.saveUsernameLocal(this.loginForm.get('username').value);
@@ -43,11 +43,9 @@ export class AccountComponent implements OnInit {
     }else {
       window.localStorage.clear();
     }
-    console.log(this.loginForm)
     if (this.loginForm.valid){
       this.loginService.getLogin(this.loginForm.value).subscribe(
         next => {
-          console.log(next);
           this.storageService.saveTokenSession(next.token);
           this.storageService.saveRolesSession(next.roles);
           this.storageService.saveUsernameSession(next.username);
@@ -82,4 +80,7 @@ export class AccountComponent implements OnInit {
   }
 
 
+  forgetPassword() {
+
+  }
 }

@@ -6,7 +6,7 @@
       <i class="fa fa-lock fa-stack-1x"></i>
     </span>
   </p>
-  <input type="text" class="login-username" autofocus="true" required="true" formControlName="username"
+  <input type="text" class="login-username" autofocus required="true" formControlName="username"
          placeholder="Tên tài khoản" style="text-align: center"/>
   <div class="errors">
     <ng-container *ngFor="let errors of validationMessage.username">
@@ -26,8 +26,16 @@
       </ng-template>
     </ng-container>
   </div>
-  <input type="checkbox" [checked]="saveInfo" (change)="rememberMe($event.target.checked)" class="form-check-inline"
-         style="margin-left: 270px; margin-top: 20px"><span style="color: white"> Lưu tài khoản </span> <br>
+  <div class="rememberme-and-forget-password">
+    <div class="col-md-6">
+      <input type="checkbox" [checked]="saveInfo" (change)="rememberMe($event.target.checked)"
+             class="form-check-inline">
+      <span style="color: white">Lưu tài khoản</span>
+    </div>
+    <div class="col-md-6">
+      <span id="span-forget-pass" (click)="forgetPassword()">Quên mật khẩu</span>
+    </div>
+  </div>
   <div class="row d-flex justify-content-center">
     <div>
       <input type="submit" name="Login" value="Xác nhận" class="login-submit rounded float-left" style="width: 100px"/>

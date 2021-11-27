@@ -17,9 +17,7 @@ export class FoodAndDrinkService {
 
   constructor(private http: HttpClient, private storageService: StorageService) {
     this.httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Authorization': 'DUNG ' + `${this.storageService.getToken()}`
+      headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': 'DUNG ' + `${this.storageService.getToken()}`
       }),
       'Access-Control-Allow-Origin': 'http://localhost:4200',
       'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS'
@@ -28,12 +26,12 @@ export class FoodAndDrinkService {
 
   //HaNTT: 19/11/2021 - get top 5 NEW food for homepage
   getFiveNewFood(): Observable<IFoodAndDrink[] | any> {
-    return this.http.get(`${this.url}/find-top-five-new`, this.httpOptions)
+    return this.http.get(`${this.url}/find-top-five-new`)
   }
 
   //HaNTT: 19/11/2021 - get top 5 POPULAR food for homepage
   getFivePopularFood(): Observable<IFoodAndDrink[] | any> {
-    return this.http.get(`${this.url}/find-top-five-popular`, this.httpOptions)
+    return this.http.get(`${this.url}/find-top-five-popular`)
   }
 
   //LinhDN hien thi danh sach fad

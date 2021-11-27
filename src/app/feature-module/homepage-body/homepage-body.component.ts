@@ -27,26 +27,16 @@ export class HomepageBodyComponent implements OnInit {
   //HaNTT: 19/11/2021 - get top 5 NEW food for homepage
    getTopFiveNew(){
     this.foodAndDrinkService.getFiveNewFood().subscribe(data=> {
-      console.log('data: ')
-      console.log(data)
       this.fiveNewFoodList = data;
-      console.log('fiveNewFoodList: ')
-      console.log(this.fiveNewFoodList)
     })
   }
 
   //HaNTT: 19/11/2021 - get top 5 POPULAR food for homepage
   getTopFivePopular() {
     this.foodAndDrinkService.getFivePopularFood().subscribe(data=> {
-      console.log('data: ')
-      console.log(data)
       this.fivePopularFoodList = data;
       this.topPopularFood = data.shift();
-      console.log('topPopularFood: ')
-      console.log(this.topPopularFood)
       this.fourPopularFood = this.fivePopularFoodList;
-      console.log('fourPopularFood: ')
-      console.log(this.fourPopularFood)
     })
   }
 }

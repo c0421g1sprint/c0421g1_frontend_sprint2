@@ -15,9 +15,12 @@
       <div class="dropdown-menu bg-dark" aria-labelledby="dropdownMenuButton">
         <span class="dropdown-item" data-toggle="modal" data-target="#exampleModal" style="color: #e3cc6f"
               (click)="getOut()"> Đăng xuất </span>
-        <span class="dropdown-item" routerLink="#" style="color: #e3cc6f">Đổi mật khẩu</span>
+        <span class="dropdown-item" data-toggle="modal" data-target="#exampleModal" (click)="showInfoUser(this.username)"
+              style="color: #e3cc6f">
+          Thông tin người dùng
+        </span>
+        <!--        <span *ngIf="role.indexOf('ROLE_USER') != -1" class="dropdown-item" [routerLink]="['teacher', 'update']">Thông tin cá nhân</span>-->
       </div>
-      <!--        <span *ngIf="role.indexOf('ROLE_USER') != -1" class="dropdown-item" [routerLink]="['teacher', 'update']">Thông tin cá nhân</span>-->
     </div>
     <a class="navbar-text lec-gold lec-gold-li px-2" title="Menu" routerLink="/order/menu">
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-list"
