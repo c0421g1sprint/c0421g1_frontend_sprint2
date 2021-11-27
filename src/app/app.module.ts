@@ -15,6 +15,13 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
 
 
+
+//TỰ THÊM VÀO PHUCnK
+import localeVi from '@angular/common/locales/vi';
+import {registerLocaleData} from "@angular/common";
+
+registerLocaleData(localeVi, "vi-VN");
+
 @NgModule({
   declarations: [
     AppComponent,

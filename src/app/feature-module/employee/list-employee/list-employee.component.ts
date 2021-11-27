@@ -6,10 +6,11 @@ import {DialogDeleteComponent} from "../../../share-module/delete/dialog-delete.
 import {IEmployee} from "../../../entity/IEmployee";
 import {EmployeeService} from "../../../core-module/employee/employee.service";
 import {SnackbarService} from "../../../core-module/snackbar/snackbar.service";
-import {registerLocaleData } from "@angular/common";
+import {registerLocaleData} from "@angular/common";
 import localeVn from "@angular/common/locales/vi"
+import {CreateEmployeeComponent} from "../create-employee/create-employee.component";
 // import {CreateEmployeeComponent} from "../create-employee/create-employee.component";
-registerLocaleData(localeVn,'vi')
+registerLocaleData(localeVn, 'vi')
 
 @Component({
   selector: 'app-list-employee',
@@ -20,8 +21,8 @@ export class ListEmployeeComponent implements OnInit {
 
   searchForm: FormGroup = new FormGroup({
     username: new FormControl("", [Validators.maxLength(100)]),
-    nameEmployee: new FormControl("",[Validators.maxLength(100)]),
-    phone: new FormControl("",[Validators.pattern("^[0-9]*$"),Validators.maxLength(11)])
+    nameEmployee: new FormControl("", [Validators.maxLength(100)]),
+    phone: new FormControl("", [Validators.pattern("^[0-9]*$"), Validators.maxLength(11)])
   })
   employees: IEmployee[];
   currentPage: number = 0;
@@ -37,7 +38,6 @@ export class ListEmployeeComponent implements OnInit {
   ngOnInit(): void {
     this.searchAllEmployee(this.currentPage);
   }
-
 
 
   searchAllEmployee(page: number) {
@@ -145,4 +145,11 @@ export class ListEmployeeComponent implements OnInit {
     ]
   }
 
+  openCreateEmployeeDialog() {
+    this.dialog.open(CreateEmployeeComponent, {
+      width: '1200px',
+      autoFocus: false,
+      maxHeight: '100vh'
+    });
+  }
 }

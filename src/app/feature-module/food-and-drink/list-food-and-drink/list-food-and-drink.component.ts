@@ -122,7 +122,7 @@ export class ListFoodAndDrinkComponent implements OnInit {
       }
     });
     dialog.afterClosed().subscribe(nextClose => {
-      if (nextClose == `true`) {
+      if (nextClose == `yes`) {
         this.fadService.delete(fadId, this.fad).subscribe(data => {
           console.log(data);
           this.snackBar.showSnackbar("Xoá sản phẩm " + name + " thành công", "success");
