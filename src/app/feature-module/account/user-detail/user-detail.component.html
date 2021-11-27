@@ -9,42 +9,42 @@
 <!--      </div>-->
 <!--      <div class="modal-body">-->
 <!--        <div>-->
-<!--          <table id="tbDetail">-->
+<!--          <table id="text-center">-->
 <!--            <tr>-->
-<!--              <td class="tdDetail item">Tài khoản</td>-->
-<!--              <td class="tdDetail">{{employee.account.accountUsername}}</td>-->
+<!--              <td class="text-center item">Tài khoản</td>-->
+<!--              <td class="text-center">{{employee.account.accountUsername}}</td>-->
 <!--            </tr>-->
 <!--            <tr>-->
-<!--              <td class="tdDetail item">Họ và tên</td>-->
-<!--              <td class="tdDetail">{{employee.employeeName}}</td>-->
+<!--              <td class="text-center item">Họ và tên</td>-->
+<!--              <td class="text-center">{{employee.employeeName}}</td>-->
 <!--            </tr>-->
 <!--            <tr>-->
-<!--              <td class="tdDetail item">Địa chỉ</td>-->
-<!--              <td class="tdDetail">{{employee.employeeAddress}}</td>-->
+<!--              <td class="text-center item">Địa chỉ</td>-->
+<!--              <td class="text-center">{{employee.employeeAddress}}</td>-->
 <!--            </tr>-->
 <!--            <tr>-->
-<!--              <td class="tdDetail item">Giới tính</td>-->
-<!--              <td class="tdDetail" [ngSwitch]="employee.employeeGender">-->
+<!--              <td class="text-center item">Giới tính</td>-->
+<!--              <td class="text-center" [ngSwitch]="employee.employeeGender">-->
 <!--                <span id="sp" class="p-0" *ngSwitchCase="1">Nữ </span>-->
 <!--                <span id="sp1" class="p-0" *ngSwitchCase="0">Nam </span>-->
 <!--                <span id="sp2" class="p-0" *ngSwitchDefault>LGBT </span>-->
 <!--              </td>-->
 <!--            </tr>-->
 <!--            <tr>-->
-<!--              <td class="tdDetail item">Số điện thoại</td>-->
-<!--              <td class="tdDetail">{{employee.employeePhone}}</td>-->
+<!--              <td class="text-center item">Số điện thoại</td>-->
+<!--              <td class="text-center">{{employee.employeePhone}}</td>-->
 <!--            </tr>-->
 <!--            <tr>-->
-<!--              <td class="tdDetail item">Ngày sinh</td>-->
-<!--              <td class="tdDetail">{{employee.employeeBirthday | date: "dd/MM/yyyy"}}</td>-->
+<!--              <td class="text-center item">Ngày sinh</td>-->
+<!--              <td class="text-center">{{employee.employeeBirthday | date: "dd/MM/yyyy"}}</td>-->
 <!--            </tr>-->
 <!--            <tr>-->
-<!--              <td class="tdDetail item">Lương</td>-->
-<!--              <td class="tdDetail">{{employee.employeeSalary | currency: 'VND' :'symbol' : '1.0-0'}}</td>-->
+<!--              <td class="text-center item">Lương</td>-->
+<!--              <td class="text-center">{{employee.employeeSalary | currency: 'VND' :'symbol' : '1.0-0'}}</td>-->
 <!--            </tr>-->
 <!--            <tr>-->
-<!--              <td class="tdDetail item">Vị trí</td>-->
-<!--              <td class="tdDetail">{{employee.level.levelName}}</td>-->
+<!--              <td class="text-center item">Vị trí</td>-->
+<!--              <td class="text-center">{{employee.level.levelName}}</td>-->
 <!--            </tr>-->
 <!--          </table>-->
 <!--        </div>-->
@@ -72,48 +72,48 @@
 <!--  </div>-->
 <!--</div>-->
 
-<div style="margin-top: 80px; min-width: 500px; overflow-y: scroll">
+<div style="min-width: 500px" class="mt-5">
   <h1 class="text-center"><strong>Xem chi tiết</strong></h1>
-  <table id="tbDetail">
+  <table id="tbDetail" class="w-100">
     <tr>
-      <td class="tdDetail item">Tài khoản</td>
-      <td class="tdDetail">{{employee.account.accountUsername}}</td>
+      <th class="w-25 text-center">Tài khoản</th>
+      <td class="text-center">{{employee.account.accountUsername}}</td>
     </tr>
     <tr>
-      <td class="tdDetail item">Họ và tên</td>
-      <td class="tdDetail">{{employee.employeeName}}</td>
+      <th class="text-center item">Họ và tên</th>
+      <td class="text-center">{{employee.employeeName}}</td>
     </tr>
     <tr>
-      <td class="tdDetail item">Địa chỉ</td>
-      <td class="tdDetail">{{employee.employeeAddress}}</td>
+      <th class="text-center item">Địa chỉ</th>
+      <td class="text-center">{{employee.employeeAddress}}</td>
     </tr>
     <tr>
-      <td class="tdDetail item">Giới tính</td>
-      <td class="tdDetail" [ngSwitch]="employee.employeeGender">
+      <th class="text-center item">Giới tính</th>
+      <td class="text-center" [ngSwitch]="employee.employeeGender">
         <span id="sp" class="p-0" *ngSwitchCase="1">Nữ </span>
         <span id="sp1" class="p-0" *ngSwitchCase="0">Nam </span>
         <span id="sp2" class="p-0" *ngSwitchDefault>LGBT </span>
       </td>
     </tr>
     <tr>
-      <td class="tdDetail item">Số điện thoại</td>
-      <td class="tdDetail">{{employee.employeePhone}}</td>
+      <th class="text-center item">Số điện thoại</th>
+      <td class="text-center">{{employee.employeePhone}}</td>
     </tr>
     <tr>
-      <td class="tdDetail item">Ngày sinh</td>
-      <td class="tdDetail">{{employee.employeeBirthday | date: "dd/MM/yyyy"}}</td>
+      <th class="text-center item">Ngày sinh</th>
+      <td class="text-center">{{employee.employeeBirthday | date: "dd/MM/yyyy"}}</td>
     </tr>
     <tr>
-      <td class="tdDetail item">Lương</td>
-      <td class="tdDetail">{{employee.employeeSalary | currency: 'VND' :'symbol' : '1.0-0'}}</td>
+      <th class="text-center item">Lương</th>
+      <td class="text-center">{{employee.employeeSalary | currency: 'VND' :'symbol' : '1.0-0'}}</td>
     </tr>
     <tr>
-      <td class="tdDetail item">Vị trí</td>
-      <td class="tdDetail">{{employee.level.levelName}}</td>
+      <th class="text-center item">Vị trí</th>
+      <td class="text-center">{{employee.level.levelName}}</td>
     </tr>
   </table>
-  <div>
-    <button id="btDetail" mat-dialog-close="" class="btn btn-warning"type="button" style="color: black">
+  <div class="d-flex justify-content-center">
+    <button id="btDetail" mat-dialog-close="" class="btn btn-warning mr-1" type="button" style="color: black">
       <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
         <path d="M0 0h24v24H0V0z" fill="none"/>
         <path
@@ -121,7 +121,7 @@
       </svg>
       Quay lại
     </button>
-    <button class="btn btn-warning" id="btDetail2" mat-dialog-close
+    <button class="btn btn-warning ml-1" id="btDetail2" mat-dialog-close
             (click)="dataEdit(this.employee.account.accountUsername)" type="button">
       <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
         <path d="M0 0h24v24H0V0z" fill="none"/>

@@ -20,6 +20,7 @@ export class UserDetailComponent implements OnInit {
                ) {
     this.employeeService.getUserDetail(data1).subscribe(next => {
       this.employee = next;
+      console.log(this.employee)
     })
   }
 
@@ -28,16 +29,6 @@ export class UserDetailComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  //
-  // userDetail(id: string) {
-  //   let dialog = this.dialog.open(UserDetailComponent,{
-  //     maxWidth: '650px',
-  //     data: {
-  //       id: id
-  //     },
-  //   });
-  //   dialog.afterClosed().subscribe(()=>this.ngOnInit())
-  // }
   dataEdit(name: string) {
     this.router.navigateByUrl('/editPass/' + name, {skipLocationChange: true})
     console.log(this.name)

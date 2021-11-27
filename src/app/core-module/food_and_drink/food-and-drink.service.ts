@@ -70,7 +70,7 @@ export class FoodAndDrinkService {
   }
 
   getAllFoodAndDrink(): Observable<IFoodAndDrink[] | any> { //BaoHG
-    return this.http.get(this.urlAllFood, this.httpOptions)
+    return this.http.get(this.urlAllFood)
   }
 
   getFoodAndDinkTheoCategory(id: number): Observable<IFoodAndDrink | any> { //BaoHG
