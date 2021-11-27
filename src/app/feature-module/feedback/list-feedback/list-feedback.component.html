@@ -34,7 +34,7 @@
     <div class="col-lg-1"></div>
     <div class="col-lg-10">
       <div class="table-responsive-lg">
-        <table class=" table bg-dark" *ngIf="feedBackList.length != 0; else errorContent">
+        <table class="table table-hover table-dark" *ngIf="feedBackList.length != 0; else errorContent">
           <thead class="text-white" style="font-size: 25px">
           <tr>
             <th>Số thứ tự</th>
@@ -47,12 +47,16 @@
           </tr>
           </thead>
           <tbody class="text-white">
-          <tr class="animate" *ngFor="let items of feedBackList; let i = index">
+          <tr *ngFor="let items of feedBackList; let i = index">
             <td>{{i + 1}}</td>
             <td>{{items.feedbackCode}}</td>
             <td>{{items.feedbackDate | date: "dd/MM/yyyy"}}</td>
             <td>{{items.feedbackCreator}}</td>
-            <td>{{items.feedbackEmail}}</td>
+            <td>
+              <div class="text">
+                {{items.feedbackEmail}}
+              </div>
+            </td>
             <td>
               <div class="text">
                 {{items.feedbackContent}}

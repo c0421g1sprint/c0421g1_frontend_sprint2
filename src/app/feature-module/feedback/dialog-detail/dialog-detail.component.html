@@ -17,7 +17,7 @@
       </div>
       <div class="row">
         <div class="col-lg-4">
-          <span><strong>Email khách hàng:</strong></span>
+          <span><strong>Email:</strong></span>
         </div>
         <div class="col-lg-8">
           <span>{{feedback.feedbackEmail}}</span>
@@ -28,12 +28,12 @@
           <span><strong>Ngày phản hồi:</strong></span>
         </div>
         <div class="col-lg-8">
-          <span>{{feedback.feedbackDate}}</span>
+          <span>{{feedback.feedbackDate | date: 'dd/MM/yyy'}}</span>
         </div>
       </div>
       <div class="row">
         <div class="col-lg-4">
-          <span><strong>Nội dung phản hồi:</strong></span>
+          <span><strong>Nội dung :</strong></span>
         </div>
         <div class="col-lg-8">
           <span>{{feedback.feedbackContent}}</span>
