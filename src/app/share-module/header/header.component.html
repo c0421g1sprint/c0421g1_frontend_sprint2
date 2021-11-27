@@ -1,20 +1,23 @@
-<nav class="navbar navbar-expand-lg position-fixed fh5co-nav" style="background-color: black">
+<nav class="navbar navbar-expand-lg position-fixed fh5co-nav" style="background-color: black"
+     xmlns="http://www.w3.org/1999/html">
   <a class="navbar-brand" href="#">
     <img src="../../../assets/img/cut_text_logo3.jpg" height="46" width="235"/>
   </a>
   <!--admin-->
   <div class="ml-auto" id="navbarText">
-    <a class="navbar-text lec-gold lec-gold-li" *ngIf="!this.username">
+    <a class="navbar-text lec-gold lec-gold-li" id="login-button" *ngIf="!this.username">
       <span [routerLink]="['/login']">Đăng nhập</span>
     </a>
 
-    <div class="navbar-text lec-gold lec-gold-li" *ngIf="this.username">
-      <span>Chào {{this.username}}</span>
-      <div class="dropdown-menu" style="color:#e0a800">
-        <span class="dropdown-item" data-toggle="modal" data-target="#exampleModal"> Đăng xuất </span>
-        <span class="dropdown-item" routerLink="#">Đổi mật khẩu</span>
-<!--        <span *ngIf="role.indexOf('ROLE_USER') != -1" class="dropdown-item" [routerLink]="['teacher', 'update']">Thông tin cá nhân</span>-->
+    <div class="navbar-text lec-gold lec-gold-li dropdown" *ngIf="this.username">
+        <span style="color: #e3cc6f"
+              data-toggle="dropdown" aria-expanded="false" class="dropdown-toggle">Chào {{this.username}}</span>
+      <div class="dropdown-menu bg-dark" aria-labelledby="dropdownMenuButton">
+        <span class="dropdown-item" data-toggle="modal" data-target="#exampleModal" style="color: #e3cc6f"
+              (click)="getOut()"> Đăng xuất </span>
+        <span class="dropdown-item" routerLink="#" style="color: #e3cc6f">Đổi mật khẩu</span>
       </div>
+      <!--        <span *ngIf="role.indexOf('ROLE_USER') != -1" class="dropdown-item" [routerLink]="['teacher', 'update']">Thông tin cá nhân</span>-->
     </div>
     <a class="navbar-text lec-gold lec-gold-li px-2" title="Menu" routerLink="/order/menu">
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-list"

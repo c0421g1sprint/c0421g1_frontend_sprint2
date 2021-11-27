@@ -13,9 +13,6 @@ export class HeaderComponent implements OnInit{
   role: string[] = [];
 
   constructor(private router: Router, private storage: StorageService, private linkService: LinkService) {
-  }
-
-  ngOnInit(): void {
     this.linkService.getReloadComponent().subscribe(() => {
       if (this.storage.getToken()) {
         this.username = this.storage.getUsernameFromSession();
@@ -25,6 +22,10 @@ export class HeaderComponent implements OnInit{
         this.role = [];
       }
     })
+  }
+
+  ngOnInit(): void {
+
   }
 
   getOut() {
