@@ -4,6 +4,7 @@ import {IOrders} from "../../../entity/IOrders";
 import {SnackbarService} from "../../../core-module/snackbar/snackbar.service";
 import {MatDialog} from "@angular/material/dialog";
 import {OrderDetailComponent} from "../order-detail/order-detail.component";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-order-list',
@@ -26,7 +27,8 @@ export class OrderListComponent implements OnInit {
 
   constructor(private orderService: OrderService,
               private snackBar: SnackbarService,
-              private matDialog: MatDialog) {
+              private matDialog: MatDialog,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -43,6 +45,10 @@ export class OrderListComponent implements OnInit {
       console.log(this.orderList);
       this.getPrice();
     }, error => {
+      if (error.status == 403) {
+        this.router.navigateByUrl("/403");
+        return;
+      }
       if (error.status == '406') {
         this.snackBar.showSnackbar("Danh sách bạn cần không có!", "error");
       }
@@ -114,8 +120,8 @@ export class OrderListComponent implements OnInit {
   viewDetail(item: IOrders, total: number) {
     this.matDialog.open(OrderDetailComponent,
       {
-        data: {order: item,totalPrice: total},
-        minHeight:'200px',minWidth: '550px',
+        data: {order: item, totalPrice: total},
+        minHeight: '200px', minWidth: '550px',
         maxHeight: '900px',
         panelClass: 'my-font-bg',
       }

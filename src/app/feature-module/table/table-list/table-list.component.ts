@@ -111,6 +111,10 @@ export class TableListComponent implements OnInit {
       this.ngOnInit();
       this.snackBar.showSnackbar("Xoá thành công!!", "success");
     }, error => {
+      if(error.status == 403){
+        this.snackBar.showSnackbar("Không có quyền truy cập", "error");
+        return;
+      }
       this.snackBar.showSnackbar("Không tồn tại dữ liệu bàn", "error");
     })
   }

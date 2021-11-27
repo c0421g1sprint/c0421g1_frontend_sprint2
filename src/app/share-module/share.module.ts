@@ -16,16 +16,16 @@ import {AngularFireModule} from "@angular/fire";
 import {AngularFireStorageModule} from "@angular/fire/storage";
 import {AngularFireDatabaseModule} from "@angular/fire/database";
 import {environment} from "../../environments/environment";
-
-
-
+import {Page403Component} from "./page403/page403.component";
+import {ShareRoutingModule} from "./share-routing.module";
 
 @NgModule({
   declarations: [
     SnackbarComponent,
     HeaderComponent,
     FooterComponent,
-    DialogDeleteComponent
+    DialogDeleteComponent,
+    Page403Component
   ],
   imports: [
     CommonModule,
@@ -40,9 +40,11 @@ import {environment} from "../../environments/environment";
     HttpClientModule,
     AngularFireStorageModule,
     AngularFireDatabaseModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig)
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    ShareRoutingModule
   ],
   exports: [
+    Page403Component,
     DialogDeleteComponent,
     SnackbarComponent,
     FooterComponent,
@@ -58,6 +60,7 @@ import {environment} from "../../environments/environment";
     HttpClientModule,
     AngularFireStorageModule,
     AngularFireDatabaseModule,
+    ShareRoutingModule
   ],
 })
 export class ShareModule { }
