@@ -15,10 +15,10 @@
       <div class="dropdown-menu bg-dark" aria-labelledby="dropdownMenuButton">
             <span class="dropdown-item hover-item" data-toggle="modal" data-target="#exampleModal" style="color: #e3cc6f"
                   (click)="getOut()"> Đăng xuất </span>
-        <span class="dropdown-item hover-item" routerLink="#" style="color: #e3cc6f">Đổi mật khẩu</span>
-        <span class="dropdown-item hover-item" routerLink="/feed-back-list" style="color: #e3cc6f">Quản lý phản hồi</span>
+        <span class="dropdown-item hover-item" routerLink="/editPass/{{this.username}}" style="color: #e3cc6f">Đổi mật khẩu</span>
+        <span class="dropdown-item hover-item" routerLink="/feed-back-list/list" style="color: #e3cc6f">Quản lý phản hồi</span>
         <span class="dropdown-item hover-item" routerLink="/employee/list" style="color: #e3cc6f">Quản lý nhân viên</span>
-        <span class="dropdown-item hover-item" routerLink="/order" style="color: #e3cc6f">Quản lý hóa đơn</span>
+        <span class="dropdown-item hover-item" routerLink="/order/list" style="color: #e3cc6f">Quản lý hóa đơn</span>
         <span class="dropdown-item hover-item" routerLink="/order/income" style="color: #e3cc6f">Quản lý doanh thu</span>
         <span class="dropdown-item hover-item" routerLink="/order/sale" style="color: #e3cc6f">Quản lý dịch vụ</span>
         <span class="dropdown-item hover-item" routerLink="/table" style="color: #e3cc6f">Quản lý bàn</span>
@@ -31,10 +31,10 @@
       <div class="dropdown-menu bg-dark" aria-labelledby="dropdownMenuButton">
             <span class="dropdown-item hover-item" data-toggle="modal" data-target="#exampleModal" style="color: #e3cc6f"
                   (click)="getOut()"> Đăng xuất </span>
-        <span class="dropdown-item hover-item" routerLink="#" style="color: #e3cc6f">Đổi mật khẩu</span>
+        <span class="dropdown-item hover-item" routerLink="/editPass/{{this.username}}" style="color: #e3cc6f">Đổi mật khẩu</span>
         <span class="dropdown-item hover-item" routerLink="/food-and-drink/list" style="color: #e3cc6f">Quản lý thực đơn</span>
         <span class="dropdown-item hover-item" routerLink="/order/sale" style="color: #e3cc6f">Quản lý dịch vụ</span>
-        <span class="dropdown-item hover-item" routerLink="/order" style="color: #e3cc6f">Quản lý hóa đơn</span>
+        <span class="dropdown-item hover-item" routerLink="/order/list" style="color: #e3cc6f">Quản lý hóa đơn</span>
         <span class="dropdown-item hover-item" routerLink="/table" style="color: #e3cc6f">Quản lý bàn</span>
       </div>
     </div>
