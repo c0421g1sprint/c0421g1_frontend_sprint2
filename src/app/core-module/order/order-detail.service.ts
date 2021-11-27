@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from "rxjs";
 import {IOrders} from "../../entity/IOrders";
 import {ITables} from "../../entity/ITables";
+import {StorageService} from "../account/storage.service";
 
 @Injectable({
   providedIn: 'root'
@@ -12,21 +13,23 @@ export class OrderDetailService {
   private orderUrlApi = 'http://localhost:8080/api/order/on-service';
   httpOptions: any;
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private httpClient: HttpClient, private storageService: StorageService) {
     this.httpOptions = {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json'}),
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Headers': 'Content-Type',
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'DUNG ' + `${this.storageService.getToken()}`
+      }),
+      'Access-Control-Allow-Origin': 'http://localhost:4200',
       'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS'
-    };
+    }
   }
 
   findOrderById(id: number): Observable<any> {
     return this.httpClient.get<IOrders>(this.orderUrlApi + '/' + id, this.httpOptions).pipe();
   }
 
-  showTableOnService(page: number): Observable<ITables> {
-    return this.httpClient.get<ITables>(this.orderUrlApi + '?page=' +page );
+  showTableOnService(page: number): Observable<ITables | any> {
+    return this.httpClient.get<ITables>(this.orderUrlApi + '?page=' +page,this.httpOptions);
   }
 
   changeTableOnServiceStatus(id: number): Observable<any> {

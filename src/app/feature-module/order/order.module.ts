@@ -12,6 +12,7 @@ import {OrderComponent} from "./order.component";
 import { OrderDetailComponent } from './order-detail/order-detail.component';
 import {MatGridListModule} from "@angular/material/grid-list";
 import { IncomeStatisticsComponent } from './income-statistics/income-statistics.component';
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 
 
 
@@ -30,6 +31,10 @@ import { IncomeStatisticsComponent } from './income-statistics/income-statistics
     NgxPaginationModule,
     CountdownModule,
     MatGridListModule,
+  ],
+  providers: [
+    { provide: MAT_DIALOG_DATA, useValue: {} },
+    { provide: MatDialogRef, useValue: {} }
   ]
 })
 export class OrderModule { }

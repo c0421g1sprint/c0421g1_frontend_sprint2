@@ -1,8 +1,8 @@
 import {Component, ElementRef, Inject, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {IEmployee} from "../../../entity/IEmployee";
-import {ActivatedRoute, ParamMap, Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {EmployeeService} from "../../../core-module/employee/employee.service";
-import {MAT_DIALOG_DATA, MatDialog} from "@angular/material/dialog";
+import { MAT_DIALOG_DATA } from "@angular/material/dialog";
 
 @Component({
   selector: 'app-user-detail',
@@ -13,10 +13,12 @@ export class UserDetailComponent implements OnInit {
   employee: IEmployee
   name: string;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private activatedRouter: ActivatedRoute,
+  constructor( private activatedRouter: ActivatedRoute,
               private employeeService: EmployeeService,
-              private router: Router) {
-    this.employeeService.getUserDetail(data).subscribe(next => {
+              private router: Router,
+               @Inject(MAT_DIALOG_DATA) public data1: any,
+               ) {
+    this.employeeService.getUserDetail(data1).subscribe(next => {
       this.employee = next;
     })
   }
