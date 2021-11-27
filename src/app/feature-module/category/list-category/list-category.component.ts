@@ -82,7 +82,7 @@ export class ListCategoryComponent implements OnInit {
       }
     });
     dialog.afterClosed().subscribe(nextClose => {
-      if (nextClose == `true`) {
+      if (nextClose == `yes`) {
         this.categoryService.delete(categoryId, this.category).subscribe(data => {
           console.log(data);
           this.snackBar.showSnackbar("Xoá nhóm món " + name + " thành công", "success");

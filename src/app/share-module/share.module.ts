@@ -24,7 +24,8 @@ import {environment} from "../../environments/environment";
   declarations: [
     SnackbarComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    DialogDeleteComponent
   ],
   imports: [
     CommonModule,
@@ -42,6 +43,7 @@ import {environment} from "../../environments/environment";
     AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
   exports: [
+    DialogDeleteComponent,
     SnackbarComponent,
     FooterComponent,
     HeaderComponent,
