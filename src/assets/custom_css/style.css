@@ -343,8 +343,10 @@ body {
   min-height: 900px;
   background-size: cover;
 }
+
 .section2-bg-img #carouselExampleIndicators {
   padding: 0 100px 0 100px;
+  width: 100%;
 }
 
 .section2-bg-img .card {
@@ -357,6 +359,7 @@ div .card-deck {
 
 .section2-bg-img .card .card-img-top {
   height: 280px;
+  width: 100%;
 }
 
 .section2-bg-img .card .card-body {
@@ -381,28 +384,23 @@ div .card-deck {
   justify-content: center;
   align-items: center;
 }
-/*.owl-dot {*/
-/*  display: inline-block;*/
-/*  color: #000;*/
-/*}*/
-.btn-owl-dot {
 
-  background: url(http://lecker.maskandesign.com/html/css/../images/badge_mini.png);
-  width: 15px;
-  height: 15px;
-  display: inline-block;
-  -webkit-background-size: cover;
-  background-size: cover;
-  margin-left: 20px;
-  margin-right: 20px;
-  padding: 25px 25px;
-  top: 50%;
-  bottom: 50%;
-  justify-content: center;
-  background-clip: padding-box;
-  text-align: center;
-opacity: 0.8;
+.btn-owl-dot {
+  background: url(http://lecker.maskandesign.com/html/css/../images/badge_mini.png) !important;
+  width: 15px !important;
+  height: 15px !important;
+  top: 50% !important;
+  bottom: 50% !important;
+  -webkit-background-size: cover !important;
+  /*background-size: cover !important;*/
+  margin-left: 20px !important;
+  margin-right: 20px !important;
+  padding: 25px 25px !important;
+  background-clip: padding-box !important;
+  text-align: center !important;
+  opacity: 0.8 !important;
 }
+
 .owl-dot span {
   background: url(http://lecker.maskandesign.com/html/css/../images/badge_mini.png);
   width: 15px;
@@ -411,7 +409,7 @@ opacity: 0.8;
   -webkit-background-size: cover;
   background-size: cover;
   margin: 100px 5px 0;
-  /*padding: 100px 100px;*/
+  /*padding: 25px 25px;*/
   /*padding: unset;*/
   justify-content: center;
   background-clip: padding-box;
@@ -427,6 +425,7 @@ opacity: 0.8;
   color: white;
   line-height: 30px;
 }
+
 .section2-bg-img .lec_gold .lec_letter_k {
   width: 47px;
   height: 90px;
@@ -457,6 +456,7 @@ opacity: 0.8;
   margin-right: 12px;
   margin-left: -11px;
 }
+
 .lec_gold .lec_letter_S {
   width: 44px;
   height: 74px;
@@ -530,7 +530,6 @@ opacity: 0.8;
 #charP {
   margin-left: 15px;
 }
-
 
 
 /*----------------section 3: top 5 order--------------*/
@@ -609,9 +608,9 @@ opacity: 0.8;
 }
 
 .div-content {
-  display:table-cell;
-  vertical-align:middle;
-  text-align:center
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center
 }
 
 .section4-new h3 {
@@ -679,6 +678,7 @@ opacity: 0.8;
   margin-left: -15px;
   margin-right: 1px;
 }
+
 .section2-bg-img .lec_gold .lec_letter_l {
   width: 33px;
   height: 90px;
@@ -702,18 +702,21 @@ opacity: 0.8;
   margin-left: 5px;
   margin-right: 16px;
 }
+
 .lec_gold #char_L {
   width: 36px;
   height: 74px;
   background-position: -783px -90px;
   margin-right: 10px;
 }
+
 .lec_gold .lec_letter_v {
   width: 37px;
   height: 90px;
   background-position: -1330px 0;
   margin-left: -15px;
 }
+
 .lec_gold #char_r {
   width: 28px;
   height: 90px;
@@ -721,6 +724,7 @@ opacity: 0.8;
   margin-left: -15px;
   margin-right: 14px;
 }
+
 .lec_gold #char_f {
   width: 38px;
   height: 90px;
@@ -854,6 +858,7 @@ footer {
   margin-left: -8px;
   margin-right: 5px;
 }
+
 .lec_gold #char_o {
   width: 33px;
   height: 90px;
@@ -871,7 +876,7 @@ footer {
 
 .footer {
   margin-top: 80px;
-  background-color: #000;
+  background-color: #6a6663;
   /*position: relative;*/
   /*height: 600px;*/
 }

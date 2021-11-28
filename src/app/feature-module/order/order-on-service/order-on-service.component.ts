@@ -110,14 +110,16 @@ export class OrderOnServiceComponent implements OnInit {
       this.id = id;
       this.orderDetail = value.orderDetails;
       this.tables = value.tables;
-      console.log(this.order);
-      console.log(this.tables.onService);
       if (this.tables.onService == 1 || this.tables.onService == 2) {
         this.changeTableOnServiceStatus(id);
         this.seeDetail(id);
-        this.ngOnInit();
       }
+      console.log(this.order);
+      console.log(this.tables.onService);
+    }, error => {
+
     });
+    this.ngOnInit();
   }
 
   resetTableStatus(id: number) {
@@ -135,5 +137,11 @@ export class OrderOnServiceComponent implements OnInit {
       this.ngOnInit();
       this.seeDetail(id);
     });
+  }
+
+  writeBill(id: number) {
+    this.orderDetailService.updateOrder(id).subscribe(() => {
+      this.writeBillAndResetTableStatus(id);
+    })
   }
 }

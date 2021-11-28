@@ -43,4 +43,8 @@ export class OrderDetailService {
   showOrderDetailSum(id: number): Observable<any> {
     return this.httpClient.get<Number>(this.orderUrlApi + '/sum-' + id, this.httpOptions).pipe();
   }
+
+  updateOrder(id: number): Observable<any> {
+    return this.httpClient.patch(this.orderUrlApi + '/update/' + id, this.httpOptions).pipe();
+  }
 }
