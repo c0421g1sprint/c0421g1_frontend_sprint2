@@ -10,7 +10,7 @@ import {MenuComponent} from "./menu/menu.component";
 const routes: Routes = [
   {
     path: "order", component: OrderComponent, children: [
-      {path: "", redirectTo:"/list", pathMatch: 'full' },
+      {path: "", redirectTo:"/order/list", pathMatch: 'full' },
       {path: "list", component: OrderListComponent},
       {path: "income", component: IncomeStatisticsComponent},
       {path: "sale", component: OrderOnServiceComponent},
