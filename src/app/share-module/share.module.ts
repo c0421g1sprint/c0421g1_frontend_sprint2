@@ -18,6 +18,7 @@ import {AngularFireDatabaseModule} from "@angular/fire/database";
 import {environment} from "../../environments/environment";
 import {Page403Component} from "./page403/page403.component";
 import {ShareRoutingModule} from "./share-routing.module";
+import { Page404NotfoundComponent } from './page404-notfound/page404-notfound.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {ShareRoutingModule} from "./share-routing.module";
     HeaderComponent,
     FooterComponent,
     DialogDeleteComponent,
-    Page403Component
+    Page403Component,
+    Page404NotfoundComponent
   ],
   imports: [
     CommonModule,
