@@ -63,6 +63,7 @@ export class ListEmployeeComponent implements OnInit {
           this.searchForm.value.username = "";
           this.searchForm.value.nameEmployee = "";
           this.searchForm.value.phone = "";
+          this.ngOnInit();
         }
       })
     }
