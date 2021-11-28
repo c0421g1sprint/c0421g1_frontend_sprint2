@@ -214,20 +214,22 @@ export class MenuComponent implements OnInit {
         quantity: quantity
       },
       width: '400px'
-    })
+    });
     console.log(this.time);
     dialog.afterClosed().subscribe(data => {
-      this.cartItemList.map((a: any, index: any) => {
-        if (product.fadName === a.fadName) {
-          if (this.time == 0) {
-            this.snackBar.showSnackbar('Món của bn đã làm xong', 'error');
-            console.log("true");
-          } else {
-            this.cartItemList.splice(index, 1);
-            console.log(data);
+      if (data == 'true'){
+        this.cartItemList.map((a: any, index: any) => {
+          if (product.fadName === a.fadName) {
+            if (this.time == 0) {
+              this.snackBar.showSnackbar('Món của bn đã làm xong', 'error');
+              console.log("true");
+            } else {
+              this.cartItemList.splice(index, 1);
+              console.log(data);
+            }
           }
-        }
-      })
+        })
+      }
     })
   }
 

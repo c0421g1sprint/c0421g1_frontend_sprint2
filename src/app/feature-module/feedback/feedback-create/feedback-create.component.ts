@@ -27,13 +27,13 @@ export class FeedbackCreateComponent implements OnInit {
   feedbackCode: String = '';
   feedbackForm: FormGroup = new FormGroup({
     // feedbackCode: new FormControl('', [Validators.pattern('^FEB-\\d{4}$')]),
-    feedbackDate: new FormControl(formatDate(new Date(), 'yyyy-MM-dd', 'en-US'), [Validators.required,this.checkNow]),
+    // feedbackDate: new FormControl(formatDate(new Date(), 'yyyy-MM-dd', 'en-US'), [Validators.required, this.checkNow]),
     feedbackCreator: new FormControl('', [Validators.required, Validators.minLength(5),
       Validators.maxLength(30), Validators.pattern(/^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀẾỂưạảấầẩẫậắằẳẵặẹẻẽềếểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s ]*$/)]),
     feedbackEmail: new FormControl('', [Validators.required, Validators.email]),
     feedbackContent: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(1000)]),
     feedbackImage: new FormControl(''),
-     });
+  });
 
   constructor(private feedbackService: FeedbackService, private router: Router, private storage: AngularFireStorage, private snackBar: SnackbarService) {
   }
@@ -45,7 +45,7 @@ export class FeedbackCreateComponent implements OnInit {
   saveFeedback(): void {
     let feedbacks: IFeedback | any = {
       // feedbackCode: this.feedbackForm.get('feedbackCode').value,
-      feedbackDate: this.feedbackForm.get('feedbackDate').value,
+      // feedbackDate: this.feedbackForm.get('feedbackDate').value,
       feedbackCreator: this.feedbackForm.get('feedbackCreator').value,
       feedbackEmail: this.feedbackForm.get('feedbackEmail').value,
       feedbackContent: this.feedbackForm.get('feedbackContent').value,
@@ -57,12 +57,12 @@ export class FeedbackCreateComponent implements OnInit {
       console.log(this.feedbackForm.value);
       this.snackBar.showSnackbar('Phản hồi của bạn đã được gửi', 'success');
       this.feedbackForm.reset()
-      // this.router.navigateByUrl("/feed-back-list");
+      // this.router.navigateByUrl("/order/menu");
+      window.location.reload();
     }, error => {
       this.snackBar.showSnackbar('Phản hồi thất bại', 'error');
     });
   }
-
   onFileSelected(event) {
     var n = Date.now();
     const file = event.target.files[0];
@@ -80,6 +80,7 @@ export class FeedbackCreateComponent implements OnInit {
             }
             console.log(this.image);
             this.feedbackForm.value.feedbackImage = this.image;
+
           });
         })
       )
@@ -108,17 +109,17 @@ export class FeedbackCreateComponent implements OnInit {
       reader.readAsDataURL(event.target.files[0]);
       this.selectedImage = event.target.files[0];
     } else {
-      this.imgSrc = '/assets/anh/anh.macdinh.jpg';
+      this.imgSrc = '/assets/anh/anh.macdinh.png';
       this.selectedImage = null;
     }
   }
 
   validationMessage = {
-    feedbackDate: [
-      {type: 'required', message: 'Ngày tạo không được để trống.'},
-      {type: 'errorCodeTime', message: 'Ngày tạo không được lớn hơn ngày hiện tại.'},
-
-    ],
+    // feedbackDate: [
+    //   {type: 'required', message: 'Ngày tạo không được để trống.'},
+    //   {type: 'errorCodeTime', message: 'Ngày tạo không được lớn hơn ngày hiện tại.'},
+    //
+    // ],
     // feedbackCode: [
     //   {type: 'required', message: ' Mã Code không được để trống'},
     //   {type: 'pattern', message: ' Mã Code có dạng: FEB-XXXX. X chạy từ 0 đến 9'}
@@ -132,24 +133,22 @@ export class FeedbackCreateComponent implements OnInit {
   }
 
 
-
-  checkNow(controls: AbstractControl): any {
-    // const end = new Date(abstractControl.value.feedbackDate);
-    // const now = new Date();
-    // console.log(end);
-    // console.log(now);
-    //
-    // return now >= end ? null : {errorCodeTime: true};
-    const date = controls.value;
-    console.log(date)
-    const current = formatDate(new Date(), 'yyyy-MM-dd', 'en-US');
-    console.log(current)
-    // @ts-ignore
-    if (formatDate(date, 'yyyy-MM-dd', 'en-US') > current) {
-      return {errorCodeTime: true};
-    }
-    return null;
-  }
-
+  // checkNow(controls: AbstractControl): any {
+  //   // const end = new Date(abstractControl.value.feedbackDate);
+  //   // const now = new Date();
+  //   // console.log(end);
+  //   // console.log(now);
+  //   //
+  //   // return now >= end ? null : {errorCodeTime: true};
+  //   const date = controls.value;
+  //   console.log(date)
+  //   const current = formatDate(new Date(), 'yyyy-MM-dd', 'en-US');
+  //   console.log(current)
+  //   // @ts-ignore
+  //   if (formatDate(date, 'yyyy-MM-dd', 'en-US') > current) {
+  //     return {errorCodeTime: true};
+  //   }
+  //   return null;
+  // }
 
 }

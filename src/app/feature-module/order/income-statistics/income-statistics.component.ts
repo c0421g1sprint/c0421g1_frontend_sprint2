@@ -1,9 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {Chart} from "chart.js";
 import {OrderService} from "../../../core-module/order/order.service";
 import {IIncomesDto} from "../../../entity/IIncomesDto";
 import {IIncomeWithDateDto} from "../../../entity/IIncomeWithDateDto";
 import {SnackbarService} from "../../../core-module/snackbar/snackbar.service";
+import {registerLocaleData} from "@angular/common";
+import localeVi from '@angular/common/locales/vi'
+registerLocaleData(localeVi, "vi-VN");
 
 @Component({
   selector: 'app-income-statistics',
@@ -12,14 +14,25 @@ import {SnackbarService} from "../../../core-module/snackbar/snackbar.service";
 })
 export class IncomeStatisticsComponent implements OnInit {
 
+
   statisticsIncome: IIncomesDto[];
   startDate = '';
   endDate = '';
-  xValues = ["Thu nhập được tính", "Hôm nay", "Tuần này", "Tháng này", "Năm này"];
-  yValues = [0,0,0,0,0];
-  barColors = ["red", "orange", "blue", "cornflowerblue", "green"];
-
+  year = '';
   incomeWithDateDto: IIncomeWithDateDto = new IIncomeWithDateDto(0);
+
+  public barChartColors = [{backgroundColor: ["red", "orange", "blue", "cornflowerblue", "green","white", "orange", "blue", "cornflowerblue", "green","white", "orange", "blue", "cornflowerblue", "green","white"]}
+  ];
+  public barChartType = "bar";
+  public barChartOptions = {
+    scaleShowVerticalLines: false,
+    responsive: true
+  }
+  public barChartLabels = ["TN tính", "Hôm nay", "Tuần này", "T.1", "T.2", "T.3", "T.4", "T.5", "T.6", "T.7", "T.8", "T.9", "T.10", "T.11", "T.12", "Năm"];
+  public barChartLegend  = false;
+  public barChartData = [{data: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}];
+
+
 
   constructor(private orderService: OrderService,
               private snackBarService: SnackbarService,) {
@@ -30,52 +43,105 @@ export class IncomeStatisticsComponent implements OnInit {
   }
 
   getStatistics() {
-    this.orderService.getStatisticsIncome().subscribe(data => {
-      this.statisticsIncome = data;
-      for (let i = 0; i < this.statisticsIncome.length; i++) {
-        if (this.statisticsIncome[i] == null) {
-          this.statisticsIncome[i] = new IIncomesDto(0);
-        }
-        this.yValues[i+1] = this.statisticsIncome[i].incomes;
-      }
+    this.orderService.getStatisticsIncome(this.year).subscribe(data => {
+        this.statisticsIncome = data;
 
-      let chart = new Chart("myChart", {
-        type: "bar",
-        data: {
-          labels: this.xValues,
-          datasets: [{
-            backgroundColor: this.barColors,
-            data: this.yValues
-          }]
-        },
-        options: {
-          title: {
-            display: true,
-          },
-          legend: {display: false}
+        for (let i = 0; i < this.statisticsIncome.length; i++) {
+          if (this.statisticsIncome[i] == null) {
+            this.statisticsIncome[i] = new IIncomesDto(0);
+          }
         }
+        this.barChartData[0].data = [
+          this.incomeWithDateDto.incomeWithDate,
+          this.statisticsIncome[0].incomes,
+          this.statisticsIncome[1].incomes,
+          this.statisticsIncome[2].incomes,
+          this.statisticsIncome[3].incomes,
+          this.statisticsIncome[4].incomes,
+          this.statisticsIncome[5].incomes,
+          this.statisticsIncome[6].incomes,
+          this.statisticsIncome[7].incomes,
+          this.statisticsIncome[8].incomes,
+          this.statisticsIncome[9].incomes,
+          this.statisticsIncome[10].incomes,
+          this.statisticsIncome[11].incomes,
+          this.statisticsIncome[12].incomes,
+          this.statisticsIncome[13].incomes,
+          this.statisticsIncome[14].incomes];
+
+      }
+      ,error => {
+        this.snackBarService.showSnackbar("Chưa có thu nhập cho năm này!", 'error');
       });
-      chart.render();
-    });
   }
 
   getIncomeWithDate() {
-
     this.orderService.getIncomeWithDate(this.startDate, this.endDate).subscribe(data => {
         if (data == null) {
-          this.yValues[0] = 0;
-          this.incomeWithDateDto.incomeWithDate = 0;
           this.snackBarService.showSnackbar("Chưa có thu nhập cho khoảng thời gian này!", 'error');
         } else {
           this.incomeWithDateDto = data;
-          this.yValues[0] = this.incomeWithDateDto.incomeWithDate;
+          this.barChartData[0].data = [
+            this.incomeWithDateDto.incomeWithDate,
+            this.statisticsIncome[0].incomes,
+            this.statisticsIncome[1].incomes,
+            this.statisticsIncome[2].incomes,
+            this.statisticsIncome[3].incomes,
+            this.statisticsIncome[4].incomes,
+            this.statisticsIncome[5].incomes,
+            this.statisticsIncome[6].incomes,
+            this.statisticsIncome[7].incomes,
+            this.statisticsIncome[8].incomes,
+            this.statisticsIncome[9].incomes,
+            this.statisticsIncome[10].incomes,
+            this.statisticsIncome[11].incomes,
+            this.statisticsIncome[12].incomes,
+            this.statisticsIncome[13].incomes,
+            this.statisticsIncome[14].incomes];
         }
-        this.ngOnInit();
       },
       error => {
-        this.incomeWithDateDto.incomeWithDate = 0;
-        this.snackBarService.showSnackbar("Vui lòng nhập ngày bắt đầu và ngày kết thúc", 'error');
-        this.ngOnInit();
+        if(error.status == "406"){
+          this.incomeWithDateDto.incomeWithDate = 0;
+          this.barChartData[0].data = [
+            0,
+            this.statisticsIncome[0].incomes,
+            this.statisticsIncome[1].incomes,
+            this.statisticsIncome[2].incomes,
+            this.statisticsIncome[3].incomes,
+            this.statisticsIncome[4].incomes,
+            this.statisticsIncome[5].incomes,
+            this.statisticsIncome[6].incomes,
+            this.statisticsIncome[7].incomes,
+            this.statisticsIncome[8].incomes,
+            this.statisticsIncome[9].incomes,
+            this.statisticsIncome[10].incomes,
+            this.statisticsIncome[11].incomes,
+            this.statisticsIncome[12].incomes,
+            this.statisticsIncome[13].incomes,
+            this.statisticsIncome[14].incomes];
+          this.snackBarService.showSnackbar("Ngày bắt đầu phải trước ngày kết thúc!", 'error');
+        }else {
+          this.incomeWithDateDto.incomeWithDate = 0;
+          this.barChartData[0].data = [
+            0,
+            this.statisticsIncome[0].incomes,
+            this.statisticsIncome[1].incomes,
+            this.statisticsIncome[2].incomes,
+            this.statisticsIncome[3].incomes,
+            this.statisticsIncome[4].incomes,
+            this.statisticsIncome[5].incomes,
+            this.statisticsIncome[6].incomes,
+            this.statisticsIncome[7].incomes,
+            this.statisticsIncome[8].incomes,
+            this.statisticsIncome[9].incomes,
+            this.statisticsIncome[10].incomes,
+            this.statisticsIncome[11].incomes,
+            this.statisticsIncome[12].incomes,
+            this.statisticsIncome[13].incomes,
+            this.statisticsIncome[14].incomes];
+          this.snackBarService.showSnackbar("Vui lòng nhập ngày bắt đầu và ngày kết thúc", 'error');
+        }
       });
   }
 }

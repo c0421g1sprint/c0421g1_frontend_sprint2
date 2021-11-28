@@ -1,10 +1,11 @@
 <div class="container-fluid body-custom" style="margin-top: 80px; margin-bottom: -80px; min-height: 140vh">
   <div class="row">
-    <div class="col-lg-12"  style="margin-top: 30px;margin-left: 160px">
+    <div class="col-lg-12" style="margin-top: 30px;margin-left: 160px">
       <form class="form-inline my-2 my-lg-0" style=" margin-left: 450px">
         <input class="form-control mr-sm-2" type="search" placeholder="Nhập tên đồ uống cần tìm" aria-label="Search"
                (change)="valueInput($event)" style="width: 200px">
-        <button class="btn btn-warning my-2 my-sm-0" type="submit" (click)="searchFoodAndDrinkAndMoney()" style="height: 40px"> Tìm kiếm
+        <button class="btn btn-warning my-2 my-sm-0" type="submit" (click)="searchFoodAndDrinkAndMoney()"
+                style="height: 40px"> Tìm kiếm
         </button>
       </form>
     </div>
@@ -14,9 +15,10 @@
       <div class="row">
         <div class="col-12">
           ​
-          <ul class="list-group" *ngFor="let objCategory of ListCategory" >
+          <ul class="list-group" *ngFor="let objCategory of ListCategory">
             ​
-            <li class="list-group-item" style="width: 250px;height: 50px;font-size: 25px"><a class="list-food" (click)="getAllFoodTheoIdCategory(objCategory.categoryId)"
+            <li class="list-group-item" style="width: 250px;height: 50px;font-size: 25px"><a class="list-food"
+                                                                                             (click)="getAllFoodTheoIdCategory(objCategory.categoryId)"
                                                                                              style="color: black;width: 200px"><span></span>{{objCategory.categoryName}}
             </a>
             </li>
@@ -33,11 +35,14 @@
                  *ngFor="let objFood of FoodAndDrink |  paginate:{itemsPerPage:4,  currentPage:page,totalItems:totalLength} "
                  style="">
               <div class="card" style="margin-top: 15px">
-                <img [src]="objFood.fadImage" class="card-img-top" alt="..." style="width: 250px;margin-left: auto;margin-right: auto">
+                <img [src]="objFood.fadImage" class="card-img-top" alt="..."
+                     style="width: 250px;margin-left: auto;margin-right: auto">
                 <div class="card-body">
                   <h5 class="card-title" style="margin-left: 5px">{{objFood.fadName}}</h5>
-                  <p class="card-text"><span style="margin-left: -260px">Thời gian chờ: </span><span style="color: black">{{objFood.fadWaitTime}} phút</span></p>
-                  <p class="card-text"><span class="money" style="color: red;margin-left: -265px">Giá: </span><span style="color: black">{{objFood.fadPrice}}
+                  <p class="card-text"><span style="margin-left: -260px">Thời gian chờ: </span><span
+                    style="color: black">{{objFood.fadWaitTime}} phút</span></p>
+                  <p class="card-text"><span class="money" style="color: red;margin-left: -265px">Giá: </span><span
+                    style="color: black">{{objFood.fadPrice}}
                     VND</span></p>
                 </div>
                 ​
@@ -60,8 +65,8 @@
                       <ul class="pagination justify-content-center">
                         <!--                trang truoc-->
                         <li class="page-item" [class.disabled]="p.isFirstPage()">
-                          <button class="page-link" aria-label="Previous" (click)="p.previous()" ><span
-                            aria-hidden="true" >&laquo;</span></button>
+                          <button class="page-link" aria-label="Previous" (click)="p.previous()"><span
+                            aria-hidden="true">&laquo;</span></button>
                         </li>
                         <!--                so trang tren tong so trang-->
                         <li class="page-item">
@@ -109,12 +114,13 @@
     <div class="col-md-5">
       ​
       <p style="color: tan;font-size: 30px;text-align: center">Số bàn: <span
-        style="color: Yellow">{{table.tableCode}}</span></p><br/>
+        style="color: Yellow">{{table?.tableCode}}</span></p><br/>
       ​
       <p style="color: tan;font-size: 30px;text-align: center">Ngày: <span style="color: Yellow">{{dateNow}} </span></p>
       <div class="row">
-        <button class="btn btn-secondary btn-feedbkack" style=";margin-top: -18px;width: 132px;height: 40px" (click)="openDialogCreateFeedBack()">Phản
-          hồi <img src="assets/icon/icon/feedback_black_24dp.svg" alt="" >
+        <button class="btn btn-secondary btn-feedbkack" style=";margin-top: -18px;width: 132px;height: 40px"
+                (click)="openDialogCreateFeedBack()">Phản
+          hồi <img src="assets/icon/icon/feedback_black_24dp.svg" alt="">
         </button>
         <table class="table table-hover table-dark text-center">
           <thead>
@@ -125,8 +131,7 @@
             <th scope="col">Giá</th>
             <th scope="col">Tổng tiền</th>
             <th scope="col">Thời gian chờ</th>
-            <th scope="col" *ngIf="checkDelete == false">Active</th>
-            ​
+            <th scope="col" *ngIf="checkDelete == false">Chức năng</th>
           </tr>
           </thead>
           <tbody *ngIf="product != null else block">
@@ -145,25 +150,17 @@
               <countdown #countdown [config]="{leftTime:objFood.fadWaitTime}"
                          *ngIf="check == true else blockTime"></countdown>
             </td>
-            ​
-            ​
             <ng-template #blockTime>
               <countdown [config]="{leftTime:objFood.fadWaitTime,demand:true}"></countdown>
             </ng-template>
-            ​
-            ​
             <td>
-              ​
               <button type="button" class="btn btn-danger"
                       (click)="removeCartDialog(objFood.fadId,objFood.fadName,objFood.quantity,objFood)"
                       *ngIf="checkDelete == false"><img
                 src="assets/icon/icon/delete_sweep_black_24dp.svg" alt=""></button>
-              ​
             </td>
-            ​
           </tr>
           </tbody>
-          ​
           <ng-template #block>
             <span
               style="text-align: center;margin-left: auto;margin-right: auto;font-size: 25px">Giỏ hàng đang trống</span>
@@ -184,7 +181,8 @@
             <li style="margin-top: 20px">
               <button type="button" class="btn btn-info"
                       (click)="newOrderDetail()"
-                      (click)="getCallFood(table,table.tableId)" *ngIf="product != null" style="width: 140px;height: 40px">Gọi Món
+                      (click)="getCallFood(table,table.tableId)" *ngIf="product != null"
+                      style="width: 140px;height: 40px">Gọi Món
                 <img src="/assets/icon/icon/local_dining_black_24dp.svg" alt="">
               </button>
             </li>

@@ -12,7 +12,7 @@ export class FoodAndDrinkService {
   private urlFoodById = "http://localhost:8080/api/food-and-drink/food"; //BaoHG
   private urlAllFood = "http://localhost:8080/api/food-and-drink/allFood"; //BaoHG
   private urlSearch = "http://localhost:8080/api/food-and-drink/search/food?search="; //BaoHG
-  private url = "http://localhost:8080/api/food-and-drink"
+  private url = "http://localhost:8080/api/food-and-drink";
   private httpOptions;
 
   constructor(private http: HttpClient, private storageService: StorageService) {
@@ -74,7 +74,7 @@ export class FoodAndDrinkService {
   }
 
   getFoodAndDinkTheoCategory(id: number): Observable<IFoodAndDrink | any> { //BaoHG
-    return this.http.get(this.urlfoodTheoCategory + "/" + id, this.httpOptions);
+    return this.http.get(this.urlfoodTheoCategory + "/" + id);
   }
 
   getFoodById(id: number): Observable<IFoodAndDrink | any> { //BaoHG

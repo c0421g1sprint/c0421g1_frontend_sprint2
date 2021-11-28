@@ -68,20 +68,24 @@ export class EditPasswordComponent implements OnInit {
   };
 
   submit() {
-    this.editPasswordAccountDto = this.editPassAccountForm.value;
-    console.log(this.editPassAccountForm)
-    this.accountService.editPassword(this.editPasswordAccountDto).subscribe(() => {
-        this.matSnackBar.showSnackbar("Thay đổi mật khẩu thành công", "success");
-        this.editPassAccountForm.reset();
-        window.sessionStorage.clear();
-        this.linkService.reloadComponent();
-        this.router.navigateByUrl("");
-      },
-      error => {
-        this.router.navigateByUrl('/editPass/' + this.accountUsername)
-        this.matSnackBar.showSnackbar("Mật khẩu cũ chưa đúng. Vui lòng nhập lại.", "error");
+    if (this.editPassAccountForm.valid){
+      this.editPasswordAccountDto = this.editPassAccountForm.value;
+      console.log(this.editPassAccountForm);
+      this.accountService.editPassword(this.editPasswordAccountDto).subscribe(() => {
+          this.matSnackBar.showSnackbar("Thay đổi mật khẩu thành công", "success");
+          this.editPassAccountForm.reset();
+          window.sessionStorage.clear();
+          this.linkService.reloadComponent();
+          this.router.navigateByUrl("");
+        },
+        error => {
+          this.router.navigateByUrl('/editPass/' + this.accountUsername);
+          this.matSnackBar.showSnackbar("Mật khẩu cũ chưa đúng. Vui lòng nhập lại.", "error");
 
-      });
+        });
+    } else {
+      this.matSnackBar.showSnackbar("Mật khẩu chưa trùng. Vui lòng nhập lại.", "error");
+    }
   }
 
   backHome() {

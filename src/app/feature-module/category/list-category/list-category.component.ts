@@ -123,7 +123,7 @@ export class ListCategoryComponent implements OnInit {
       console.log(this.pageObj['page'])
       this.viewAllCategory(this.pageObj);
     } else {
-      this.snackBar.showSnackbar("Trang cần tìm không hợp lệ", 'error');
+      this.snackBar.showSnackbar("Vui lòng nhập số trang hợp lệ (Tổng số trang: " + this.responsePage.totalPages+")", 'error');
     }
   }
 
