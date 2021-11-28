@@ -51,6 +51,12 @@ export class OrderListComponent implements OnInit {
       }
       if (error.status == '406') {
         this.snackBar.showSnackbar("Danh sách bạn cần không có!", "error");
+        this.searchDate = "null";
+        this.searchCode = "null";
+        this.currentPage = 0;
+        this.pageSize = 0;
+        this.totalPage = 1;
+        this.ngOnInit();
       }
     });
   }

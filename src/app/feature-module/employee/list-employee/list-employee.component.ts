@@ -60,6 +60,9 @@ export class ListEmployeeComponent implements OnInit {
         if (error.status == '404') {
           this.snackbarService.showSnackbar("Không tìm thấy dữ liệu", "error");
           this.searchForm.reset();
+          this.searchForm.value.username = "";
+          this.searchForm.value.nameEmployee = "";
+          this.searchForm.value.phone = "";
         }
       })
     }

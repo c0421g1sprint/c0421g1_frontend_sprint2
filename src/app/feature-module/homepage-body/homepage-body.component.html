@@ -260,7 +260,7 @@
       <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner" *ngIf="fivePopularFoodList.length != 0; else isEmty">
           <div class="carousel-item position-relative data-interval='500' active">
-            <img [src]="topPopularFood.fadImage" class="d-block" width="100%" height="700px" alt="...">
+            <img [src]="topPopularFood.fadImage" class="d-block" width="70%" height="600px" style="margin: auto">
             <div style="transform: translate3d(0px, 6.57358px, 0px);"
                  class="col-lg-4 col-md-12 text-attack-carousel position-absolute">
               <div class="align-text-carousel">
@@ -270,7 +270,7 @@
             </div>
           </div>
           <div class="carousel-item position-relative data-interval='500'" *ngFor="let item of fourPopularFood">
-            <img [src]="item.fadImage" class="d-block" width="100%" height="700px" alt="...">
+            <img [src]="topPopularFood.fadImage" class="d-block" width="70%" height="600px" style="margin: auto">
             <div style="transform: translate3d(0px, 6.57358px, 0px);"
                  class="col-lg-4 col-md-12 text-attack-carousel position-absolute">
               <div class="align-text-carousel">

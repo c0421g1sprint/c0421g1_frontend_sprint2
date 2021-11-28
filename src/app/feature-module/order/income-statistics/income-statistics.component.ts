@@ -45,12 +45,15 @@ export class IncomeStatisticsComponent implements OnInit {
   getStatistics() {
     this.orderService.getStatisticsIncome(this.year).subscribe(data => {
         this.statisticsIncome = data;
-
         for (let i = 0; i < this.statisticsIncome.length; i++) {
           if (this.statisticsIncome[i] == null) {
             this.statisticsIncome[i] = new IIncomesDto(0);
           }
         }
+      }
+      ,error => {
+        this.snackBarService.showSnackbar("Chưa có thu nhập cho năm này!", 'error');
+      },() =>{
         this.barChartData[0].data = [
           this.incomeWithDateDto.incomeWithDate,
           this.statisticsIncome[0].incomes,
@@ -68,10 +71,6 @@ export class IncomeStatisticsComponent implements OnInit {
           this.statisticsIncome[12].incomes,
           this.statisticsIncome[13].incomes,
           this.statisticsIncome[14].incomes];
-
-      }
-      ,error => {
-        this.snackBarService.showSnackbar("Chưa có thu nhập cho năm này!", 'error');
       });
   }
 

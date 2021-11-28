@@ -55,6 +55,8 @@ export class ListCategoryComponent implements OnInit {
       this.totalElement = this.responsePage.totalElement;
     }, error => {
       this.snackBar.showSnackbar("Không tìm thấy danh mục sản phẩm", "error");
+      this.name = "";
+      this.code = "";
     })
   }
 

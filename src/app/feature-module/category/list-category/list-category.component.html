@@ -10,11 +10,11 @@
       <form class="row g-3 ">
         <div class="col-lg-4" >
           <input type="text" id="code" class="form-control m-3 justify-content-end" style="height: 40px" placeholder="Tìm theo mã số"
-                 (change)="getCode($event)">
+                 (change)="getCode($event)" value="{{code}}">
         </div>
         <div class="col-lg-4" >
           <input type="text" id="date" class="form-control m-3 justify-content-end" style="height: 40px" placeholder="Tìm theo tên"
-                 (change)="getName($event)">
+                 (change)="getName($event)" value="{{name}}">
         </div>
         <div class="col-lg-4 mr-0" >
           <button type="submit" class="btn btn-warning d-flex justify-content-end" style=" height: 40px ;margin-top: 15px" data-toggle="tooltip" (click)="viewAllCategory(pageObj)">
@@ -47,7 +47,7 @@
       <div class="table-responsive-lg">
         <table class="table table-hover table-dark text-center">
           <thead>
-          <tr style="min-width: 10%">
+          <tr>
             <th scope="col">STT</th>
             <th scope="col">Mã số nhóm</th>
             <th scope="col">Tên nhóm</th>
@@ -55,7 +55,7 @@
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let obj of categoryList, let i = index" style="min-width: 10%">
+          <tr *ngFor="let obj of categoryList, let i = index">
             <td scope="row">{{responsePage.pageable.pageNumber * responsePage.pageable.pageSize + i + 1}}</td>
             <td>{{obj.categoryCode}}</td>
             <td>{{obj.categoryName}}</td>
@@ -139,3 +139,4 @@
   </div>
 </div>
 
+​
