@@ -32,15 +32,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 /*LamNT*/
 .my-bg .mat-dialog-container {
-  background-image: url('src/assets/img/pexels-octavio-gómez-8414072.jpg');
-  /*background-size: cover;*/
-  /*background-repeat: repeat;*/
-}
-
-.my-bg .mat-dialog-container {
-  background-image: url('src/assets/img/pexels-octavio-gómez-8414072.jpg');
+  /*background-image: url('src/assets/img/pexels-octavio-gómez-8414072.jpg');*/
+  background-image: url('src/assets/img/bg-image.jpg');
   background-size: cover;
-  background-repeat: repeat;
+  /*background-repeat: repeat;*/
 }
 
 /*QuanTA custom dialog detail feedback*/
