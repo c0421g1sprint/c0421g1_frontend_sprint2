@@ -1,5 +1,5 @@
-<div class="container-fluid" style="margin-top: 80px; margin-bottom: -95px; min-height: 110vh">
-  <form [formGroup]="feedbackForm " style="overflow-x: scroll; min-width: 1100px;">
+<div class="container-fluid" style="background-image:url('https://yesofcorsa.com/wp-content/uploads/2017/02/Coffee-Wallpaper-Background.jpg');" >
+  <form [formGroup]="feedbackForm " style=" min-width: 1100px;">
     <div class="container" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
       <div class="modal-dialog modal-lg" style="padding-top: 20px; padding-bottom: 30px">
@@ -7,9 +7,7 @@
           <div class="modal-header" style="background-color: #e3cc6f">
             <h5 class="modal-title; font-weight " id="exampleModalLabel"
                 style="color: black; font-size: 50px; margin-left: 27%">Phản hồi của bạn</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
+
           </div>
           <div class="">
             <div class="container-fluid">
@@ -42,22 +40,34 @@
                     </div>
                   </div>
                   <div class="form-group col-md-6">
-                    <label for="date" style="color: black" class="font-weight-bold">Ngày
-                      Tạo <span
-                        style="color: red">*</span> :</label>
-
-                    <input type="date" class="form-control" id="date" formControlName="feedbackDate">
-                    <!--                    <input [max]="maxDate" formControlName="feedbackDate" type="date" matInput style="color:black;">-->
-
-                    <div *ngFor="let valid of validationMessage.feedbackDate">
-                      <small style="color: red"
-                             *ngIf="feedbackForm.get('feedbackDate').hasError(valid.type) &&
-                      (feedbackForm.get('feedbackDate').touched || feedbackForm.get('feedbackDate').dirty)">
-                        {{valid.message}}
-                      </small>
-                    </div>
+                    <label for="feedbackEmail" style="color: black" class="font-weight-bold">Email <span
+                      style="color: red">*</span> :
+                    </label>
+                    <input type="email" class="form-control" id="feedbackEmail" placeholder="Nhập email của bạn"
+                           formControlName="feedbackEmail">
+                    <small
+                      *ngIf="feedbackForm.controls.feedbackEmail.hasError('required') && feedbackForm.controls.feedbackEmail.touched"
+                      class="validate" style="color: red">
+                      Email không được để trống .</small>
+                    <small
+                      *ngIf="feedbackForm.controls.feedbackEmail.hasError('email') && feedbackForm.controls.feedbackEmail.touched"
+                      class="validate" style="color: red">
+                      Email không đúng định dạng .</small>
                   </div>
-
+                  <!--                  <div class="form-group col-md-6">-->
+                  <!--                    <label for="date" style="color: black" class="font-weight-bold">Ngày-->
+                  <!--                      Tạo <span-->
+                  <!--                        style="color: red">*</span> :</label>-->
+                  <!--                    <input type="date" class="form-control" id="date" formControlName="feedbackDate">-->
+                  <!--                    &lt;!&ndash;                    <input [max]="maxDate" formControlName="feedbackDate" type="date" matInput style="color:black;">&ndash;&gt;-->
+                  <!--                    <div *ngFor="let valid of validationMessage.feedbackDate">-->
+                  <!--                      <small style="color: red"-->
+                  <!--                             *ngIf="feedbackForm.get('feedbackDate').hasError(valid.type) &&-->
+                  <!--                      (feedbackForm.get('feedbackDate').touched || feedbackForm.get('feedbackDate').dirty)">-->
+                  <!--                        {{valid.message}}-->
+                  <!--                      </small>-->
+                  <!--                    </div>-->
+                  <!--                  </div>-->
                 </div>
                 <div class="form-row ">
                   <div class="form-group col-md-6">
@@ -68,7 +78,7 @@
                     <!--                           placeholder="Nội dung bạn muốn phản hồi"-->
                     <!--                           formControlName="feedbackContent">-->
                     <textarea class="form-control" id="feedbackContent"
-                              rows="12" placeholder="Nhập nội dung bạn muốn phản hồi"
+                              rows="9" placeholder="Nhập nội dung bạn muốn phản hồi"
                               formControlName="feedbackContent"></textarea>
                     <small
                       *ngIf="feedbackForm.controls.feedbackContent.hasError('required') && feedbackForm.controls.feedbackContent.touched"
@@ -83,21 +93,7 @@
                       class="validate" style="color: red">
                       Nội dung không được quá 1000 kí tự .</small><br/>
                   </div>
-
                   <div class="form-group col-md-6">
-                    <label for="feedbackEmail" style="color: black" class="font-weight-bold">Email <span
-                      style="color: red">*</span> :
-                    </label>
-                    <input type="email" class="form-control" id="feedbackEmail" placeholder="Nhập email của bạn"
-                           formControlName="feedbackEmail">
-                    <small
-                      *ngIf="feedbackForm.controls.feedbackEmail.hasError('required') && feedbackForm.controls.feedbackEmail.touched"
-                      class="validate" style="color: red">
-                      Email không được để trống .</small>
-                    <small
-                      *ngIf="feedbackForm.controls.feedbackEmail.hasError('email') && feedbackForm.controls.feedbackEmail.touched"
-                      class="validate" style="color: red">
-                      Email không đúng định dạng .</small>
                     <label for="" style="color: black"
                            class="font-weight-bold">Ảnh phản hồi : </label>
                     <!--                    <div class="form-group col-12">-->
@@ -112,19 +108,18 @@
                       <label class="custom-file-label" data-browse="Ảnh" style="width: 70%">Chọn ảnh phản
                         hồi</label>
                     </div>
-                    <img src="/assets/anh/anh.macdinh.png" alt="" width="70%" height="245px"
+                    <img src="/assets/anh/anh.macdinh.png" alt="" width="70%" height="241px"
                          *ngIf="feedbackForm.value.feedbackImage == null; else elseBlock" value="null">
                     <ng-template #elseBlock>
-                      <img [src]="imgSrc" alt="" width="70%" height="245">
+                      <img [src]="imgSrc" alt="" width="70%" height="241">
                     </ng-template>
                   </div>
-                  </div>
                 </div>
-                <div class="form-row ">
-<!--                  <div class="form-group col-md-6">-->
-<!--                  </div>-->
-                  <div class="form-group col-md-6">
-
+              </div>
+              <div class="form-row ">
+                <!--                  <div class="form-group col-md-6">-->
+                <!--                  </div>-->
+                <div class="form-group col-md-6">
                 </div>
               </div>
             </div>
@@ -146,7 +141,7 @@
               </svg>
               Gửi phản hồi
             </button>
-            <button type="button" class="btn btn-warning" data-dismiss="modal"
+            <button type="button" class="btn btn-warning" data-dismiss="modal" mat-dialog-close="true"
                     style="width: 160px; margin-left: 10px;margin-right: 10px" [routerLink]="['/menu']">
               <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
                 <path d="M0 0h24v24H0V0z" fill="none"/>
@@ -156,7 +151,6 @@
               Quay lại
             </button>
             <button type="reset" class="btn btn-danger" style="width: 175px">
-
               <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
                 <path d="M0 0h24v24H0z" fill="none"/>
                 <path
@@ -165,22 +159,8 @@
               Xoá biểu mẫu
             </button>
           </div>
-
         </div>
       </div>
     </div>
-
   </form>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
-        crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-        crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
-        integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
-        crossorigin="anonymous"></script>

@@ -85,9 +85,17 @@ export class ListFoodAndDrinkComponent implements OnInit {
           this.totalElement = this.responsePage.totalElement;
         }, error => {
           this.snackBar.showSnackbar("Không tìm thấy danh mục sản phẩm", "error");
+          this.name='';
+          this.code='';
+          this.categoryId='';
+          this.price='';
         })
       } else {
         this.snackBar.showSnackbar("Không tìm thấy danh mục sản phẩm", "error");
+        this.name='';
+        this.code='';
+        this.categoryId='';
+        this.price='';
       }
     })
   }
@@ -110,7 +118,6 @@ export class ListFoodAndDrinkComponent implements OnInit {
   getPrice($event: any) {
     this.price = $event.target.value;
   }
-
 
   //xoa fad - LinhDN
   openDialogDelete(fadName: string, fadId: number) {
@@ -162,11 +169,9 @@ export class ListFoodAndDrinkComponent implements OnInit {
       console.log(this.pageObj['page'])
       this.viewAllFoodAndDrink(this.pageObj);
     } else {
-      this.snackBar.showSnackbar("Trang cần tìm không hợp lệ", 'error');
+      this.snackBar.showSnackbar("Vui lòng nhập số trang hợp lệ (Tổng số trang: " + this.responsePage.totalPages+")", 'error');
     }
   }
-
-
   getCategory($event: any) {
     this.categoryId = $event.target.value;
   }

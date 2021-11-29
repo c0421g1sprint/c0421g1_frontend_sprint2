@@ -25,7 +25,7 @@ export class TableService {
   }
 
   randomTableNull(): Observable<ITables | any> { //BaoHG
-    return this.http.get(this.urlTable, this.httpOptions);
+    return this.http.get(this.urlTable);
   }
 
   //HauPT do at 19/11/2021

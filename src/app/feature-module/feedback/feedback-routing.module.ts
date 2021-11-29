@@ -6,7 +6,7 @@ import {FeedbackCreateComponent} from "./feedback-create/feedback-create.compone
 
 
 const routes: Routes = [
-  {path: "feed-back-list", component: ListFeedbackComponent},
+  {path: "feed-back-list/list", component: ListFeedbackComponent},
   {path: "feedback/create", component: FeedbackCreateComponent}
 ];
 

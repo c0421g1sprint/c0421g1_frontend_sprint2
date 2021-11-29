@@ -26,6 +26,7 @@ export class HeaderComponent implements OnInit {
     if (this.storage.getToken()) {
       this.username = this.storage.getUsernameFromSession();
       this.role = this.storage.getRole();
+      console.log(this.role)
     } else {
       this.username = '';
       this.role = [];
@@ -34,6 +35,7 @@ export class HeaderComponent implements OnInit {
       if (this.storage.getToken()) {
         this.username = this.storage.getUsernameFromSession();
         this.role = this.storage.getRole();
+
       } else {
         this.username = '';
         this.role = [];

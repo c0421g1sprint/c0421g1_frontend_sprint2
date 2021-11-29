@@ -73,8 +73,8 @@ export class OrderService {
   }
 
   //TaiNP
-  getStatisticsIncome(): Observable<any> {
-    return this.http.get<any>(this.api_url + "/income-statistics", this.httpOptions);
+  getStatisticsIncome(year: string): Observable<any>{
+    return this.http.get<any>(this.api_url + "/income-statistics?year=" + year,this.httpOptions);
   }
 
   //DanhNT

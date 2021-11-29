@@ -5,13 +5,10 @@ import {CartComponent} from "./feature-module/cart/cart.component";
 
 
 const routes: Routes = [
-  {
-  path: 'menu', component: MenuComponent,
-  },
-  {
-    path: 'menu/cart',component:CartComponent
-  }
-  ];
+  {path: 'menu', component: MenuComponent,},
+  {path: 'menu/cart', component: CartComponent},
+  {path: '**', redirectTo: "/not-found"}
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

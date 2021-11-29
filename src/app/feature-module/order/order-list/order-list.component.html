@@ -12,7 +12,7 @@
         </div>
         <div class="col-lg-4">
           <label for="date" class="form-label">Ngày tạo:</label>
-          <input type="date" id="date" class="form-control" #inputDate>
+          <input type="date" id="date" class="form-control" #inputDate placeholder="dd/mm/yyyy">
         </div>
         <div class="col-lg-4" style="margin-top: 4.3%">
           <button class="btn btn-warning d-flex align-items-center justify-content-center"
@@ -53,12 +53,12 @@
           </thead>
           <tbody class="text-white">
           <tr *ngFor="let item of orderList; let i = index">
-            <td>{{i + 1}}</td>
+            <td>{{currentPage* pageSize+ i + 1}}</td>
             <td>{{item.orderCode}}</td>
-            <td>{{item.createDate}}</td>
+            <td>{{item.createDate |date:"dd/MM/yyyy"}}</td>
             <td class="text-left">{{item.employee.employeeName}}</td>
             <td>{{item.tables.tableCode}}</td>
-            <td class="text-right">
+            <td class="text-right" style="width: 167px">
               {{priceList[i]| currency: 'VND':''}}
             </td>
             <td class="text-center">
@@ -93,7 +93,7 @@
             </a>
           </li>
           <li class="page-item" style="height: 40px">
-            <p class="page-link pagination-item text-dark">{{currentPage + 1}}/{{totalPage}}</p>
+            <p class="page-link pagination-item text-dark" style="font-family: 'Patrick Hand', cursive;">{{currentPage + 1}}/{{totalPage}}</p>
           </li>
           <li class="page-item" style="height: 40px">
             <a class="page-link pagination-item" aria-label="Next" (click)="nextPage()">
