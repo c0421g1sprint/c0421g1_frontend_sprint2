@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap');
 
 * {
@@ -10,7 +9,7 @@
 }
 
 .body-custom {
-  background-image: url("/assets/img/background.jpg");
+  background-image: url("https://st2.depositphotos.com/2786775/6154/v/950/depositphotos_61547929-stock-illustration-coffee-background.jpg");
   background-size: cover;
   font-family: 'Dancing Script';
   max-width: 100%;
@@ -133,4 +132,14 @@ header ul li:hover {
 span{
   color: red;;
 }
+ul li{
+  text-decoration: none;
+  list-style: none;
+}
 
+/*phan trang */
+
+.page-link{
+  height: 30px;
+  width: 50px;
+}

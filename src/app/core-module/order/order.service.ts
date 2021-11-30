@@ -22,6 +22,7 @@ export class OrderService {
   private api_url = "http://localhost:8080/api/order";
 
   private httpOptions;
+  private httpOptions2;
 
   constructor(private http: HttpClient, private storageService: StorageService) {
     this.httpOptions = {
@@ -31,40 +32,47 @@ export class OrderService {
       }),
       'Access-Control-Allow-Origin': 'http://localhost:4200',
       'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS'
+    };
+
+    this.httpOptions2 = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      }),
+      'Access-Control-Allow-Origin': 'http://localhost:4200',
+      'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS'
     }
   }
 
-
   callFood(table: ITables, id: number): Observable<ITables | any> { //BaoHG
-    return this.http.patch(this.urlFood + "/" + id, table, this.httpOptions);
+    return this.http.patch(this.urlFood + "/" + id, table, this.httpOptions2);
   }
 
   callEmp(table: ITables, id: number): Observable<ITables | any> { //BaoHG
-    return this.http.patch(this.urlEmp + "/" + id, table, this.httpOptions);
+    return this.http.patch(this.urlEmp + "/" + id, table, this.httpOptions2);
   }
 
   callPay(table: ITables, id: number): Observable<ITables | any> { //BaoHG
-    return this.http.patch(this.urlPay + "/" + id, table, this.httpOptions);
+    return this.http.patch(this.urlPay + "/" + id, table, this.httpOptions2);
   }
 
   createNewOrder(order: IOrders): Observable<IOrders | any> {   //BaoHG // tao trc 1 thang order voi 1 table
-    return this.http.post(this.urlNewOrder, order, this.httpOptions);
+    return this.http.post(this.urlNewOrder, order, this.httpOptions2);
   }
 
   getOrder(): Observable<IOrders | any> {  //BaoHG  // lay ra thang order moi nhat
-    return this.http.get(this.getNewOrder, this.httpOptions);
+    return this.http.get(this.getNewOrder, this.httpOptions2);
   }
 
   createNewOrderDetail(orderDetail: IOrderDetail): Observable<IOrderDetail | any> { //BaoHG
-    return this.http.post(this.urlCreateOrderDetail, orderDetail, this.httpOptions);
+    return this.http.post(this.urlCreateOrderDetail, orderDetail, this.httpOptions2);
   }
 
   findByIdOrderDetail(id: number): Observable<IOrderDetail | any> { //BaoHG
-    return this.http.get(this.urlFindOrderDetail + "/" + id, this.httpOptions);
+    return this.http.get(this.urlFindOrderDetail + "/" + id, this.httpOptions2);
   }
 
   deleteOrderDetailById(id: number): Observable<IOrderDetail | any> {//BaoHG
-    return this.http.delete(this.deleteOrderDetail + "/" + id, this.httpOptions);
+    return this.http.delete(this.deleteOrderDetail + "/" + id, this.httpOptions2);
   }
 
   //TaiNP
@@ -73,8 +81,8 @@ export class OrderService {
   }
 
   //TaiNP
-  getStatisticsIncome(year: string): Observable<any>{
-    return this.http.get<any>(this.api_url + "/income-statistics?year=" + year,this.httpOptions);
+  getStatisticsIncome(year: string): Observable<any> {
+    return this.http.get<any>(this.api_url + "/income-statistics?year=" + year, this.httpOptions);
   }
 
   //DanhNT

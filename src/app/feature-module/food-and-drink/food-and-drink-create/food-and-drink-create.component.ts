@@ -42,15 +42,13 @@ export class FoodAndDrinkCreateComponent implements OnInit {
       })]),
     fadCode: new FormControl('', [Validators.required,
       Validators.minLength(3), Validators.maxLength(10),
-      this.noWhitespaceValidator]),
-    fadImage: new FormControl('', [Validators.required]),
-    fadPrice: new FormControl('', [Validators.required,
-      Validators.pattern(/^[0-9]*$/),
+      Validators.pattern(/^[a-zA-Z0-9'<>.^*()%!--\\s]*$/),
       this.customPatternValid({
         pattern: /^\s?\S+(?: \S+)*\s?$/, msg: 'Không thể nhập nhiều khoảng trắng.'
-      }),
-      this.noWhitespaceValidator]),
-    category: new FormControl(' ', Validators.required)
+      })]),
+    fadImage: new FormControl('', [Validators.required]),
+    fadPrice: new FormControl('', [Validators.required, Validators.pattern(/^[0-9]*$/)]),
+    category: new FormControl('', Validators.required)
   })
 
   validationMessage = {
@@ -59,7 +57,8 @@ export class FoodAndDrinkCreateComponent implements OnInit {
       {type: 'pattern', message: 'Món không được chứa ký tự đặc biệt và số.'}
     ],
     fadCode: [
-      {type: 'required', message: 'Món không được để trống.'}
+      {type: 'required', message: 'Mã số món không được để trống.'},
+      {type: 'pattern', message: 'Mã số món không được có khoảng trắng.'},
     ],
     fadPrice: [
       {type: 'required', message: 'Giá món không được để trống.'},
@@ -69,9 +68,9 @@ export class FoodAndDrinkCreateComponent implements OnInit {
       {type: 'required', message: 'Ảnh món không được để trống.'},
     ],
     category: [
-      {type: 'required', message: 'Nhóm món không được để trống.'},
+      {type: 'required', message: 'Vui lòng chọn nhóm món.'},
     ]
-  };
+  }
 
   public noWhitespaceValidator(control: FormControl) {
     const isWhitespace = (control.value || '').trim().length === 0;

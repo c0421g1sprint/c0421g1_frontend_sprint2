@@ -217,7 +217,7 @@ export class MenuComponent implements OnInit {
     });
     console.log(this.time);
     dialog.afterClosed().subscribe(data => {
-      if (data == 'true'){
+      if (data == 'true') {
         this.cartItemList.map((a: any, index: any) => {
           if (product.fadName === a.fadName) {
             if (this.time == 0) {
@@ -361,7 +361,22 @@ export class MenuComponent implements OnInit {
     })
   }
 
+  goToPage(inputPage: number, totalPage: number) {
+    console.log("tổng trang: ");
+    console.log(inputPage);
+    console.log(typeof inputPage);
+    console.log(totalPage)
+    if (inputPage < 1 || inputPage > totalPage) {
+      this.snackBar.showSnackbar("Vui lòng nhập số trang hợp lệ! (Tổng số trang: " + totalPage + ")", "error")
+    } else {
+      this.page = inputPage
+    }
+  }
+
   openDialogCreateFeedBack() {
-    let dialogRef = this.dialog.open(FeedbackCreateComponent, {height: '100%', width: '100%'})
+    this.dialog.open(FeedbackCreateComponent, {
+      panelClass:'diep-bg',
+      width: '800px', maxHeight: '800px'
+    })
   }
 }

@@ -31,54 +31,72 @@
   <div class="row" style="margin-top: 2%">
     <div class="col-lg-4"></div>
     <div class="col-lg-2">
-      <input type="text" [(ngModel)]="year" class="form-control" placeholder="Nhập năm VD:2021" style="margin-left: 29%">
+      <input type="text" [(ngModel)]="year" class="form-control" placeholder="Nhập năm VD:2021"
+             style="margin-left: 29%">
     </div>
-    <div class="col-lg-1"></div>
-    <div class="col-lg-2">
+    <div class="col-lg-2" style="margin-left: 7%">
       <button (click)="getStatistics()" class="btn btn-warning">
         <span style="font-weight: bold">Thống kê</span>
       </button>
     </div>
   </div>
   <div class="row" style="margin: 1%">
-    <table class="table bg-dark table-hover text-center" style="width: 100%">
-      <tr>
-        <th style="color: red">TN tính</th>
-        <th style="color: orange">Hôm nay</th>
-        <th style="color: blue">Tuần này</th>
-        <th style="color: cornflowerblue">Tháng 1</th>
-        <th style="color: green">Tháng 2</th>
-        <th>Tháng 3</th>
-        <th style="color: orange">Tháng 4</th>
-        <th style="color: blue">Tháng 5</th>
-        <th style="color: cornflowerblue">Tháng 6</th>
-        <th style="color: green">Tháng 7</th>
-        <th>Tháng 8</th>
-        <th style="color: orange">Tháng 9</th>
-        <th style="color: blue">Tháng 10</th>
-        <th style="color: cornflowerblue">Tháng 11</th>
-        <th style="color: green">Tháng 12</th>
-        <th>{{"Năm " + year}}</th>
-      </tr>
-      <tr>
-        <td style="color: red">{{incomeWithDateDto.incomeWithDate| currency:"VND": true :"1.0-0": "vi-VN"}}</td>
-        <td style="color: orange">{{statisticsIncome[0].incomes| currency:"VND": true :"1.0-0": "vi-VN"}}</td>
-        <td style="color: blue">{{statisticsIncome[1].incomes| currency:"VND": true :"1.0-0": "vi-VN"}}</td>
-        <td style="color: cornflowerblue">{{statisticsIncome[2].incomes| currency:"VND": true :"1.0-0": "vi-VN"}}</td>
-        <td style="color: green">{{statisticsIncome[3].incomes| currency:"VND": true :"1.0-0": "vi-VN"}}</td>
-        <td>{{statisticsIncome[4].incomes| currency:"VND": true :"1.0-0": "vi-VN"}}</td>
-        <td style="color: orange">{{statisticsIncome[5].incomes| currency:"VND": true :"1.0-0": "vi-VN"}}</td>
-        <td style="color: blue">{{statisticsIncome[6].incomes| currency:"VND": true :"1.0-0": "vi-VN"}}</td>
-        <td style="color: cornflowerblue">{{statisticsIncome[7].incomes| currency:"VND": true :"1.0-0": "vi-VN"}}</td>
-        <td style="color: green">{{statisticsIncome[8].incomes| currency:"VND": true :"1.0-0": "vi-VN"}}</td>
-        <td>{{statisticsIncome[9].incomes| currency:"VND": true :"1.0-0": "vi-VN"}}</td>
-        <td style="color: orange">{{statisticsIncome[10].incomes| currency:"VND": true :"1.0-0": "vi-VN"}}</td>
-        <td style="color: blue">{{statisticsIncome[11].incomes| currency:"VND": true :"1.0-0": "vi-VN"}}</td>
-        <td style="color: cornflowerblue">{{statisticsIncome[12].incomes| currency:"VND": true :"1.0-0": "vi-VN"}}</td>
-        <td style="color: green">{{statisticsIncome[13].incomes| currency:"VND": true :"1.0-0": "vi-VN"}}</td>
-        <td>{{statisticsIncome[14].incomes| currency:"VND": true :"1.0-0": "vi-VN"}}</td>
-      </tr>
-    </table>
+    <div class="col-lg-4"></div>
+    <div class="col-lg-4">
+      <div class="table-responsive-lg">
+        <table class="table bg-dark table-hover text-center" style="width: 100%">
+          <tr>
+            <th style="color: red">TN tính</th>
+            <th style="color: orange">Hôm nay</th>
+            <th style="color: blue">Tuần này</th>
+          </tr>
+          <tr>
+            <td style="color: red">{{incomeWithDateDto.incomeWithDate| currency:"VND": true :"1.0-0": "vi-VN"}}</td>
+            <td style="color: orange">{{statisticsIncome[0].incomes| currency:"VND": true :"1.0-0": "vi-VN"}}</td>
+            <td style="color: blue">{{statisticsIncome[1].incomes| currency:"VND": true :"1.0-0": "vi-VN"}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="row" style="margin-left:2.5%">
+    <div class="col-lg-1"></div>
+    <div class="table-responsive-lg col-lg-8" style="margin-left: 4%">
+      <table class="table bg-dark table-hover text-center" style="width: 100%">
+        <tr>
+          <th style="color: cornflowerblue">Tháng 1</th>
+          <th style="color: green">Tháng 2</th>
+          <th style="color: yellow">Tháng 3</th>
+          <th style="color: orange">Tháng 4</th>
+          <th style="color: blue">Tháng 5</th>
+          <th style="color: cornflowerblue">Tháng 6</th>
+          <th style="color: green">Tháng 7</th>
+          <th>Tháng 8</th>
+          <th style="color: orange">Tháng 9</th>
+          <th style="color: blue">Tháng 10</th>
+          <th style="color: cornflowerblue">Tháng 11</th>
+          <th style="color: green">Tháng 12</th>
+          <th style="color: yellow">{{"Năm " + year}}</th>
+        </tr>
+        <tr>
+          <td style="color: cornflowerblue">{{statisticsIncome[2].incomes| currency:"VND": true :"1.0-0": "vi-VN"}}</td>
+          <td style="color: green">{{statisticsIncome[3].incomes| currency:"VND": true :"1.0-0": "vi-VN"}}</td>
+          <td style="color: yellow">{{statisticsIncome[4].incomes| currency:"VND": true :"1.0-0": "vi-VN"}}</td>
+          <td style="color: orange">{{statisticsIncome[5].incomes| currency:"VND": true :"1.0-0": "vi-VN"}}</td>
+          <td style="color: blue">{{statisticsIncome[6].incomes| currency:"VND": true :"1.0-0": "vi-VN"}}</td>
+          <td style="color: cornflowerblue">{{statisticsIncome[7].incomes| currency:"VND": true :"1.0-0": "vi-VN"}}</td>
+          <td style="color: green">{{statisticsIncome[8].incomes| currency:"VND": true :"1.0-0": "vi-VN"}}</td>
+          <td>{{statisticsIncome[9].incomes| currency:"VND": true :"1.0-0": "vi-VN"}}</td>
+          <td style="color: orange">{{statisticsIncome[10].incomes| currency:"VND": true :"1.0-0": "vi-VN"}}</td>
+          <td style="color: blue">{{statisticsIncome[11].incomes| currency:"VND": true :"1.0-0": "vi-VN"}}</td>
+          <td
+            style="color: cornflowerblue">{{statisticsIncome[12].incomes| currency:"VND": true :"1.0-0": "vi-VN"}}</td>
+          <td style="color: green">{{statisticsIncome[13].incomes| currency:"VND": true :"1.0-0": "vi-VN"}}</td>
+          <td style="color: yellow">{{statisticsIncome[14].incomes| currency:"VND": true :"1.0-0": "vi-VN"}}</td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-lg-2"></div>
   </div>
   <div class="row">
     <div class="col-lg-2"></div>
@@ -87,6 +105,6 @@
               [options]="barChartOptions" [labels]="barChartLabels" [datasets]="barChartData"
               id="myChart" style="background-color: rgba(0,0,0,0.5) !important;"></canvas>
     </div>
-
+    <div class="col-lg-2"></div>
   </div>
 </div>

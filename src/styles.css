@@ -37,6 +37,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   background-size: cover;
   /*background-repeat: repeat;*/
 }
+.diep-bg .mat-dialog-container {
+  background-image: url('src/assets/img/background-2.jpg');
+}
 
 /*QuanTA custom dialog detail feedback*/
 .custom-dialog-container .mat-dialog-container {

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from "rxjs";
 import {IOrders} from "../../entity/IOrders";
@@ -11,6 +11,7 @@ import {StorageService} from "../account/storage.service";
 export class OrderDetailService {
 
   private orderUrlApi = 'http://localhost:8080/api/order/on-service';
+  private orderUrlApi2 = 'http://localhost:8080/api/order/on-service/handle';
   httpOptions: any;
 
   constructor(private httpClient: HttpClient, private storageService: StorageService) {
@@ -29,11 +30,11 @@ export class OrderDetailService {
   }
 
   showTableOnService(page: number): Observable<ITables | any> {
-    return this.httpClient.get<ITables>(this.orderUrlApi + '?page=' +page,this.httpOptions);
+    return this.httpClient.get<ITables>(this.orderUrlApi + '?page=' + page, this.httpOptions);
   }
 
   changeTableOnServiceStatus(id: number): Observable<any> {
-    return this.httpClient.patch<ITables>(this.orderUrlApi + '/handle/' + id, this.httpOptions).pipe();
+    return this.httpClient.patch<ITables>(this.orderUrlApi2 + '/' + id, this.httpOptions);
   }
 
   resetTableStatus(id: number): Observable<any> {

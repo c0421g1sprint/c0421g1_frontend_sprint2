@@ -8,6 +8,7 @@ import {SnackbarService} from "../../../core-module/snackbar/snackbar.service";
 import {IFeedback} from "../../../entity/IFeedback";
 import {finalize} from "rxjs/operators";
 import {formatDate} from "@angular/common";
+import {MatDialogRef} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-feedback-create',
@@ -20,14 +21,14 @@ export class FeedbackCreateComponent implements OnInit {
   feedbackList: IFeedback [];
   msgFeedbackDate = '';
   maxDate = new Date();
+  showSpinner = false;
   image;
   downloadURL: Observable<string>;
   imgSrc: string = '/assets/anh/anh.macdinh.png';
   selectedImage: any = null;
   feedbackCode: String = '';
   feedbackForm: FormGroup = new FormGroup({
-    // feedbackCode: new FormControl('', [Validators.pattern('^FEB-\\d{4}$')]),
-    // feedbackDate: new FormControl(formatDate(new Date(), 'yyyy-MM-dd', 'en-US'), [Validators.required, this.checkNow]),
+
     feedbackCreator: new FormControl('', [Validators.required, Validators.minLength(5),
       Validators.maxLength(30), Validators.pattern(/^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀẾỂưạảấầẩẫậắằẳẵặẹẻẽềếểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s ]*$/)]),
     feedbackEmail: new FormControl('', [Validators.required, Validators.email]),
@@ -35,60 +36,88 @@ export class FeedbackCreateComponent implements OnInit {
     feedbackImage: new FormControl(''),
   });
 
-  constructor(private feedbackService: FeedbackService, private router: Router, private storage: AngularFireStorage, private snackBar: SnackbarService) {
+  constructor(private feedbackService: FeedbackService, private router: Router,
+              private storage: AngularFireStorage, private snackBar: SnackbarService,
+              private dialogRef: MatDialogRef<any>,) {
   }
-
   ngOnInit(): void {
     this.feedbackForm.reset();
   }
 
-  saveFeedback(): void {
-    let feedbacks: IFeedback | any = {
-      // feedbackCode: this.feedbackForm.get('feedbackCode').value,
-      // feedbackDate: this.feedbackForm.get('feedbackDate').value,
-      feedbackCreator: this.feedbackForm.get('feedbackCreator').value,
-      feedbackEmail: this.feedbackForm.get('feedbackEmail').value,
-      feedbackContent: this.feedbackForm.get('feedbackContent').value,
-      feedbackImage: this.image
-    };
-    console.log(this.feedbackForm);
-    this.feedbackService.saveFeedback(feedbacks).subscribe(data => {
-      console.log(data);
-      console.log(this.feedbackForm.value);
-      this.snackBar.showSnackbar('Phản hồi của bạn đã được gửi', 'success');
-      this.feedbackForm.reset()
-      // this.router.navigateByUrl("/order/menu");
-      window.location.reload();
-    }, error => {
-      this.snackBar.showSnackbar('Phản hồi thất bại', 'error');
-    });
-  }
-  onFileSelected(event) {
-    var n = Date.now();
-    const file = event.target.files[0];
-    const filePath = `RoomsImages/${n}`;
-    const fileRef = this.storage.ref(filePath);
-    const task = this.storage.upload(`RoomsImages/${n}`, file);
-    task
-      .snapshotChanges()
-      .pipe(
+  // saveFeedback(): void {
+  //   let feedbacks: IFeedback | any = {
+  //     // feedbackCode: this.feedbackForm.get('feedbackCode').value,
+  //     // feedbackDate: this.feedbackForm.get('feedbackDate').value,
+  //     feedbackCreator: this.feedbackForm.get('feedbackCreator').value,
+  //     feedbackEmail: this.feedbackForm.get('feedbackEmail').value,
+  //     feedbackContent: this.feedbackForm.get('feedbackContent').value,
+  //     feedbackImage: this.image
+  //   };
+  //   console.log(this.feedbackForm);
+  //   this.feedbackService.saveFeedback(feedbacks).subscribe(data => {
+  //     console.log(data);
+  //     console.log(this.feedbackForm.value);
+  //     this.snackBar.showSnackbar('Phản hồi của bạn đã được gửi', 'success');
+  //     this.feedbackForm.reset()
+  //     // this.router.navigateByUrl("/order/menu");
+  //     window.location.reload();
+  //   }, error => {
+  //     this.snackBar.showSnackbar('Phản hồi thất bại', 'error');
+  //   });
+  // }
+  // onFileSelected(event) {
+  //   var n = Date.now();
+  //   const file = event.target.files[0];
+  //   const filePath = `RoomsImages/${n}`;
+  //   const fileRef = this.storage.ref(filePath);
+  //   const task = this.storage.upload(`RoomsImages/${n}`, file);
+  //   task
+  //     .snapshotChanges()
+  //     .pipe(
+  //       finalize(() => {
+  //         this.downloadURL = fileRef.getDownloadURL();
+  //         this.downloadURL.subscribe(url => {
+  //           if (url) {
+  //             this.image = url;
+  //           }
+  //           console.log(this.image);
+  //           this.feedbackForm.value.feedbackImage = this.image;
+  //
+  //         });
+  //       })
+  //     )
+  //     .subscribe(url => {
+  //       if (url) {
+  //         console.log(url);
+  //       }
+  //     });
+  // }
+  createFeedback(feedbackForm) {
+    const value = this.feedbackForm.value;
+    console.log(value);
+    console.log(feedbackForm);
+    if (this.feedbackForm.valid) {
+      this.showSpinner = true;
+      var filePath = `foodAndDrinkImages/${feedbackForm.value.fadName}_${feedbackForm.value.fadCode}`;
+      const fileRef = this.storage.ref(filePath);
+      this.storage.upload(filePath, this.selectedImage).snapshotChanges().pipe(
         finalize(() => {
-          this.downloadURL = fileRef.getDownloadURL();
-          this.downloadURL.subscribe(url => {
-            if (url) {
-              this.image = url;
-            }
-            console.log(this.image);
-            this.feedbackForm.value.feedbackImage = this.image;
-
+          fileRef.getDownloadURL().subscribe(url => {
+            this.feedbackForm.value.feedbackImage = url;
+            console.log(url);
+            this.feedbackService.saveFeedback(value).subscribe(() => {
+              setTimeout(() => {
+                this.showSpinner = false;
+                this.dialogRef.close();
+                this.snackBar.showSnackbar('Phản hồi của bạn đã được tạo', 'success')
+              });
+            });
           });
         })
-      )
-      .subscribe(url => {
-        if (url) {
-          console.log(url);
-        }
-      });
+      ).subscribe();
+    } else {
+      this.snackBar.showSnackbar('Biểu mẫu sai, vui lòng nhập chính xác', 'error')
+    }
   }
 
   // showPreview(event: any) {
@@ -102,6 +131,9 @@ export class FeedbackCreateComponent implements OnInit {
   //     this.selectedImage = null;
   //   }
   // }
+  get formControl() {
+    return this.feedbackForm['controls'];
+  }
   showPreview(event: any) {
     if (event.target.files && event.target.files[0]) {
       const reader = new FileReader();
@@ -133,6 +165,7 @@ export class FeedbackCreateComponent implements OnInit {
   }
 
 
+
   // checkNow(controls: AbstractControl): any {
   //   // const end = new Date(abstractControl.value.feedbackDate);
   //   // const now = new Date();
@@ -150,5 +183,4 @@ export class FeedbackCreateComponent implements OnInit {
   //   }
   //   return null;
   // }
-
 }
