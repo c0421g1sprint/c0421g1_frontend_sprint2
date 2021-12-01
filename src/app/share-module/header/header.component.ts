@@ -51,8 +51,9 @@ export class HeaderComponent implements OnInit {
   }
 
   showInfoUser(user: string) {
-    let dialogRef = this.dialog.open(UserDetailComponent, {
+    this.dialog.open(UserDetailComponent, {panelClass: 'custom-dialog-container',
       data: user,
+      width: '400px'
     })
   }
 }

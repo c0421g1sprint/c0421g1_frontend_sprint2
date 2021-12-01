@@ -1,15 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
 /*for snackbar*/
-.error.mat-snack-bar-container{
+.error.mat-snack-bar-container {
   min-width: 250px;
   background-color: #c82333;
   color: white;
 }
-.success.mat-snack-bar-container{
+
+.success.mat-snack-bar-container {
   min-width: 250px;
   background-color: #35a028;
   color: white;

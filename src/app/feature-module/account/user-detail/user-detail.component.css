@@ -1,22 +1,22 @@
-@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+/*@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');*/
 
-#tbDetail {
-  border-radius: 50px;
-  color: black;
-  font-family: 'Patrick Hand', cursive;
-  font-size: 18px;
-}
+/*#tbDetail {*/
+/*  border-radius: 50px;*/
+/*  color: black;*/
+/*  font-family: 'Patrick Hand', cursive;*/
+/*  font-size: 18px;*/
+/*}*/
 
-.modal-user {
-  border-radius: 20px;
-}
+/*.modal-user {*/
+/*  border-radius: 20px;*/
+/*}*/
 
-.item {
-  /*font-weight: bolder;*/
-  font-size: 20px;
-}
+/*.item {*/
+/*  !*font-weight: bolder;*!*/
+/*  font-size: 20px;*/
+/*}*/
 
-button {
-  font-family: 'Patrick Hand', cursive;
-  font-weight: bolder;
-}
+/*button {*/
+/*  font-family: 'Patrick Hand', cursive;*/
+/*  font-weight: bolder;*/
+/*}*/

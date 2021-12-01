@@ -96,12 +96,12 @@
             <input type="file" class="custom-file-input form-control-file"
                    id="img" aria-label="file" #fileUploader formControlName="feedbackImage"
                    (change)="showPreview($event)" accept="image/*">
-            <label class="custom-file-label" for="img" data-browse="Ảnh">Chịn ảnh phản hồi</label>
+            <label class="custom-file-label" for="img" data-browse="Ảnh">Chọn ảnh phản hồi</label>
           </div>
         </div>
         <img [src]="imgSrc" (click)="fileUploader.click()"
-             style="height: 270px; width: 300px"
-             id="output" alt="" class="img-fluid float-right"/>
+             style="height: 270px; width: 370px"
+             id="output" alt="" class="img-fluid mt-2"/>
         <!--                    <div *ngFor="let valid of validationMessage.fadImage">-->
         <!--                      <small style="color: red"-->
         <!--                             *ngIf="createForm.get('fadImage').hasError(valid.type) && (createForm.get('fadImage').touched || createForm.get('fadImage').dirty)">-->
