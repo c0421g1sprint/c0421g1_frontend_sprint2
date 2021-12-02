@@ -12,6 +12,7 @@ export class OrderDetailService {
 
   private orderUrlApi = 'http://localhost:8080/api/order/on-service';
   private orderUrlApi2 = 'http://localhost:8080/api/order/on-service/handle';
+  private orderUrlApi3 = 'http://localhost:8080/api/order/on-service-no-pageable';
   httpOptions: any;
 
   constructor(private httpClient: HttpClient, private storageService: StorageService) {
@@ -30,7 +31,11 @@ export class OrderDetailService {
   }
 
   showTableOnService(page: number): Observable<ITables | any> {
-    return this.httpClient.get<ITables>(this.orderUrlApi + '?page=' + page, this.httpOptions);
+    return this.httpClient.get<ITables>(this.orderUrlApi + '?page=' +page,this.httpOptions);
+  }
+
+  showTableOnServiceNoPageable(): Observable<ITables[] | any> {
+    return this.httpClient.get<ITables[]>(this.orderUrlApi3, this.httpOptions);
   }
 
   changeTableOnServiceStatus(id: number): Observable<any> {

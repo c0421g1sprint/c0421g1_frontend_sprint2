@@ -43,14 +43,18 @@
         <div class="col-lg-4">
           <span><strong>Hình ảnh:</strong></span>
         </div>
-        <div class="col-lg-8">
+        <div class="col-lg-8"></div>
+        <div class="row">
+          <div>
           <span *ngIf="feedback.feedbackImage">
-            <img [src]="feedback.feedbackImage" width="340px" height="340px">
+            <img [src]="feedback.feedbackImage" width="340px" height="340px" style="margin-left: 150px">
           </span>
-          <span *ngIf="!feedback.feedbackImage">
+            <span *ngIf="!feedback.feedbackImage">
             không có hình ảnh
           </span>
+          </div>
         </div>
+
       </div>
     </div>
   </div>

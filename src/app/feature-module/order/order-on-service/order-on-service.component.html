@@ -1,4 +1,3 @@
-
 <div class="sale-screen" style="overflow-x: hidden; overflow-y: hidden">
   <div class="container-fluid" style="padding-top: 20px">
     <div class="row">
@@ -8,19 +7,22 @@
           <div class="col-lg-12 card-group">
             <div class="row card-desk">
               <div class="col-lg-4" *ngFor="let table of tableOnServiceList">
-                <div  class="cardItem">
+                <div class="cardItem">
                   <div [ngSwitch]="table.onService">
                   <span *ngSwitchCase="0">
                     <img [src]="focusImg" class="card-img-top" alt="..." (click)="seeDetail(table.tableId)">
                   </span>
                     <span *ngSwitchCase="1">
-                    <img [src]="focusImg2" class="card-img-top" [ngClass]="flicker" alt="..." (click)="seeDetail(table.tableId)">
+                    <img [src]="focusImg2" class="card-img-top" [ngClass]="flicker" alt="..."
+                         (click)="seeDetail(table.tableId)">
                   </span>
                     <span *ngSwitchCase="2">
-                    <img [src]="focusImg2" class="card-img-top" [ngClass]="flicker" alt="..." (click)="seeDetail(table.tableId)">
+                    <img [src]="focusImg2" class="card-img-top" [ngClass]="flicker" alt="..."
+                         (click)="seeDetail(table.tableId)">
                   </span>
                     <span *ngSwitchCase="3">
-                    <img [src]="focusImg3" class="card-img-top" [ngClass]="flicker" alt="..." (click)="seeDetail(table.tableId)">
+                    <img [src]="focusImg3" class="card-img-top" [ngClass]="flicker" alt="..."
+                         (click)="seeDetail(table.tableId)">
                   </span>
                   </div>
                   <div class="card-body">
@@ -37,27 +39,47 @@
                 <nav aria-label="Pagination" class="d-flex justify-content-center">
                   <ul class="pagination">
                     <li class="page-item">
-                      <a class="btn btn-outline-dark" aria-label="Previous" (click)="previousPage()" style="width: 45px; background: white">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M7 6c.55 0 1 .45 1 1v10c0 .55-.45 1-1 1s-1-.45-1-1V7c0-.55.45-1 1-1zm3.66 6.82l5.77 4.07c.66.47 1.58-.01 1.58-.82V7.93c0-.81-.91-1.28-1.58-.82l-5.77 4.07c-.57.4-.57 1.24 0 1.64z"/></svg>
+                      <a class="btn btn-outline-dark" aria-label="Previous" (click)="previousPage()"
+                         style="width: 45px; background: white">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+                             fill="#000000">
+                          <path
+                            d="M7 6c.55 0 1 .45 1 1v10c0 .55-.45 1-1 1s-1-.45-1-1V7c0-.55.45-1 1-1zm3.66 6.82l5.77 4.07c.66.47 1.58-.01 1.58-.82V7.93c0-.81-.91-1.28-1.58-.82l-5.77 4.07c-.57.4-.57 1.24 0 1.64z"/>
+                        </svg>
                       </a>
                     </li>
                     <li class="page-item">
-                      <a class="btn btn-outline-dark" aria-label="This page" style="width: 55px; height: 40px; background: white">
-                        <span aria-hidden="true" style="color: black; font-weight: bold">{{this.page + 1}} / {{this.totalPage}}</span>
+                      <a class="btn btn-outline-dark" aria-label="This page"
+                         style="width: 55px; height: 40px; background: white">
+                        <span aria-hidden="true" style="color: black; font-weight: bold">{{this.page + 1}}
+                          / {{this.totalPage}}</span>
                       </a>
                     </li>
                     <li class="page-item">
-                      <a class=" btn btn-outline-dark" aria-label="Next" (click)="nextPage()" style="width: 45px; background: white">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M7.58 16.89l5.77-4.07c.56-.4.56-1.24 0-1.63L7.58 7.11C6.91 6.65 6 7.12 6 7.93v8.14c0 .81.91 1.28 1.58.82zM16 7v10c0 .55.45 1 1 1s1-.45 1-1V7c0-.55-.45-1-1-1s-1 .45-1 1z"/></svg></a>
+                      <a class=" btn btn-outline-dark" aria-label="Next" (click)="nextPage()"
+                         style="width: 45px; background: white">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+                             fill="#000000">
+                          <path
+                            d="M7.58 16.89l5.77-4.07c.56-.4.56-1.24 0-1.63L7.58 7.11C6.91 6.65 6 7.12 6 7.93v8.14c0 .81.91 1.28 1.58.82zM16 7v10c0 .55.45 1 1 1s1-.45 1-1V7c0-.55-.45-1-1-1s-1 .45-1 1z"/>
+                        </svg>
+                      </a>
                     </li>
                     <li class="page-item">
                       <div class="input-group">
                         <input type="number" min="1" max="{{this.totalPage}}"
                                class="text-dark rounded" placeholder="Nhập trang"
-                               style="width: 100px; height: 41px; margin-top: -1px" [(ngModel)]="pageNumberInput" (change)="searchPage()">
+                               style="width: 100px; height: 41px; margin-top: -1px" [(ngModel)]="pageNumberInput"
+                               (change)="searchPage()">
                         <div class="input-group-append">
-                          <button class="btn btn-warning btn-outline-dark rounded" style="transform: scale(1); margin-top: 0">
-                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M10.09 15.59L11.5 17l5-5-5-5-1.41 1.41L12.67 11H3v2h9.67l-2.58 2.59zM19 3H5c-1.11 0-2 .9-2 2v4h2V5h14v14H5v-4H3v4c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/></svg>
+                          <button class="btn btn-warning btn-outline-dark rounded"
+                                  style="transform: scale(1); margin-top: 0">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+                                 fill="#000000">
+                              <path d="M0 0h24v24H0V0z" fill="none"/>
+                              <path
+                                d="M10.09 15.59L11.5 17l5-5-5-5-1.41 1.41L12.67 11H3v2h9.67l-2.58 2.59zM19 3H5c-1.11 0-2 .9-2 2v4h2V5h14v14H5v-4H3v4c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/>
+                            </svg>
                           </button>
                         </div>
                       </div>
@@ -72,8 +94,10 @@
       <div class="col-lg-8" style="position: relative">
         <div class="row">
           <div class="col-lg-12" *ngIf="order && this.tables.tableStatus != 'Trống'; else elseBlock">
-            <h1 style="text-align: center">DỊCH VỤ BÀN SỐ: <span style="color: lightblue"> {{this.tables.tableCode}}</span></h1>
-            <table class="table table-dark table-hover text-center" style="border: 1px solid black; max-width: 90%; margin: 40px 50px" *ngIf="order ; else elseBlock">
+            <h1 style="text-align: center">DỊCH VỤ BÀN SỐ: <span
+              style="color: lightblue"> {{this.tables.tableCode}}</span></h1>
+            <table class="table table-dark table-hover text-center"
+                   style="border: 1px solid black; max-width: 90%; margin: 40px 50px" *ngIf="order ; else elseBlock">
               <thead>
               <tr style="background: rgb(67, 58, 49)">
                 <th scope="col">Số thứ tự</th>
@@ -84,7 +108,7 @@
               </tr>
               </thead>
               <tbody>
-              <tr  *ngFor="let o of this.orderDetail; let i = index">
+              <tr *ngFor="let o of this.orderDetail; let i = index">
                 <td>{{i + 1}}</td>
                 <td>{{o.fad.fadName}}</td>
                 <td>{{o.quantity}}</td>
@@ -117,16 +141,30 @@
             <div class="row">
               <div class="col-lg-4"></div>
               <div class="col-lg-8" style="text-align: right; padding-right: 55px">
-                <button class="btn btn-warning" data-toggle="modal" data-target="#exampleModal2" type="button" style="margin-right: 10px; transition: transform 0.5s; width: 130px; color: black" data-placement="right" title="In hóa đơn" >
-                  <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><rect fill="none" height="24" width="24"/><path d="M3,10h11v2H3V10z M3,8h11V6H3V8z M3,16h7v-2H3V16z M18.01,12.87l0.71-0.71c0.39-0.39,1.02-0.39,1.41,0l0.71,0.71 c0.39,0.39,0.39,1.02,0,1.41l-0.71,0.71L18.01,12.87z M17.3,13.58l-5.3,5.3V21h2.12l5.3-5.3L17.3,13.58z"/></svg>
+                <button class="btn btn-warning" data-toggle="modal" data-target="#exampleModal2" type="button"
+                        style="margin-right: 10px; transition: transform 0.5s; width: 130px; color: black"
+                        data-placement="right" title="In hóa đơn">
+                  <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px"
+                       viewBox="0 0 24 24" width="24px" fill="#000000">
+                    <rect fill="none" height="24" width="24"/>
+                    <path
+                      d="M3,10h11v2H3V10z M3,8h11V6H3V8z M3,16h7v-2H3V16z M18.01,12.87l0.71-0.71c0.39-0.39,1.02-0.39,1.41,0l0.71,0.71 c0.39,0.39,0.39,1.02,0,1.41l-0.71,0.71L18.01,12.87z M17.3,13.58l-5.3,5.3V21h2.12l5.3-5.3L17.3,13.58z"/>
+                  </svg>
                   Tính tiền
                 </button>
-                <button class="btn btn-warning"  data-toggle="modal" data-target="#exampleModal"  data-placement="right" title="Làm mới" style="transition: transform 0.5s; width: 130px; color: black">
-                  <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
-                    <g><path d="M0,0h24v24H0V0z" fill="none"/></g>
-                    <g><g>
-                      <path d="M6,13c0-1.65,0.67-3.15,1.76-4.24L6.34,7.34C4.9,8.79,4,10.79,4,13c0,4.08,3.05,7.44,7,7.93v-2.02 C8.17,18.43,6,15.97,6,13z M20,13c0-4.42-3.58-8-8-8c-0.06,0-0.12,0.01-0.18,0.01l1.09-1.09L11.5,2.5L8,6l3.5,3.5l1.41-1.41 l-1.08-1.08C11.89,7.01,11.95,7,12,7c3.31,0,6,2.69,6,6c0,2.97-2.17,5.43-5,5.91v2.02C16.95,20.44,20,17.08,20,13z"/>
-                    </g></g>
+                <button class="btn btn-warning" data-toggle="modal" data-target="#exampleModal" data-placement="right"
+                        title="Làm mới" style="transition: transform 0.5s; width: 130px; color: black">
+                  <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px"
+                       viewBox="0 0 24 24" width="24px" fill="#000000">
+                    <g>
+                      <path d="M0,0h24v24H0V0z" fill="none"/>
+                    </g>
+                    <g>
+                      <g>
+                        <path
+                          d="M6,13c0-1.65,0.67-3.15,1.76-4.24L6.34,7.34C4.9,8.79,4,10.79,4,13c0,4.08,3.05,7.44,7,7.93v-2.02 C8.17,18.43,6,15.97,6,13z M20,13c0-4.42-3.58-8-8-8c-0.06,0-0.12,0.01-0.18,0.01l1.09-1.09L11.5,2.5L8,6l3.5,3.5l1.41-1.41 l-1.08-1.08C11.89,7.01,11.95,7,12,7c3.31,0,6,2.69,6,6c0,2.97-2.17,5.43-5,5.91v2.02C16.95,20.44,20,17.08,20,13z"/>
+                      </g>
+                    </g>
                   </svg>
                   Làm mới
                 </button>
@@ -135,9 +173,24 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-lg-12 marquee-parent" style="position: absolute ; top: 550px; right: 50px; left: 30px">
-            <div class="marquee-child" style="width: 500px"><h2 style="font-weight: bold"> <img src="assets/img-TaiHVK/gif.gif" style="transform: scale(1)"><span class="blink">C0421G1 Coffee House</span></h2></div>
+          <div class="col-lg-12 marquee-parent" style="position: absolute ; top: 550px; right: 50px; left: 30px"
+               *ngIf="requestedTables.length > 0; else elseBlock2">
+            <div class="marquee-child" style="width: 1100px"><h2 style="font-weight: bold" class="blink"><img
+              src="assets/img-TaiHVK/gif.gif" style="transform: scale(1)">Các bàn đang có yêu cầu: <span
+              *ngFor="let table of requestedTables" style="color: red">[{{table.tableCode}} - <span
+              [ngSwitch]="table.onService">
+              <span *ngSwitchCase="1" style="color: red">Gọi món] </span>
+              <span *ngSwitchCase="2" style="color: red"> Gọi phục vụ] </span>
+              <span *ngSwitchCase="3" style="color: forestgreen"> Gọi tính tiền<span
+                style="color: red">] </span> </span>
+            </span> </span></h2></div>
           </div>
+          <ng-template #elseBlock2>
+            <div class="col-lg-12 marquee-parent" style="position: absolute ; top: 550px; right: 50px; left: 30px">
+              <div class="marquee-child" style="width: 1100px"><h2 style="font-weight: bold" class="blink"><img
+                src="assets/img-TaiHVK/gif.gif" style="transform: scale(1)"> C0421G1 CoffeeHouse</h2></div>
+            </div>
+          </ng-template>
         </div>
       </div>
     </div>
@@ -147,13 +200,17 @@
 <!--Modal làm mới bàn-->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <div class="modal-content" style="background: url(https://image.shutterstock.com/image-photo/coffee-beans-on-grain-wood-260nw-248750701.jpg)">
+    <div class="modal-content"
+         style="background: url(https://image.shutterstock.com/image-photo/coffee-beans-on-grain-wood-260nw-248750701.jpg)">
       <div class="modal-body">
-        <h1 style="color: #0b2e13; text-align: center">Làm mới bàn số <span style="color: red">{{this.tables.tableCode}}</span>?</h1>
+        <h1 style="color: #0b2e13; text-align: center">Làm mới bàn số <span
+          style="color: red">{{this.tables.tableCode}}</span>?</h1>
       </div>
       <div class="modal-footer" style="margin: 0 auto">
         <button type="button" class="btn btn-danger" data-dismiss="modal" style="color: black">Đóng</button>
-        <button type="button" class="btn btn-warning"  style="color: black" (click)="resetTableStatus(this.tables.tableId)" data-dismiss="modal">Làm mới</button>
+        <button type="button" class="btn btn-warning" style="color: black"
+                (click)="resetTableStatus(this.tables.tableId)" data-dismiss="modal">Làm mới
+        </button>
       </div>
     </div>
   </div>
@@ -162,13 +219,17 @@
 <!--Modal tính tiền-->
 <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <div class="modal-content" style="background: url(https://image.freepik.com/free-photo/wooden-backdrop_23-2147961532.jpg)">
+    <div class="modal-content"
+         style="background: url(https://image.freepik.com/free-photo/wooden-backdrop_23-2147961532.jpg)">
       <div class="modal-body">
-        <h1 style="color: #0b2e13; text-align: center">Tính tiền bàn số <span style="color: red">{{this.tables.tableCode}}</span>?</h1>
+        <h1 style="color: #0b2e13; text-align: center">Tính tiền bàn số <span
+          style="color: red">{{this.tables.tableCode}}</span>?</h1>
       </div>
       <div class="modal-footer" style="margin: 0 auto">
         <button type="button" class="btn btn-danger" data-dismiss="modal" style="color: black">Đóng</button>
-        <button type="button" class="btn btn-warning"  style="color: black" (click)="writeBill(this.tables.tableId)" data-dismiss="modal">Tạo hóa đơn</button>
+        <button type="button" class="btn btn-warning" style="color: black" (click)="writeBill(this.tables.tableId)"
+                data-dismiss="modal">Tạo hóa đơn
+        </button>
       </div>
     </div>
   </div>

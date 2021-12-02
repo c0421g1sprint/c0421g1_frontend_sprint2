@@ -14,6 +14,8 @@ import {IOrderDetail} from "../../../entity/IOrderDetail";
 export class OrderOnServiceComponent implements OnInit {
 
   tableOnServiceList: ITables[];
+  tableOnServiceList2: ITables[];
+  requestedTables: ITables[] = [];
   flicker: string = 'animate-flicker';
   order: IOrders[];
   totalPage: number;
@@ -30,6 +32,7 @@ export class OrderOnServiceComponent implements OnInit {
   constructor(private orderDetailService: OrderDetailService, private activatedRoute: ActivatedRoute,
               private matSnackBar: SnackbarService) {
     this.seeDetail(this.id);
+    this.getTableRequest();
   }
 
   ngOnInit(): void {
@@ -43,6 +46,18 @@ export class OrderOnServiceComponent implements OnInit {
       // @ts-ignore
       this.totalPage = value.totalPages;
       console.log(this.tableOnServiceList);
+    });
+  }
+
+  getTableRequest() {
+    this.orderDetailService.showTableOnServiceNoPageable().subscribe(value => {
+      this.tableOnServiceList2 = value;
+      for (let table of this.tableOnServiceList2) {
+        if (table.onService !== 0) {
+          this.requestedTables.unshift(table);
+        }
+      }
+      console.log(this.requestedTables);
     })
   }
 
