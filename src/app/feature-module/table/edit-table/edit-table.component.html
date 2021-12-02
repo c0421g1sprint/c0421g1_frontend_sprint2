@@ -1,7 +1,7 @@
-<div class="container-fluid" id="backgrounds" style="margin-bottom: -80px; margin-top: 80px; min-height: 700px;min-width: 1000px">
+<div class="container-fluid" id="background" style="margin-bottom: -80px; margin-top: 80px; min-height: 700px;min-width: 1000px">
   <div class="row">
     <div class="col-lg-3"></div>
-    <div class="col-lg-6 mt-5" style="background-color: white; border: solid black 2px; border-radius: 25px">
+    <div class="col-lg-6 mt-5" id="backgrounds" style="background-color: white; border: solid black 2px; border-radius: 25px">
       <h1 class="mt-3" style="color: #e3cc6f; font-size: 25px">Sửa Thông tin bàn</h1>
       <form [formGroup]="tableForm" *ngIf="tableForm" (ngSubmit)="update()"  style="font-size: 20px">
         <div class="form-row" >
